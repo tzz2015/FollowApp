@@ -70,17 +70,15 @@ class HomeFragment : Fragment() {
     }
 
     private fun showDrawOverlaysDialog() {
-        val dialog = MaterialDialog.Builder(requireActivity())
-            .title(getString(R.string.text_required_floating_window_permission))
-            .content(getString(R.string.text_required_floating_window_permission))//内容
-            .positiveText(getString(R.string.text_to_open)) //肯定按键
-            .negativeText(getString(R.string.text_cancel)).onPositive { dialog, _ ->
-                dialog.dismiss()
+        MaterialDialog(requireActivity()).show {
+            setTitle(R.string.text_required_floating_window_permission)
+            message(text = getString(R.string.text_required_floating_window_permission))
+            positiveButton(res = R.string.text_to_open, click = {
+                dismiss()
                 drawOverlaysSettingsLauncher.launchCanDrawOverlaysSettings(requireActivity().packageName)
-            }.onNegative { dialog, _ ->
-                dialog.dismiss()
-            }.canceledOnTouchOutside(false).build()
-        dialog.show()
+            })
+            negativeButton { dismiss() }
+        }
     }
 
     private fun showAccessibilityDialog() {
@@ -97,17 +95,19 @@ class HomeFragment : Fragment() {
                 homeViewModel.checkNeedPermissions()
                 return@launch
             }
-            val dialog = MaterialDialog.Builder(requireActivity())
-                .title(R.string.text_need_to_enable_accessibility_service)
-                .content(R.string.explain_accessibility_permission, GlobalAppContext.appName)
-                .positiveText(getString(R.string.text_to_open)) //肯定按键
-                .negativeText(getString(R.string.text_cancel)).onPositive { dialog, _ ->
-                    dialog.dismiss()
+            MaterialDialog(requireActivity()).show {
+                setTitle(R.string.text_need_to_enable_accessibility_service)
+                message(
+                    text = getString(R.string.explain_accessibility_permission).format(
+                        GlobalAppContext.appName
+                    )
+                )
+                positiveButton(res = R.string.text_to_open, click = {
+                    dismiss()
                     accessibilitySettingsLauncher.launch(Intent(Settings.ACTION_ACCESSIBILITY_SETTINGS))
-                }.onNegative { dialog, _ ->
-                    dialog.dismiss()
-                }.canceledOnTouchOutside(false).build()
-            dialog.show()
+                })
+                negativeButton { dismiss() }
+            }
         }
 
     }

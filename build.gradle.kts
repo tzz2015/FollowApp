@@ -3,6 +3,7 @@ initVersions(file("project-versions.json"))
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
 buildscript {
     val kotlin_version = "1.8.0"
+    val dagger_version = "2.44"
 
     extra.apply {
         set("kotlin_version", kotlin_version)
@@ -27,7 +28,7 @@ buildscript {
         classpath("org.jetbrains.kotlin:kotlin-allopen:$kotlin_version")
         classpath("com.jakewharton:butterknife-gradle-plugin:10.2.3")
         classpath("org.codehaus.groovy:groovy-json:3.0.9")
-        classpath("com.google.dagger:hilt-android-gradle-plugin:2.37")
+        classpath("com.google.dagger:hilt-android-gradle-plugin:$dagger_version")
 
     }
 }

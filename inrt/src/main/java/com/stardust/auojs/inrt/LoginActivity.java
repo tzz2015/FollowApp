@@ -10,7 +10,6 @@ import android.telephony.TelephonyManager;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -20,7 +19,6 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
-import com.afollestad.materialdialogs.MaterialDialog;
 import com.stardust.app.GlobalAppContext;
 import com.stardust.auojs.inrt.autojs.AccessibilityServiceTool;
 import com.stardust.auojs.inrt.launch.GlobalProjectLauncher;
@@ -186,7 +184,7 @@ public class LoginActivity extends AppCompatActivity {
         String host = Pref.getHost("");
         String code = Pref.getCode("");
 
-        MaterialDialog tmpDialog = new MaterialDialog.Builder(this).title("连接到服务器")
+       /* MaterialDialog tmpDialog = new MaterialDialog.Builder(this).title("连接到服务器")
                 .customView(R.layout.dialog_regist_user_code, false)
                 .positiveText("确定")
                 .onPositive((dialog, which) -> {
@@ -211,7 +209,7 @@ public class LoginActivity extends AppCompatActivity {
         EditText serverAddrInput = (EditText) customeView.findViewById(R.id.server_addr);
         userCodeInput.setText(code);
         serverAddrInput.setText(host);
-
+*/
     }
 
 

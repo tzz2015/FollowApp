@@ -5,7 +5,6 @@ import android.content.Intent
 import android.graphics.Typeface
 import android.os.Build
 import android.os.Bundle
-import android.provider.Settings
 import android.util.Log
 import android.view.View
 import android.view.WindowManager
@@ -20,14 +19,11 @@ import androidx.core.view.WindowCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.WindowInsetsControllerCompat
 import androidx.lifecycle.lifecycleScope
-import com.afollestad.materialdialogs.MaterialDialog
 import com.google.gson.Gson
 import com.stardust.app.GlobalAppContext
 import com.stardust.app.permission.BackgroundStartPermission
 import com.stardust.app.permission.DrawOverlaysPermission
-import com.stardust.app.permission.DrawOverlaysPermission.launchCanDrawOverlaysSettings
 import com.stardust.app.permission.Permissions
-import com.stardust.app.permission.PermissionsSettingsUtil.launchAppPermissionsSettings
 import com.stardust.auojs.inrt.autojs.AccessibilityServiceTool
 import com.stardust.auojs.inrt.autojs.AccessibilityServiceTool1
 import com.stardust.auojs.inrt.autojs.AutoJs
@@ -209,7 +205,7 @@ class SplashActivity : ComponentActivity() {
     }
 
     private fun requestDrawOverlays() {
-        val dialog =
+       /* val dialog =
             MaterialDialog.Builder(this)
                 .title(getString(R.string.text_required_floating_window_permission))
                 .content(getString(R.string.text_required_floating_window_permission))//内容
@@ -223,11 +219,11 @@ class SplashActivity : ComponentActivity() {
                 }
                 .canceledOnTouchOutside(false)
                 .build()
-        dialog.show()
+        dialog.show()*/
     }
 
     private fun requestBackgroundStart() {
-        val dialog = MaterialDialog.Builder(this)
+        /*val dialog = MaterialDialog.Builder(this)
             .title(getString(R.string.text_requires_background_start))
             .content(getString(R.string.text_requires_background_start_desc))
             .positiveText(getString(R.string.text_to_open)) //肯定按键
@@ -241,7 +237,7 @@ class SplashActivity : ComponentActivity() {
             }
             .canceledOnTouchOutside(false)
             .build()
-        dialog.show()
+        dialog.show()*/
     }
 
     private fun requestAccessibilityService() {
@@ -259,7 +255,7 @@ class SplashActivity : ComponentActivity() {
                 checkSpecialPermissions()
                 return@launch
             }
-            val dialog = MaterialDialog.Builder(this@SplashActivity)
+           /* val dialog = MaterialDialog.Builder(this@SplashActivity)
                 .title(R.string.text_need_to_enable_accessibility_service)
                 .content(R.string.explain_accessibility_permission, GlobalAppContext.appName)
                 .positiveText(getString(R.string.text_to_open)) //肯定按键
@@ -273,7 +269,7 @@ class SplashActivity : ComponentActivity() {
                 }
                 .canceledOnTouchOutside(false)
                 .build()
-            dialog.show()
+            dialog.show()*/
         }
     }
 

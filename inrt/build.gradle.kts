@@ -225,6 +225,7 @@ dependencies {
     implementation(project(":automator"))
     implementation(project(":common"))
     implementation(project(":autojs"))
+    implementation(project(":DataLibaray"))
     implementation("androidx.multidex:multidex:2.0.1")
     api(fileTree("../app/libs") { include("dx.jar", "rhino-1.7.14-jdk7.jar") })
 
@@ -233,10 +234,10 @@ dependencies {
     implementation("com.github.bumptech.glide:glide:4.2.0") {
         exclude(group = "com.android.support")
     }
-
+    val dagger_version = "2.44"
     //Dagger
-    implementation ("com.google.dagger:hilt-android:2.37")
-    kapt("com.google.dagger:hilt-android-compiler:2.37")
+    implementation ("com.google.dagger:hilt-android:${dagger_version}")
+    kapt("com.google.dagger:hilt-android-compiler:${dagger_version}")
 
 
 }
