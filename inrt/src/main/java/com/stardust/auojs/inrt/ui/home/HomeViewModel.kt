@@ -1,17 +1,21 @@
 package com.stardust.auojs.inrt.ui.home
-import androidx.lifecycle.ViewModel
+
 import com.linsh.utilseverywhere.ToastUtils
+import com.mind.lib.base.BaseViewModel
 import com.stardust.app.GlobalAppContext
 import com.stardust.app.permission.DrawOverlaysPermission
 import com.stardust.auojs.inrt.autojs.AccessibilityServiceTool
 import com.stardust.auojs.inrt.data.Constants
 import com.stardust.auojs.inrt.launch.GlobalProjectLauncher
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update
 import org.autojs.autoxjs.inrt.R
+import javax.inject.Inject
 
-class HomeViewModel : ViewModel() {
+@HiltViewModel
+class HomeViewModel @Inject constructor(): BaseViewModel() {
 
     private val _permiss = MutableStateFlow(Pair(false, false))
     val permiss = _permiss.asStateFlow()
@@ -53,5 +57,6 @@ class HomeViewModel : ViewModel() {
 
     override fun onCleared() {
         super.onCleared()
+        stopRunScript()
     }
 }

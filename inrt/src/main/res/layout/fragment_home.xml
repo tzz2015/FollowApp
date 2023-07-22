@@ -8,7 +8,7 @@
         <import type="android.view.View" />
 
         <variable
-            name="viewModel"
+            name="homeModel"
             type="com.stardust.auojs.inrt.ui.home.HomeViewModel" />
 
     </data>
@@ -35,7 +35,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
-            android:checked="@{viewModel.permiss.component1()}"
+            android:checked="@{homeModel.permiss.component1()}"
             android:text="无障碍权限"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -45,7 +45,7 @@
             android:id="@+id/sw_drawOverlays"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:checked="@{viewModel.permiss.component2()}"
+            android:checked="@{homeModel.permiss.component2()}"
             android:text="悬浮窗权限"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -58,13 +58,23 @@
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
             android:layout_marginEnd="8dp"
-            android:onClick="@{()->viewModel.toFollow()}"
+            android:onClick="@{()->homeModel.toFollow()}"
             android:text="去关注"
             android:textAlignment="center"
             android:textSize="20sp"
-            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toBottomOf="@+id/sw_drawOverlays" />
+        <com.stardust.auojs.inrt.ui.view.WaveCircleView
+            android:id="@+id/waveCircleView"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_width="200dp"
+            app:waveColorTop="@color/theme_color_dark_purple"
+            app:waveColorBottom="@color/theme_color_yellow_green"
+            app:waveColorCenter="@color/theme_color_cyan"
+            android:layout_height="200dp" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

@@ -3,16 +3,15 @@ package com.stardust.auojs.inrt.ui.home
 import android.content.Intent
 import android.os.Bundle
 import android.provider.Settings
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
-import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import com.afollestad.materialdialogs.MaterialDialog
+import com.chad.library.BR
 import com.linsh.utilseverywhere.LogUtils
+import com.mind.lib.base.BaseFragment
+import com.mind.lib.base.ViewModelConfig
 import com.stardust.app.GlobalAppContext
 import com.stardust.app.permission.DrawOverlaysPermission.launchCanDrawOverlaysSettings
 import com.stardust.auojs.inrt.autojs.AccessibilityServiceTool1
@@ -22,52 +21,39 @@ import kotlinx.coroutines.withContext
 import org.autojs.autoxjs.inrt.R
 import org.autojs.autoxjs.inrt.databinding.FragmentHomeBinding
 
-class HomeFragment : Fragment() {
+class HomeFragment : BaseFragment<HomeViewModel, FragmentHomeBinding>() {
 
-    private var _binding: FragmentHomeBinding? = null
-
-    // This property is only valid between onCreateView and
-    // onDestroyView.
-    private val binding get() = _binding!!
-    private val homeViewModel by lazy {
-        ViewModelProvider(this)[HomeViewModel::class.java]
-    }
 
     private val userViewModel by lazy {
         ViewModelProvider(this)[UserViewModel::class.java]
     }
+    override val viewModelConfig: ViewModelConfig
+        get() = ViewModelConfig(R.layout.fragment_home).bindViewModel(BR.homeModel)
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
-    ): View {
-        _binding = FragmentHomeBinding.inflate(inflater, container, false)
-        val root: View = binding.root
-        binding.viewModel = homeViewModel
-        return root
-    }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
+    override fun init(savedInstanceState: Bundle?) {
         setCheckedChangeListener()
-        userViewModel.getUserCount()
     }
 
     override fun onResume() {
         super.onResume()
-        homeViewModel.checkNeedPermissions()
+        viewModel.checkNeedPermissions()
+        userViewModel.getUserCount()
     }
 
+
+
     private fun setCheckedChangeListener() {
-        binding.swAccessibility.setOnCheckedChangeListener { buttonView, isChecked ->
+        bind.swAccessibility.setOnCheckedChangeListener { buttonView, isChecked ->
             LogUtils.e("buttonView:${buttonView.id} isChecked:${isChecked}")
-            val hasPermissions = homeViewModel.permiss.value.first
+            val hasPermissions = viewModel.permiss.value.first
             if (!hasPermissions && isChecked) {
                 showAccessibilityDialog()
             }
         }
-        binding.swDrawOverlays.setOnCheckedChangeListener { buttonView, isChecked ->
+        bind.swDrawOverlays.setOnCheckedChangeListener { buttonView, isChecked ->
             LogUtils.e("buttonView:${buttonView.id} isChecked:${isChecked}")
-            val hasPermissions = homeViewModel.permiss.value.second
+            val hasPermissions = viewModel.permiss.value.second
             if (!hasPermissions && isChecked) {
                 showDrawOverlaysDialog()
             }
@@ -97,7 +83,7 @@ class HomeFragment : Fragment() {
                     getString(R.string.text_accessibility_service_turned_on),
                     Toast.LENGTH_SHORT
                 ).show()
-                homeViewModel.checkNeedPermissions()
+                viewModel.checkNeedPermissions()
                 return@launch
             }
             MaterialDialog(requireActivity()).show {
@@ -119,16 +105,13 @@ class HomeFragment : Fragment() {
 
     private val accessibilitySettingsLauncher =
         registerForActivityResult(ActivityResultContracts.StartActivityForResult()) {
-            homeViewModel.checkNeedPermissions()
+            viewModel.checkNeedPermissions()
         }
 
     private val drawOverlaysSettingsLauncher =
         registerForActivityResult(ActivityResultContracts.StartActivityForResult()) {
-            homeViewModel.checkNeedPermissions()
+            viewModel.checkNeedPermissions()
         }
 
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null
-    }
+
 }
