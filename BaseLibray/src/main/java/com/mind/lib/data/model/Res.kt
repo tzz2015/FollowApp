@@ -6,6 +6,6 @@ package com.mind.lib.data.model
  */
 data class Res<T>(
     var code: Int = 0,
-    var msg: String = "",
+    var message: String = "",
     val data: T?
 )

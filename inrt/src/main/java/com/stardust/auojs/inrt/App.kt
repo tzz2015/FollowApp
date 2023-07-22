@@ -1,6 +1,5 @@
 package com.stardust.auojs.inrt
 
-import android.app.Application
 import android.app.Notification
 import android.app.NotificationManager
 import android.app.PendingIntent
@@ -13,6 +12,7 @@ import com.fanjun.keeplive.KeepLive
 import com.fanjun.keeplive.config.ForegroundNotification
 import com.google.mlkit.common.MlKit
 import com.linsh.utilseverywhere.Utils
+import com.mind.lib.base.BaseApp
 import com.stardust.app.GlobalAppContext
 import com.stardust.auojs.inrt.autojs.AutoJs
 import com.stardust.auojs.inrt.autojs.GlobalKeyObserver
@@ -26,7 +26,7 @@ import org.autojs.autoxjs.inrt.R
  * Created by Stardust on 2017/7/1.
  */
 
-class App : Application() {
+class App : BaseApp() {
 
     var TAG = "inrt.application";
     override fun onCreate() {

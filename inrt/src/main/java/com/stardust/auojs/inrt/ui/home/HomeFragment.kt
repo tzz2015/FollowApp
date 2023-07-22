@@ -33,6 +33,10 @@ class HomeFragment : Fragment() {
         ViewModelProvider(this)[HomeViewModel::class.java]
     }
 
+    private val userViewModel by lazy {
+        ViewModelProvider(this)[UserViewModel::class.java]
+    }
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View {
@@ -45,6 +49,7 @@ class HomeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setCheckedChangeListener()
+        userViewModel.getUserCount()
     }
 
     override fun onResume() {

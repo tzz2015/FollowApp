@@ -6,11 +6,15 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.mind.lib.data.model.Res
 import com.mind.lib.data.net.ResCode
-
 import com.mind.lib.util.Util
 import com.mind.lib.util.toast
-import kotlinx.coroutines.*
-import kotlinx.coroutines.flow.*
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.cancel
+import kotlinx.coroutines.flow.catch
+import kotlinx.coroutines.flow.flow
+import kotlinx.coroutines.flow.flowOn
+import kotlinx.coroutines.launch
 
 /**
  * Created by rui
@@ -184,8 +188,8 @@ open class BaseViewModel : ViewModel(), LifecycleObserver {
                 if (isStatueLayout) {
                     uiChange.statueError.call()
                 }
-                error(it.msg ?: "")
-                uiChange.msgEvent.postValue(it.msg)
+                error(it.message ?: "")
+                uiChange.msgEvent.postValue(it.message)
             }
 
         }
@@ -229,8 +233,8 @@ open class BaseViewModel : ViewModel(), LifecycleObserver {
                 if (data.code == ResCode.OK.getCode()) {    //业务响应成功
                     resp(data.data)                   // 响应回调
                 } else {
-                    showToast(isShowDialog, data.msg)
-                    err(data.msg)                       // 业务失败处理
+                    showToast(isShowDialog, data.message)
+                    err(data.message)                       // 业务失败处理
                 }
             } catch (e: Exception) {
                 err(e.message ?: "")  //可根据具体异常显示具体错误提示   异常处理

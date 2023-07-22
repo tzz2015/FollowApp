@@ -25,7 +25,7 @@ fun <T> CoroutineScope.loadHttp(
             if (data.code == ResCode.OK.getCode()) {
                 resp(data.data)
             } else {
-                err(data.msg)
+                err(data.message)
             }
         } catch (e: Exception) {
             err(e.message ?: "")  //可根据具体异常显示具体错误提示
@@ -53,7 +53,7 @@ fun <T> CoroutineScope.http(
             if (data.code == ResCode.OK.getCode()) {
                 resp(data.data)
             } else {
-                err(data.msg)
+                err(data.message)
             }
         } catch (e: Exception) {
             err(e.message ?: "")  //可根据具体异常显示具体错误提示
