@@ -11,21 +11,21 @@ import javax.inject.Inject
  * @Date        : on 2023-07-22 16:44.
  * @Description :描述
  */
-class UserViewModel @Inject constructor() : BaseViewModel() {
-    val userCount by lazy { ViewModelEvent<String>() }
+class FollowViewModel @Inject constructor() : BaseViewModel() {
+    val followCount by lazy { ViewModelEvent<String>() }
 
     /**
-     * 获取用户总数量
+     * 获取总关注数量
      */
-    fun getTotalUserCount() {
+    fun getTotalFollowCount() {
         loadHttp(
             request = { ApiClient.userApi.getTotalUserCount() },
             resp = {
-                Log.e(javaClass.name, "getUserCount:${it} ")
-                userCount.postValue("$it")
+                Log.e(javaClass.name, "getTotalFollowCount:${it} ")
+                followCount.postValue("$it")
             },
             err = {
-                userCount.postValue("1000")
+                followCount.postValue("10000")
             }
 
         )

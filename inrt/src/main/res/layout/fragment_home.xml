@@ -11,11 +11,27 @@
             name="homeModel"
             type="com.stardust.auojs.inrt.ui.home.HomeViewModel" />
 
+        <variable
+            name="userModel"
+            type="com.stardust.auojs.inrt.ui.home.UserViewModel" />
+
+        <variable
+            name="followModel"
+            type="com.stardust.auojs.inrt.ui.home.FollowViewModel" />
+
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
+
+        <androidx.appcompat.widget.AppCompatImageButton
+            android:id="@+id/iv_top"
+            android:layout_width="match_parent"
+            android:layout_height="110dp"
+            android:background="@drawable/bg_home_top"
+            app:layout_constraintTop_toTopOf="parent" />
+
 
         <TextView
             android:id="@+id/tv_des"
@@ -23,9 +39,8 @@
             android:layout_height="wrap_content"
             android:gravity="center"
             android:padding="10dp"
-            android:text="你需要开启以下权限才能进行关注粉丝操作"
-            android:textColor="@color/theme_color_red"
-            android:textSize="18sp"
+            android:text="@string/need_permiss"
+            android:textColor="@color/white"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -34,10 +49,13 @@
             android:id="@+id/sw_accessibility"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
+            android:layout_marginEnd="10dp"
             android:checked="@{homeModel.permiss.component1()}"
-            android:text="无障碍权限"
-            app:layout_constraintEnd_toEndOf="parent"
+            android:text="@string/accessibility_permiss"
+            android:textColor="@color/white"
+            app:layout_constraintBottom_toBottomOf="@+id/iv_top"
+            app:layout_constraintEnd_toStartOf="@+id/sw_drawOverlays"
+            app:layout_constraintHorizontal_chainStyle="packed"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tv_des" />
 
@@ -46,35 +64,140 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:checked="@{homeModel.permiss.component2()}"
-            android:text="悬浮窗权限"
+            android:text="@string/drawOverlays_permiss"
+            android:textColor="@color/white"
+            app:layout_constraintBottom_toBottomOf="@+id/iv_top"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/sw_accessibility" />
+            app:layout_constraintStart_toEndOf="@+id/sw_accessibility"
+            app:layout_constraintTop_toBottomOf="@+id/tv_des" />
 
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/btn_follow"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="8dp"
-            android:onClick="@{()->homeModel.toFollow()}"
-            android:text="去关注"
-            android:textAlignment="center"
-            android:textSize="20sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/sw_drawOverlays" />
+
         <com.stardust.auojs.inrt.ui.view.WaveCircleView
             android:id="@+id/waveCircleView"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
             android:layout_width="200dp"
-            app:waveColorTop="@color/theme_color_dark_purple"
+            android:layout_height="200dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
             app:waveColorBottom="@color/theme_color_yellow_green"
             app:waveColorCenter="@color/theme_color_cyan"
-            android:layout_height="200dp" />
+            app:waveColorTop="@color/theme_color_dark_purple"
+            app:waveTextBottom="累计用户量"
+            app:waveTextTop="累计关注量" />
+
+        <Space
+            android:id="@+id/wave_center"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="@+id/waveCircleView"
+            app:layout_constraintEnd_toEndOf="@+id/waveCircleView"
+            app:layout_constraintStart_toStartOf="@+id/waveCircleView"
+            app:layout_constraintTop_toTopOf="@+id/waveCircleView" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv_follow_count"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp_10"
+            android:shadowColor="#80000000"
+            android:shadowDx="2"
+            android:shadowDy="2"
+            android:shadowRadius="4"
+            android:text="@{followModel.followCount}"
+            android:textColor="@color/white"
+            android:textSize="@dimen/sp20"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@+id/wave_center"
+            app:layout_constraintEnd_toEndOf="@+id/waveCircleView"
+            app:layout_constraintStart_toStartOf="@+id/waveCircleView"
+            app:layout_constraintTop_toTopOf="@+id/waveCircleView" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv_user_count"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/dp_10"
+            android:shadowColor="#80000000"
+            android:shadowDx="2"
+            android:shadowDy="2"
+            android:shadowRadius="4"
+            android:text="@{userModel.userCount}"
+            android:textColor="@color/white"
+            android:textSize="@dimen/sp20"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@+id/waveCircleView"
+            app:layout_constraintEnd_toEndOf="@+id/waveCircleView"
+            app:layout_constraintStart_toStartOf="@+id/waveCircleView"
+            app:layout_constraintTop_toTopOf="@+id/wave_center" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv_notice"
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:layout_marginStart="@dimen/dp30"
+            android:layout_marginBottom="@dimen/dp30"
+            android:layout_marginEnd="@dimen/dp30"
+            android:background="@drawable/bg_home_follow_text"
+            android:gravity="center_vertical"
+            android:paddingStart="15dp"
+            android:paddingEnd="120dp"
+            android:text="@string/follow_notice_text"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+           app:layout_constraintBottom_toTopOf="@+id/tv_notice_bind" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/btn_follow"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:layout_marginEnd="@dimen/dp_10"
+            android:background="@drawable/bg_home_follow_btn"
+            android:gravity="center"
+            android:onClick="@{()->homeModel.toFollow()}"
+            android:paddingStart="15dp"
+            android:paddingEnd="15dp"
+            android:text="@string/to_follow"
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            android:textSize="14sp"
+            app:layout_constraintBottom_toBottomOf="@+id/tv_notice"
+            app:layout_constraintEnd_toEndOf="@+id/tv_notice"
+            app:layout_constraintTop_toTopOf="@+id/tv_notice" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv_notice_bind"
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:layout_marginStart="@dimen/dp30"
+            android:layout_marginTop="15dp"
+            android:layout_marginEnd="@dimen/dp30"
+            android:background="@drawable/bg_home_follow_text"
+            android:gravity="center_vertical"
+            android:paddingStart="15dp"
+            android:paddingEnd="120dp"
+            android:text="@string/follow_bind_text"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            android:layout_marginBottom="@dimen/dp40"
+            app:layout_constraintBottom_toBottomOf="parent" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/btn_bind_account"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:layout_marginEnd="@dimen/dp_10"
+            android:background="@drawable/bg_home_follow_btn"
+            android:gravity="center"
+            android:paddingStart="15dp"
+            android:paddingEnd="15dp"
+            android:text="@string/to_bind"
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            android:textSize="14sp"
+            app:layout_constraintBottom_toBottomOf="@+id/tv_notice_bind"
+            app:layout_constraintEnd_toEndOf="@+id/tv_notice_bind"
+            app:layout_constraintTop_toTopOf="@+id/tv_notice_bind" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

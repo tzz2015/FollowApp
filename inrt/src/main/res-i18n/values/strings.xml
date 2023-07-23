@@ -58,4 +58,13 @@
     <string name="title_home" translatable="false">Home</string>
     <string name="title_dashboard" translatable="false">Dashboard</string>
     <string name="title_notifications" translatable="false">Notifications</string>
+    <string name="need_permiss">你需要开启以下权限才能进行关注粉丝操作</string>
+    <string name="accessibility_permiss">无障碍权限</string>
+    <string name="drawOverlays_permiss">悬浮窗权限</string>
+    <string name="to_follow">去关注</string>
+    <string name="follow_notice_text">每关注一个用户你就有一次被关注的机会</string>
+    <string name="to_bind">去绑定</string>
+    <string name="to_change">去修改</string>
+    <string name="follow_bind_text">绑定你的抖音号就可以被TA人关注</string>
+
 </resources>

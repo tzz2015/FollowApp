@@ -27,20 +27,25 @@ class HomeFragment : BaseFragment<HomeViewModel, FragmentHomeBinding>() {
     private val userViewModel by lazy {
         ViewModelProvider(this)[UserViewModel::class.java]
     }
+    private val followViewModel by lazy {
+        ViewModelProvider(this)[FollowViewModel::class.java]
+    }
     override val viewModelConfig: ViewModelConfig
         get() = ViewModelConfig(R.layout.fragment_home).bindViewModel(BR.homeModel)
 
 
     override fun init(savedInstanceState: Bundle?) {
+        bind.userModel = userViewModel
+        bind.followModel = followViewModel
         setCheckedChangeListener()
     }
 
     override fun onResume() {
         super.onResume()
         viewModel.checkNeedPermissions()
-        userViewModel.getUserCount()
+        userViewModel.getTotalUserCount()
+        followViewModel.getTotalFollowCount()
     }
-
 
 
     private fun setCheckedChangeListener() {

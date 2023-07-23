@@ -7,10 +7,16 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Path;
+import android.graphics.PathMeasure;
 import android.graphics.RectF;
+import android.graphics.Typeface;
+import android.text.TextPaint;
 import android.util.AttributeSet;
 import android.view.View;
 import android.view.animation.LinearInterpolator;
+
+import com.linsh.utilseverywhere.StringUtils;
+import com.mind.lib.util.DensityUtil;
 
 import org.autojs.autoxjs.inrt.R;
 
@@ -19,14 +25,13 @@ public class WaveCircleView extends View {
     private Paint circlePaint;
     private Paint wavePaintTop;
     private Paint wavePaintBottom;
-    private Path wavePathTop;
-    private Path wavePathBottom;
+    private Path wavePathTop = new Path();
 
     private float centerX;
     private float centerY;
     private float radius;
 
-    private float maxWaveHeight = 150; // 波浪的最大高度
+    private float maxWaveHeight = 100; // 波浪的最大高度
     private float currentWaveHeight = 0; // 当前波浪高度
 
     private RectF topRect = new RectF();
@@ -37,9 +42,19 @@ public class WaveCircleView extends View {
 
     private int waveColorCenter;
     // 设置裁剪路径为一个圆形
-    private Path clipPath = new Path();
+    private final Path clipPath = new Path();
+    private final Path topTextPath = new Path();
+    private final Path bottomTextPath = new Path();
+
+
+    private TextPaint textPaint;
 
     private ValueAnimator waveAnimator;
+
+
+    private String topText = "Top Text";
+    private String bottomText = "Bottom Text";
+    private float textPathLength;
 
     public WaveCircleView(Context context) {
         super(context);
@@ -57,27 +72,12 @@ public class WaveCircleView extends View {
     }
 
     private void init(AttributeSet attrs) {
-        circlePaint = new Paint(Paint.ANTI_ALIAS_FLAG);
-        circlePaint.setColor(Color.BLUE);
-        circlePaint.setStyle(Paint.Style.FILL);
+        initPaint();
+        initAttrs(attrs);
+        initAnimator();
+    }
 
-        wavePaintTop = new Paint(Paint.ANTI_ALIAS_FLAG);
-        wavePaintTop.setStyle(Paint.Style.FILL);
-
-        wavePaintBottom = new Paint(Paint.ANTI_ALIAS_FLAG);
-        wavePaintBottom.setStyle(Paint.Style.FILL);
-
-        wavePathTop = new Path();
-        wavePathBottom = new Path();
-
-        if (attrs != null) {
-            TypedArray a = getContext().obtainStyledAttributes(attrs, R.styleable.WaveCircleView);
-            waveColorTop = a.getColor(R.styleable.WaveCircleView_waveColorTop, Color.BLUE);
-            waveColorBottom = a.getColor(R.styleable.WaveCircleView_waveColorBottom, Color.GREEN);
-            waveColorCenter = a.getColor(R.styleable.WaveCircleView_waveColorCenter, Color.RED);
-            a.recycle();
-        }
-
+    private void initAnimator() {
         // 创建波浪动画
         waveAnimator = ValueAnimator.ofFloat(0, maxWaveHeight);
         waveAnimator.setDuration(2000);
@@ -89,6 +89,37 @@ public class WaveCircleView extends View {
             invalidate(); // 重绘 View
         });
 
+    }
+
+    private void initAttrs(AttributeSet attrs) {
+        if (attrs != null) {
+            try {
+                TypedArray a = getContext().obtainStyledAttributes(attrs, R.styleable.WaveCircleView);
+                waveColorTop = a.getColor(R.styleable.WaveCircleView_waveColorTop, Color.BLUE);
+                waveColorBottom = a.getColor(R.styleable.WaveCircleView_waveColorBottom, Color.GREEN);
+                waveColorCenter = a.getColor(R.styleable.WaveCircleView_waveColorCenter, Color.RED);
+                topText = a.getString(R.styleable.WaveCircleView_waveTextTop);
+                bottomText = a.getString(R.styleable.WaveCircleView_waveTextBottom);
+                a.recycle();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+    private void initPaint() {
+        circlePaint = new Paint(Paint.ANTI_ALIAS_FLAG);
+        circlePaint.setColor(Color.BLUE);
+        circlePaint.setStyle(Paint.Style.FILL);
+        wavePaintTop = new Paint(Paint.ANTI_ALIAS_FLAG);
+        wavePaintTop.setStyle(Paint.Style.FILL);
+        wavePaintBottom = new Paint(Paint.ANTI_ALIAS_FLAG);
+        wavePaintBottom.setStyle(Paint.Style.FILL);
+        // 文本画笔
+        textPaint = new TextPaint(Paint.ANTI_ALIAS_FLAG);
+        textPaint.setColor(Color.BLACK);
+        textPaint.setTextSize(DensityUtil.INSTANCE.sp2px(18f, getContext()));
+        textPaint.setTypeface(Typeface.DEFAULT_BOLD);
 
     }
 
@@ -98,36 +129,56 @@ public class WaveCircleView extends View {
         centerX = w / 2f;
         centerY = h / 2f;
         radius = Math.min(w, h) / 2f;
-        maxWaveHeight = radius / 3f;
         topRect.set(0f, 0f, w, h / 2f);
         bottomRect.set(0f, h / 2f, w, h * 1f);
         // 启动波浪动画
         waveAnimator.start();
-
+        // 裁剪圆形
         clipPath.reset();
         RectF rectF = new RectF(centerX - radius, centerY - radius, centerX + radius, centerY + radius);
         clipPath.addOval(rectF, Path.Direction.CW);
+
+        // 计算文字环绕圆
+        topTextPath.reset();
+        Paint.FontMetrics fontMetrics = textPaint.getFontMetrics();
+        float textHeight = fontMetrics.descent - fontMetrics.ascent;
+        float textRadius = radius - textHeight;
+        RectF topTextRect = new RectF(centerX - textRadius, centerY - textRadius, centerX + textRadius, centerY + textRadius);
+        topTextPath.addArc(topTextRect, 180, 180);
+        PathMeasure pathMeasure = new PathMeasure(topTextPath, false);
+        textPathLength = pathMeasure.getLength();
+        bottomTextPath.reset();
+        bottomTextPath.addArc(topTextRect, 0, 180);
+
     }
+
 
     @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
+        // 裁剪圆型
         canvas.clipPath(clipPath);
         wavePaintTop.setColor(waveColorTop);
         canvas.drawRect(topRect, wavePaintTop);
         wavePaintBottom.setColor(waveColorBottom);
         canvas.drawRect(bottomRect, wavePaintBottom);
-
-        // 绘制上半部分波浪
+        // 绘制上波浪
         wavePaintTop.setColor(waveColorCenter);
         drawWave(canvas, wavePathTop, wavePaintTop);
-        // 绘制圆形
-//        canvas.drawCircle(centerX, centerY, radius, circlePaint);
 
-        // 绘制下半部分波浪
-//        wavePaintBottom.setColor(waveColorBottom);
-//        drawWave(canvas, wavePathBottom, wavePaintBottom);
+        // 绘制文字
+        if(StringUtils.isNotAllEmpty(topText,bottomText)){
+            float topWidth = textPaint.measureText(topText);
+            float topTextHOffset = (textPathLength - topWidth) / 2;
+            textPaint.setColor(waveColorBottom);
+            canvas.drawTextOnPath(topText, topTextPath, topTextHOffset, 0, textPaint);
+            float bottomWidth = textPaint.measureText(bottomText);
+            float bottomTextHOffset = (textPathLength - bottomWidth) / 2;
+            textPaint.setColor(waveColorTop);
+            canvas.drawTextOnPath(bottomText, bottomTextPath, bottomTextHOffset, 0, textPaint);
+        }
     }
+
 
     private void drawWave(Canvas canvas, Path wavePath, Paint wavePaint) {
         wavePath.reset();
@@ -143,5 +194,13 @@ public class WaveCircleView extends View {
         wavePath.close();
 
         canvas.drawPath(wavePath, wavePaint);
+    }
+
+    @Override
+    protected void onDetachedFromWindow() {
+        super.onDetachedFromWindow();
+        if (waveAnimator != null) {
+            waveAnimator.cancel();
+        }
     }
 }

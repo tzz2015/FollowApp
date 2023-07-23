@@ -4,6 +4,7 @@
         <attr name="waveColorTop" format="color|reference" />
         <attr name="waveColorBottom" format="color|reference" />
         <attr name="waveColorCenter" format="color|reference" />
-
+        <attr name="waveTextTop" format="string" />
+        <attr name="waveTextBottom" format="string" />
     </declare-styleable>
 </resources>
