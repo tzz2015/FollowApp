@@ -1,13 +1,29 @@
-package com.example.follow.ui.notifications
+package com.stardust.auojs.inrt.ui.mine
 
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
+import android.util.Log
+import com.mind.data.data.model.AnnouncementModel
+import com.mind.data.http.ApiClient
+import com.mind.lib.base.BaseViewModel
+import com.mind.lib.base.ViewModelEvent
+import dagger.hilt.android.lifecycle.HiltViewModel
+import javax.inject.Inject
 
-class MineViewModel : ViewModel() {
+@HiltViewModel
+class MineViewModel @Inject constructor() : BaseViewModel() {
 
-    private val _text = MutableLiveData<String>().apply {
-        value = "This is notifications Fragment"
+    val announcementList by lazy { ViewModelEvent<MutableList<AnnouncementModel>>() }
+
+
+    fun getAnnouncementList() {
+        loadHttp(
+            request = { ApiClient.otherApi.getAnnouncementList() },
+            resp = {
+                Log.e(javaClass.name, "getAnnouncementList:${it.toString()} ")
+                it?.let {
+                    announcementList.postValue(it)
+                }
+            },
+            isShowDialog = false
+        )
     }
-    val text: LiveData<String> = _text
 }
