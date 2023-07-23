@@ -4,6 +4,7 @@ import android.util.Log
 import com.mind.data.http.ApiClient
 import com.mind.lib.base.BaseViewModel
 import com.mind.lib.base.ViewModelEvent
+import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 
 /**
@@ -11,6 +12,7 @@ import javax.inject.Inject
  * @Date        : on 2023-07-22 16:44.
  * @Description :描述
  */
+@HiltViewModel
 class UserViewModel @Inject constructor() : BaseViewModel() {
     val userCount by lazy { ViewModelEvent<String>() }
 

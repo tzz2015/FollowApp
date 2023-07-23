@@ -1,4 +1,3 @@
-
 import java.util.*
 import kotlin.collections.*
 
@@ -45,9 +44,9 @@ android {
         add("ExtraTranslation")
     }
     compileOptions {
+        encoding = "utf-8"
         sourceCompatibility = JavaVersion.VERSION_11
         targetCompatibility = JavaVersion.VERSION_11
-        encoding = "utf-8"
     }
     signingConfigs {
         if (propFile.exists()) {
@@ -236,8 +235,11 @@ dependencies {
     }
     val dagger_version = "2.44"
     //Dagger
-    implementation ("com.google.dagger:hilt-android:${dagger_version}")
+    implementation("com.google.dagger:hilt-android:${dagger_version}")
     kapt("com.google.dagger:hilt-android-compiler:${dagger_version}")
 
+    // x5
+    implementation("com.tencent.tbs.tbssdk:sdk:43939")
+    implementation("pub.devrel:easypermissions:3.0.0")
 
 }

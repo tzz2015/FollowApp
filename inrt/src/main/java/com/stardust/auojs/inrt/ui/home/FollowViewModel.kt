@@ -19,7 +19,7 @@ class FollowViewModel @Inject constructor() : BaseViewModel() {
      */
     fun getTotalFollowCount() {
         loadHttp(
-            request = { ApiClient.userApi.getTotalUserCount() },
+            request = { ApiClient.followApi.getTotalFollowCount() },
             resp = {
                 Log.e(javaClass.name, "getTotalFollowCount:${it} ")
                 followCount.postValue("$it")
@@ -27,8 +27,6 @@ class FollowViewModel @Inject constructor() : BaseViewModel() {
             err = {
                 followCount.postValue("10000")
             }
-
         )
-
     }
 }
