@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="mineModel"
+            type="com.stardust.auojs.inrt.ui.mine.MineViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/iv_head_bg"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:background="@drawable/bg_mine_head"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/iv_header"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            app:layout_constraintBottom_toBottomOf="@+id/iv_head_bg"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv_login"
+            android:layout_marginTop="@dimen/dp5"
+            android:textColor="@color/white"
+            app:layout_constraintTop_toBottomOf="@+id/iv_header"
+            app:layout_constraintStart_toStartOf="parent"
+            android:text="登录"
+            android:layout_marginStart="@dimen/dp20"
+            android:gravity="center"
+            android:paddingStart="15dp"
+            android:paddingEnd="15dp"
+            android:paddingTop="5dp"
+            android:paddingBottom="5dp"
+            android:textSize="@dimen/sp12"
+            android:background="@drawable/bg_mine_login_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv_find_psw"
+            android:textColor="@color/white"
+            android:layout_marginTop="@dimen/dp5"
+            app:layout_constraintTop_toBottomOf="@+id/iv_header"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:text="找回密码"
+            android:layout_marginEnd="@dimen/dp20"
+            android:textSize="@dimen/sp12"
+            android:gravity="center"
+            android:paddingStart="15dp"
+            android:paddingEnd="15dp"
+            android:paddingTop="5dp"
+            android:paddingBottom="5dp"
+            android:background="@drawable/bg_mine_login_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

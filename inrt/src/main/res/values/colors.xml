@@ -30,4 +30,5 @@
     <color name="color_271827">#271827</color>
     <color name="white_5">#0CFFFFFF</color>
     <color name="color_28334d">#28334D</color>
+    <color name="main_menu_pressed_color">#E1E1E1</color>
 </resources>
