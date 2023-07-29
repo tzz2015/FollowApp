@@ -242,4 +242,7 @@ dependencies {
     implementation("com.tencent.tbs.tbssdk:sdk:43939")
     implementation("pub.devrel:easypermissions:3.0.0")
 
+    // 标签库
+    implementation("com.google.android.flexbox:flexbox:3.0.0")
+
 }

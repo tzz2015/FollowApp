@@ -25,7 +25,15 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <androidx.appcompat.widget.AppCompatImageButton
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:src="@drawable/icon_byd"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+        <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/iv_top"
             android:layout_width="match_parent"
             android:layout_height="110dp"
@@ -76,10 +84,10 @@
             android:id="@+id/waveCircleView"
             android:layout_width="200dp"
             android:layout_height="200dp"
-            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_marginTop="@dimen/dp10"
+            app:layout_constraintTop_toBottomOf="@+id/iv_top"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
             app:waveColorBottom="@color/theme_color_yellow_green"
             app:waveColorCenter="@color/theme_color_cyan"
             app:waveColorTop="@color/theme_color_dark_purple"
@@ -136,8 +144,8 @@
             android:layout_width="match_parent"
             android:layout_height="55dp"
             android:layout_marginStart="@dimen/dp30"
-            android:layout_marginBottom="@dimen/dp30"
             android:layout_marginEnd="@dimen/dp30"
+            android:layout_marginBottom="@dimen/dp30"
             android:background="@drawable/bg_home_follow_text"
             android:gravity="center_vertical"
             android:paddingStart="15dp"
@@ -145,7 +153,7 @@
             android:text="@string/follow_notice_text"
             android:textColor="@color/black"
             android:textStyle="bold"
-           app:layout_constraintBottom_toTopOf="@+id/tv_notice_bind" />
+            app:layout_constraintBottom_toTopOf="@+id/tv_notice_bind" />
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/btn_follow"
@@ -172,6 +180,7 @@
             android:layout_marginStart="@dimen/dp30"
             android:layout_marginTop="15dp"
             android:layout_marginEnd="@dimen/dp30"
+            android:layout_marginBottom="@dimen/dp40"
             android:background="@drawable/bg_home_follow_text"
             android:gravity="center_vertical"
             android:paddingStart="15dp"
@@ -179,7 +188,6 @@
             android:text="@string/follow_bind_text"
             android:textColor="@color/black"
             android:textStyle="bold"
-            android:layout_marginBottom="@dimen/dp40"
             app:layout_constraintBottom_toBottomOf="parent" />
 
         <androidx.appcompat.widget.AppCompatTextView

@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="anModel"
+            type="com.mind.data.data.model.AnnouncementModel" />
+    </data>
+
+    <androidx.cardview.widget.CardView
+        android:layout_margin="@dimen/dp5"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:cardBackgroundColor="@color/white"
+        app:cardCornerRadius="@dimen/dp5"
+        app:cardElevation="2dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="@dimen/dp_10">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp5"
+                android:text="@{anModel.title}"
+                android:textColor="@color/black"
+                android:textSize="@dimen/sp14"
+                tools:text="这是一个主标题" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp5"
+                android:text="@{anModel.content}"
+                android:textColor="@color/color_999"
+                android:textSize="@dimen/sp12"
+                tools:text="这是一个副标题" />
+
+        </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
+</layout>
