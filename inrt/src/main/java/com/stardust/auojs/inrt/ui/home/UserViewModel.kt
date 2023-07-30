@@ -33,4 +33,5 @@ class UserViewModel @Inject constructor() : BaseViewModel() {
         )
 
     }
+
 }

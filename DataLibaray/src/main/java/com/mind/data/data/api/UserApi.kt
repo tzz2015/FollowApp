@@ -1,7 +1,7 @@
 package com.mind.data.data.api
 
 
-import com.mind.data.data.model.LoginModel
+import com.mind.data.data.model.UserModel
 import com.mind.lib.data.model.Res
 import retrofit2.http.Body
 import retrofit2.http.GET
@@ -14,8 +14,8 @@ interface UserApi {
     /**
      * 登录
      */
-    @POST("/login")
-    suspend fun login(@Body map: HashMap<String, String>): Res<LoginModel?>
+    @POST("login")
+    suspend fun login(@Body map: HashMap<String, String>): Res<UserModel?>
 
 
     /**

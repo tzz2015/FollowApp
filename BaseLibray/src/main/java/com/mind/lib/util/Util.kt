@@ -3,15 +3,11 @@ package com.mind.lib.util
 import android.content.Context
 import android.net.ConnectivityManager
 import android.net.NetworkCapabilities
-import android.net.wifi.WifiManager
 import android.os.Build
 import android.os.Handler
 import android.os.Looper
-import android.text.TextUtils
 import android.widget.Toast
 import com.mind.lib.base.BaseApp
-
-import java.net.NetworkInterface
 
 /**
  * Created by rui
@@ -51,10 +47,6 @@ object Util {
         }
         return result
     }
-
-
-
-
 
 
 }

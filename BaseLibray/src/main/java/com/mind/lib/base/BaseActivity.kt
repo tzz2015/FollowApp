@@ -1,5 +1,6 @@
 package com.mind.lib.base
 
+
 import android.content.pm.ActivityInfo
 import android.os.Bundle
 import android.view.View
@@ -7,6 +8,8 @@ import android.view.ViewStub
 import android.widget.FrameLayout
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.AppCompatImageView
+import androidx.appcompat.widget.AppCompatTextView
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import androidx.lifecycle.Observer
@@ -14,12 +17,9 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewTreeLifecycleOwner
 import com.mind.lib.R
 import com.mind.lib.databinding.ActivityBaseBinding
-
-
 import com.mind.lib.util.AppManager
 import com.mind.lib.util.toast
 import java.lang.reflect.ParameterizedType
-import javax.inject.Inject
 
 
 /**
@@ -40,8 +40,7 @@ abstract class BaseActivity<VM : BaseViewModel, DB : ViewDataBinding>() : AppCom
 
     var reloadListener: () -> Unit = {}
 
-    @Inject
-    lateinit var appManager: AppManager
+    private val appManager: AppManager by lazy { AppManager() }
 
     /**
      * 获取DataBinding配置
@@ -54,8 +53,19 @@ abstract class BaseActivity<VM : BaseViewModel, DB : ViewDataBinding>() : AppCom
         appManager.addActivity(this)
         requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_PORTRAIT // 禁用横屏
         initViewDataBinding()
+        initBackAndTitle()
         registerUIChange()
         initialize()
+    }
+
+    private fun initBackAndTitle() {
+        bind.root.findViewById<AppCompatImageView>(R.id.iv_back)?.setOnClickListener { finish() }
+        val config = viewModelConfig
+        val titleView = bind.root.findViewById<AppCompatTextView>(R.id.tv_title)
+        val titleId = config.getTitleId()
+        if (titleId > 0 && titleView != null) {
+            titleView.setText(titleId)
+        }
     }
 
 

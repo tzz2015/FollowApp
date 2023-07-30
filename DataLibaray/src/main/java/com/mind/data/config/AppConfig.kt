@@ -5,5 +5,5 @@ package com.mind.data.config
  *  on 2021/9/25
  */
 object AppConfig {
-    const val BASE_URL = "http://192.168.0.100:8080/api/"
+    const val BASE_URL = "http://192.168.0.141:8080/api/"
 }

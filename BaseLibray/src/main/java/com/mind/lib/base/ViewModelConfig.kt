@@ -20,6 +20,9 @@ class ViewModelConfig(private var layout: Int) {
     //viewModel 绑定的 variableId
     private var vmVariableId: Int = VM_NO_BIND
 
+    // 标题
+    private var mTitleId: Int = -1
+
     fun getLayout(): Int {
         return layout
     }
@@ -33,6 +36,9 @@ class ViewModelConfig(private var layout: Int) {
         return vmVariableId
     }
 
+    fun getTitleId(): Int {
+        return mTitleId
+    }
 
     /**
      * 与layout绑定
@@ -49,6 +55,11 @@ class ViewModelConfig(private var layout: Int) {
      */
     fun bindViewModel(vmVariableId: Int): ViewModelConfig {
         this.vmVariableId = vmVariableId
+        return this
+    }
+
+    fun bindTitle(titleId: Int): ViewModelConfig {
+        this.mTitleId = titleId
         return this
     }
 

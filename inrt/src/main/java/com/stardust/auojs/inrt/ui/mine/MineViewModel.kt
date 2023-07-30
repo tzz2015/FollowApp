@@ -2,13 +2,18 @@ package com.stardust.auojs.inrt.ui.mine
 
 import android.animation.ValueAnimator
 import android.animation.ValueAnimator.REVERSE
+import android.app.Activity
+import android.content.Context
+import android.content.Intent
 import android.util.Log
 import android.view.View
 import android.view.animation.LinearInterpolator
+import com.linsh.utilseverywhere.LogUtils
 import com.mind.data.data.model.AnnouncementModel
 import com.mind.data.http.ApiClient
 import com.mind.lib.base.BaseViewModel
 import com.mind.lib.base.ViewModelEvent
+import com.stardust.app.GlobalAppContext
 import dagger.hilt.android.lifecycle.HiltViewModel
 import org.autojs.autoxjs.inrt.R
 import javax.inject.Inject
@@ -19,6 +24,7 @@ class MineViewModel @Inject constructor() : BaseViewModel() {
     private val mValueAnimatorList: MutableList<ValueAnimator> = ArrayList()
 
     val announcementList by lazy { ViewModelEvent<MutableList<AnnouncementModel>>() }
+    private val mContext: Context by lazy { GlobalAppContext.get() }
     private val imageArray = arrayOf(
         R.mipmap.icon_header_1_1,
         R.mipmap.icon_header_1_2,
@@ -73,7 +79,7 @@ class MineViewModel @Inject constructor() : BaseViewModel() {
         // 设置插值器为线性插值器，使得动画匀速进行
         valueAnimator.interpolator = LinearInterpolator()
         // 设置动画时长，单位为毫秒
-        valueAnimator.duration = 3000
+        valueAnimator.duration = 4000
         valueAnimator.repeatMode = REVERSE
         valueAnimator.repeatCount = -1
         // 添加动画更新监听器
@@ -91,6 +97,15 @@ class MineViewModel @Inject constructor() : BaseViewModel() {
         // 开始动画
         valueAnimator.start()
         mValueAnimatorList.add(valueAnimator)
+    }
+
+    fun login() {
+        LogUtils.e("点击登录")
+        val intent = Intent(mContext, LoginActivity::class.java)
+        if (mContext !is Activity) {
+            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+        }
+        mContext.startActivity(intent)
     }
 
     override fun onCleared() {

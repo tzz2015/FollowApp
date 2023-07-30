@@ -74,7 +74,7 @@ class MineFragment : BaseFragment<MineViewModel, FragmentMineBinding>() {
                 0,
                 height - bind.tvFindPsw.height
             )
-
+            bind.tvLogin.setOnClickListener { viewModel.login() }
         }
     }
 
