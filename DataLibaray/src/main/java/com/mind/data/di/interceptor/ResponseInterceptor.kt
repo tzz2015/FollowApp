@@ -16,6 +16,7 @@ class ResponseInterceptor : Interceptor {
             val body = response.body?.string()
             val model = Gson().fromJson(body, Res::class.java)
             if (model.code == 401) {
+                // 登录失效
                 LiveEventBus.get(TOKEN_OUT).post(model.message)
             }
             val responseBody = body?.toResponseBody()

@@ -10,14 +10,21 @@ import androidx.core.app.NotificationCompat
 import androidx.preference.PreferenceManager
 import com.fanjun.keeplive.KeepLive
 import com.fanjun.keeplive.config.ForegroundNotification
+import com.google.gson.Gson
 import com.google.mlkit.common.MlKit
+import com.jeremyliao.liveeventbus.LiveEventBus
+import com.linsh.utilseverywhere.StringUtils
 import com.linsh.utilseverywhere.Utils
+import com.mind.data.data.mmkv.KV
+import com.mind.data.data.model.UserModel
 import com.mind.lib.base.BaseApp
+import com.mind.lib.util.CacheManager
 import com.stardust.app.GlobalAppContext
 import com.stardust.auojs.inrt.autojs.AutoJs
 import com.stardust.auojs.inrt.autojs.GlobalKeyObserver
 import com.stardust.auojs.inrt.pluginclient.AutoXKeepLiveService
 import com.stardust.autojs.execution.ScriptExecuteActivity
+import com.tencent.mmkv.MMKV
 import org.autojs.autoxjs.inrt.BuildConfig
 import org.autojs.autoxjs.inrt.R
 
@@ -38,7 +45,7 @@ class App : BaseApp() {
         Utils.init(this);
         AutoJs.initInstance(this)
         GlobalKeyObserver.init()
-
+        initCache()
 
         //启动保活服务
         KeepLive.useSilenceMusice = false;
@@ -71,6 +78,23 @@ class App : BaseApp() {
         if (BuildConfig.isMarket) {
             showNotification(this);
         }
+    }
+
+    private fun initCache() {
+        // mmkv 初始化
+        MMKV.initialize(this)
+        //liveBus 初始化
+        LiveEventBus.config().lifecycleObserverAlwaysActive(true)
+        val userInfo = MMKV.defaultMMKV().getString(KV.USER_INFO, "") ?: ""
+        if (StringUtils.isNotAllEmpty(userInfo)) {
+            val gson = Gson()
+            val userModel = gson.fromJson(userInfo, UserModel::class.java)
+            CacheManager.instance.putToken(userModel.token)
+            CacheManager.instance.putPhone(userModel.phone)
+            CacheManager.instance.putEmail(userModel.email)
+        }
+
+        CacheManager.instance.putVersion(BuildConfig.VERSION_NAME)
     }
 
     private fun showNotification(context: Context) {

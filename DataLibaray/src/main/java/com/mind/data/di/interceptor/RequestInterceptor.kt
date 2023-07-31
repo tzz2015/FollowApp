@@ -11,7 +11,7 @@ class RequestInterceptor: Interceptor {
             .newBuilder()
             .addHeader("version", CacheManager.instance.getVersion())
             .addHeader("model", Build.MODEL)
-            .addHeader("Authorization", CacheManager.instance.getToken())
+            .addHeader("token", CacheManager.instance.getToken())
             .build()
       return  chain.proceed(request)
     }

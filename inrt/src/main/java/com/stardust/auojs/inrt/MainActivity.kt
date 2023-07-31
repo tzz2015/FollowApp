@@ -6,6 +6,12 @@ import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.jeremyliao.liveeventbus.LiveEventBus
+import com.linsh.utilseverywhere.ToastUtils
+import com.mind.data.data.mmkv.KV
+import com.mind.lib.util.CacheManager
+import com.stardust.auojs.inrt.data.event.MessageEvent
+import com.tencent.mmkv.MMKV
 import org.autojs.autoxjs.inrt.R
 import org.autojs.autoxjs.inrt.databinding.ActivityMainBinding
 
@@ -32,5 +38,17 @@ class MainActivity : AppCompatActivity() {
         )
 //        setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
+        initBus()
+    }
+
+    private fun initBus() {
+        // 登录失败检测
+        LiveEventBus.get(MessageEvent.TOKEN_OUT).observe(this){
+            MMKV.defaultMMKV().putString(KV.USER_INFO, "")
+            CacheManager.instance.putToken("")
+            CacheManager.instance.putPhone("")
+            CacheManager.instance.putEmail("")
+            ToastUtils.show("登录失效，请重新登录")
+        }
     }
 }

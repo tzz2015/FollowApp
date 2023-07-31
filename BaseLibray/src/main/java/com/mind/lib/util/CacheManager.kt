@@ -5,7 +5,9 @@ class CacheManager private constructor() {
 
     companion object {
         private const val TOKEN = "token"
-        private const val VERSION = "version";
+        private const val PHONE = "phone"
+        private const val EMAIL = "email"
+        private const val VERSION = "version"
         val instance: CacheManager by lazy(mode = LazyThreadSafetyMode.SYNCHRONIZED) {
             CacheManager()
         }
@@ -52,5 +54,18 @@ class CacheManager private constructor() {
      * 取出版本号
      */
     fun getVersion() = map[VERSION] ?: ""
+
+    fun putPhone(value: String) {
+        map[PHONE] = value
+    }
+
+
+    fun getPhone() = map[PHONE] ?: ""
+
+    fun putEmail(value: String) {
+        map[EMAIL] = value
+    }
+
+    fun getEmail() = map[EMAIL] ?: ""
 
 }
