@@ -8,6 +8,8 @@
         <variable
             name="mineModel"
             type="com.stardust.auojs.inrt.ui.mine.MineViewModel" />
+
+        <import type="android.view.View" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -32,20 +34,20 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <ImageView
+            android:id="@+id/iv_qixing"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/dp20"
             android:src="@drawable/icon_qixing"
-            app:layout_constraintBottom_toBottomOf="@+id/tv_login"
-            app:layout_constraintEnd_toEndOf="@+id/tv_login"
-            app:layout_constraintStart_toStartOf="@+id/tv_login"
-            app:layout_constraintTop_toTopOf="@+id/tv_login" />
+            app:layout_constraintBottom_toBottomOf="@+id/iv_head_bg"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/iv_header" />
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/tv_login"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/dp20"
-            android:layout_marginTop="@dimen/dp5"
             android:background="@drawable/bg_mine_login_btn"
             android:gravity="center"
             android:paddingStart="15dp"
@@ -55,22 +57,26 @@
             android:text="登录"
             android:textColor="@color/white"
             android:textSize="@dimen/sp12"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/iv_header" />
+            app:layout_constraintBottom_toBottomOf="@+id/iv_qixing"
+            app:layout_constraintStart_toStartOf="@+id/iv_qixing"
+            app:layout_constraintTop_toTopOf="@+id/iv_qixing" />
+
 
         <ImageView
+            android:id="@+id/iv_xiaoche"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/dp40"
             android:src="@drawable/icon_xc"
-            app:layout_constraintBottom_toBottomOf="@+id/tv_find_psw"
-            app:layout_constraintEnd_toEndOf="@+id/tv_find_psw"
-            app:layout_constraintTop_toTopOf="@+id/tv_find_psw" />
+            app:layout_constraintBottom_toBottomOf="@+id/iv_head_bg"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/iv_header"
+            app:layout_goneMarginTop="@dimen/dp5" />
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/tv_find_psw"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/dp5"
             android:layout_marginEnd="@dimen/dp20"
             android:background="@drawable/bg_mine_login_btn"
             android:gravity="center"
@@ -81,8 +87,9 @@
             android:text="找回密码"
             android:textColor="@color/white"
             android:textSize="@dimen/sp12"
+            app:layout_constraintBottom_toBottomOf="@+id/iv_xiaoche"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/iv_header" />
+            app:layout_constraintTop_toTopOf="@+id/iv_xiaoche" />
 
         <com.google.android.flexbox.FlexboxLayout
             android:id="@+id/fl_function"
@@ -107,7 +114,8 @@
             app:cardCornerRadius="5dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/fl_function">
+            app:layout_constraintTop_toBottomOf="@+id/fl_function"
+            app:layout_goneMarginTop="@dimen/dp10">
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
@@ -127,6 +135,7 @@
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <TextView
+                    android:id="@+id/tv_one"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="100"
@@ -148,6 +157,7 @@
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <TextView
+                    android:id="@+id/tv_two"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="1000"
@@ -169,6 +179,7 @@
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <TextView
+                    android:id="@+id/tv_three"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="1000"

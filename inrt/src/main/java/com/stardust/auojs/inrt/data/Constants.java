@@ -1,5 +1,7 @@
 package com.stardust.auojs.inrt.data;
 
+import org.autojs.autoxjs.inrt.R;
+
 /**
  * Created by Stardust on 2017/7/7.
  */
@@ -47,7 +49,7 @@ public final class Constants {
             "               }})()";
 
 
-    public static String[]  GIF_ARRAY = new String[]{
+    public static String[] GIF_ARRAY = new String[]{
             "https://p.qqan.com/up/2022-10/16666620627993727.gif",
             "https://p.qqan.com/up/2023-6/16861030441465787.gif",
             "https://p.qqan.com/up/2022-11/16697747329595671.gif",
@@ -67,5 +69,27 @@ public final class Constants {
             "https://p.qqan.com/up/2020-10/16028335046195539.gif",
             "https://p.qqan.com/up/2020-10/16028335052935895.gif",
             "https://pic.qqtn.com/up/2018-7/2018072714262323273.gif"};
+
+    public static int[] IMAGE_ARRAY = new int[]{
+            R.mipmap.icon_header_1_1,
+            R.mipmap.icon_header_1_2,
+            R.mipmap.icon_header_1_3,
+            R.mipmap.icon_header_1_4,
+            R.mipmap.icon_header_1_5,
+            R.mipmap.icon_header_1_6,
+            R.mipmap.icon_header_1_7,
+            R.mipmap.icon_header_1_8,
+            R.mipmap.icon_header_1_9,
+            R.mipmap.icon_header_1_10,
+            R.mipmap.icon_header_1_11,
+            R.mipmap.icon_header_1_12,
+            R.mipmap.icon_header_1_13,
+            R.mipmap.icon_header_1_14,
+            R.mipmap.icon_header_1_15,
+            R.mipmap.icon_header_1_16,
+            R.mipmap.icon_header_1_17};
+
+    public static String[] FUNCTION_ARRAY = new String[]{"修改手机号码", "修改邮箱", "修改密码", "意见反馈", "注销登录"};
+
 
 }

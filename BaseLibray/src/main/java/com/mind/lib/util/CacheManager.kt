@@ -68,4 +68,11 @@ class CacheManager private constructor() {
 
     fun getEmail() = map[EMAIL] ?: ""
 
+    fun clearLogin(){
+        map.remove(PHONE)
+        map.remove(EMAIL)
+        map.remove(TOKEN)
+
+    }
+
 }

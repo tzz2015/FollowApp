@@ -10,42 +10,25 @@ import android.view.View
 import android.view.animation.LinearInterpolator
 import com.linsh.utilseverywhere.LogUtils
 import com.mind.data.data.model.AnnouncementModel
+import com.mind.data.data.model.FollowAccount
+import com.mind.data.data.model.FollowAccountType
 import com.mind.data.http.ApiClient
 import com.mind.lib.base.BaseViewModel
 import com.mind.lib.base.ViewModelEvent
 import com.stardust.app.GlobalAppContext
+import com.stardust.auojs.inrt.data.Constants.IMAGE_ARRAY
+import com.stardust.auojs.inrt.util.isLogined
 import dagger.hilt.android.lifecycle.HiltViewModel
-import org.autojs.autoxjs.inrt.R
 import javax.inject.Inject
 import kotlin.random.Random
 
 @HiltViewModel
 class MineViewModel @Inject constructor() : BaseViewModel() {
     private val mValueAnimatorList: MutableList<ValueAnimator> = ArrayList()
-
     val announcementList by lazy { ViewModelEvent<MutableList<AnnouncementModel>>() }
     private val mContext: Context by lazy { GlobalAppContext.get() }
-    private val imageArray = arrayOf(
-        R.mipmap.icon_header_1_1,
-        R.mipmap.icon_header_1_2,
-        R.mipmap.icon_header_1_3,
-        R.mipmap.icon_header_1_4,
-        R.mipmap.icon_header_1_5,
-        R.mipmap.icon_header_1_6,
-        R.mipmap.icon_header_1_7,
-        R.mipmap.icon_header_1_8,
-        R.mipmap.icon_header_1_9,
-        R.mipmap.icon_header_1_10,
-        R.mipmap.icon_header_1_11,
-        R.mipmap.icon_header_1_12,
-        R.mipmap.icon_header_1_13,
-        R.mipmap.icon_header_1_14,
-        R.mipmap.icon_header_1_15,
-        R.mipmap.icon_header_1_16,
-        R.mipmap.icon_header_1_17,
-    )
+    val followAccount by lazy { ViewModelEvent<FollowAccount>() }
 
-    val functionArray = arrayOf("修改手机号码", "修改邮箱", "修改密码", "意见反馈", "注销登录")
 
     fun getAnnouncementList() {
         loadHttp(
@@ -60,9 +43,23 @@ class MineViewModel @Inject constructor() : BaseViewModel() {
         )
     }
 
+    fun getFollowAccount() {
+        if (isLogined()) {
+            loadHttp(
+                request = { ApiClient.followAccountApi.getFollowAccount(FollowAccountType.DOU_YIN) },
+                resp = {
+                    Log.e(javaClass.name, "getFollowAccount:${it.toString()} ")
+                    it?.let { followAccount.postValue(it) }
+                },
+                isShowDialog = false
+            )
+        }
+
+    }
+
     fun getHeadImage(): Int {
-        val randomInt = Random.nextInt(0, imageArray.size)
-        return imageArray[randomInt]
+        val randomInt = Random.nextInt(0, IMAGE_ARRAY.size)
+        return IMAGE_ARRAY[randomInt]
     }
 
     fun doParabolaAnimation(
@@ -108,12 +105,16 @@ class MineViewModel @Inject constructor() : BaseViewModel() {
         mContext.startActivity(intent)
     }
 
-    override fun onCleared() {
-        super.onCleared()
+    fun clearAnimation() {
         for (animator in mValueAnimatorList) {
             animator.removeAllUpdateListeners()
             animator.removeAllListeners()
         }
         mValueAnimatorList.clear()
+    }
+
+    override fun onCleared() {
+        super.onCleared()
+        clearAnimation()
     }
 }

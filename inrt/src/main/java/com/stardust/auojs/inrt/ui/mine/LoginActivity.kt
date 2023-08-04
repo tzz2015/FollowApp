@@ -2,7 +2,9 @@ package com.stardust.auojs.inrt.ui.mine
 
 import com.chad.library.BR
 import com.google.gson.Gson
+import com.jeremyliao.liveeventbus.LiveEventBus
 import com.mind.data.data.mmkv.KV
+import com.mind.data.event.MsgEvent
 import com.mind.lib.base.BaseActivity
 import com.mind.lib.base.ViewModelConfig
 import com.mind.lib.util.CacheManager
@@ -23,6 +25,7 @@ class LoginActivity : BaseActivity<LoginViewModel, ActivityLoginBinding>() {
             CacheManager.instance.putToken(it.token)
             CacheManager.instance.putPhone(it.phone)
             CacheManager.instance.putEmail(it.email)
+            LiveEventBus.get(MsgEvent.LOGIN_TOKEN_EVENT).post(it.token)
             finish()
         }
     }

@@ -1,6 +1,7 @@
 package com.mind.data.http
 
 import com.mind.data.data.api.ApiService
+import com.mind.data.data.api.FollowAccountApi
 import com.mind.data.data.api.FollowApi
 import com.mind.data.data.api.UserApi
 import com.mind.data.http.RetrofitClient.retrofitClient
@@ -24,12 +25,22 @@ object ApiClient {
 
     @Volatile
     @JvmStatic
+    private var _FollowAccountAPI: FollowAccountApi? = null
+
+    @Volatile
+    @JvmStatic
     private var _OtherAPI: ApiService? = null
 
 
     @JvmStatic
     val followApi = _FollowAPI ?: synchronized(this) {
         _FollowAPI ?: retrofitClient.create(FollowApi::class.java).also { _FollowAPI = it }
+    }
+
+
+    @JvmStatic
+    val followAccountApi = _FollowAccountAPI ?: synchronized(this) {
+        _FollowAccountAPI ?: retrofitClient.create(FollowAccountApi::class.java).also { _FollowAccountAPI = it }
     }
 
     @JvmStatic

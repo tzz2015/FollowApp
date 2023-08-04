@@ -3,8 +3,11 @@ package com.stardust.auojs.inrt.ui.bindadapter
 
 import android.annotation.SuppressLint
 import android.graphics.drawable.Drawable
+import android.view.View
 import android.widget.ImageView
 import androidx.databinding.BindingAdapter
+import androidx.databinding.InverseBindingAdapter
+import androidx.databinding.InverseBindingListener
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.bumptech.glide.Glide
 import com.bumptech.glide.RequestBuilder
@@ -183,6 +186,23 @@ object CommonBA {
             .diskCacheStrategy(DiskCacheStrategy.ALL)
             .into(imageView)
 
+    }
+
+
+    @JvmStatic
+    @BindingAdapter("app:isVisible")
+    fun setVisibility(view: View, isVisible: Boolean) {
+        view.visibility = if (isVisible) View.VISIBLE else View.GONE
+    }
+    @JvmStatic
+    @InverseBindingAdapter(attribute = "app:isVisible", event = "app:isVisibleAttrChanged")
+    fun getVisibility(view: View): Boolean? {
+        return view.visibility == View.VISIBLE
+    }
+    @JvmStatic
+    @BindingAdapter("app:isVisibleAttrChanged")
+    fun setListener(view: View?, listener: InverseBindingListener?) {
+        // 不需要实现任何逻辑，只要添加监听器即可
     }
 
 
