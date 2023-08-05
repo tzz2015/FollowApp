@@ -31,6 +31,12 @@ class UserViewModel @Inject constructor() : BaseViewModel() {
     val userCount by lazy { ViewModelEvent<String>() }
     val followAccount by lazy { ViewModelEvent<FollowAccount>() }
 
+    /**
+     * 注册成功
+     */
+    val isRegisterSuccess = MutableLiveData<Boolean>().apply { this.value = false }
+
+
     //是否显示密码  默认不显示
     val isClose = MutableLiveData<Boolean>().apply { this.value = true }
 
@@ -39,7 +45,8 @@ class UserViewModel @Inject constructor() : BaseViewModel() {
 
     //密码
     val password = MutableLiveData<String>()
-     // 邮箱
+
+    // 邮箱
     val email = MutableLiveData<String>()
 
 
@@ -125,6 +132,34 @@ class UserViewModel @Inject constructor() : BaseViewModel() {
             intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
         }
         mContext.startActivity(intent)
+    }
+
+    fun register() {
+        if (phone.value.isNullOrEmpty()) {
+            ToastUtils.show("账号不能为空")
+            return
+        }
+        if (password.value.isNullOrEmpty()) {
+            ToastUtils.show("密码不能为空")
+            return
+        }
+        if (email.value.isNullOrEmpty()) {
+            ToastUtils.show("邮箱不能为空")
+            return
+        }
+        val map = hashMapOf(
+            "phone" to (phone.value ?: ""),
+            "password" to (password.value ?: ""),
+            "email" to (email.value ?: "")
+        )
+        loadHttp(
+            request = { ApiClient.userApi.register(map) },
+            resp = {
+                ToastUtils.show("注册成功")
+                isRegisterSuccess.postValue(true)
+            },
+            isShowDialog = true
+        )
     }
 
 }

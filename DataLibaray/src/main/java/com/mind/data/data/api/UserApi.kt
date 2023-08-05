@@ -28,5 +28,11 @@ interface UserApi {
     @POST("logout")
     suspend fun logout(): Res<String?>
 
+    /**
+     * 注册
+     */
+    @POST("create")
+    suspend fun register(@Body map: HashMap<String, String>): Res<UserModel?>
+
 
 }
