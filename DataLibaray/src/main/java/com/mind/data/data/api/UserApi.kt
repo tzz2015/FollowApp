@@ -19,11 +19,14 @@ interface UserApi {
 
 
     /**
-     * 收藏
+     * 总用户数
      */
     @GET("userList")
     suspend fun getTotalUserCount(): Res<Long>
 
+
+    @POST("logout")
+    suspend fun logout(): Res<String?>
 
 
 }

@@ -8,16 +8,16 @@ import android.content.Intent
 import android.util.Log
 import android.view.View
 import android.view.animation.LinearInterpolator
+import com.jeremyliao.liveeventbus.LiveEventBus
 import com.linsh.utilseverywhere.LogUtils
 import com.mind.data.data.model.AnnouncementModel
-import com.mind.data.data.model.FollowAccount
-import com.mind.data.data.model.FollowAccountType
+import com.mind.data.data.model.FunctionType
+import com.mind.data.event.MsgEvent
 import com.mind.data.http.ApiClient
 import com.mind.lib.base.BaseViewModel
 import com.mind.lib.base.ViewModelEvent
 import com.stardust.app.GlobalAppContext
 import com.stardust.auojs.inrt.data.Constants.IMAGE_ARRAY
-import com.stardust.auojs.inrt.util.isLogined
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 import kotlin.random.Random
@@ -27,7 +27,6 @@ class MineViewModel @Inject constructor() : BaseViewModel() {
     private val mValueAnimatorList: MutableList<ValueAnimator> = ArrayList()
     val announcementList by lazy { ViewModelEvent<MutableList<AnnouncementModel>>() }
     private val mContext: Context by lazy { GlobalAppContext.get() }
-    val followAccount by lazy { ViewModelEvent<FollowAccount>() }
 
 
     fun getAnnouncementList() {
@@ -43,19 +42,6 @@ class MineViewModel @Inject constructor() : BaseViewModel() {
         )
     }
 
-    fun getFollowAccount() {
-        if (isLogined()) {
-            loadHttp(
-                request = { ApiClient.followAccountApi.getFollowAccount(FollowAccountType.DOU_YIN) },
-                resp = {
-                    Log.e(javaClass.name, "getFollowAccount:${it.toString()} ")
-                    it?.let { followAccount.postValue(it) }
-                },
-                isShowDialog = false
-            )
-        }
-
-    }
 
     fun getHeadImage(): Int {
         val randomInt = Random.nextInt(0, IMAGE_ARRAY.size)
@@ -116,5 +102,23 @@ class MineViewModel @Inject constructor() : BaseViewModel() {
     override fun onCleared() {
         super.onCleared()
         clearAnimation()
+    }
+
+    /**
+     * 点击功能
+     */
+    fun clickFunction(item: String) {
+        when (item) {
+            FunctionType.LOGOUT -> logout()
+        }
+    }
+
+    private fun logout() {
+        loadHttp(
+            request = { ApiClient.userApi.logout() },
+            resp = {
+                LiveEventBus.get(MsgEvent.TOKEN_OUT).post("")
+            },
+        )
     }
 }

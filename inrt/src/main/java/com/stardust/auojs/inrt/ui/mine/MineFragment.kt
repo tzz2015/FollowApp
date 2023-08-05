@@ -5,16 +5,17 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.appcompat.widget.AppCompatTextView
 import androidx.core.view.isVisible
+import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import com.jeremyliao.liveeventbus.LiveEventBus
-import com.linsh.utilseverywhere.LogUtils
 import com.mind.data.event.MsgEvent
 import com.mind.lib.base.BaseFragment
 import com.mind.lib.base.ViewModelConfig
 import com.stardust.auojs.inrt.data.Constants
 import com.stardust.auojs.inrt.ui.adapter.AnnouncementAdapter
+import com.stardust.auojs.inrt.ui.home.UserViewModel
 import com.stardust.auojs.inrt.util.isLogined
 import org.autojs.autoxjs.inrt.R
 import org.autojs.autoxjs.inrt.databinding.FragmentMineBinding
@@ -25,9 +26,12 @@ class MineFragment : BaseFragment<MineViewModel, FragmentMineBinding>() {
         get() = ViewModelConfig(R.layout.fragment_mine)
     private val mAdapter: AnnouncementAdapter by lazy { AnnouncementAdapter() }
 
+    private val userViewModel by lazy {
+        ViewModelProvider(this)[UserViewModel::class.java]
+    }
     override fun init(savedInstanceState: Bundle?) {
         viewModel.getAnnouncementList()
-        viewModel.getFollowAccount()
+        userViewModel.getFollowAccount()
         setHeaderImage()
         initRecyclerView()
         initFunctionBtn()
@@ -37,7 +41,7 @@ class MineFragment : BaseFragment<MineViewModel, FragmentMineBinding>() {
     }
 
     private fun initObserve() {
-        viewModel.followAccount.observe(viewLifecycleOwner) {
+        userViewModel.followAccount.observe(viewLifecycleOwner) {
             bind.tvOne.text = "${it.needFollowedCount}"
             bind.tvTwo.text = "${it.followCount}"
             bind.tvThree.text = "${it.followedCount}"
@@ -45,7 +49,7 @@ class MineFragment : BaseFragment<MineViewModel, FragmentMineBinding>() {
         LiveEventBus.get(MsgEvent.LOGIN_TOKEN_EVENT).observe(viewLifecycleOwner) {
             changeView(isLogined())
             doAnimation()
-            viewModel.getFollowAccount()
+            userViewModel.getFollowAccount()
         }
         LiveEventBus.get(MsgEvent.TOKEN_OUT).observe(viewLifecycleOwner) {
             changeView(isLogined())
@@ -62,8 +66,8 @@ class MineFragment : BaseFragment<MineViewModel, FragmentMineBinding>() {
             val textView = view.findViewById<AppCompatTextView>(R.id.tv_tab_title)
             textView?.text = item
             bind.flFunction.addView(view)
-            view.setOnClickListener { view ->
-                LogUtils.e(item)
+            view.setOnClickListener {
+                viewModel.clickFunction(item)
             }
         }
     }

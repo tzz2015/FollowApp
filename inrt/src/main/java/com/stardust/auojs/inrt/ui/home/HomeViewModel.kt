@@ -1,5 +1,8 @@
 package com.stardust.auojs.inrt.ui.home
 
+import android.app.Activity
+import android.content.Context
+import android.content.Intent
 import com.linsh.utilseverywhere.ToastUtils
 import com.mind.lib.base.BaseViewModel
 import com.stardust.app.GlobalAppContext
@@ -7,6 +10,8 @@ import com.stardust.app.permission.DrawOverlaysPermission
 import com.stardust.auojs.inrt.autojs.AccessibilityServiceTool
 import com.stardust.auojs.inrt.data.Constants
 import com.stardust.auojs.inrt.launch.GlobalProjectLauncher
+import com.stardust.auojs.inrt.ui.mine.LoginActivity
+import com.stardust.auojs.inrt.util.isLogined
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
@@ -15,10 +20,11 @@ import org.autojs.autoxjs.inrt.R
 import javax.inject.Inject
 
 @HiltViewModel
-class HomeViewModel @Inject constructor(): BaseViewModel() {
+class HomeViewModel @Inject constructor() : BaseViewModel() {
 
     private val _permiss = MutableStateFlow(Pair(false, false))
     val permiss = _permiss.asStateFlow()
+    private val mContext: Context by lazy { GlobalAppContext.get() }
 
     fun checkNeedPermissions() {
         val accessibilityEnabled =
@@ -30,6 +36,10 @@ class HomeViewModel @Inject constructor(): BaseViewModel() {
     }
 
     fun toFollow() {
+        if (!isLogined()) {
+            toLogin()
+            return
+        }
         val first = permiss.value.first
         val second = permiss.value.second
         if (!first) {
@@ -51,7 +61,15 @@ class HomeViewModel @Inject constructor(): BaseViewModel() {
         }.start()
     }
 
-    fun stopRunScript() {
+    private fun toLogin() {
+        val intent = Intent(mContext, LoginActivity::class.java)
+        if (mContext !is Activity) {
+            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+        }
+        mContext.startActivity(intent)
+    }
+
+    private fun stopRunScript() {
         GlobalProjectLauncher.stop()
     }
 

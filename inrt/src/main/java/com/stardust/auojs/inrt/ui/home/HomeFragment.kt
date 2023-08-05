@@ -9,7 +9,9 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import com.afollestad.materialdialogs.MaterialDialog
 import com.chad.library.BR
+import com.jeremyliao.liveeventbus.LiveEventBus
 import com.linsh.utilseverywhere.LogUtils
+import com.mind.data.event.MsgEvent
 import com.mind.lib.base.BaseFragment
 import com.mind.lib.base.ViewModelConfig
 import com.stardust.app.GlobalAppContext
@@ -38,6 +40,21 @@ class HomeFragment : BaseFragment<HomeViewModel, FragmentHomeBinding>() {
         bind.userModel = userViewModel
         bind.followModel = followViewModel
         setCheckedChangeListener()
+        userViewModel.getFollowAccount()
+        initObserve()
+    }
+
+    private fun initObserve() {
+        userViewModel.followAccount.observe(viewLifecycleOwner) {
+            bind.tvNoticeBind.text = String.format(
+                requireContext().getText(R.string.follow_bind_account).toString(),
+                it.account
+            )
+            bind.btnBindAccount.text = requireContext().getText(R.string.to_change).toString()
+        }
+        LiveEventBus.get(MsgEvent.LOGIN_TOKEN_EVENT).observe(viewLifecycleOwner) {
+            userViewModel.getFollowAccount()
+        }
     }
 
     override fun onResume() {

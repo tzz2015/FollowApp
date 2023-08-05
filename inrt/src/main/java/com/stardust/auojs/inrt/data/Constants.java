@@ -1,5 +1,7 @@
 package com.stardust.auojs.inrt.data;
 
+import com.mind.data.data.model.FunctionType;
+
 import org.autojs.autoxjs.inrt.R;
 
 /**
@@ -88,8 +90,7 @@ public final class Constants {
             R.mipmap.icon_header_1_15,
             R.mipmap.icon_header_1_16,
             R.mipmap.icon_header_1_17};
-
-    public static String[] FUNCTION_ARRAY = new String[]{"修改手机号码", "修改邮箱", "修改密码", "意见反馈", "注销登录"};
+    public static String[] FUNCTION_ARRAY = new String[]{FunctionType.CHANGE_PHONE, FunctionType.CHANGE_PSW, FunctionType.CHANGE_EMAIL, FunctionType.FEEDBACK, FunctionType.LOGOUT};
 
 
 }
