@@ -385,9 +385,8 @@
         tools:ignore="GoogleAppIndexingWarning"
         tools:replace="android:label, android:allowBackup"
         tools:targetApi="m">
-        <activity
-            android:name="com.stardust.auojs.inrt.ui.mine.LoginActivity"
-            android:exported="false" />
+
+
         <activity
             android:name="com.stardust.auojs.inrt.MainActivity"
             android:clearTaskOnLaunch="true"
@@ -401,11 +400,14 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="com.stardust.auojs.inrt.LoginActivity"
+            android:name="com.stardust.auojs.inrt.ui.mine.LoginActivity"
             android:label="@string/title_activity_login" />
         <activity android:name="com.stardust.auojs.inrt.LogActivity" />
         <activity android:name="com.stardust.auojs.inrt.FeatureActivity" />
         <activity android:name="com.stardust.auojs.inrt.SplashActivity" />
+        <activity
+            android:name="com.stardust.auojs.inrt.ui.mine.RegisterActivity"
+            android:exported="false" />
         <!--
  <activity
              android:name="com.stardust.auojs.inrt.SplashActivity"

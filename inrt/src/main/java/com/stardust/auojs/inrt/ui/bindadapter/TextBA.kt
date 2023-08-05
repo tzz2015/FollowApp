@@ -7,7 +7,7 @@ import android.widget.EditText
 import androidx.databinding.BindingAdapter
 import androidx.lifecycle.Observer
 import androidx.lifecycle.findViewTreeLifecycleOwner
-import com.stardust.auojs.inrt.ui.mine.LoginViewModel
+import com.stardust.auojs.inrt.ui.home.UserViewModel
 
 
 object TextBA {
@@ -17,7 +17,7 @@ object TextBA {
      */
     @JvmStatic
     @BindingAdapter(value = ["change"], requireAll = false)
-    fun edTextChange(editText: EditText, change: LoginViewModel?) {
+    fun edTextChange(editText: EditText, change: UserViewModel?) {
         // 这里的监听可以 直接写在Activity里监听  这里仅仅是演示
         //  在复杂场景下 这样操作 可以细分化Act粒度
         //当点击密码显示隐藏 光标置于字符串后

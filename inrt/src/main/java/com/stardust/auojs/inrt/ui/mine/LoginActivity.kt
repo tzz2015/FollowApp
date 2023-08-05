@@ -8,11 +8,12 @@ import com.mind.data.event.MsgEvent
 import com.mind.lib.base.BaseActivity
 import com.mind.lib.base.ViewModelConfig
 import com.mind.lib.util.CacheManager
+import com.stardust.auojs.inrt.ui.home.UserViewModel
 import com.tencent.mmkv.MMKV
 import org.autojs.autoxjs.inrt.R
 import org.autojs.autoxjs.inrt.databinding.ActivityLoginBinding
 
-class LoginActivity : BaseActivity<LoginViewModel, ActivityLoginBinding>() {
+class LoginActivity : BaseActivity<UserViewModel, ActivityLoginBinding>() {
     override val viewModelConfig: ViewModelConfig
         get() = ViewModelConfig(R.layout.activity_login).bindViewModel(BR.loginViewModel)
             .bindTitle(R.string.login_title)
