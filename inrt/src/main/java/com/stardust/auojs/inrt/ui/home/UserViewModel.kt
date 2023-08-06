@@ -4,8 +4,10 @@ import android.app.Activity
 import android.content.Context
 import android.content.Intent
 import android.util.Log
+import android.view.View
 import androidx.lifecycle.MutableLiveData
 import com.linsh.utilseverywhere.LogUtils
+import com.linsh.utilseverywhere.StringUtils
 import com.linsh.utilseverywhere.ToastUtils
 import com.mind.data.data.model.FollowAccount
 import com.mind.data.data.model.FollowAccountType
@@ -13,8 +15,11 @@ import com.mind.data.data.model.UserModel
 import com.mind.data.http.ApiClient
 import com.mind.lib.base.BaseViewModel
 import com.mind.lib.base.ViewModelEvent
+import com.mind.lib.util.CacheManager
 import com.stardust.app.GlobalAppContext
 import com.stardust.auojs.inrt.data.Constants
+import com.stardust.auojs.inrt.ui.mine.ChangePswActivity
+import com.stardust.auojs.inrt.ui.mine.LoginActivity
 import com.stardust.auojs.inrt.ui.mine.RegisterActivity
 import com.stardust.auojs.inrt.util.isLogined
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -36,11 +41,16 @@ class UserViewModel @Inject constructor() : BaseViewModel() {
      */
     val isRegisterSuccess = MutableLiveData<Boolean>().apply { this.value = false }
 
+    /**
+     * 修改密码
+     */
+    val isChangePswSuccess = MutableLiveData<Boolean>().apply { this.value = false }
+
 
     //是否显示密码  默认不显示
     val isClose = MutableLiveData<Boolean>().apply { this.value = true }
 
-    //账号
+    //手机号
     val phone = MutableLiveData<String>()
 
     //密码
@@ -49,10 +59,22 @@ class UserViewModel @Inject constructor() : BaseViewModel() {
     // 邮箱
     val email = MutableLiveData<String>()
 
+    // 验证码
+    val captchaCode = MutableLiveData<String>()
+
 
     val loginResult by lazy { MutableLiveData<UserModel>() }
 
     private val mContext: Context by lazy { GlobalAppContext.get() }
+
+    fun init() {
+        if (StringUtils.isAllNotEmpty(CacheManager.instance.getPhone())) {
+            phone.postValue(CacheManager.instance.getPhone())
+        }
+        if (StringUtils.isAllNotEmpty(CacheManager.instance.getEmail())) {
+            email.postValue(CacheManager.instance.getEmail())
+        }
+    }
 
     /**
      * 获取用户总数量
@@ -104,7 +126,7 @@ class UserViewModel @Inject constructor() : BaseViewModel() {
 
     fun login() {
         if (phone.value.isNullOrEmpty()) {
-            ToastUtils.show("账号不能为空")
+            ToastUtils.show("手机号不能为空")
             return
         }
         if (password.value.isNullOrEmpty()) {
@@ -121,8 +143,7 @@ class UserViewModel @Inject constructor() : BaseViewModel() {
                 ToastUtils.show("登录成功")
                 LogUtils.e(it.toString())
                 loginResult.postValue(it)
-            },
-            isShowDialog = true
+            }
         )
     }
 
@@ -134,9 +155,27 @@ class UserViewModel @Inject constructor() : BaseViewModel() {
         mContext.startActivity(intent)
     }
 
+    fun toLogin() {
+        LogUtils.e("点击登录")
+        val intent = Intent(mContext, LoginActivity::class.java)
+        if (mContext !is Activity) {
+            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+        }
+        mContext.startActivity(intent)
+    }
+
+    fun toChangePsw() {
+        val intent = Intent(mContext, ChangePswActivity::class.java)
+        if (mContext !is Activity) {
+            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+        }
+        mContext.startActivity(intent)
+    }
+
+
     fun register() {
         if (phone.value.isNullOrEmpty()) {
-            ToastUtils.show("账号不能为空")
+            ToastUtils.show("手机号不能为空")
             return
         }
         if (password.value.isNullOrEmpty()) {
@@ -157,9 +196,70 @@ class UserViewModel @Inject constructor() : BaseViewModel() {
             resp = {
                 ToastUtils.show("注册成功")
                 isRegisterSuccess.postValue(true)
-            },
-            isShowDialog = true
+            }
         )
     }
+
+    /**
+     * 发送验证码
+     */
+    fun sendCode(view: View) {
+        if (phone.value.isNullOrEmpty()) {
+            ToastUtils.show("手机号不能为空")
+            return
+        }
+        if (email.value.isNullOrEmpty()) {
+            ToastUtils.show("邮箱不能为空")
+            return
+        }
+        view.isEnabled = false
+        val map = hashMapOf(
+            "phone" to (phone.value ?: ""),
+            "email" to (email.value ?: "")
+        )
+        loadHttp(
+            request = { ApiClient.userApi.senCode(map) },
+            resp = {
+                ToastUtils.show("发送验证码成功")
+                view.isEnabled = true
+            },
+            err = {
+                view.isEnabled = true
+            }
+        )
+
+    }
+
+    /**
+     * 修改密码
+     */
+    fun changePsw() {
+        if (phone.value.isNullOrEmpty()) {
+            ToastUtils.show("手机号不能为空")
+            return
+        }
+        if (password.value.isNullOrEmpty()) {
+            ToastUtils.show("密码不能为空")
+            return
+        }
+        if (email.value.isNullOrEmpty()) {
+            ToastUtils.show("邮箱不能为空")
+            return
+        }
+        val map = hashMapOf(
+            "phone" to (phone.value ?: ""),
+            "password" to (password.value ?: ""),
+            "email" to (email.value ?: "")
+        )
+        loadHttp(
+            request = { ApiClient.userApi.changePsw(captchaCode.value ?: "", map) },
+            resp = {
+                ToastUtils.show("修改成功")
+                isChangePswSuccess.postValue(true)
+            }
+        )
+
+    }
+
 
 }

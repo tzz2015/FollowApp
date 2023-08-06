@@ -29,7 +29,9 @@ class MineFragment : BaseFragment<MineViewModel, FragmentMineBinding>() {
     private val userViewModel by lazy {
         ViewModelProvider(this)[UserViewModel::class.java]
     }
+
     override fun init(savedInstanceState: Bundle?) {
+        bind.userViewModel = userViewModel
         viewModel.getAnnouncementList()
         userViewModel.getFollowAccount()
         setHeaderImage()
@@ -67,7 +69,7 @@ class MineFragment : BaseFragment<MineViewModel, FragmentMineBinding>() {
             textView?.text = item
             bind.flFunction.addView(view)
             view.setOnClickListener {
-                viewModel.clickFunction(item)
+                viewModel.clickFunction(item,userViewModel)
             }
         }
     }
@@ -104,7 +106,6 @@ class MineFragment : BaseFragment<MineViewModel, FragmentMineBinding>() {
                     0,
                     height - bind.tvFindPsw.height
                 )
-                bind.tvLogin.setOnClickListener { viewModel.login() }
             }
         } else {
             viewModel.clearAnimation()

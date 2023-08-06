@@ -2,14 +2,11 @@ package com.stardust.auojs.inrt.ui.mine
 
 import android.animation.ValueAnimator
 import android.animation.ValueAnimator.REVERSE
-import android.app.Activity
 import android.content.Context
-import android.content.Intent
 import android.util.Log
 import android.view.View
 import android.view.animation.LinearInterpolator
 import com.jeremyliao.liveeventbus.LiveEventBus
-import com.linsh.utilseverywhere.LogUtils
 import com.mind.data.data.model.AnnouncementModel
 import com.mind.data.data.model.FunctionType
 import com.mind.data.event.MsgEvent
@@ -18,6 +15,7 @@ import com.mind.lib.base.BaseViewModel
 import com.mind.lib.base.ViewModelEvent
 import com.stardust.app.GlobalAppContext
 import com.stardust.auojs.inrt.data.Constants.IMAGE_ARRAY
+import com.stardust.auojs.inrt.ui.home.UserViewModel
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 import kotlin.random.Random
@@ -82,14 +80,6 @@ class MineViewModel @Inject constructor() : BaseViewModel() {
         mValueAnimatorList.add(valueAnimator)
     }
 
-    fun login() {
-        LogUtils.e("点击登录")
-        val intent = Intent(mContext, LoginActivity::class.java)
-        if (mContext !is Activity) {
-            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
-        }
-        mContext.startActivity(intent)
-    }
 
     fun clearAnimation() {
         for (animator in mValueAnimatorList) {
@@ -107,9 +97,10 @@ class MineViewModel @Inject constructor() : BaseViewModel() {
     /**
      * 点击功能
      */
-    fun clickFunction(item: String) {
+    fun clickFunction(item: String, userViewModel: UserViewModel) {
         when (item) {
             FunctionType.LOGOUT -> logout()
+            FunctionType.CHANGE_PSW -> userViewModel.toChangePsw()
         }
     }
 

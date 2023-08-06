@@ -10,7 +10,7 @@ import org.autojs.autoxjs.inrt.databinding.ActivityRegisterBinding
 class RegisterActivity : BaseActivity<UserViewModel, ActivityRegisterBinding>() {
     override val viewModelConfig: ViewModelConfig
         get() = ViewModelConfig(R.layout.activity_register).bindViewModel(BR.userViewModel)
-            .bindTitle(R.string.login_register)
+            .bindTitle(R.string.login_register_title)
 
     override fun initialize() {
         viewModel.isRegisterSuccess.observe(this) {
