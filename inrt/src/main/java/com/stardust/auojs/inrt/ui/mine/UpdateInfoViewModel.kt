@@ -5,10 +5,7 @@ import com.google.gson.Gson
 import com.linsh.utilseverywhere.StringUtils
 import com.linsh.utilseverywhere.ToastUtils
 import com.mind.data.data.mmkv.KV
-import com.mind.data.data.model.FollowAccount
-import com.mind.data.data.model.FollowAccountType
-import com.mind.data.data.model.FunctionType
-import com.mind.data.data.model.UserModel
+import com.mind.data.data.model.*
 import com.mind.data.http.ApiClient
 import com.mind.lib.util.CacheManager
 import com.stardust.auojs.inrt.ui.home.UserViewModel
@@ -23,14 +20,20 @@ class UpdateInfoViewModel : UserViewModel() {
 
     val text = MutableLiveData<String>()
     private var title: String = ""
+
     /**
      * 修改成功
      */
     val isChangeSuccess = MutableLiveData<Boolean>().apply { this.value = false }
+
     /**
      * 修改密码 邮箱 抖音号
      */
     fun change() {
+        if (text.value.isNullOrEmpty()) {
+            ToastUtils.show("输入不能为空")
+            return
+        }
         when (title) {
             FunctionType.ADD_DOEYIN_ACCOUNT, FunctionType.CHANGE_DOEYIN_ACCOUNT -> {
                 val account =
@@ -96,5 +99,26 @@ class UpdateInfoViewModel : UserViewModel() {
             userModel.email = CacheManager.instance.getEmail()
             MMKV.defaultMMKV().putString(KV.USER_INFO, gson.toJson(userModel))
         }
+    }
+
+    /**
+     * 提交意见反馈
+     */
+    fun suggestion() {
+        if (text.value.isNullOrEmpty()) {
+            ToastUtils.show("输入不能为空")
+            return
+        }
+        val suggestionModel = SuggestionModel(text.value ?: "")
+        loadHttp(
+            request = { ApiClient.otherApi.postSuggestion(suggestionModel) },
+            resp = {
+                it?.run {
+                    ToastUtils.show("感谢反馈")
+                    isChangeSuccess.postValue(true)
+                }
+
+            }
+        )
     }
 }

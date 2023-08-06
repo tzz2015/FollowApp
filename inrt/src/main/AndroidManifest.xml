@@ -385,6 +385,7 @@
         tools:ignore="GoogleAppIndexingWarning"
         tools:replace="android:label, android:allowBackup"
         tools:targetApi="m">
+
         <activity
             android:name="com.stardust.auojs.inrt.MainActivity"
             android:clearTaskOnLaunch="true"
@@ -411,6 +412,9 @@
             android:exported="false" />
         <activity
             android:name="com.stardust.auojs.inrt.ui.mine.UpdateInfoActivity"
+            android:exported="false" />
+        <activity
+            android:name="com.stardust.auojs.inrt.ui.mine.SuggestionActivity"
             android:exported="false" />
         <!--
  <activity

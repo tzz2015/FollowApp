@@ -68,6 +68,7 @@
     <string name="follow_bind_text">绑定你的抖音号就可以被TA人关注</string>
     <string name="follow_bind_account">当前绑定的抖音号为:%s</string>
     <string name="login_title">我来了</string>
+    <string name="suggestion_title">有啥说啥</string>
     <string name="login_register_title">人生赢家</string>
     <string name="change_psw_title">贵人多忘事</string>
 

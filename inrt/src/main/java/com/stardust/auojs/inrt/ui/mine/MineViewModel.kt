@@ -104,6 +104,7 @@ class MineViewModel @Inject constructor() : BaseViewModel() {
             FunctionType.CHANGE_PHONE -> userViewModel.toUpdateActivity(FunctionType.CHANGE_PHONE)
             FunctionType.CHANGE_EMAIL -> userViewModel.toUpdateActivity(FunctionType.CHANGE_EMAIL)
             FunctionType.CHANGE_DOEYIN_ACCOUNT -> userViewModel.toUpdateActivity(FunctionType.CHANGE_DOEYIN_ACCOUNT)
+            FunctionType.FEEDBACK -> userViewModel.toSuggestionActivity()
         }
     }
 

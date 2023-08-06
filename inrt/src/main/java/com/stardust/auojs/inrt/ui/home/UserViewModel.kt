@@ -19,10 +19,7 @@ import com.mind.lib.base.ViewModelEvent
 import com.mind.lib.util.CacheManager
 import com.stardust.app.GlobalAppContext
 import com.stardust.auojs.inrt.data.Constants
-import com.stardust.auojs.inrt.ui.mine.ChangePswActivity
-import com.stardust.auojs.inrt.ui.mine.LoginActivity
-import com.stardust.auojs.inrt.ui.mine.RegisterActivity
-import com.stardust.auojs.inrt.ui.mine.UpdateInfoActivity
+import com.stardust.auojs.inrt.ui.mine.*
 import com.stardust.auojs.inrt.util.isLogined
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
@@ -191,6 +188,14 @@ open class UserViewModel @Inject constructor() : BaseViewModel() {
             intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
         }
         intent.putExtra(Constants.UPDATE_FUNCTION, name)
+        mContext.startActivity(intent)
+    }
+
+    fun toSuggestionActivity() {
+        val intent = Intent(mContext, SuggestionActivity::class.java)
+        if (mContext !is Activity) {
+            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+        }
         mContext.startActivity(intent)
     }
 
