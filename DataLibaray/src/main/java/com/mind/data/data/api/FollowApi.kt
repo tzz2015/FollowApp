@@ -11,7 +11,7 @@ import retrofit2.http.GET
 interface FollowApi {
 
     /**
-     * 收藏
+     * 累计关注列表
      */
     @GET("follow/count")
     suspend fun getTotalFollowCount(): Res<Long>

@@ -50,8 +50,7 @@ class HomeFragment : BaseFragment<HomeViewModel, FragmentHomeBinding>() {
             it?.run {
                 CacheManager.instance.putDYAccount(account)
                 bind.tvNoticeBind.text = String.format(
-                    requireContext().getText(R.string.follow_bind_account).toString(),
-                    account
+                    requireContext().getText(R.string.follow_bind_account).toString(), account
                 )
                 bind.btnBindAccount.text = requireContext().getText(R.string.to_change).toString()
             }
@@ -61,6 +60,11 @@ class HomeFragment : BaseFragment<HomeViewModel, FragmentHomeBinding>() {
         }
         LiveEventBus.get(MsgEvent.CHANGE_USER_INFO).observe(viewLifecycleOwner) {
             userViewModel.getFollowAccount()
+        }
+        viewModel.followList.observe(viewLifecycleOwner) {
+            if (it.isNotEmpty()) {
+                showFollowDialog(it.size)
+            }
         }
     }
 
@@ -96,6 +100,21 @@ class HomeFragment : BaseFragment<HomeViewModel, FragmentHomeBinding>() {
             positiveButton(res = R.string.text_to_open, click = {
                 dismiss()
                 drawOverlaysSettingsLauncher.launchCanDrawOverlaysSettings(requireActivity().packageName)
+            })
+            negativeButton { dismiss() }
+        }
+    }
+
+    /**
+     * 关注弹窗
+     */
+    private fun showFollowDialog(size: Int) {
+        MaterialDialog(requireActivity()).show {
+            setTitle(R.string.can_follow_title)
+            message(text = String.format(getString(R.string.can_follow_text), size))
+            positiveButton(res = R.string.to_follow, click = {
+                dismiss()
+                viewModel.runFollowScript()
             })
             negativeButton { dismiss() }
         }

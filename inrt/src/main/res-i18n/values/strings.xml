@@ -71,8 +71,8 @@
     <string name="suggestion_title">有啥说啥</string>
     <string name="login_register_title">人生赢家</string>
     <string name="change_psw_title">贵人多忘事</string>
-
-
+    <string name="can_follow_title">关注须知</string>
+    <string name="can_follow_text">当前可关注人数为%s,请先打开抖音并且点击搜索，停留在搜索页面，然后将抖音退到后台，才可以使用该功能。</string>
 
 
 </resources>

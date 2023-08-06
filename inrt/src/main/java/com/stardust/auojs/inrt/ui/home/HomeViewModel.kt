@@ -3,8 +3,13 @@ package com.stardust.auojs.inrt.ui.home
 import android.app.Activity
 import android.content.Context
 import android.content.Intent
+import com.linsh.utilseverywhere.LogUtils
 import com.linsh.utilseverywhere.ToastUtils
+import com.mind.data.data.model.FollowAccount
+import com.mind.data.data.model.FollowAccountType
+import com.mind.data.http.ApiClient
 import com.mind.lib.base.BaseViewModel
+import com.mind.lib.base.ViewModelEvent
 import com.stardust.app.GlobalAppContext
 import com.stardust.app.permission.DrawOverlaysPermission
 import com.stardust.auojs.inrt.autojs.AccessibilityServiceTool
@@ -25,6 +30,7 @@ class HomeViewModel @Inject constructor() : BaseViewModel() {
     private val _permiss = MutableStateFlow(Pair(false, false))
     val permiss = _permiss.asStateFlow()
     private val mContext: Context by lazy { GlobalAppContext.get() }
+    val followList = ViewModelEvent<MutableList<FollowAccount>>()
 
     fun checkNeedPermissions() {
         val accessibilityEnabled =
@@ -42,19 +48,47 @@ class HomeViewModel @Inject constructor() : BaseViewModel() {
         }
         val first = permiss.value.first
         val second = permiss.value.second
-        if (!first) {
-            ToastUtils.show(
-                GlobalAppContext.get()
-                    .getString(R.string.text_accessibility_service_is_not_turned_on)
-            )
-            return
-        }
+        /* if (!first) {
+             ToastUtils.show(
+                 GlobalAppContext.get()
+                     .getString(R.string.text_accessibility_service_is_not_turned_on)
+             )
+             return
+         }*/
         if (!second) {
             ToastUtils.show(
                 GlobalAppContext.get().getString(R.string.text_required_floating_window_permission)
             )
             return
         }
+        // 获取可关注的列表
+        getEnableFollowList()
+
+    }
+
+    private fun getEnableFollowList() {
+        if (isLogined()) {
+            loadHttp(
+                request = { ApiClient.followAccountApi.getEnableFollowList(FollowAccountType.DOU_YIN) },
+                resp = {
+                    it?.let {
+                        LogUtils.e("getEnableFollowList:$it")
+                        if (it.isEmpty()) {
+                            ToastUtils.showLong("当前无可关注，可以邀请更多朋友加入")
+                        } else {
+                            followList.postValue(it)
+                        }
+                    }
+
+                }
+            )
+        }
+    }
+
+    /**
+     * 运行关注脚本
+     */
+    fun runFollowScript() {
         stopRunScript()
         Thread {
             GlobalProjectLauncher.runScript(Constants.DOUYIN_JS)

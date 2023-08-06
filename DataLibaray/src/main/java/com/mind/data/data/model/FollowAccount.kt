@@ -7,6 +7,7 @@ package com.mind.data.data.model
  */
 data class FollowAccount(
     var account: String? = null,
+    var userId: Long = 0L,
     var followType: Int = FollowAccountType.DOU_YIN,
     var needFollowedCount: Int = 0,
     var followCount: Int = 0,

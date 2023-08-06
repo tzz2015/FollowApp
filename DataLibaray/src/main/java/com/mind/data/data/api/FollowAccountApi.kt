@@ -25,4 +25,10 @@ interface FollowAccountApi {
      */
     @POST("followAccount/updateAccount")
     suspend fun updateAccount(@Body followAccount: FollowAccount): Res<FollowAccount>
+
+    /**
+     * 可关注列表
+     */
+    @GET("followAccount/followList/{followType}")
+    suspend fun getEnableFollowList(@Path("followType") followType: Int): Res<MutableList<FollowAccount>?>
 }
