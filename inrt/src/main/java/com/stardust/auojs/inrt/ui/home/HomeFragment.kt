@@ -14,6 +14,7 @@ import com.linsh.utilseverywhere.LogUtils
 import com.mind.data.event.MsgEvent
 import com.mind.lib.base.BaseFragment
 import com.mind.lib.base.ViewModelConfig
+import com.mind.lib.util.CacheManager
 import com.stardust.app.GlobalAppContext
 import com.stardust.app.permission.DrawOverlaysPermission.launchCanDrawOverlaysSettings
 import com.stardust.auojs.inrt.autojs.AccessibilityServiceTool1
@@ -46,13 +47,19 @@ class HomeFragment : BaseFragment<HomeViewModel, FragmentHomeBinding>() {
 
     private fun initObserve() {
         userViewModel.followAccount.observe(viewLifecycleOwner) {
-            bind.tvNoticeBind.text = String.format(
-                requireContext().getText(R.string.follow_bind_account).toString(),
-                it.account
-            )
-            bind.btnBindAccount.text = requireContext().getText(R.string.to_change).toString()
+            it?.run {
+                CacheManager.instance.putDYAccount(account)
+                bind.tvNoticeBind.text = String.format(
+                    requireContext().getText(R.string.follow_bind_account).toString(),
+                    account
+                )
+                bind.btnBindAccount.text = requireContext().getText(R.string.to_change).toString()
+            }
         }
         LiveEventBus.get(MsgEvent.LOGIN_TOKEN_EVENT).observe(viewLifecycleOwner) {
+            userViewModel.getFollowAccount()
+        }
+        LiveEventBus.get(MsgEvent.CHANGE_USER_INFO).observe(viewLifecycleOwner) {
             userViewModel.getFollowAccount()
         }
     }

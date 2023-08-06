@@ -6,10 +6,10 @@ package com.mind.data.data.model
  * @Description :
  */
 data class FollowAccount(
-    val account: String,
-    val followType: Int,
-    val needFollowedCount: Int,
-    val followCount:Int,
-    val followedCount: Int,
-    val payFollowCount: Int
+    var account: String? = null,
+    var followType: Int = FollowAccountType.DOU_YIN,
+    var needFollowedCount: Int = 0,
+    var followCount: Int = 0,
+    var followedCount: Int = 0,
+    var payFollowCount: Int = 0
 )

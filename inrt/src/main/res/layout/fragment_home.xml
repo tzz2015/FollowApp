@@ -200,6 +200,7 @@
             android:paddingStart="15dp"
             android:paddingEnd="15dp"
             android:text="@string/to_bind"
+            android:onClick="@{() -> userModel.toBindAccount()}"
             android:textAlignment="center"
             android:textColor="@color/white"
             android:textSize="14sp"

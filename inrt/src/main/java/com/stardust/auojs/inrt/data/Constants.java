@@ -91,6 +91,6 @@ public final class Constants {
             R.mipmap.icon_header_1_16,
             R.mipmap.icon_header_1_17};
     public static String[] FUNCTION_ARRAY = new String[]{FunctionType.CHANGE_PHONE, FunctionType.CHANGE_PSW, FunctionType.CHANGE_EMAIL, FunctionType.FEEDBACK, FunctionType.LOGOUT};
-
+    public static String UPDATE_FUNCTION = "update_function";
 
 }

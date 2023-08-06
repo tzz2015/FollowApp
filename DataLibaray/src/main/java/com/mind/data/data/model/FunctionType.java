@@ -18,5 +18,6 @@ public @interface FunctionType {
     String FEEDBACK = "意见反馈";
     String LOGOUT = "注销登录";
 
-
+    String CHANGE_DOEYIN_ACCOUNT = "修改抖音号";
+    String ADD_DOEYIN_ACCOUNT = "添加抖音号";
 }

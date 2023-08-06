@@ -11,6 +11,7 @@ import com.linsh.utilseverywhere.StringUtils
 import com.linsh.utilseverywhere.ToastUtils
 import com.mind.data.data.model.FollowAccount
 import com.mind.data.data.model.FollowAccountType
+import com.mind.data.data.model.FunctionType
 import com.mind.data.data.model.UserModel
 import com.mind.data.http.ApiClient
 import com.mind.lib.base.BaseViewModel
@@ -21,6 +22,7 @@ import com.stardust.auojs.inrt.data.Constants
 import com.stardust.auojs.inrt.ui.mine.ChangePswActivity
 import com.stardust.auojs.inrt.ui.mine.LoginActivity
 import com.stardust.auojs.inrt.ui.mine.RegisterActivity
+import com.stardust.auojs.inrt.ui.mine.UpdateInfoActivity
 import com.stardust.auojs.inrt.util.isLogined
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
@@ -32,7 +34,7 @@ import kotlin.random.Random
  * @Description :描述
  */
 @HiltViewModel
-class UserViewModel @Inject constructor() : BaseViewModel() {
+open class UserViewModel @Inject constructor() : BaseViewModel() {
     val userCount by lazy { ViewModelEvent<String>() }
     val followAccount by lazy { ViewModelEvent<FollowAccount>() }
 
@@ -169,6 +171,26 @@ class UserViewModel @Inject constructor() : BaseViewModel() {
         if (mContext !is Activity) {
             intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
         }
+        mContext.startActivity(intent)
+    }
+
+    /**
+     * 绑定抖音号或者修改抖音号
+     */
+    fun toBindAccount() {
+        if (StringUtils.isAllNotEmpty(CacheManager.instance.getDYAccount())) {
+            toUpdateActivity(FunctionType.CHANGE_DOEYIN_ACCOUNT)
+        } else {
+            toUpdateActivity(FunctionType.ADD_DOEYIN_ACCOUNT)
+        }
+    }
+
+    fun toUpdateActivity(name: String) {
+        val intent = Intent(mContext, UpdateInfoActivity::class.java)
+        if (mContext !is Activity) {
+            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+        }
+        intent.putExtra(Constants.UPDATE_FUNCTION, name)
         mContext.startActivity(intent)
     }
 

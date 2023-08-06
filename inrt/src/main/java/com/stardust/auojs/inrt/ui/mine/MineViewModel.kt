@@ -101,8 +101,12 @@ class MineViewModel @Inject constructor() : BaseViewModel() {
         when (item) {
             FunctionType.LOGOUT -> logout()
             FunctionType.CHANGE_PSW -> userViewModel.toChangePsw()
+            FunctionType.CHANGE_PHONE -> userViewModel.toUpdateActivity(FunctionType.CHANGE_PHONE)
+            FunctionType.CHANGE_EMAIL -> userViewModel.toUpdateActivity(FunctionType.CHANGE_EMAIL)
+            FunctionType.CHANGE_DOEYIN_ACCOUNT -> userViewModel.toUpdateActivity(FunctionType.CHANGE_DOEYIN_ACCOUNT)
         }
     }
+
 
     private fun logout() {
         loadHttp(

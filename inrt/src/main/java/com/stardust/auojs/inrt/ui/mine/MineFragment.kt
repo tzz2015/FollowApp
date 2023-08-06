@@ -13,6 +13,7 @@ import com.jeremyliao.liveeventbus.LiveEventBus
 import com.mind.data.event.MsgEvent
 import com.mind.lib.base.BaseFragment
 import com.mind.lib.base.ViewModelConfig
+import com.mind.lib.util.CacheManager
 import com.stardust.auojs.inrt.data.Constants
 import com.stardust.auojs.inrt.ui.adapter.AnnouncementAdapter
 import com.stardust.auojs.inrt.ui.home.UserViewModel
@@ -44,6 +45,7 @@ class MineFragment : BaseFragment<MineViewModel, FragmentMineBinding>() {
 
     private fun initObserve() {
         userViewModel.followAccount.observe(viewLifecycleOwner) {
+            CacheManager.instance.putDYAccount(it.account)
             bind.tvOne.text = "${it.needFollowedCount}"
             bind.tvTwo.text = "${it.followCount}"
             bind.tvThree.text = "${it.followedCount}"

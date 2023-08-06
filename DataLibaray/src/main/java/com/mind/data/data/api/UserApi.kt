@@ -55,7 +55,7 @@ interface UserApi {
      */
     @POST("updateUser")
     suspend fun updateUserInfo(
-        @Body map: HashMap<String, String>
+        @Body userModel: UserModel
     ): Res<UserModel?>
 
 

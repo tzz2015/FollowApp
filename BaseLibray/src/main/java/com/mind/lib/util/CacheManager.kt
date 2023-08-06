@@ -7,6 +7,7 @@ class CacheManager private constructor() {
         private const val TOKEN = "token"
         private const val PHONE = "phone"
         private const val EMAIL = "email"
+        private const val DOUYIN_ACCOUNT = "douyin_account"
         private const val VERSION = "version"
         val instance: CacheManager by lazy(mode = LazyThreadSafetyMode.SYNCHRONIZED) {
             CacheManager()
@@ -34,8 +35,10 @@ class CacheManager private constructor() {
     /**
      * 放入token
      */
-    fun putToken(value: String) {
-        map[TOKEN] = value
+    fun putToken(value: String?) {
+        value?.let {
+            map[TOKEN] = value
+        }
     }
 
     /**
@@ -55,24 +58,42 @@ class CacheManager private constructor() {
      */
     fun getVersion() = map[VERSION] ?: ""
 
-    fun putPhone(value: String) {
-        map[PHONE] = value
+    fun putPhone(value: String?) {
+        value?.let {
+            map[PHONE] = value
+        }
     }
 
 
     fun getPhone() = map[PHONE] ?: ""
 
-    fun putEmail(value: String) {
-        map[EMAIL] = value
+    fun putEmail(value: String?) {
+        value?.let {
+            map[EMAIL] = value
+        }
     }
 
     fun getEmail() = map[EMAIL] ?: ""
 
-    fun clearLogin(){
+    /**
+     * 放入token
+     */
+    fun putDYAccount(value: String?) {
+        value?.let {
+            map[DOUYIN_ACCOUNT] = value
+        }
+    }
+
+    /**
+     * 取出Token
+     */
+    fun getDYAccount() = map[DOUYIN_ACCOUNT] ?: ""
+
+    fun clearLogin() {
         map.remove(PHONE)
         map.remove(EMAIL)
         map.remove(TOKEN)
-
+        map.remove(DOUYIN_ACCOUNT)
     }
 
 }
