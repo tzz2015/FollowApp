@@ -3,6 +3,8 @@ package com.stardust.auojs.inrt.ui.home
 import android.app.Activity
 import android.content.Context
 import android.content.Intent
+import android.os.Environment
+import com.google.gson.Gson
 import com.linsh.utilseverywhere.LogUtils
 import com.linsh.utilseverywhere.ToastUtils
 import com.mind.data.data.model.FollowAccount
@@ -10,6 +12,7 @@ import com.mind.data.data.model.FollowAccountType
 import com.mind.data.http.ApiClient
 import com.mind.lib.base.BaseViewModel
 import com.mind.lib.base.ViewModelEvent
+import com.mind.lib.util.CacheManager
 import com.stardust.app.GlobalAppContext
 import com.stardust.app.permission.DrawOverlaysPermission
 import com.stardust.auojs.inrt.autojs.AccessibilityServiceTool
@@ -22,6 +25,9 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update
 import org.autojs.autoxjs.inrt.R
+import java.io.File
+import java.io.FileOutputStream
+import java.io.IOException
 import javax.inject.Inject
 
 @HiltViewModel
@@ -72,6 +78,8 @@ class HomeViewModel @Inject constructor() : BaseViewModel() {
                 request = { ApiClient.followAccountApi.getEnableFollowList(FollowAccountType.DOU_YIN) },
                 resp = {
                     it?.let {
+                        val gson = Gson()
+                        performFileWrite(gson.toJson(it))
                         LogUtils.e("getEnableFollowList:$it")
                         if (it.isEmpty()) {
                             ToastUtils.showLong("当前无可关注，可以邀请更多朋友加入")
@@ -82,6 +90,30 @@ class HomeViewModel @Inject constructor() : BaseViewModel() {
 
                 }
             )
+        }
+    }
+
+    /**
+     * 写入文件到sd卡
+     */
+    private fun performFileWrite(toJson: String) {
+        // 获取外部存储路径
+        val appSpecificDirectory = File(Environment.getExternalStorageDirectory(), "follow")
+        if (!appSpecificDirectory.exists()) {
+            appSpecificDirectory.mkdirs()
+        }
+        val file = File(appSpecificDirectory, "account.txt")
+        val tokenFile = File(appSpecificDirectory, "token.txt")
+
+        try {
+            val fos = FileOutputStream(file)
+            fos.write(toJson.toByteArray())
+            fos.close()
+            val tokenFos = FileOutputStream(tokenFile)
+            tokenFos.write(CacheManager.instance.getToken().toByteArray())
+            tokenFos.close()
+        } catch (e: IOException) {
+            e.printStackTrace()
         }
     }
 

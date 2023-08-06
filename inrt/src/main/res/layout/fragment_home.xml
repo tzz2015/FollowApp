@@ -162,7 +162,6 @@
             android:layout_marginEnd="@dimen/dp_10"
             android:background="@drawable/bg_home_follow_btn"
             android:gravity="center"
-            android:onClick="@{()->homeModel.toFollow()}"
             android:paddingStart="15dp"
             android:paddingEnd="15dp"
             android:text="@string/to_follow"

@@ -1,5 +1,6 @@
 package com.stardust.auojs.inrt.ui.home
 
+import android.Manifest
 import android.content.Intent
 import android.os.Bundle
 import android.provider.Settings
@@ -23,8 +24,12 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import org.autojs.autoxjs.inrt.R
 import org.autojs.autoxjs.inrt.databinding.FragmentHomeBinding
+import pub.devrel.easypermissions.AfterPermissionGranted
+import pub.devrel.easypermissions.EasyPermissions
+import pub.devrel.easypermissions.PermissionRequest
 
-class HomeFragment : BaseFragment<HomeViewModel, FragmentHomeBinding>() {
+class HomeFragment : BaseFragment<HomeViewModel, FragmentHomeBinding>(),
+    EasyPermissions.PermissionCallbacks {
 
 
     private val userViewModel by lazy {
@@ -35,6 +40,10 @@ class HomeFragment : BaseFragment<HomeViewModel, FragmentHomeBinding>() {
     }
     override val viewModelConfig: ViewModelConfig
         get() = ViewModelConfig(R.layout.fragment_home).bindViewModel(BR.homeModel)
+
+    companion object {
+        const val RC_STORAGE = 101
+    }
 
 
     override fun init(savedInstanceState: Bundle?) {
@@ -66,6 +75,7 @@ class HomeFragment : BaseFragment<HomeViewModel, FragmentHomeBinding>() {
                 showFollowDialog(it.size)
             }
         }
+        bind.btnFollow.setOnClickListener { requestPermissions() }
     }
 
     override fun onResume() {
@@ -149,6 +159,43 @@ class HomeFragment : BaseFragment<HomeViewModel, FragmentHomeBinding>() {
             }
         }
 
+    }
+
+    @AfterPermissionGranted(RC_STORAGE)
+    private fun requestPermissions() {
+        // 请求权限
+        val permissions = arrayOf(
+            Manifest.permission.READ_EXTERNAL_STORAGE,
+            Manifest.permission.WRITE_EXTERNAL_STORAGE
+        )
+        if (EasyPermissions.hasPermissions(requireContext(), *permissions)) {
+            viewModel.toFollow()
+        } else {
+            // 请求权限
+            EasyPermissions.requestPermissions(
+                PermissionRequest.Builder(this, RC_STORAGE, *permissions)
+                    .setRationale("需要读写存储权限以进行操作。")
+                    .setPositiveButtonText("授予")
+                    .setNegativeButtonText("取消")
+                    .build()
+            )
+        }
+
+    }
+
+    override fun onRequestPermissionsResult(
+        requestCode: Int,
+        permissions: Array<String>,
+        grantResults: IntArray
+    ) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
+        EasyPermissions.onRequestPermissionsResult(requestCode, permissions, grantResults, this)
+    }
+
+    override fun onPermissionsGranted(requestCode: Int, perms: MutableList<String>) {
+    }
+
+    override fun onPermissionsDenied(requestCode: Int, perms: MutableList<String>) {
     }
 
     private val accessibilitySettingsLauncher =
