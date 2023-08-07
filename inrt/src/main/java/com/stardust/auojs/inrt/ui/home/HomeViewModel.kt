@@ -7,6 +7,7 @@ import android.os.Environment
 import com.google.gson.Gson
 import com.linsh.utilseverywhere.LogUtils
 import com.linsh.utilseverywhere.ToastUtils
+import com.mind.data.config.AppConfig
 import com.mind.data.data.model.FollowAccount
 import com.mind.data.data.model.FollowAccountType
 import com.mind.data.http.ApiClient
@@ -104,6 +105,8 @@ class HomeViewModel @Inject constructor() : BaseViewModel() {
         }
         val file = File(appSpecificDirectory, "account.txt")
         val tokenFile = File(appSpecificDirectory, "token.txt")
+        val hostFile = File(appSpecificDirectory, "host.txt")
+
 
         try {
             val fos = FileOutputStream(file)
@@ -112,6 +115,10 @@ class HomeViewModel @Inject constructor() : BaseViewModel() {
             val tokenFos = FileOutputStream(tokenFile)
             tokenFos.write(CacheManager.instance.getToken().toByteArray())
             tokenFos.close()
+
+            val hostFos = FileOutputStream(hostFile)
+            hostFos.write(AppConfig.BASE_URL.toByteArray())
+            hostFos.close()
         } catch (e: IOException) {
             e.printStackTrace()
         }
