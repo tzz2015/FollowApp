@@ -96,11 +96,11 @@ android {
     productFlavors {
         create("common") {
             buildConfigField("boolean", "isMarket", "false")
-            manifestPlaceholders.putAll(mapOf("appName" to "inrt"))
+            manifestPlaceholders.putAll(mapOf("appName" to "互关助手"))
             ndk.abiFilters.addAll(listOf("armeabi-v7a", "arm64-v8a"))
         }
         create("template") {
-            manifestPlaceholders.putAll(mapOf("appName" to "template"))
+            manifestPlaceholders.putAll(mapOf("appName" to "互关助手"))
             packagingOptions.apply {
                 jniLibs.excludes.add("*")
             }

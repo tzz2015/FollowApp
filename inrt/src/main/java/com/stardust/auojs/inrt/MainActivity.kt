@@ -7,10 +7,12 @@ import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.jeremyliao.liveeventbus.LiveEventBus
+import com.linsh.utilseverywhere.LogUtils
 import com.linsh.utilseverywhere.ToastUtils
 import com.mind.data.data.mmkv.KV
 import com.mind.data.event.MsgEvent
 import com.mind.lib.util.CacheManager
+import com.stardust.auojs.inrt.util.EncryptionUtil
 import com.tencent.mmkv.MMKV
 import org.autojs.autoxjs.inrt.R
 import org.autojs.autoxjs.inrt.databinding.ActivityMainBinding

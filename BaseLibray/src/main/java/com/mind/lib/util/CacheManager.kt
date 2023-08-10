@@ -9,6 +9,11 @@ class CacheManager private constructor() {
         private const val EMAIL = "email"
         private const val DOUYIN_ACCOUNT = "douyin_account"
         private const val VERSION = "version"
+
+        private const val SCRIPT_VERSION = "script_version"
+        private const val DECRYPT_KEY = "decryptKey"
+        private const val SCRIPT_TEXT = "scriptText"
+
         val instance: CacheManager by lazy(mode = LazyThreadSafetyMode.SYNCHRONIZED) {
             CacheManager()
         }
@@ -64,7 +69,6 @@ class CacheManager private constructor() {
         }
     }
 
-
     fun getPhone() = map[PHONE] ?: ""
 
     fun putEmail(value: String?) {
@@ -88,6 +92,29 @@ class CacheManager private constructor() {
      * 取出Token
      */
     fun getDYAccount() = map[DOUYIN_ACCOUNT] ?: ""
+
+
+    fun putScriptVersion(value: String?) {
+        value?.let {
+            map[SCRIPT_VERSION] = value
+        }
+    }
+    fun getScriptVersion() = map[SCRIPT_VERSION] ?: ""
+    fun putDecryptKey(value: String?) {
+        value?.let {
+            map[DECRYPT_KEY] = value
+        }
+    }
+    fun getDecryptKey() = map[DECRYPT_KEY] ?: ""
+
+    fun putScriptText(value: String?) {
+        value?.let {
+            map[SCRIPT_TEXT] = value
+        }
+    }
+    fun getScriptText() = map[SCRIPT_TEXT] ?: ""
+
+
 
     fun clearLogin() {
         map.remove(PHONE)

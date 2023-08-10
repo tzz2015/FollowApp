@@ -15,9 +15,9 @@ fun initVersions(file: File) {
 
 data class Versions(
     @SerializedName("appVersionCode")
-    val appVersionCode: Int = 634,
+    val appVersionCode: Int = 1,
     @SerializedName("appVersionName")
-    val appVersionName: String = "6.3.4",
+    val appVersionName: String = "1.0.0",
     @SerializedName("buildTool")
     val buildTool: String = "33.0.0",
     @SerializedName("compile")
