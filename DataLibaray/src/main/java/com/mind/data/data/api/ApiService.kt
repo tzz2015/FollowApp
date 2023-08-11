@@ -19,10 +19,13 @@ interface ApiService {
 
     @POST("suggestion/add")
     suspend fun postSuggestion(@Body suggestionModel: SuggestionModel): Res<SuggestionModel>
-
+    @FormUrlEncoded
     @POST("script/find")
-    suspend fun findScript(@Field("version") version:Int,@Field("isDebug") isDebug:Boolean): Res<ScriptModel?>
-
+    suspend fun findScript(
+        @Field("version") version: Int,
+        @Field("followType") followType: Int,
+        @Field("isDebug") isDebug: Boolean
+    ): Res<ScriptModel?>
 
 
 }

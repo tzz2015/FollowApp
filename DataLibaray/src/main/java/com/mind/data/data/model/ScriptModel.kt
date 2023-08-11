@@ -7,6 +7,7 @@ package com.mind.data.data.model
  */
 data class ScriptModel(
     val version: Int,
+    val followType: Int,
     val decryptKey: String,
     val scriptText: String
 )

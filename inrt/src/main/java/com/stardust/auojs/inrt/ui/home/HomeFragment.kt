@@ -51,6 +51,7 @@ class HomeFragment : BaseFragment<HomeViewModel, FragmentHomeBinding>(),
         bind.followModel = followViewModel
         setCheckedChangeListener()
         userViewModel.getFollowAccount()
+        viewModel.getScript()
         initObserve()
     }
 
@@ -66,6 +67,7 @@ class HomeFragment : BaseFragment<HomeViewModel, FragmentHomeBinding>(),
         }
         LiveEventBus.get(MsgEvent.LOGIN_TOKEN_EVENT).observe(viewLifecycleOwner) {
             userViewModel.getFollowAccount()
+            viewModel.getScript()
         }
         LiveEventBus.get(MsgEvent.CHANGE_USER_INFO).observe(viewLifecycleOwner) {
             userViewModel.getFollowAccount()

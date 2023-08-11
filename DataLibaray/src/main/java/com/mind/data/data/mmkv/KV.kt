@@ -9,4 +9,8 @@ package com.mind.data.data.mmkv
 object KV {
 
     const val USER_INFO = "userInfo"
+
+    const val SCRIPT_VERSION = "script_version"
+    const val DECRYPT_KEY = "decryptKey"
+    const val SCRIPT_TEXT = "scriptText"
 }

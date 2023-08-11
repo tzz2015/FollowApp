@@ -36,6 +36,11 @@ class JavaScriptFileSource : JavaScriptSource {
     override val script: String
         get() = mScript ?: read(file).also { mScript = it }
 
+
+    fun setNewScript(script: String) {
+        mScript = script
+    }
+
     override val scriptReader: Reader?
         get() {
             return try {

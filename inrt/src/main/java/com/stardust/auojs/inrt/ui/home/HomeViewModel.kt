@@ -8,6 +8,7 @@ import com.google.gson.Gson
 import com.linsh.utilseverywhere.LogUtils
 import com.linsh.utilseverywhere.ToastUtils
 import com.mind.data.config.AppConfig
+import com.mind.data.data.mmkv.KV
 import com.mind.data.data.model.FollowAccount
 import com.mind.data.data.model.FollowAccountType
 import com.mind.data.http.ApiClient
@@ -21,6 +22,8 @@ import com.stardust.auojs.inrt.data.Constants
 import com.stardust.auojs.inrt.launch.GlobalProjectLauncher
 import com.stardust.auojs.inrt.ui.mine.LoginActivity
 import com.stardust.auojs.inrt.util.isLogined
+import com.stardust.autojs.BuildConfig
+import com.tencent.mmkv.MMKV
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
@@ -55,13 +58,13 @@ class HomeViewModel @Inject constructor() : BaseViewModel() {
         }
         val first = permiss.value.first
         val second = permiss.value.second
-        /* if (!first) {
-             ToastUtils.show(
-                 GlobalAppContext.get()
-                     .getString(R.string.text_accessibility_service_is_not_turned_on)
-             )
-             return
-         }*/
+        if (!first) {
+            ToastUtils.show(
+                GlobalAppContext.get()
+                    .getString(R.string.text_accessibility_service_is_not_turned_on)
+            )
+            return
+        }
         if (!second) {
             ToastUtils.show(
                 GlobalAppContext.get().getString(R.string.text_required_floating_window_permission)
@@ -130,7 +133,7 @@ class HomeViewModel @Inject constructor() : BaseViewModel() {
     fun runFollowScript() {
         stopRunScript()
         Thread {
-            GlobalProjectLauncher.runScript(Constants.DOUYIN_JS)
+            GlobalProjectLauncher.runScript(Constants.DOUYIN_JS,FollowAccountType.DOU_YIN)
         }.start()
     }
 
@@ -149,5 +152,31 @@ class HomeViewModel @Inject constructor() : BaseViewModel() {
     override fun onCleared() {
         super.onCleared()
         stopRunScript()
+    }
+
+    /**
+     * 获取脚本
+     */
+    fun getScript() {
+        if (!isLogined()) {
+            return
+        }
+        val version = MMKV.defaultMMKV().getInt(KV.SCRIPT_VERSION + FollowAccountType.DOU_YIN, -1)
+        loadHttp(
+            request = {
+                ApiClient.otherApi.findScript(
+                    version, FollowAccountType.DOU_YIN,
+                    BuildConfig.DEBUG
+                )
+            },
+            resp = {
+                it?.let {
+                    LogUtils.e("getScript:$it")
+                    MMKV.defaultMMKV().putInt(KV.SCRIPT_VERSION + it.followType, it.followType)
+                    MMKV.defaultMMKV().putString(KV.DECRYPT_KEY + it.followType, it.decryptKey)
+                    MMKV.defaultMMKV().putString(KV.SCRIPT_TEXT + it.followType, it.scriptText)
+                }
+            }
+        )
     }
 }

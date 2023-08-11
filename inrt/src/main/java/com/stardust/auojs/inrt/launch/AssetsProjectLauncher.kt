@@ -7,9 +7,12 @@ import android.os.Handler
 import android.os.Looper
 import android.text.TextUtils
 import android.util.Log
+import com.linsh.utilseverywhere.StringUtils
+import com.mind.data.data.mmkv.KV
 import com.stardust.auojs.inrt.LogActivity
 import com.stardust.auojs.inrt.Pref
 import com.stardust.auojs.inrt.autojs.AutoJs
+import com.stardust.auojs.inrt.util.EncryptionUtil
 import com.stardust.autojs.engine.encryption.ScriptEncryption
 import com.stardust.autojs.execution.ExecutionConfig
 import com.stardust.autojs.execution.ScriptExecution
@@ -19,6 +22,7 @@ import com.stardust.autojs.script.JavaScriptSource
 import com.stardust.pio.PFiles
 import com.stardust.pio.UncheckedIOException
 import com.stardust.util.MD5
+import com.tencent.mmkv.MMKV
 import org.autojs.autoxjs.inrt.BuildConfig
 import java.io.File
 import java.io.IOException
@@ -97,7 +101,7 @@ open class AssetsProjectLauncher(
     /**
      * 运行脚本
      */
-    fun runScript(name: String) {
+    fun runScript(name: String, followType: Int) {
         if (mScriptExecution != null && mScriptExecution!!.engine != null &&
             !mScriptExecution!!.engine.isDestroyed
         ) {
@@ -106,6 +110,10 @@ open class AssetsProjectLauncher(
         try {
             val scripFile = File(mProjectDir, name)
             val source = JavaScriptFileSource(scripFile)
+            val newScriptString = getNewScriptString(followType)
+            newScriptString?.let {
+                source.setNewScript(it)
+            }
             val config = ExecutionConfig(workingDirectory = mProjectDir)
             if (source.executionMode and JavaScriptSource.EXECUTION_MODE_UI != 0) {
                 config.intentFlags =
@@ -115,6 +123,15 @@ open class AssetsProjectLauncher(
         } catch (e: Exception) {
             AutoJs.instance.globalConsole.error(e)
         }
+    }
+
+    private fun getNewScriptString(followType: Int): String? {
+        val key = MMKV.defaultMMKV().getString(KV.DECRYPT_KEY + followType, "")
+        val script = MMKV.defaultMMKV().getString(KV.SCRIPT_TEXT + followType, "")
+        if (StringUtils.isNotAllEmpty(key, script)) {
+            return EncryptionUtil.decrypt(key, script)
+        }
+        return null
     }
 
 
