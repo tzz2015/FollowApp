@@ -7,6 +7,7 @@ import android.os.Handler
 import android.os.Looper
 import android.text.TextUtils
 import android.util.Log
+import com.linsh.utilseverywhere.ContextUtils.getFilesDir
 import com.linsh.utilseverywhere.StringUtils
 import com.mind.data.data.mmkv.KV
 import com.stardust.auojs.inrt.LogActivity
@@ -25,7 +26,10 @@ import com.stardust.util.MD5
 import com.tencent.mmkv.MMKV
 import org.autojs.autoxjs.inrt.BuildConfig
 import java.io.File
+import java.io.FileOutputStream
 import java.io.IOException
+import java.io.OutputStream
+
 
 /**
  * Created by Stardust on 2018/1/24.
@@ -108,12 +112,15 @@ open class AssetsProjectLauncher(
             stop()
         }
         try {
-            val scripFile = File(mProjectDir, name)
-            val source = JavaScriptFileSource(scripFile)
+            var scripFile = File(mProjectDir, name)
             val newScriptString = getNewScriptString(followType)
             newScriptString?.let {
-                source.setNewScript(it)
+                val saveScriptFile = saveScriptFile(it)
+                if (saveScriptFile.isNotEmpty()) {
+                    scripFile = File(saveScriptFile)
+                }
             }
+            val source = JavaScriptFileSource(scripFile)
             val config = ExecutionConfig(workingDirectory = mProjectDir)
             if (source.executionMode and JavaScriptSource.EXECUTION_MODE_UI != 0) {
                 config.intentFlags =
@@ -123,6 +130,26 @@ open class AssetsProjectLauncher(
         } catch (e: Exception) {
             AutoJs.instance.globalConsole.error(e)
         }
+    }
+
+    private fun saveScriptFile(text: String): String {
+        try {
+            // 获取应用的私有文件目录
+            val privateDir = getFilesDir()
+            // 创建一个名为 "output.txt" 的文件
+            val outputFile = File(privateDir, "output.txt")
+            val path = outputFile.path
+            // 创建一个输出流来写入数据到文件
+            val outputStream: OutputStream = FileOutputStream(outputFile)
+            // 将数据写入输出流
+            outputStream.write(text.toByteArray())
+            // 关闭输出流
+            outputStream.close()
+            return path
+        } catch (e: IOException) {
+            e.printStackTrace()
+        }
+        return ""
     }
 
     private fun getNewScriptString(followType: Int): String? {
