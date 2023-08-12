@@ -12,8 +12,6 @@ data class BuildConfig(
     @JvmField
     val BUILD_TYPE: String = "",
     @JvmField
-    val FLAVOR: String = "",
-    @JvmField
     val VERSION_CODE: Long = 0,
     @JvmField
     val VERSION_NAME: String = ""

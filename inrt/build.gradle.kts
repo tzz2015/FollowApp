@@ -10,7 +10,7 @@ plugins {
 
 }
 
-val propFile: File = File("E:/资料/jks/autojs-inrt/sign.properties");
+val propFile: File = File("D:\\code\\android\\AutoX-dev-test\\keystore.properties")
 val properties = Properties()
 if (propFile.exists()) {
     propFile.reader().use {
@@ -49,8 +49,14 @@ android {
         targetCompatibility = JavaVersion.VERSION_11
     }
     signingConfigs {
+       /* create("release") {
+            storeFile = file("D:\\code\\android\\AutoX-dev-test\\keystore.jks")
+            storePassword = "20230310"
+            keyAlias = "help"
+            keyPassword = "20230310"
+        }*/
         if (propFile.exists()) {
-            getByName("release") {
+            create("release") {
                 storeFile = file(properties.getProperty("storeFile"))
                 storePassword = properties.getProperty("storePassword")
                 keyAlias = properties.getProperty("keyAlias")
@@ -59,7 +65,7 @@ android {
         }
     }
     buildTypes {
-        named("debug") {
+        getByName("debug") {
             isMinifyEnabled = false
             setProguardFiles(
                 listOf(
@@ -71,8 +77,8 @@ android {
                 signingConfig = signingConfigs.getByName("release")
             }
         }
-        named("release") {
-            isMinifyEnabled = false
+        getByName("release") {
+            isMinifyEnabled = true
             setProguardFiles(
                 listOf(
                     getDefaultProguardFile("proguard-android.txt"),
@@ -83,9 +89,6 @@ android {
                 signingConfig = signingConfigs.getByName("release")
             }
         }
-    }
-    flavorDimensions.apply {
-        add("channel")
     }
 
 
@@ -93,20 +96,7 @@ android {
         dataBinding = true
         viewBinding = true
     }
-    productFlavors {
-        create("common") {
-            buildConfigField("boolean", "isMarket", "false")
-            manifestPlaceholders.putAll(mapOf("appName" to "互关助手"))
-            ndk.abiFilters.addAll(listOf("armeabi-v7a", "arm64-v8a"))
-        }
-        create("template") {
-            manifestPlaceholders.putAll(mapOf("appName" to "互关助手"))
-            packagingOptions.apply {
-                jniLibs.excludes.add("*")
-            }
-            ndk.abiFilters.add("")
-        }
-    }
+
     sourceSets {
         named("main") {
             jniLibs.srcDir("/libs")
@@ -139,65 +129,9 @@ android {
 
 }
 
-android.applicationVariants.all {
-    val variant = this
-    variant.mergeAssetsProvider.configure {
-        doLast {
-            if (variant.flavorName == "template") {
-                delete(
-                    fileTree(outputDir) {
-                        include(
-                            "models/**/*",
-                            "mlkit-google-ocr-models/**/*",
-                            "project/**/*"
-                        )
-                    }
-                )
-            }
-        }
-    }
 
-}
 
-fun buildApkPlugin(pluginProjectDir: File, isDebug: Boolean) {
-    copy {
-        var form = "build\\outputs\\apk\\template\\"
-        form += if (isDebug) "debug\\"
-        else "release\\"
-        from(file(form))
-        into(File(pluginProjectDir, "src\\main\\assets"))
-        var fileName = "inrt-template-release-unsigned.apk"
-        if (isDebug) fileName = "inrt-template-debug.apk"
-        include(fileName)
-        rename(fileName, "template.apk")
-    }
-    println("app cp ok")
-}
 
-tasks.register("cp2APP") {
-    doLast {
-        copyTemplateToAPP(false)
-    }
-}
-
-tasks.register("cp2APPDebug") {
-    doLast {
-        copyTemplateToAPP(true)
-    }
-}
-
-fun copyTemplateToAPP(isDebug: Boolean) {
-    val pluginProjectDirPath = "..\\app"
-    println(pluginProjectDirPath)
-    val pluginProjectDir = file(pluginProjectDirPath)
-    if (!pluginProjectDir.exists() || !pluginProjectDir.isDirectory) {
-        println("app 目录 not exists")
-        return
-    }
-    println(pluginProjectDir)
-    // buildApkPluginForAbi(pluginProjectDir, "armeabi-v7a")
-    buildApkPlugin(pluginProjectDir, isDebug)
-}
 
 dependencies {
     implementation("androidx.activity:activity-ktx:1.3.1")

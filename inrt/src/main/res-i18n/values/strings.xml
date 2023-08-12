@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name" translatable="false">inrt</string>
+    <string name="app_name" translatable="false">互粉助手</string>
     <string name="key_use_volume_control_running" translatable="false">key_use_volume_control_running</string>
     <string name="key_keep_running_with_foreground_service" translatable="false">key_keep_running_with_foreground_service</string>
     <string name="key_enable_accessibility_service_by_root" translatable="false">key_enable_accessibility_service_by_root</string>

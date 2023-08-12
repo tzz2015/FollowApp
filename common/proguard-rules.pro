@@ -30,3 +30,4 @@
 -keep class kotlin.reflect.jvm.internal.impl.serialization.deserialization.builtins.BuiltInsLoaderImpl{
     *;
 }
+-keep class com.stardust.app.* {*;}

@@ -175,6 +175,10 @@ open class UserViewModel @Inject constructor() : BaseViewModel() {
      * 绑定抖音号或者修改抖音号
      */
     fun toBindAccount() {
+        if(!isLogined()){
+            toLogin()
+            return
+        }
         if (StringUtils.isAllNotEmpty(CacheManager.instance.getDYAccount())) {
             toUpdateActivity(FunctionType.CHANGE_DOEYIN_ACCOUNT)
         } else {

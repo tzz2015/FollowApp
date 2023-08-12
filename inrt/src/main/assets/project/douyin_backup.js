@@ -1,21 +1,21 @@
-app.launchApp(\n"抖音\n");
-auto(\n"fast\n");
+app.launchApp("抖音");
+auto("fast");
 threads.start(function () {
     console.show();
-    console.setTitle(\n"中文\n", \n"#ff11ee00\n", 30);
+    console.setTitle("中文", "#ff11ee00", 30);
     console.setCanInput(false);
 });
-var token = readFile(\n"token.txt\n")
-var accountText = readFile(\n"account.txt\n")
-var host = readFile(\n"host.txt\n")
-var editText = className(\n"EditText\n").findOne()
+var token = readFile("token.txt")
+var accountText = readFile("account.txt")
+var host = readFile("host.txt")
+var editText = className("EditText").findOne()
 if (editText != null) {
-    console.log(\n"找到输入框\n")
+    console.log("找到输入框")
     // console.log(token)
     // console.log(accountText)
     toFollow()
 } else {
-    console.log(\n"未找打输入框，请打开搜索界面\n")
+    console.log("未找打输入框，请打开搜索界面")
 }
 
 /**
@@ -31,20 +31,20 @@ function toFollow() {
             }
         }
     } catch (e) {
-        log(\n"JSON 解析出错：\n" + e);
+        log("JSON 解析出错：" + e);
     }
 }
 
 function doFollow(followAccount) {
     editText.setText(followAccount.account);
-    var searchBtn = desc(\n"搜索\n").findOne()
+    var searchBtn = desc("搜索").findOne()
     if (searchBtn != null) {
-        console.log(\n"找到搜索按钮\n")
+        console.log("找到搜索按钮")
         clickView(searchBtn)
-        console.log(\n"点击搜索用户:\n" + followAccount.account)
+        console.log("点击搜索用户:" + followAccount.account)
         clickFollowBtn(followAccount)
     } else {
-        console.log(\n"找不到搜索按钮\n")
+        console.log("找不到搜索按钮")
     }
 
 }
@@ -55,13 +55,13 @@ function clickFollowBtn(followAccount) {
         clickView(followBtn)
         sleep(500)
         if (addFollow(followAccount)) {
-            console.log(\n"关注用户:\n" + followAccount.account)
+            console.log("关注用户:" + followAccount.account)
         } else {
-            console.warn(\n"关注失败\n")
+            console.warn("关注失败")
             clickView(followBtn)
         }
     } else {
-        console.warn(\n"无效用户:\n" + followAccount.account)
+        console.warn("无效用户:" + followAccount.account)
     }
 
 }
@@ -69,13 +69,13 @@ function clickFollowBtn(followAccount) {
 function findFollowBtn() {
     sleep(2000)
     // 查找关注按钮
-    var followList = desc(\n"关注按钮\n").find();
+    var followList = desc("关注按钮").find();
     // 已经关注的按钮
-    var followedList = desc(\n"已关注按钮\n").find();
-    console.log(\n"找到关注按钮：\n" + followList.length + \n"--已关注：\n" + followedList.length)
+    var followedList = desc("已关注按钮").find();
+    console.log("找到关注按钮：" + followList.length + "--已关注：" + followedList.length)
     if (followList.length == 0 && followedList.length == 0) {
         sleep(1000)
-        followList = desc(\n"关注按钮\n").find();
+        followList = desc("关注按钮").find();
     }
     if (followList.length > 0) {
         return followList[0]
@@ -88,10 +88,10 @@ function findFollowBtn() {
  * @param account
  */
 function check(followAccount) {
-    var url = host + \n"followAccount/followCheck\n";
+    var url = host + "followAccount/followCheck";
     var data = {
-        \n"userId\n": followAccount.userId,
-        \n"followType\n": followAccount.followType
+        "userId": followAccount.userId,
+        "followType": followAccount.followType
     };
     var resp = postRequst(url, data)
     if (resp == true) {
@@ -107,11 +107,11 @@ function check(followAccount) {
  * @returns {boolean}
  */
 function addFollow(followAccount) {
-    var url = host + \n"follow/add\n";
+    var url = host + "follow/add";
     var data = {
-        \n"followUserId\n": followAccount.userId,
-        \n"followType\n": followAccount.followType,
-        \n"followAccount\n": followAccount.account
+        "followUserId": followAccount.userId,
+        "followType": followAccount.followType,
+        "followAccount": followAccount.account
     };
     var resp = postRequst(url, data)
     if (resp != null) {
@@ -127,7 +127,7 @@ function addFollow(followAccount) {
  * @returns {string}
  */
 function readFile(name) {
-    var path = \n"/sdcard/follow/\n" + name
+    var path = "/sdcard/follow/" + name
     var file = open(path)
     var text = file.read().trim()
     file.close()
@@ -137,14 +137,14 @@ function readFile(name) {
 function postRequst(url, data) {
     // 定义请求头
     var headers = {
-        \n"Content-Type\n": \n"application/json\n", // 设置请求头为 JSON 类型
-        \n"token\n": token
+        "Content-Type": "application/json", // 设置请求头为 JSON 类型
+        "token": token
     };
 
     // 配置请求选项
     var options = {
         url: url,
-        method: \n"POST\n",
+        method: "POST",
         headers: headers,
         body: data
     };
@@ -163,13 +163,21 @@ function postRequst(url, data) {
 
 function clickView(view) {
     if (view == null) {
-        console.log(\n"view未空，不能点击\n")
+        console.log("view未空，不能点击")
         return
     }
     var bounds = view.bounds()
     // console.log(view.bounds())
     var centerX = bounds.left + (bounds.right - bounds.left) / 2
     var centerY = bounds.top + (bounds.bottom - bounds.top) / 2
-    // console.log(\n"搜索按钮中心：\n" + centerX + \n",\n" + centerY)
+    // console.log("搜索按钮中心：" + centerX + "," + centerY)
     click(centerX, centerY)
 }
+
+
+
+
+
+
+
+
