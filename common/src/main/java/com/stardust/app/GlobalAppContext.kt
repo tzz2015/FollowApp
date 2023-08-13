@@ -6,12 +6,13 @@ import android.content.Context
 import android.graphics.drawable.Drawable
 import android.os.Handler
 import android.os.Looper
-import android.util.Log
+import androidx.annotation.Keep
 import androidx.core.content.ContextCompat
 
 /**
  * Created by Stardust on 2018/3/22.
  */
+@Keep
 object GlobalAppContext {
 
     const val TAG = "GlobalAppContext"
@@ -22,7 +23,6 @@ object GlobalAppContext {
 
     @JvmStatic
     var buildConfig: BuildConfig? = null
-        private set
 
     @JvmStatic
     val autojsPackageName
@@ -30,6 +30,14 @@ object GlobalAppContext {
 
     fun set(a: Application, buildConfig: BuildConfig?) {
         this.buildConfig = buildConfig
+        if (this.buildConfig == null) {
+            this.buildConfig =
+                BuildConfig(
+                    APPLICATION_ID = "org.autojs.autoxjs.follow",
+                    VERSION_CODE = 0,
+                    VERSION_NAME = "0"
+                )
+        }
         sHandler = Handler(Looper.getMainLooper())
         sApplicationContext = a.applicationContext
     }

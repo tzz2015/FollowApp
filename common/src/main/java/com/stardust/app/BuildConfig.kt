@@ -26,13 +26,13 @@ data class BuildConfig(
                 constructor?.let {
                     val paramList = mutableListOf<Any>()
                     for (field in constructor.parameters) {
-                        field.name?.let {
-                            try {
+                        try {
+                            field.name?.let {
                                 val param = rawBuildConfigClass.getField(it)?.get(null)
                                 param?.let { paramList.add(param) }
-                            } catch (e: Exception) {
-                                e.printStackTrace()
                             }
+                        } catch (e: Exception) {
+                            e.printStackTrace()
                         }
                     }
                     return constructor.call(*paramList.toTypedArray())
