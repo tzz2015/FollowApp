@@ -293,16 +293,19 @@ open class UserViewModel @Inject constructor() : BaseViewModel() {
 
     }
 
-    fun copyClipboard() {
+    fun copyDevAccount() {
+        copyToClipboard("103447750")
+    }
+
+    fun copyToClipboard(text: String) {
         try {
             // 获取剪切板管理器实例
             val clipboardManager: ClipboardManager =
                 GlobalAppContext.get()
                     .getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
             // 要复制的文本
-            val textToCopy = "103447750"
             // 创建一个 ClipData 对象，包含要复制的文本
-            val clipData: ClipData = ClipData.newPlainText("label", textToCopy)
+            val clipData: ClipData = ClipData.newPlainText("label", text)
             // 将 ClipData 对象放入剪切板
             clipboardManager.setPrimaryClip(clipData)
             ToastUtils.show("已复制开发者抖音号到剪切板")

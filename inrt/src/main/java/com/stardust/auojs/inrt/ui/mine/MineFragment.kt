@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import com.jeremyliao.liveeventbus.LiveEventBus
+import com.linsh.utilseverywhere.ToastUtils
 import com.mind.data.event.MsgEvent
 import com.mind.lib.base.BaseFragment
 import com.mind.lib.base.ViewModelConfig
@@ -71,7 +72,7 @@ class MineFragment : BaseFragment<MineViewModel, FragmentMineBinding>() {
             textView?.text = item
             bind.flFunction.addView(view)
             view.setOnClickListener {
-                viewModel.clickFunction(item,userViewModel)
+                viewModel.clickFunction(item, userViewModel)
             }
         }
     }
@@ -82,6 +83,11 @@ class MineFragment : BaseFragment<MineViewModel, FragmentMineBinding>() {
         bind.recyclerView.adapter = mAdapter
         viewModel.announcementList.observe(viewLifecycleOwner) {
             mAdapter.setNewInstance(it)
+        }
+        mAdapter.setOnItemClickListener { _, _, position ->
+            val item = mAdapter.getItem(position)
+            userViewModel.copyToClipboard(item.content)
+            ToastUtils.show("复制到剪切板")
         }
     }
 
