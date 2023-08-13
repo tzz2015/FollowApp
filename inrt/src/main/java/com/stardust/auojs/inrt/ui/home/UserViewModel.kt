@@ -143,7 +143,8 @@ open class UserViewModel @Inject constructor() : BaseViewModel() {
                 ToastUtils.show("登录成功")
                 LogUtils.e(it.toString())
                 loginResult.postValue(it)
-            }
+            },
+            isShowDialog = true
         )
     }
 
@@ -228,7 +229,8 @@ open class UserViewModel @Inject constructor() : BaseViewModel() {
             resp = {
                 ToastUtils.show("注册成功")
                 isRegisterSuccess.postValue(true)
-            }
+            },
+            isShowDialog = true
         )
     }
 
@@ -257,7 +259,8 @@ open class UserViewModel @Inject constructor() : BaseViewModel() {
             },
             err = {
                 view.isEnabled = true
-            }
+            },
+            isShowDialog = true
         )
 
     }
@@ -288,7 +291,8 @@ open class UserViewModel @Inject constructor() : BaseViewModel() {
             resp = {
                 ToastUtils.show("修改成功")
                 isChangePswSuccess.postValue(true)
-            }
+            },
+            isShowDialog = true
         )
 
     }

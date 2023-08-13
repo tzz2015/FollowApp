@@ -26,9 +26,9 @@ data class BuildConfig(
             for (field in constructor.parameters) {
                 field.name?.let {
                     try {
-                        val param = rawBuildConfigClass.getField(it).get(null)
+                        val param = rawBuildConfigClass.getField(it)?.get(null)
                         param?.let { paramList.add(param) }
-                    } catch (e: NoSuchFieldException) {
+                    } catch (e: Exception) {
                         e.printStackTrace()
                     }
                 }

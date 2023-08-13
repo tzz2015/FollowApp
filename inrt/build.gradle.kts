@@ -22,7 +22,7 @@ android {
     buildToolsVersion = versions.buildTool
     compileSdk = 33
     defaultConfig {
-        applicationId = "org.autojs.autoxjs.inrt"
+        applicationId = "org.autojs.autoxjs.follow"
         minSdk = versions.mini
         targetSdk = versions.target
         versionCode = versions.appVersionCode
@@ -78,7 +78,7 @@ android {
             }
         }
         getByName("release") {
-            isMinifyEnabled = true
+            isMinifyEnabled = false
             setProguardFiles(
                 listOf(
                     getDefaultProguardFile("proguard-android.txt"),
