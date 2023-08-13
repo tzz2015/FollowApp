@@ -1,6 +1,7 @@
 package com.mind.lib.base
 
 
+import androidx.annotation.Keep
 import androidx.lifecycle.LifecycleObserver
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -20,6 +21,7 @@ import kotlinx.coroutines.launch
  * Created by rui
  *  on 2021/8/2
  */
+@Keep
 open class BaseViewModel : ViewModel(), LifecycleObserver {
 
     val uiChange: UIChange by lazy { UIChange() }
@@ -40,6 +42,7 @@ open class BaseViewModel : ViewModel(), LifecycleObserver {
      * @param isLoadMore 是否加载更多
      * @param isStatueLayout 是否有加载替换的布局
      */
+    @Keep
     fun <T> launchFlow(
         request: suspend CoroutineScope.() -> Res<T>,
         resp: (T?) -> Unit,
@@ -74,7 +77,7 @@ open class BaseViewModel : ViewModel(), LifecycleObserver {
 
     }
 
-
+    @Keep
     fun <T> launchData(
         request: suspend CoroutineScope.() -> Res<T>,
         resp: (T?) -> Unit,
@@ -113,6 +116,7 @@ open class BaseViewModel : ViewModel(), LifecycleObserver {
     /**
      * 请求之前操作
      */
+    @Keep
     private fun prepare(
         isShowDialog: Boolean,
         isStatueLayout: Boolean
@@ -140,6 +144,7 @@ open class BaseViewModel : ViewModel(), LifecycleObserver {
     /**
      * 异常处理
      */
+    @Keep
     private fun catch(
         error: (String) -> Unit,
         t: Throwable,
@@ -161,6 +166,7 @@ open class BaseViewModel : ViewModel(), LifecycleObserver {
     /**
      * 最终执行
      */
+    @Keep
     private fun end(isShowDialog: Boolean, complete: () -> Unit) {
         if (isShowDialog) {
             uiChange.dismissDialog.call()
@@ -171,6 +177,7 @@ open class BaseViewModel : ViewModel(), LifecycleObserver {
     /**
      * 响应处理
      */
+    @Keep
     private fun <T> handlerCode(
         it: Res<T>,
         isStatueLayout: Boolean,
@@ -199,6 +206,7 @@ open class BaseViewModel : ViewModel(), LifecycleObserver {
     /**
      * 数据库插入
      */
+    @Keep
     fun launchRoom(
         block: suspend CoroutineScope.() -> Unit,
         //   error: () -> Unit = {}
@@ -217,7 +225,7 @@ open class BaseViewModel : ViewModel(), LifecycleObserver {
 
 
     // -----------------------------------------------------------------------------------------------
-
+    @Keep
     fun <T> loadHttp(
         request: suspend CoroutineScope.() -> Res<T>,  // 请求
         resp: (T?) -> Unit,                            // 相应
@@ -230,12 +238,12 @@ open class BaseViewModel : ViewModel(), LifecycleObserver {
             try {
                 showDialog(isShowDialog)
                 val data = request()                   // 请求+响应数据
-                if (data.code == ResCode.OK.getCode()) {    //业务响应成功
-                    resp(data.data)                   // 响应回调
-                } else {
-                    showToast(isShowDialog, data.message)
-                    err(data.message)                       // 业务失败处理
-                }
+                 if (data.code == ResCode.OK.getCode()) {    //业务响应成功
+                     resp(data.data)                   // 响应回调
+                 } else {
+                     showToast(isShowDialog, data.message)
+                     err(data.message)                       // 业务失败处理
+                 }
             } catch (e: Exception) {
                 err(e.message ?: "")  //可根据具体异常显示具体错误提示   异常处理
                 showToast(isShowToast, e.message ?: "")

@@ -1,8 +1,9 @@
 package com.mind.lib.data.net
 
+import androidx.annotation.Keep
 
 
-
+@Keep
 enum class ResCode(private val code: Int, private val message:String) {
 
     /**

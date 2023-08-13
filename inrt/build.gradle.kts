@@ -49,12 +49,6 @@ android {
         targetCompatibility = JavaVersion.VERSION_11
     }
     signingConfigs {
-       /* create("release") {
-            storeFile = file("D:\\code\\android\\AutoX-dev-test\\keystore.jks")
-            storePassword = "20230310"
-            keyAlias = "help"
-            keyPassword = "20230310"
-        }*/
         if (propFile.exists()) {
             create("release") {
                 storeFile = file(properties.getProperty("storeFile"))
@@ -78,7 +72,8 @@ android {
             }
         }
         getByName("release") {
-            isMinifyEnabled = false
+            isMinifyEnabled = true
+            isShrinkResources = true
             setProguardFiles(
                 listOf(
                     getDefaultProguardFile("proguard-android.txt"),

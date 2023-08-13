@@ -1,6 +1,8 @@
 package com.mind.lib.util
 
+import androidx.annotation.Keep
 
+@Keep
 class CacheManager private constructor() {
 
     companion object {

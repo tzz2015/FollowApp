@@ -2,18 +2,18 @@ package com.stardust.autojs.execution;
 
 import android.util.Log;
 
+import androidx.annotation.Keep;
+
 import com.stardust.autojs.engine.ScriptEngine;
 import com.stardust.autojs.engine.ScriptEngineManager;
 import com.stardust.autojs.runtime.exception.ScriptInterruptedException;
 import com.stardust.autojs.script.ScriptSource;
 import com.stardust.lang.ThreadCompat;
 
-import org.mozilla.javascript.ContinuationPending;
-
 /**
  * Created by Stardust on 2017/5/1.
  */
-
+@Keep
 public class RunnableScriptExecution extends ScriptExecution.AbstractScriptExecution implements Runnable {
 
     private static final String TAG = "RunnableJSExecution";

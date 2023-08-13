@@ -5,6 +5,8 @@ import android.os.Build;
 import android.os.Looper;
 import android.util.Log;
 
+import androidx.annotation.Keep;
+
 import com.stardust.app.GlobalAppContext;
 import com.stardust.autojs.R;
 import com.stardust.autojs.ScriptEngineService;
@@ -70,12 +72,12 @@ import java.util.concurrent.ConcurrentHashMap;
 /**
  * Created by Stardust on 2017/1/27.
  */
-
+@Keep
 public class ScriptRuntime {
 
     private static final String TAG = "ScriptRuntime";
 
-
+    @Keep
     public static class Builder {
         private UiHandler mUiHandler;
         private Console mConsole;

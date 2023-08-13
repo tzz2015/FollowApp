@@ -1,9 +1,11 @@
 package com.stardust.autojs.runtime;
 
+import androidx.annotation.Keep;
+
 /**
  * Created by Stardust on 2017/7/21.
  */
-
+@Keep
 public class ScriptBridges {
 
 

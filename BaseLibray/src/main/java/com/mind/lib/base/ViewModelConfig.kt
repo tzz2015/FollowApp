@@ -1,11 +1,13 @@
 package com.mind.lib.base
 
 import android.util.SparseArray
+import androidx.annotation.Keep
 
 /**
  * Created by rui
  *  on 2021/8/5
  */
+@Keep
 class ViewModelConfig(private var layout: Int) {
 
     companion object {

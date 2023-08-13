@@ -1,6 +1,7 @@
 package com.stardust.auojs.inrt.autojs
 
 import android.view.KeyEvent
+import androidx.annotation.Keep
 import com.stardust.app.GlobalAppContext
 import com.stardust.auojs.inrt.Pref
 import com.stardust.autojs.core.inputevent.InputEventObserver
@@ -11,7 +12,7 @@ import com.stardust.view.accessibility.OnKeyListener
 /**
  * Created by Stardust on 2017/8/14.
  */
-
+@Keep
 class GlobalKeyObserver internal constructor() : OnKeyListener, ShellKeyObserver.KeyListener {
     private var mVolumeDownFromShell: Boolean = false
     private var mVolumeDownFromAccessibility: Boolean = false

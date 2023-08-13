@@ -17,23 +17,30 @@ data class BuildConfig(
     val VERSION_NAME: String = ""
 ) {
     companion object {
-        fun generate(rawBuildConfigClass: Class<*>): BuildConfig {
+        fun generate(rawBuildConfigClass: Class<*>): BuildConfig? {
             if (rawBuildConfigClass.simpleName != "BuildConfig") {
                 throw Exception("please pass in build config and ignore code obfuscation!")
             }
-            val constructor = BuildConfig::class.primaryConstructor!!
-            val paramList = mutableListOf<Any>()
-            for (field in constructor.parameters) {
-                field.name?.let {
-                    try {
-                        val param = rawBuildConfigClass.getField(it)?.get(null)
-                        param?.let { paramList.add(param) }
-                    } catch (e: Exception) {
-                        e.printStackTrace()
+            try {
+                val constructor = BuildConfig::class.primaryConstructor
+                constructor?.let {
+                    val paramList = mutableListOf<Any>()
+                    for (field in constructor.parameters) {
+                        field.name?.let {
+                            try {
+                                val param = rawBuildConfigClass.getField(it)?.get(null)
+                                param?.let { paramList.add(param) }
+                            } catch (e: Exception) {
+                                e.printStackTrace()
+                            }
+                        }
                     }
+                    return constructor.call(*paramList.toTypedArray())
                 }
+            } catch (e: Exception) {
+                e.printStackTrace()
             }
-            return constructor.call(*paramList.toTypedArray())
+            return null
         }
     }
 }

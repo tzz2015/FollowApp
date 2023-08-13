@@ -2,6 +2,7 @@ package com.stardust.autojs.engine
 
 import android.util.Log
 import android.view.View
+import androidx.annotation.Keep
 import com.stardust.autojs.core.ui.ViewExtras
 import com.stardust.autojs.engine.module.AssetAndUrlModuleSourceProvider
 import com.stardust.autojs.engine.module.ScopeRequire
@@ -26,8 +27,10 @@ import java.util.concurrent.ConcurrentHashMap
 /**
  * Created by Stardust on 2017/4/2.
  */
-
+@Keep
 open class RhinoJavaScriptEngine(private val mAndroidContext: android.content.Context) : JavaScriptEngine() {
+
+
 
     val context: Context
     private val mScriptable: TopLevelScope

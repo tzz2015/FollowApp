@@ -1,5 +1,6 @@
 package com.mind.data.http
 
+import com.mind.data.BuildConfig
 import com.mind.data.config.AppConfig
 import com.mind.data.di.interceptor.RequestInterceptor
 import com.mind.data.di.interceptor.ResponseInterceptor
@@ -25,7 +26,7 @@ object RetrofitClient {
             OkHttpClient.Builder()
                 .addInterceptor(RequestInterceptor())
                 .addInterceptor(ResponseInterceptor())
-                .addInterceptor(HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY))
+                .addInterceptor(HttpLoggingInterceptor().setLevel(if (BuildConfig.DEBUG) HttpLoggingInterceptor.Level.BODY else HttpLoggingInterceptor.Level.NONE))
                 .build()
         }
             .also { _OKCLIENNT = it }

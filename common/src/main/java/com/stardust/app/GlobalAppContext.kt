@@ -21,16 +21,15 @@ object GlobalAppContext {
     private var sHandler: Handler? = null
 
     @JvmStatic
-    lateinit var buildConfig: BuildConfig
+    var buildConfig: BuildConfig? = null
         private set
 
     @JvmStatic
     val autojsPackageName
-        get() = buildConfig.APPLICATION_ID
+        get() = buildConfig?.APPLICATION_ID ?: "org.autojs.autoxjs.follow"
 
-    fun set(a: Application, buildConfig: BuildConfig) {
+    fun set(a: Application, buildConfig: BuildConfig?) {
         this.buildConfig = buildConfig
-        Log.i(TAG, buildConfig.toString())
         sHandler = Handler(Looper.getMainLooper())
         sApplicationContext = a.applicationContext
     }
