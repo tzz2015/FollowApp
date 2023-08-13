@@ -384,6 +384,7 @@
         android:usesCleartextTraffic="true"
         tools:ignore="GoogleAppIndexingWarning"
         tools:replace="android:label, android:allowBackup"
+        android:networkSecurityConfig="@xml/network_security_config"
         tools:targetApi="m">
 
         <activity

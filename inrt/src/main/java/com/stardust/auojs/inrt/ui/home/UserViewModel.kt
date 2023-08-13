@@ -1,6 +1,8 @@
 package com.stardust.auojs.inrt.ui.home
 
 import android.app.Activity
+import android.content.ClipData
+import android.content.ClipboardManager
 import android.content.Context
 import android.content.Intent
 import android.util.Log
@@ -103,8 +105,7 @@ open class UserViewModel @Inject constructor() : BaseViewModel() {
                 resp = {
                     Log.e(javaClass.name, "getFollowAccount:${it.toString()} ")
                     it?.let { followAccount.postValue(it) }
-                },
-                isShowDialog = false
+                }
             )
         }
 
@@ -175,7 +176,7 @@ open class UserViewModel @Inject constructor() : BaseViewModel() {
      * 绑定抖音号或者修改抖音号
      */
     fun toBindAccount() {
-        if(!isLogined()){
+        if (!isLogined()) {
             toLogin()
             return
         }
@@ -292,5 +293,21 @@ open class UserViewModel @Inject constructor() : BaseViewModel() {
 
     }
 
-
+    fun copyClipboard() {
+        try {
+            // 获取剪切板管理器实例
+            val clipboardManager: ClipboardManager =
+                GlobalAppContext.get()
+                    .getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
+            // 要复制的文本
+            val textToCopy = "103447750"
+            // 创建一个 ClipData 对象，包含要复制的文本
+            val clipData: ClipData = ClipData.newPlainText("label", textToCopy)
+            // 将 ClipData 对象放入剪切板
+            clipboardManager.setPrimaryClip(clipData)
+            ToastUtils.show("已复制开发者抖音号到剪切板")
+        } catch (e: Exception) {
+            e.printStackTrace()
+        }
+    }
 }

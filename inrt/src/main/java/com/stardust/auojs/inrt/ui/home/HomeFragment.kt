@@ -50,9 +50,16 @@ class HomeFragment : BaseFragment<HomeViewModel, FragmentHomeBinding>(),
         bind.userModel = userViewModel
         bind.followModel = followViewModel
         setCheckedChangeListener()
+        initData()
+        viewModel.checkNeedPermissions()
+        initObserve()
+    }
+
+    private fun initData() {
+        userViewModel.getTotalUserCount()
+        followViewModel.getTotalFollowCount()
         userViewModel.getFollowAccount()
         viewModel.getScript()
-        initObserve()
     }
 
     private fun initObserve() {
@@ -78,13 +85,6 @@ class HomeFragment : BaseFragment<HomeViewModel, FragmentHomeBinding>(),
             }
         }
         bind.btnFollow.setOnClickListener { requestPermissions() }
-    }
-
-    override fun onResume() {
-        super.onResume()
-        viewModel.checkNeedPermissions()
-        userViewModel.getTotalUserCount()
-        followViewModel.getTotalFollowCount()
     }
 
 
