@@ -1,5 +1,7 @@
 package com.stardust.autojs.execution;
 
+import androidx.annotation.Keep;
+
 import com.stardust.autojs.script.ScriptSource;
 
 import java.io.Serializable;
@@ -7,6 +9,7 @@ import java.io.Serializable;
 /**
  * Created by Stardust on 2017/4/2.
  */
+@Keep
 
 public class ScriptExecutionTask implements Serializable {
 

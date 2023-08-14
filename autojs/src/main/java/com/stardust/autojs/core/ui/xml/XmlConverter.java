@@ -1,9 +1,5 @@
 package com.stardust.autojs.core.ui.xml;
 
-import androidx.appcompat.widget.Toolbar;
-import androidx.cardview.widget.CardView;
-import androidx.drawerlayout.widget.DrawerLayout;
-
 import android.widget.CheckBox;
 import android.widget.DatePicker;
 import android.widget.ProgressBar;
@@ -12,6 +8,10 @@ import android.widget.RadioGroup;
 import android.widget.ScrollView;
 import android.widget.SeekBar;
 import android.widget.TimePicker;
+
+import androidx.annotation.Keep;
+import androidx.cardview.widget.CardView;
+import androidx.drawerlayout.widget.DrawerLayout;
 
 import com.google.android.material.appbar.AppBarLayout;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -48,7 +48,7 @@ import javax.xml.parsers.ParserConfigurationException;
 /**
  * Created by Stardust on 2017/5/14.
  */
-
+@Keep
 public class XmlConverter {
 
     private static final NodeHandler NODE_HANDLER = new NodeHandler.NameRouter()

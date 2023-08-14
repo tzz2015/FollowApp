@@ -1,14 +1,16 @@
 package com.stardust.autojs.runtime.api;
 
-import androidx.annotation.Nullable;
 import android.util.Log;
+
+import androidx.annotation.Keep;
+import androidx.annotation.Nullable;
 
 import com.stardust.autojs.runtime.exception.ScriptException;
 
 /**
  * Created by Stardust on 2017/5/1.
  */
-
+@Keep
 public abstract class AbstractConsole implements Console {
 
     private boolean isAutoHide =false;

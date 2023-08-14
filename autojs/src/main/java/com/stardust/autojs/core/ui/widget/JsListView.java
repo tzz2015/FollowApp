@@ -4,23 +4,23 @@ import android.content.Context;
 import android.view.View;
 import android.view.ViewGroup;
 
+import androidx.annotation.Keep;
+import androidx.recyclerview.widget.RecyclerView;
+
 import com.stardust.autojs.core.ui.ViewExtras;
 import com.stardust.autojs.core.ui.inflater.DynamicLayoutInflater;
 import com.stardust.autojs.core.ui.nativeview.NativeView;
 import com.stardust.autojs.core.ui.nativeview.ViewPrototype;
 import com.stardust.autojs.runtime.ScriptRuntime;
+import com.stardust.autojs.workground.WrapContentLinearLayoutManager;
 
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
-import com.stardust.autojs.workground.WrapContentLinearLayoutManager;
-
-import androidx.recyclerview.widget.RecyclerView;
-
 /**
  * Created by Stardust on 2018/3/28.
  */
-
+@Keep
 public class JsListView extends RecyclerView {
 
     public interface DataSourceAdapter {

@@ -1,5 +1,8 @@
 package com.stardust.autojs.core.cypto
 
+import androidx.annotation.Keep
+
+@Keep
 object Crypto {
 
     @JvmStatic

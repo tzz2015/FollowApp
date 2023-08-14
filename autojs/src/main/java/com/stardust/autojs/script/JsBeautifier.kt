@@ -2,6 +2,7 @@ package com.stardust.autojs.script
 
 import android.content.Context
 import android.view.View
+import androidx.annotation.Keep
 import com.stardust.autojs.engine.module.AssetAndUrlModuleSourceProvider
 import com.stardust.pio.PFiles.join
 import com.stardust.pio.PFiles.read
@@ -18,6 +19,7 @@ import java.util.concurrent.Executors
 /**
  * Created by Stardust on 2017/4/12.
  */
+@Keep
 class JsBeautifier(view: View, beautifyJsDirPath: String) {
     interface Callback {
         fun onSuccess(beautifiedCode: String?)

@@ -1,14 +1,14 @@
 package com.stardust.autojs.rhino.continuation
 
+import androidx.annotation.Keep
 import com.stardust.autojs.core.looper.Timer
-import com.stardust.autojs.core.looper.TimerThread
 import com.stardust.autojs.rhino.AutoJsContext
 import com.stardust.autojs.runtime.ScriptRuntime
-
 import org.mozilla.javascript.Context
 import org.mozilla.javascript.ContinuationPending
 import org.mozilla.javascript.Scriptable
 
+@Keep
 class Continuation(val context: AutoJsContext, val scope: Scriptable, private val mTimer: Timer) {
     var pending: ContinuationPending? = null
         private set

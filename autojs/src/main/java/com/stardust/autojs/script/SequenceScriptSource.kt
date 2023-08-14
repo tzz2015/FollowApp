@@ -1,5 +1,6 @@
 package com.stardust.autojs.script
 
+import androidx.annotation.Keep
 import com.stardust.io.ConcatReader
 import java.io.Reader
 import java.io.StringReader
@@ -7,6 +8,7 @@ import java.io.StringReader
 /**
  * Created by Stardust on 2017/4/2.
  */
+@Keep
 class SequenceScriptSource(
     name: String?,
     private val mFirstScriptSource: JavaScriptSource,

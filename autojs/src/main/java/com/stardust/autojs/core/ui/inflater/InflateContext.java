@@ -1,7 +1,9 @@
 package com.stardust.autojs.core.ui.inflater;
 
-import java.util.HashMap;
+import androidx.annotation.Keep;
 
+import java.util.HashMap;
+@Keep
 public class InflateContext {
 
     private HashMap<String, Object> mProperties;

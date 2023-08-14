@@ -1,5 +1,7 @@
 package com.stardust.autojs.core.http;
 
+import androidx.annotation.Keep;
+
 import java.net.SocketTimeoutException;
 import java.util.Collections;
 import java.util.concurrent.TimeUnit;
@@ -8,11 +10,7 @@ import okhttp3.Interceptor;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
-
-/**
- * Created by Stardust on 2018/4/11.
- */
-
+@Keep
 public class MutableOkHttp extends OkHttpClient {
 
     private OkHttpClient mOkHttpClient;

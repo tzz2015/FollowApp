@@ -3,10 +3,11 @@ package com.stardust.autojs.core.permission;
 import android.app.Activity;
 import android.os.Build;
 import android.os.Bundle;
+
+import androidx.annotation.Keep;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.annotation.RequiresApi;
-
+@Keep
 public class PermissionRequestActivity extends Activity {
 
     public static final String EXTRA_PERMISSIONS = "permissions";

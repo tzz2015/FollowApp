@@ -2,6 +2,8 @@ package com.stardust.autojs.runtime.api;
 
 import android.webkit.JavascriptInterface;
 
+import androidx.annotation.Keep;
+
 import com.stardust.autojs.runtime.ScriptRuntime;
 import com.stardust.pio.PFileInterface;
 import com.stardust.pio.PFiles;
@@ -14,7 +16,7 @@ import java.io.IOException;
 /**
  * Created by Stardust on 2018/1/23.
  */
-
+@Keep
 public class Files {
 
     private final ScriptRuntime mRuntime;

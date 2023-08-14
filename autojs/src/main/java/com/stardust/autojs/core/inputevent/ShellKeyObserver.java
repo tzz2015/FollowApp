@@ -1,15 +1,12 @@
 package com.stardust.autojs.core.inputevent;
 
-import androidx.annotation.NonNull;
 import android.util.SparseArray;
+
+import androidx.annotation.NonNull;
 
 import java.lang.reflect.Field;
 import java.util.HashMap;
 import java.util.Map;
-
-/**
- * Created by Stardust on 2017/5/4.
- */
 
 public class ShellKeyObserver implements InputEventObserver.InputEventListener {
 

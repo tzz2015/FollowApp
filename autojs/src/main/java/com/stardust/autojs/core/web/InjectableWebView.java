@@ -4,6 +4,8 @@ import android.content.Context;
 import android.webkit.ValueCallback;
 import android.webkit.WebView;
 
+import androidx.annotation.Keep;
+
 import com.stardust.autojs.annotation.ScriptClass;
 import com.stardust.autojs.annotation.ScriptInterface;
 
@@ -12,6 +14,7 @@ import org.mozilla.javascript.Scriptable;
 /**
  * Created by Stardust on 2017/4/1.
  */
+@Keep
 @ScriptClass
 public class InjectableWebView extends WebView {
 

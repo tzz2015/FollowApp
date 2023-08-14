@@ -14,6 +14,7 @@ import com.stardust.enhancedfloaty.gesture.DragGesture
 import com.stardust.enhancedfloaty.gesture.ResizeGesture
 import com.stardust.enhancedfloaty.util.WindowTypeCompat
 import com.stardust.lib.R.layout
+import androidx.annotation.Keep
 
 
 class BaseResizableFloatyWindow(context: Context, viewSupplier: ViewSupplier) : FloatyWindow() {

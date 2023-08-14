@@ -5,6 +5,8 @@ import android.os.Build;
 import android.view.ViewGroup;
 import android.widget.ProgressBar;
 
+import androidx.annotation.Keep;
+
 import com.stardust.autojs.core.ui.inflater.ResourceParser;
 import com.stardust.autojs.core.ui.inflater.util.Colors;
 import com.stardust.autojs.core.ui.inflater.util.Dimensions;
@@ -14,7 +16,7 @@ import java.util.Map;
 /**
  * Created by Stardust on 2017/11/29.
  */
-
+@Keep
 public class ProgressBarInflater<V extends ProgressBar> extends BaseViewInflater<V> {
 
     public ProgressBarInflater(ResourceParser resourceParser) {

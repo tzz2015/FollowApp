@@ -11,11 +11,11 @@ import android.media.Image;
 import android.os.Build;
 import android.os.Handler;
 import android.os.Looper;
-
-import androidx.annotation.RequiresApi;
-
 import android.util.Base64;
 import android.view.Gravity;
+
+import androidx.annotation.Keep;
+import androidx.annotation.RequiresApi;
 
 import com.stardust.autojs.annotation.ScriptVariable;
 import com.stardust.autojs.core.image.ColorFinder;
@@ -44,13 +44,12 @@ import java.io.InputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.Arrays;
-import java.util.Collections;
-import java.util.Comparator;
 import java.util.List;
 
 /**
  * Created by Stardust on 2017/5/20.
  */
+@Keep
 @RequiresApi(api = Build.VERSION_CODES.KITKAT)
 public class Images {
 

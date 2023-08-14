@@ -2,6 +2,8 @@ package com.stardust.autojs.core.ui.widget;
 
 import android.content.Context;
 import android.content.res.Resources;
+
+import androidx.annotation.Keep;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import android.util.AttributeSet;
@@ -10,7 +12,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
-
+@Keep
 public class JsSpinner extends androidx.appcompat.widget.AppCompatSpinner {
 
     private float mTextSize = -1;

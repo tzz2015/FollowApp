@@ -7,10 +7,10 @@ import android.content.ComponentName
 import android.content.Context
 import android.content.pm.PackageManager
 import android.os.Build
-import android.os.SystemClock
 import android.util.Log
 import android.view.accessibility.AccessibilityEvent
 import android.view.accessibility.AccessibilityWindowInfo
+import androidx.annotation.Keep
 import androidx.annotation.RequiresApi
 import com.stardust.app.isOpPermissionGranted
 import com.stardust.autojs.core.util.Shell
@@ -20,7 +20,7 @@ import java.util.regex.Pattern
 /**
  * Created by Stardust on 2017/3/9.
  */
-
+@Keep
 class ActivityInfoProvider(private val context: Context) : AccessibilityDelegate {
 
     private val mPackageManager: PackageManager = context.packageManager

@@ -4,8 +4,10 @@ import android.content.Context;
 import android.preference.PreferenceManager;
 import android.util.Log;
 
-import com.stardust.autojs.core.util.ProcessShell;
+import androidx.annotation.Keep;
+
 import com.stardust.autojs.core.inputevent.InputDevices;
+import com.stardust.autojs.core.util.ProcessShell;
 import com.stardust.autojs.runtime.exception.ScriptException;
 import com.stardust.autojs.runtime.exception.ScriptInterruptedException;
 import com.stardust.autojs.script.AutoFileSource;
@@ -22,7 +24,7 @@ import java.util.regex.Pattern;
 /**
  * Created by Stardust on 2017/8/1.
  */
-
+@Keep
 public class RootAutomatorEngine extends ScriptEngine.AbstractScriptEngine<AutoFileSource> {
 
     public static final int VERSION = 1;

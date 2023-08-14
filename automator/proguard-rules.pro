@@ -23,3 +23,7 @@
 # If you keep the line number information, uncomment this to
 # hide the original source file key.
 #-renamesourcefileattribute SourceFile
+-keep class  com.stardust.automator.**{*;}
+-keep class  com.stardust.notification.**{*;}
+-keep class  com.stardust.view.**{*;}
+

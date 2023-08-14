@@ -1,8 +1,9 @@
 package com.stardust.autojs.core.inputevent;
 
 import android.content.Context;
-import androidx.annotation.NonNull;
 import android.text.TextUtils;
+
+import androidx.annotation.NonNull;
 
 import com.stardust.autojs.core.record.inputevent.EventFormatException;
 import com.stardust.autojs.core.util.Shell;
@@ -10,10 +11,6 @@ import com.stardust.autojs.core.util.Shell;
 import java.util.concurrent.CopyOnWriteArrayList;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-
-/**
- * Created by Stardust on 2017/8/4.
- */
 
 public class InputEventObserver {
 

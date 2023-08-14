@@ -1,5 +1,7 @@
 package com.stardust.autojs.core.boardcast;
 
+import androidx.annotation.Keep;
+
 import com.stardust.autojs.core.eventloop.EventEmitter;
 import com.stardust.autojs.core.looper.Timer;
 import com.stardust.autojs.runtime.ScriptBridges;
@@ -7,7 +9,7 @@ import com.stardust.autojs.runtime.ScriptBridges;
 /**
  * Created by Stardust on 2018/4/1.
  */
-
+@Keep
 public class BroadcastEmitter extends EventEmitter {
 
     public BroadcastEmitter(ScriptBridges bridges, Timer timer) {

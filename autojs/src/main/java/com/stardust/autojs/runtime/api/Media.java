@@ -5,6 +5,8 @@ import android.media.MediaPlayer;
 import android.media.MediaScannerConnection;
 import android.net.Uri;
 
+import androidx.annotation.Keep;
+
 import com.stardust.autojs.runtime.ScriptRuntime;
 import com.stardust.pio.UncheckedIOException;
 import com.stardust.util.MimeTypes;
@@ -14,7 +16,7 @@ import java.io.IOException;
 /**
  * Created by Stardust on 2018/2/12.
  */
-
+@Keep
 public class Media implements MediaScannerConnection.MediaScannerConnectionClient {
 
     private MediaScannerConnection mScannerConnection;

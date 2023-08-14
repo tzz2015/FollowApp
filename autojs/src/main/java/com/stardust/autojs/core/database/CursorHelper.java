@@ -2,6 +2,9 @@ package com.stardust.autojs.core.database;
 
 import android.database.Cursor;
 
+import androidx.annotation.Keep;
+
+@Keep
 public class CursorHelper {
 
 

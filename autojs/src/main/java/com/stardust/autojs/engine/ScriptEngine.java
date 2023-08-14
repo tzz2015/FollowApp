@@ -1,11 +1,11 @@
 package com.stardust.autojs.engine;
 
 import androidx.annotation.CallSuper;
+import androidx.annotation.Keep;
 
 import com.stardust.autojs.execution.ScriptExecution;
 import com.stardust.autojs.script.ScriptSource;
 
-import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.atomic.AtomicInteger;
@@ -20,7 +20,7 @@ import java.util.concurrent.atomic.AtomicInteger;
  * <p>
  * If you want to stop the engine in other threads, you should call {@link ScriptEngine#forceStop()}.
  */
-
+@Keep
 public interface ScriptEngine<S extends ScriptSource> {
 
 
@@ -65,7 +65,7 @@ public interface ScriptEngine<S extends ScriptSource> {
     interface OnDestroyListener {
         void onDestroy(ScriptEngine engine);
     }
-
+    @Keep
     abstract class AbstractScriptEngine<S extends ScriptSource> implements ScriptEngine<S> {
 
 

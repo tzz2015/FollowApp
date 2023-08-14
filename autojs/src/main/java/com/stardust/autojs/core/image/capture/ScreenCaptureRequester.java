@@ -10,10 +10,6 @@ import androidx.annotation.RequiresApi;
 
 import com.stardust.app.OnActivityResultDelegate;
 
-/**
- * Created by Stardust on 2017/5/17.
- */
-
 public interface ScreenCaptureRequester {
 
     void cancel();

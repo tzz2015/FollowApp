@@ -1,10 +1,11 @@
 package com.stardust.autojs.rhino
 
+import androidx.annotation.Keep
 import org.mozilla.javascript.Context
 import org.mozilla.javascript.ContextFactory
 import org.mozilla.javascript.ContinuationPending
 import org.mozilla.javascript.Scriptable
-
+@Keep
 class AutoJsContext(factory: ContextFactory?) : Context(factory) {
 
     private val mContinuations = HashSet<Any>()

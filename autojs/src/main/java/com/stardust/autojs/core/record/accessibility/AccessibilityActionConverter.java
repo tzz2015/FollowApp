@@ -6,6 +6,8 @@ import android.util.SparseArray;
 import android.view.accessibility.AccessibilityEvent;
 import android.view.accessibility.AccessibilityNodeInfo;
 
+import androidx.annotation.Keep;
+
 import com.stardust.automator.UiObject;
 import com.stardust.automator.simple_action.FilterAction;
 import com.stardust.util.SparseArrayEntries;
@@ -20,7 +22,7 @@ import java.util.List;
 /**
  * Created by Stardust on 2017/2/14.
  */
-
+@Keep
 public class AccessibilityActionConverter {
 
     private static final SparseArray<EventToScriptConverter> CONVERTER_MAP = new SparseArrayEntries<EventToScriptConverter>()

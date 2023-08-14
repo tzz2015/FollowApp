@@ -5,10 +5,6 @@ import com.stardust.lang.ThreadCompat;
 
 import java.util.Map;
 
-/**
- * Created by Stardust on 2017/12/28.
- */
-
 public class MainThreadProxy {
 
     private final Thread mThread;

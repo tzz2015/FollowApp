@@ -1,6 +1,7 @@
 package com.stardust.autojs.script
 
 import android.util.Log
+import androidx.annotation.Keep
 import com.stardust.autojs.rhino.TokenStream
 import com.stardust.util.MapBuilder
 import org.mozilla.javascript.Token
@@ -10,6 +11,7 @@ import java.io.StringReader
 /**
  * Created by Stardust on 2017/8/2.
  */
+@Keep
 abstract class JavaScriptSource(name: String) : ScriptSource(name) {
     private var mExecutionMode = -1
     abstract val script: String

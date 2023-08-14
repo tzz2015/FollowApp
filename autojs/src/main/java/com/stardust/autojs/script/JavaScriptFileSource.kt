@@ -1,5 +1,6 @@
 package com.stardust.autojs.script
 
+import androidx.annotation.Keep
 import com.stardust.autojs.script.EncryptedScriptFileHeader.getHeaderFlags
 import com.stardust.pio.PFiles.read
 import com.stardust.pio.UncheckedIOException
@@ -10,6 +11,7 @@ import java.io.Reader
 /**
  * Created by Stardust on 2017/4/2.
  */
+@Keep
 class JavaScriptFileSource : JavaScriptSource {
     var file: File
         private set

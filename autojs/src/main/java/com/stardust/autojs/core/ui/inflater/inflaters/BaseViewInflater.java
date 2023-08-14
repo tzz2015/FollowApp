@@ -3,9 +3,6 @@ package com.stardust.autojs.core.ui.inflater.inflaters;
 import android.content.res.ColorStateList;
 import android.graphics.PorterDuff;
 import android.os.Build;
-
-import androidx.annotation.Nullable;
-
 import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,13 +11,15 @@ import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 
+import androidx.annotation.Keep;
+import androidx.annotation.Nullable;
 
 import com.stardust.autojs.core.ui.ViewExtras;
 import com.stardust.autojs.core.ui.attribute.ViewAttributes;
 import com.stardust.autojs.core.ui.inflater.DynamicLayoutInflater;
 import com.stardust.autojs.core.ui.inflater.ResourceParser;
-import com.stardust.autojs.core.ui.inflater.ViewInflater;
 import com.stardust.autojs.core.ui.inflater.ViewCreator;
+import com.stardust.autojs.core.ui.inflater.ViewInflater;
 import com.stardust.autojs.core.ui.inflater.util.Colors;
 import com.stardust.autojs.core.ui.inflater.util.Dimensions;
 import com.stardust.autojs.core.ui.inflater.util.Drawables;
@@ -38,7 +37,7 @@ import java.util.Map;
 /**
  * Created by Stardust on 2017/11/3.
  */
-
+@Keep
 public class BaseViewInflater<V extends View> implements ViewInflater<V> {
 
     private static final String LOG_TAG = "BaseViewInflater";

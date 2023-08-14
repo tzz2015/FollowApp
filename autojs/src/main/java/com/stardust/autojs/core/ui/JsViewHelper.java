@@ -1,8 +1,10 @@
 package com.stardust.autojs.core.ui;
 
-import androidx.annotation.Nullable;
 import android.view.View;
 import android.view.ViewGroup;
+
+import androidx.annotation.Keep;
+import androidx.annotation.Nullable;
 
 import com.stardust.autojs.core.ui.inflater.util.Ids;
 
@@ -10,7 +12,7 @@ import com.stardust.autojs.core.ui.inflater.util.Ids;
 /**
  * Created by Stardust on 2017/5/14.
  */
-
+@Keep
 public class JsViewHelper {
 
     @Nullable

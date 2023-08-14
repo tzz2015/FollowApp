@@ -2,7 +2,6 @@ package com.stardust.autojs.core.eventloop;
 
 import androidx.annotation.NonNull;
 
-
 import com.stardust.autojs.core.looper.Timer;
 import com.stardust.autojs.runtime.ScriptBridges;
 import com.stardust.autojs.runtime.exception.ScriptException;
@@ -13,10 +12,6 @@ import java.util.Iterator;
 import java.util.Map;
 import java.util.TooManyListenersException;
 import java.util.concurrent.CopyOnWriteArrayList;
-
-/**
- * Created by Stardust on 2017/7/19.
- */
 
 public class EventEmitter {
 

@@ -2,10 +2,12 @@ package com.stardust.autojs.core.database;
 
 import android.database.Cursor;
 
+import androidx.annotation.Keep;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
-
+@Keep
 public class DatabaseResultSet {
 
 

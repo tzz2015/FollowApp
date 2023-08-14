@@ -3,6 +3,8 @@ package com.stardust.autojs.core.ui;
 import android.util.Log;
 import android.view.View;
 
+import androidx.annotation.Keep;
+
 import com.stardust.autojs.R;
 import com.stardust.autojs.core.ui.attribute.ViewAttributes;
 import com.stardust.autojs.core.ui.attribute.ViewAttributesFactory;
@@ -11,7 +13,7 @@ import com.stardust.autojs.core.ui.nativeview.NativeView;
 import com.stardust.autojs.runtime.ScriptRuntime;
 
 import org.mozilla.javascript.Scriptable;
-
+@Keep
 public class ViewExtras {
 
     private static final String LOG_TAG = "ViewExtras";

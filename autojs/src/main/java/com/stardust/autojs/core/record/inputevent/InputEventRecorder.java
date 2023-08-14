@@ -1,5 +1,6 @@
 package com.stardust.autojs.core.record.inputevent;
 
+import androidx.annotation.Keep;
 import androidx.annotation.NonNull;
 
 import com.stardust.autojs.core.inputevent.InputEventObserver;
@@ -11,7 +12,7 @@ import java.util.regex.Pattern;
 /**
  * Created by Stardust on 2017/3/7.
  */
-
+@Keep
 public abstract class InputEventRecorder extends Recorder.AbstractRecorder implements InputEventObserver.InputEventListener {
 
 

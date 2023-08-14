@@ -1,5 +1,7 @@
 package com.stardust.autojs.core.console;
 
+import androidx.annotation.Keep;
+
 import com.stardust.util.UiHandler;
 
 import org.apache.log4j.Level;
@@ -14,7 +16,7 @@ import java.util.Locale;
 /**
  * Created by Stardust on 2017/10/22.
  */
-
+@Keep
 public class GlobalConsole extends ConsoleImpl {
     private static final String LOG_tAG = "GlobalConsole";
     private static final SimpleDateFormat DATE_FORMAT = new SimpleDateFormat("HH:mm:ss.SSS", Locale.getDefault());

@@ -1,8 +1,8 @@
 package com.stardust.autojs.engine.encryption
 
-import android.util.Log
+import androidx.annotation.Keep
 import com.stardust.util.AdvancedEncryptionStandard
-
+@Keep
 object ScriptEncryption{
     var mKey: String = ""
     var mInitVector: String = ""

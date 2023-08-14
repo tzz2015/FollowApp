@@ -3,6 +3,8 @@ package org.mozilla.javascript;
 import android.os.Looper;
 import android.util.Log;
 
+import androidx.annotation.Keep;
+
 import com.stardust.autojs.engine.RhinoJavaScriptEngine;
 
 import org.mozilla.javascript.jdk18.VMBridge_jdk18;
@@ -11,7 +13,7 @@ import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
-
+@Keep
 public class VMBridge_custom extends VMBridge_jdk18 {
 
     private static final String LOG_TAG = "VMBridge_custom";

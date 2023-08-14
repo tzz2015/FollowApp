@@ -1,16 +1,16 @@
 package com.stardust.autojs.core.ui.widget;
 
 import android.content.Context;
-
 import android.util.AttributeSet;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.stardust.autojs.core.ui.inflater.ShouldCallOnFinishInflate;
-
+import androidx.annotation.Keep;
 import androidx.viewpager.widget.PagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 
+import com.stardust.autojs.core.ui.inflater.ShouldCallOnFinishInflate;
+@Keep
 public class JsViewPager extends ViewPager implements ShouldCallOnFinishInflate {
 
     private String[] mTitles;

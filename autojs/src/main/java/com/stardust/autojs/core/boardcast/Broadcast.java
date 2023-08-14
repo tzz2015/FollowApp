@@ -1,11 +1,13 @@
 package com.stardust.autojs.core.boardcast;
 
+import androidx.annotation.Keep;
+
 import java.util.concurrent.CopyOnWriteArrayList;
 
 /**
  * Created by Stardust on 2018/4/1.
  */
-
+@Keep
 public class Broadcast {
 
     private static CopyOnWriteArrayList<BroadcastEmitter> sEventEmitters = new CopyOnWriteArrayList<>();

@@ -2,11 +2,8 @@ package com.stardust.autojs.core.image;
 
 import android.graphics.Color;
 import android.os.Build;
-import androidx.annotation.RequiresApi;
 
-/**
- * Created by Stardust on 2017/12/31.
- */
+import androidx.annotation.RequiresApi;
 
 public class Colors {
 

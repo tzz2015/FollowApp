@@ -1,7 +1,8 @@
 package com.stardust.autojs.core.util
 
-import com.stardust.autojs.core.internal.Functions
+import androidx.annotation.Keep
 
+@Keep
 class ScriptPromiseAdapter {
 
     interface Callback {

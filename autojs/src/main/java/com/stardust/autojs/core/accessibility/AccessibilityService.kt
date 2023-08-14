@@ -2,9 +2,10 @@ package com.stardust.autojs.core.accessibility
 
 import android.accessibilityservice.AccessibilityServiceInfo
 import android.os.Build
+import androidx.annotation.Keep
 import com.stardust.autojs.core.pref.Pref
 import com.stardust.view.accessibility.AccessibilityService
-
+@Keep
 class AccessibilityService : AccessibilityService() {
 
     override fun onServiceConnected() {

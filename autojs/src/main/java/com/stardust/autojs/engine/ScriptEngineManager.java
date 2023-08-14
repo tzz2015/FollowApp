@@ -1,6 +1,8 @@
 package com.stardust.autojs.engine;
 
 import android.content.Context;
+
+import androidx.annotation.Keep;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
@@ -16,7 +18,7 @@ import java.util.Set;
 /**
  * Created by Stardust on 2017/1/27.
  */
-
+@Keep
 public class ScriptEngineManager {
 
     public interface EngineLifecycleCallback {

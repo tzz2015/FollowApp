@@ -1,8 +1,10 @@
 package com.stardust.autojs.rhino;
 
+import androidx.annotation.Keep;
+
 import org.mozilla.javascript.NativeJavaObject;
 import org.mozilla.javascript.Scriptable;
-
+@Keep
 public class BindingNativeJavaObject extends NativeJavaObject {
 
     public BindingNativeJavaObject() {

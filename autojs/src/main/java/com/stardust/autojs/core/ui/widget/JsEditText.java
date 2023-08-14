@@ -3,14 +3,16 @@ package com.stardust.autojs.core.ui.widget;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.os.Build;
-import androidx.annotation.RequiresApi;
 import android.util.AttributeSet;
 import android.widget.EditText;
+
+import androidx.annotation.Keep;
+import androidx.annotation.RequiresApi;
 
 /**
  * Created by Stardust on 2017/5/15.
  */
-
+@Keep
 @SuppressLint("AppCompatCustomView")
 public class JsEditText extends EditText {
     public JsEditText(Context context) {

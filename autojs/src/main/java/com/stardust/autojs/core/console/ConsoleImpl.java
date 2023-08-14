@@ -2,13 +2,14 @@ package com.stardust.autojs.core.console;
 
 import android.content.Context;
 import android.content.Intent;
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-
 import android.graphics.Color;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.WindowManager;
+
+import androidx.annotation.Keep;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 
 import com.stardust.autojs.R;
 import com.stardust.autojs.annotation.ScriptInterface;
@@ -31,7 +32,7 @@ import java.util.concurrent.atomic.AtomicInteger;
 /**
  * Created by Stardust on 2017/5/2.
  */
-
+@Keep
 public class ConsoleImpl extends AbstractConsole {
 
     private int maxLines=-1;

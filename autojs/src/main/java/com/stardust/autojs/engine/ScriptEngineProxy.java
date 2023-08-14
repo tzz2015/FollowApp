@@ -1,11 +1,13 @@
 package com.stardust.autojs.engine;
 
+import androidx.annotation.Keep;
+
 import com.stardust.autojs.script.ScriptSource;
 
 /**
  * Created by Stardust on 2018/3/17.
  */
-
+@Keep
 public class ScriptEngineProxy<S extends ScriptSource> implements ScriptEngine<S> {
 
     private final ScriptEngine<S> mScriptEngine;

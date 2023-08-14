@@ -1,15 +1,13 @@
 package com.stardust.autojs.util;
 
-import android.util.Log;
-
-import com.stardust.autojs.core.util.ProcessShell;
+import androidx.annotation.Keep;
 
 import java.lang.reflect.Field;
 
 /**
  * Created by Stardust on 2017/8/3.
  */
-
+@Keep
 public class ProcessUtils {
 
 

@@ -1,8 +1,9 @@
 package com.stardust.autojs.util;
 
-import org.mozilla.javascript.typedarrays.NativeArrayBuffer;
-import org.mozilla.javascript.typedarrays.NativeUint8Array;
+import androidx.annotation.Keep;
 
+import org.mozilla.javascript.typedarrays.NativeArrayBuffer;
+@Keep
 public class ArrayBufferUtil {
     public static byte[] getBytes(NativeArrayBuffer arrayBuffer) {
         return arrayBuffer.getBuffer();

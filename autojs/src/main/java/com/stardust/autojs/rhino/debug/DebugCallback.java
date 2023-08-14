@@ -1,5 +1,8 @@
 package com.stardust.autojs.rhino.debug;
 
+import androidx.annotation.Keep;
+
+@Keep
 public interface DebugCallback {
 
     /**

@@ -1,9 +1,10 @@
 package com.stardust.autojs.core.ui.inflater;
 
-import androidx.annotation.Nullable;
 import android.view.View;
 import android.view.ViewGroup;
 
+import androidx.annotation.Keep;
+import androidx.annotation.Nullable;
 
 import org.w3c.dom.Node;
 
@@ -13,7 +14,7 @@ import java.util.Map;
  * Created by Stardust on 2017/11/3.
  */
 
-
+@Keep
 public interface ViewInflater<V extends View> {
 
     boolean setAttr(V view, String attrName, String value, ViewGroup parent, Map<String, String> attrs);

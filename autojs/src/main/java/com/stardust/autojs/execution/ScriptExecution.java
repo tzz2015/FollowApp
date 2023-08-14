@@ -1,15 +1,16 @@
 package com.stardust.autojs.execution;
 
+import androidx.annotation.Keep;
+
 import com.stardust.autojs.engine.ScriptEngine;
-import com.stardust.autojs.runtime.ScriptRuntime;
 import com.stardust.autojs.script.ScriptSource;
 
-import java.util.Objects;
 import java.util.concurrent.atomic.AtomicInteger;
 
 /**
  * Created by Stardust on 2017/4/3.
  */
+@Keep
 
 public interface ScriptExecution {
 

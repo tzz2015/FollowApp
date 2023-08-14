@@ -2,17 +2,19 @@ package com.stardust.autojs.core.ui.widget;
 
 import android.content.Context;
 import android.os.Build;
-import androidx.annotation.RequiresApi;
 import android.util.AttributeSet;
 import android.view.View;
 import android.widget.RelativeLayout;
+
+import androidx.annotation.Keep;
+import androidx.annotation.RequiresApi;
 
 import com.stardust.autojs.core.ui.JsViewHelper;
 
 /**
  * Created by Stardust on 2017/5/14.
  */
-
+@Keep
 public class JsRelativeLayout extends RelativeLayout {
     public JsRelativeLayout(Context context) {
         super(context);

@@ -2,6 +2,9 @@ package com.stardust.autojs.core.ui.attribute;
 
 import android.view.View;
 
+import androidx.annotation.Keep;
+
+@Keep
 public interface ViewAttributeDelegate {
 
     interface ViewAttributeGetter {

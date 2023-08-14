@@ -5,6 +5,8 @@ import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
+
+import androidx.annotation.Keep;
 import androidx.annotation.NonNull;
 
 import com.stardust.autojs.core.eventloop.EventEmitter;
@@ -21,7 +23,7 @@ import java.util.Set;
 /**
  * Created by Stardust on 2018/2/5.
  */
-
+@Keep
 public class Sensors extends EventEmitter implements Loopers.LooperQuitHandler {
 
 

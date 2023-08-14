@@ -1,5 +1,7 @@
 package com.stardust.autojs.runtime.api;
 
+import androidx.annotation.Keep;
+
 import com.stardust.autojs.ScriptEngineService;
 import com.stardust.autojs.engine.JavaScriptEngine;
 import com.stardust.autojs.execution.ExecutionConfig;
@@ -12,7 +14,7 @@ import com.stardust.autojs.script.StringScriptSource;
 /**
  * Created by Stardust on 2017/8/4.
  */
-
+@Keep
 public class Engines {
 
     private ScriptEngineService mEngineService;

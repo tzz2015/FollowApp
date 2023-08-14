@@ -1,5 +1,7 @@
 package com.stardust.autojs.rhino;
 
+import androidx.annotation.Keep;
+
 import org.mozilla.javascript.Context;
 import org.mozilla.javascript.NativeFunction;
 import org.mozilla.javascript.NativeJavaObject;
@@ -10,7 +12,7 @@ import org.mozilla.javascript.UniqueTag;
 /**
  * Created by Stardust on 2017/12/6.
  */
-
+@Keep
 public class ProxyJavaObject extends NativeJavaObject {
 
     private NativeFunction mGetter;

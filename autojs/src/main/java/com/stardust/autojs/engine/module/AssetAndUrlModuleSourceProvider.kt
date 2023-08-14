@@ -3,6 +3,7 @@ package com.stardust.autojs.engine.module
 import android.content.ContentResolver
 import android.content.Context
 import android.net.Uri
+import androidx.annotation.Keep
 import com.google.gson.Gson
 import okhttp3.OkHttpClient
 import okhttp3.Request
@@ -12,7 +13,7 @@ import java.io.File
 import java.io.InputStream
 import java.io.InputStreamReader
 import java.net.URI
-
+@Keep
 class AssetAndUrlModuleSourceProvider(
     context: Context,
     assetDirPath: String,

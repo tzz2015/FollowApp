@@ -1,10 +1,12 @@
 package com.stardust.autojs.script
 
+import androidx.annotation.Keep
 import java.io.File
 
 /**
  * Created by Stardust on 2017/8/2.
  */
+@Keep
 class AutoFileSource(val file: File) : ScriptSource(
     file.nameWithoutExtension
 ) {

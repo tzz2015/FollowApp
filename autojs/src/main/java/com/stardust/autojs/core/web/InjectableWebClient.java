@@ -9,6 +9,7 @@ import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 
+import androidx.annotation.Keep;
 
 import com.stardust.autojs.runtime.exception.ScriptInterruptedException;
 
@@ -21,7 +22,7 @@ import java.util.Queue;
 /**
  * Created by Stardust on 2017/4/1.
  */
-
+@Keep
 public class InjectableWebClient extends WebViewClient {
 
     private static final String TAG = "InjectableWebClient";

@@ -7,6 +7,8 @@ import android.view.InflateException;
 import android.view.View;
 import android.view.ViewGroup;
 
+import androidx.annotation.Keep;
+
 import com.stardust.app.GlobalAppContext;
 
 import java.util.regex.Matcher;
@@ -17,6 +19,7 @@ import java.util.regex.Pattern;
  * <p>
  * Taken from http://stackoverflow.com/questions/8343971/how-to-parse-a-dimension-string-and-convert-it-to-a-dimension-value
  */
+@Keep
 public class Dimensions {
 
     private static final ValueMapper<Integer> UNITS = new ValueMapper<Integer>("unit")

@@ -1,5 +1,6 @@
 package com.stardust.autojs.engine.module
 
+import androidx.annotation.Keep
 import org.mozilla.javascript.*
 import org.mozilla.javascript.commonjs.module.ModuleScope
 import org.mozilla.javascript.commonjs.module.ModuleScript
@@ -10,7 +11,7 @@ import java.net.URI
 import java.net.URISyntaxException
 import java.util.concurrent.ConcurrentHashMap
 
-
+@Keep
 open class ScopeRequire(
     cx: Context, private val nativeScope: Scriptable,
     private val moduleScriptProvider: ModuleScriptProvider, private val preExec: Script?,

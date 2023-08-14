@@ -2,12 +2,14 @@ package com.stardust.autojs.core.ui.inflater.util;
 
 import android.view.InflateException;
 
+import androidx.annotation.Keep;
+
 import java.util.HashMap;
 
 /**
  * Created by Stardust on 2017/11/3.
  */
-
+@Keep
 public class ValueMapper<V> {
 
     private HashMap<String, V> mHashMap = new HashMap<>();

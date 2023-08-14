@@ -4,10 +4,12 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
 
+import androidx.annotation.Keep;
+
 /**
  * Created by Stardust on 2017/12/8.
  */
-
+@Keep
 public class Config {
 
     private static Config sInstance;

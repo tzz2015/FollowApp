@@ -4,11 +4,13 @@ import android.content.Context;
 import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageManager;
 
+import androidx.annotation.Keep;
+
 import com.stardust.autojs.rhino.TopLevelScope;
 import com.stardust.autojs.runtime.ScriptRuntime;
 
 import java.lang.reflect.Method;
-
+@Keep
 public class Plugin {
 
     public static class PluginLoadException extends RuntimeException {

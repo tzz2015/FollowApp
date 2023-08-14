@@ -2,12 +2,14 @@ package com.stardust.autojs.runtime.api;
 
 import android.content.Context;
 
+import androidx.annotation.Keep;
+
 import com.stardust.autojs.core.plugin.Plugin;
 import com.stardust.autojs.runtime.ScriptRuntime;
 import com.stardust.pio.PFiles;
 
 import java.io.File;
-
+@Keep
 public class Plugins {
 
     private final Context mContext;

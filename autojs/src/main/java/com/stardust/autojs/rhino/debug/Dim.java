@@ -6,6 +6,8 @@ package com.stardust.autojs.rhino.debug;
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
+import androidx.annotation.Keep;
+
 import com.stardust.autojs.ScriptEngineService;
 import com.stardust.autojs.engine.RhinoJavaScriptEngine;
 import com.stardust.autojs.engine.ScriptEngine;
@@ -23,6 +25,7 @@ import java.net.URL;
 /**
  * Dim or Debugger Implementation for Rhino.
  */
+@Keep
 public class Dim {
 
     // Constants for instructing the debugger what action to perform

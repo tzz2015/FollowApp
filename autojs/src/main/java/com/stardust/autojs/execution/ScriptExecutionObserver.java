@@ -1,10 +1,13 @@
 package com.stardust.autojs.execution;
 
+import androidx.annotation.Keep;
+
 import java.util.concurrent.CopyOnWriteArraySet;
 
 /**
  * Created by Stardust on 2017/5/3.
  */
+@Keep
 
 public class ScriptExecutionObserver implements ScriptExecutionListener {
     private CopyOnWriteArraySet<ScriptExecutionListener> mScriptExecutionListeners = new CopyOnWriteArraySet<>();

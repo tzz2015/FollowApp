@@ -3,9 +3,11 @@ package com.stardust.autojs.core.ui.attribute;
 import android.graphics.Color;
 import android.view.View;
 
+import androidx.annotation.Keep;
+
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.stardust.autojs.core.ui.inflater.ResourceParser;
-
+@Keep
 public class FabViewAttributes extends ImageViewAttributes {
 
     public FabViewAttributes(ResourceParser resourceParser, View view) {

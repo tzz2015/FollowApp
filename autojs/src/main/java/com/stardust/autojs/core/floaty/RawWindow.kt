@@ -10,6 +10,7 @@ import com.stardust.autojs.R
 import com.stardust.enhancedfloaty.FloatyService
 import com.stardust.enhancedfloaty.FloatyWindow
 import com.stardust.enhancedfloaty.util.WindowTypeCompat
+import androidx.annotation.Keep
 
 
 class RawWindow(rawFloaty: RawFloaty, context: Context) : FloatyWindow() {

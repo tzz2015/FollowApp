@@ -1,8 +1,10 @@
 package com.stardust.autojs.core.record.inputevent;
 
 import android.content.Context;
-import androidx.annotation.NonNull;
 import android.util.Log;
+
+import androidx.annotation.Keep;
+import androidx.annotation.NonNull;
 
 import com.stardust.autojs.core.inputevent.InputEventCodes;
 import com.stardust.autojs.core.inputevent.InputEventObserver;
@@ -21,7 +23,7 @@ import java.util.Date;
 /**
  * Created by Stardust on 2017/8/2.
  */
-
+@Keep
 public class InputEventToAutoFileRecorder extends InputEventRecorder {
 
     private static final String LOG_TAG = "InputEventToAutoFileRec";

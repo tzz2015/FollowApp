@@ -20,10 +20,6 @@ import androidx.annotation.RequiresApi;
 import com.stardust.autojs.core.image.ImageWrapper;
 import com.stardust.autojs.runtime.ScriptRuntime;
 
-/**
- * Created by Stardust on 2018/3/22.
- */
-
 public class ScriptCanvas {
 
     private Canvas mCanvas;

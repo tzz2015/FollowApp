@@ -18,6 +18,8 @@ import java.util.concurrent.Executors
 /**
  * Created by Stardust on 2018/3/16.
  */
+import androidx.annotation.Keep
+
 
 @SuppressLint("ViewConstructor")
 class ScriptCanvasView(context: Context, private val mScriptRuntime: ScriptRuntime) : TextureView(context), TextureView.SurfaceTextureListener {

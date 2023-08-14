@@ -3,12 +3,14 @@ package com.stardust.autojs.core.ui.inflater.util;
 import android.content.Context;
 import android.view.View;
 
+import androidx.annotation.Keep;
+
 import com.stardust.app.GlobalAppContext;
 
 /**
  * Created by Stardust on 2017/11/5.
  */
-
+@Keep
 public class Res {
     public static int parseStyle(View view, String value) {
         return parseStyle(view.getContext(), value);

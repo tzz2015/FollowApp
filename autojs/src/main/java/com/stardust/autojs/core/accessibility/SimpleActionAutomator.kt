@@ -6,6 +6,7 @@ import android.graphics.Rect
 import android.os.Build
 import android.os.Handler
 import android.view.accessibility.AccessibilityNodeInfo
+import androidx.annotation.Keep
 import androidx.annotation.RequiresApi
 import com.stardust.autojs.annotation.ScriptInterface
 import com.stardust.autojs.runtime.ScriptRuntime
@@ -21,7 +22,7 @@ import com.stardust.util.ScreenMetrics
 /**
  * Created by Stardust on 2017/4/2.
  */
-
+@Keep
 class SimpleActionAutomator(private val mAccessibilityBridge: AccessibilityBridge, private val mScriptRuntime: ScriptRuntime) {
 
     private lateinit var mGlobalActionAutomator: GlobalActionAutomator

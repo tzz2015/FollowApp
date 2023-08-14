@@ -5,6 +5,8 @@ import android.os.Handler;
 import android.preference.PreferenceManager;
 import android.util.Log;
 
+import androidx.annotation.Keep;
+
 import com.stardust.autojs.runtime.ScriptRuntime;
 import com.stardust.autojs.runtime.api.AbstractShell;
 import com.stardust.autojs.runtime.exception.ScriptInterruptedException;
@@ -20,7 +22,7 @@ import jackpal.androidterm.util.TermSettings;
 /**
  * Created by Stardust on 2017/4/24.
  */
-
+@Keep
 public class Shell extends AbstractShell {
 
     public interface Callback {

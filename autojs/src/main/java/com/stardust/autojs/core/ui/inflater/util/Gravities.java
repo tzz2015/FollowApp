@@ -2,10 +2,12 @@ package com.stardust.autojs.core.ui.inflater.util;
 
 import android.view.Gravity;
 
+import androidx.annotation.Keep;
+
 /**
  * Created by Stardust on 2017/11/3.
  */
-
+@Keep
 public class Gravities {
 
     public static int parse(String g) {

@@ -1,10 +1,13 @@
 package com.stardust.autojs.execution;
 
+import androidx.annotation.Keep;
+
 import java.io.Serializable;
 
 /**
  * Created by Stardust on 2017/4/2.
  */
+@Keep
 
 public interface ScriptExecutionListener extends Serializable {
 

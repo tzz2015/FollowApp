@@ -7,11 +7,10 @@ import android.os.Build;
 import android.os.Handler;
 import android.os.Looper;
 import android.provider.Settings;
-
-import androidx.annotation.RequiresApi;
-
-import android.text.TextUtils;
 import android.widget.Toast;
+
+import androidx.annotation.Keep;
+import androidx.annotation.RequiresApi;
 
 import com.stardust.autojs.R;
 import com.stardust.enhancedfloaty.util.FloatingWindowPermissionUtil;
@@ -26,7 +25,7 @@ import ezy.assist.compat.SettingsCompat;
 /**
  * Created by Stardust on 2018/1/30.
  */
-
+@Keep
 public class FloatingPermission {
 
 

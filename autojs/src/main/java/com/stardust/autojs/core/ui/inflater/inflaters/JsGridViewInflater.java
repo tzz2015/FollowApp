@@ -1,9 +1,10 @@
 package com.stardust.autojs.core.ui.inflater.inflaters;
 
+import android.view.ViewGroup;
+
+import androidx.annotation.Keep;
 import androidx.annotation.Nullable;
 import androidx.recyclerview.widget.GridLayoutManager;
-
-import android.view.ViewGroup;
 
 import com.stardust.autojs.core.ui.inflater.ResourceParser;
 import com.stardust.autojs.core.ui.inflater.ViewCreator;
@@ -16,7 +17,7 @@ import java.util.Map;
 /**
  * Created by Stardust on 2018/3/30.
  */
-
+@Keep
 public class JsGridViewInflater<V extends JsGridView> extends JsListViewInflater<V> {
 
     public JsGridViewInflater(ResourceParser resourceParser, ScriptRuntime runtime) {

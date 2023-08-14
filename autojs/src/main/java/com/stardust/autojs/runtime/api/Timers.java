@@ -1,21 +1,19 @@
 package com.stardust.autojs.runtime.api;
 
-import android.os.Handler;
 import android.os.Looper;
 import android.os.SystemClock;
-import android.util.Log;
-import android.util.SparseArray;
+
+import androidx.annotation.Keep;
 
 import com.stardust.autojs.core.looper.Timer;
 import com.stardust.autojs.core.looper.TimerThread;
-import com.stardust.autojs.runtime.ScriptBridges;
 import com.stardust.autojs.runtime.ScriptRuntime;
 import com.stardust.concurrent.VolatileBox;
 
 /**
  * Created by Stardust on 2017/7/21.
  */
-
+@Keep
 public class Timers {
 
     private static final String LOG_TAG = "Timers";

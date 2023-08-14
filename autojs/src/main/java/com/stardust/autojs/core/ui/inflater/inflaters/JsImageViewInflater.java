@@ -1,8 +1,10 @@
 package com.stardust.autojs.core.ui.inflater.inflaters;
 
-import androidx.annotation.Nullable;
 import android.view.ViewGroup;
 import android.widget.ImageView.ScaleType;
+
+import androidx.annotation.Keep;
+import androidx.annotation.Nullable;
 
 import com.makeramen.roundedimageview.Corner;
 import com.stardust.autojs.core.ui.inflater.ResourceParser;
@@ -12,13 +14,12 @@ import com.stardust.autojs.core.ui.inflater.util.Dimensions;
 import com.stardust.autojs.core.ui.inflater.util.ValueMapper;
 import com.stardust.autojs.core.ui.widget.JsImageView;
 
-
 import java.util.Map;
 
 /**
  * Created by Stardust on 2017/11/30.
  */
-
+@Keep
 public class JsImageViewInflater extends ImageViewInflater<JsImageView> {
 
 

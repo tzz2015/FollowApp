@@ -2,12 +2,13 @@ package com.stardust.autojs.execution
 
 import android.os.Parcel
 import android.os.Parcelable
+import androidx.annotation.Keep
 import com.stardust.autojs.project.ScriptConfig
-import java.util.*
 
 /**
  * Created by Stardust on 2017/2/1.
  */
+@Keep
 data class ExecutionConfig(var workingDirectory: String = "",
                            var path: Array<out String> = emptyArray(),
                            var intentFlags: Int = 0,

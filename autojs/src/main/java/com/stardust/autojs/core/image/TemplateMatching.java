@@ -2,14 +2,12 @@ package com.stardust.autojs.core.image;
 
 import android.util.TimingLogger;
 
+import com.stardust.autojs.core.opencv.Mat;
 import com.stardust.autojs.core.opencv.OpenCVHelper;
 import com.stardust.util.Nath;
 
 import org.opencv.core.Core;
 import org.opencv.core.CvType;
-
-import com.stardust.autojs.core.opencv.Mat;
-
 import org.opencv.core.Point;
 import org.opencv.core.Rect;
 import org.opencv.core.Scalar;
@@ -20,11 +18,6 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
-
-
-/**
- * Created by Stardust on 2017/11/25.
- */
 
 public class TemplateMatching {
 

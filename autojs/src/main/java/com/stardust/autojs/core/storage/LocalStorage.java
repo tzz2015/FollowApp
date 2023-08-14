@@ -3,10 +3,12 @@ package com.stardust.autojs.core.storage;
 import android.content.Context;
 import android.content.SharedPreferences;
 
+import androidx.annotation.Keep;
+
 /**
  * Created by Stardust on 2017/12/3.
  */
-
+@Keep
 public class LocalStorage {
 
     private static final String NAME_PREFIX = "autojs.localstorage.";

@@ -1,6 +1,10 @@
 package com.stardust.autojs;
 
+import static com.stardust.autojs.runtime.exception.ScriptInterruptedException.causedByInterrupted;
+
 import android.content.Context;
+
+import androidx.annotation.Keep;
 import androidx.annotation.Nullable;
 
 import com.stardust.autojs.engine.JavaScriptEngine;
@@ -30,12 +34,10 @@ import java.util.LinkedHashMap;
 import java.util.LinkedHashSet;
 import java.util.Set;
 
-import static com.stardust.autojs.runtime.exception.ScriptInterruptedException.causedByInterrupted;
-
 /**
  * Created by Stardust on 2017/1/23.
  */
-
+@Keep
 public class ScriptEngineService {
 
     private static final String LOG_TAG = "ScriptEngineService";

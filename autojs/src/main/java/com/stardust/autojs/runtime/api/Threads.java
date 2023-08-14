@@ -1,5 +1,6 @@
 package com.stardust.autojs.runtime.api;
 
+import androidx.annotation.Keep;
 import androidx.annotation.NonNull;
 
 import com.stardust.autojs.core.looper.MainThreadProxy;
@@ -15,7 +16,7 @@ import java.util.concurrent.locks.ReentrantLock;
 /**
  * Created by Stardust on 2017/12/3.
  */
-
+@Keep
 public class Threads {
 
     private final HashSet<Thread> mThreads = new HashSet<>();

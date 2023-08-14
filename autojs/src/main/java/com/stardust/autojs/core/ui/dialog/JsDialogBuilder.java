@@ -1,15 +1,11 @@
 package com.stardust.autojs.core.ui.dialog;
 
 import android.content.Context;
-
-
 import android.widget.EditText;
 
-import com.afollestad.materialdialogs.DialogAction;
-import com.afollestad.materialdialogs.GravityEnum;
+import androidx.annotation.Keep;
+
 import com.afollestad.materialdialogs.MaterialDialog;
-import com.afollestad.materialdialogs.StackingBehavior;
-import com.afollestad.materialdialogs.Theme;
 import com.stardust.autojs.core.eventloop.EventEmitter;
 import com.stardust.autojs.core.looper.Loopers;
 import com.stardust.autojs.core.looper.Timer;
@@ -19,7 +15,7 @@ import com.stardust.util.UiHandler;
 /**
  * Created by Stardust on 2018/4/17.
  */
-
+@Keep
 public class JsDialogBuilder extends MaterialDialog.Builder {
 
     private final EventEmitter mEmitter;

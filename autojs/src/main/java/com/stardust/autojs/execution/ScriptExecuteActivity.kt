@@ -9,6 +9,7 @@ import android.view.KeyEvent
 import android.view.Menu
 import android.view.MenuItem
 import android.view.MotionEvent
+import androidx.annotation.Keep
 import androidx.appcompat.app.AppCompatActivity
 import com.stardust.autojs.ScriptEngineService
 import com.stardust.autojs.core.eventloop.EventEmitter
@@ -27,6 +28,8 @@ import org.mozilla.javascript.ContinuationPending
 /**
  * Created by Stardust on 2017/2/5.
  */
+@Keep
+
 class ScriptExecuteActivity : AppCompatActivity() {
     private var mResult: Any? = null
     private var mScriptEngine: ScriptEngine<*>? = null

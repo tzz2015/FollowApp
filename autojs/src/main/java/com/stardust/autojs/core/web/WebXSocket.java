@@ -1,5 +1,6 @@
 package com.stardust.autojs.core.web;
 
+import androidx.annotation.Keep;
 import androidx.annotation.NonNull;
 
 import com.stardust.autojs.core.eventloop.EventEmitter;
@@ -12,7 +13,7 @@ import okhttp3.Response;
 import okhttp3.WebSocket;
 import okhttp3.WebSocketListener;
 import okio.ByteString;
-
+@Keep
 public final class WebXSocket extends EventEmitter implements WebSocket {
     public WebSocketMessageListener mListener;
 

@@ -3,13 +3,15 @@ package com.stardust.autojs.runtime.api;
 import android.content.Context;
 import android.text.TextUtils;
 
+import androidx.annotation.Keep;
+
 import com.stardust.autojs.engine.RootAutomatorEngine;
 import com.stardust.util.ScreenMetrics;
 
 /**
  * Created by Stardust on 2017/4/24.
  */
-
+@Keep
 public abstract class AbstractShell {
 
     public static class Result {

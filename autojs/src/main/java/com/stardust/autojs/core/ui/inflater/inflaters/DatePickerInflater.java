@@ -1,12 +1,13 @@
 package com.stardust.autojs.core.ui.inflater.inflaters;
 
 import android.os.Build;
-import androidx.annotation.Nullable;
 import android.view.InflateException;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.DatePicker;
 
+import androidx.annotation.Keep;
+import androidx.annotation.Nullable;
 
 import com.stardust.autojs.R;
 import com.stardust.autojs.core.ui.inflater.ResourceParser;
@@ -20,7 +21,7 @@ import java.util.Map;
 /**
  * Created by Stardust on 2017/11/29.
  */
-
+@Keep
 public class DatePickerInflater extends BaseViewInflater<DatePicker> {
 
     private static final SimpleDateFormat DATE_FORMAT = new SimpleDateFormat("mm/dd/yyyy", Locale.getDefault());

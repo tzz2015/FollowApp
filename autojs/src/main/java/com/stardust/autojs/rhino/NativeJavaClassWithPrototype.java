@@ -1,8 +1,9 @@
 package com.stardust.autojs.rhino;
 
+import androidx.annotation.Keep;
+
 import org.mozilla.javascript.EvaluatorException;
 import org.mozilla.javascript.NativeJavaClass;
-import org.mozilla.javascript.NativeObject;
 import org.mozilla.javascript.Scriptable;
 
 import java.util.concurrent.ConcurrentHashMap;
@@ -10,7 +11,7 @@ import java.util.concurrent.ConcurrentHashMap;
 /**
  * Created by Stardust on 2018/4/4.
  */
-
+@Keep
 public class NativeJavaClassWithPrototype extends NativeJavaClass {
 
     private static final Object NULL = new Object();

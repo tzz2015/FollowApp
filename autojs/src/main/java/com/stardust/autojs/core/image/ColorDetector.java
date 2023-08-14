@@ -2,10 +2,6 @@ package com.stardust.autojs.core.image;
 
 import android.graphics.Color;
 
-/**
- * Created by Stardust on 2017/5/20.
- */
-
 public interface ColorDetector {
 
     boolean detectsColor(int red, int green, int blue);

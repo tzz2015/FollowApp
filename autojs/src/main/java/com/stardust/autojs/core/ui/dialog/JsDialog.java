@@ -11,6 +11,8 @@ import android.os.Build;
 import android.os.Bundle;
 import android.os.Looper;
 import android.os.Message;
+
+import androidx.annotation.Keep;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
@@ -50,7 +52,7 @@ import java.util.List;
 /**
  * Created by Stardust on 2018/4/17.
  */
-
+@Keep
 public class JsDialog {
 
     private final EventEmitter mEmitter;

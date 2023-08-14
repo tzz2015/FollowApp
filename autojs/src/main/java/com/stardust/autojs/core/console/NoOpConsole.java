@@ -1,5 +1,6 @@
 package com.stardust.autojs.core.console;
 
+import androidx.annotation.Keep;
 import androidx.annotation.Nullable;
 
 import com.stardust.autojs.runtime.api.Console;
@@ -7,7 +8,7 @@ import com.stardust.autojs.runtime.api.Console;
 /**
  * Created by Stardust on 2017/9/21.
  */
-
+@Keep
 public class NoOpConsole implements Console {
     @Override
     public void verbose(@Nullable Object data, Object... options) {

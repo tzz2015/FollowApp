@@ -4,9 +4,11 @@ import android.content.Context
 import android.os.Build
 import android.util.AttributeSet
 import android.webkit.*
+import androidx.annotation.Keep
 import androidx.annotation.RequiresApi
 import com.stardust.autojs.core.web.JsBridge
 
+@Keep
 open class JsWebView : WebView {
     //val events = EventEmitter()
 

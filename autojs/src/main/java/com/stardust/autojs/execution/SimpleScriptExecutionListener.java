@@ -1,8 +1,11 @@
 package com.stardust.autojs.execution;
 
+import androidx.annotation.Keep;
+
 /**
  * Created by Stardust on 2017/4/2.
  */
+@Keep
 
 public class SimpleScriptExecutionListener implements ScriptExecutionListener {
 

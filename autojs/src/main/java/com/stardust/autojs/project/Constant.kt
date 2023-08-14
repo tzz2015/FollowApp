@@ -1,9 +1,12 @@
 package com.stardust.autojs.project
 
+import androidx.annotation.Keep
+
 /**
  * @author wilinz
  * @date 2022/5/23
  */
+@Keep
 object Constant {
     object Libraries {
         val OPEN_CV = listOf("libopencv_java4.so")

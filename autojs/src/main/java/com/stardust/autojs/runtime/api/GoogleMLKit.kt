@@ -1,7 +1,7 @@
 package com.stardust.autojs.runtime.api
 
 import android.util.Log
-import com.baidu.paddle.lite.demo.ocr.OcrResult
+import androidx.annotation.Keep
 import com.google.mlkit.vision.common.InputImage
 import com.google.mlkit.vision.text.Text
 import com.google.mlkit.vision.text.TextRecognition
@@ -14,6 +14,7 @@ import com.stardust.autojs.core.image.ImageWrapper
 import com.stardust.autojs.core.mlkit.GoogleMLKitOcrResult
 import java.util.concurrent.CountDownLatch
 
+@Keep
 class GoogleMLKit {
 
     companion object {

@@ -6,15 +6,15 @@ package com.stardust.autojs.rhino.debug;
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 
-import com.stardust.autojs.engine.RhinoJavaScriptEngine;
-import com.stardust.autojs.engine.ScriptEngine;
+import androidx.annotation.Keep;
 
-import org.mozilla.javascript.Context;
+import com.stardust.autojs.engine.RhinoJavaScriptEngine;
 
 /**
  * Interface for communication between the debugger and its GUI.  This
  * should be implemented by the GUI.
  */
+@Keep
 interface DebugCallbackInternal {
 
     /**

@@ -4,6 +4,8 @@ import android.animation.LayoutTransition;
 import android.os.Build;
 import android.view.ViewGroup;
 
+import androidx.annotation.Keep;
+
 import com.stardust.autojs.core.ui.inflater.ResourceParser;
 import com.stardust.autojs.core.ui.inflater.util.ValueMapper;
 
@@ -12,7 +14,7 @@ import java.util.Map;
 /**
  * Created by Stardust on 2017/11/4.
  */
-
+@Keep
 public class ViewGroupInflater<V extends ViewGroup> extends BaseViewInflater<V> {
 
     private static final ValueMapper<Integer> PERSISTENT_DRAWING_CACHE = new ValueMapper<Integer>("persistentDrawingCache")

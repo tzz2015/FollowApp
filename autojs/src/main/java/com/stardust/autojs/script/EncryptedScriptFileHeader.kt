@@ -1,9 +1,10 @@
 package com.stardust.autojs.script
 
+import androidx.annotation.Keep
 import java.io.File
 import java.io.FileInputStream
 import java.io.OutputStream
-
+@Keep
 object EncryptedScriptFileHeader {
 
     const val FLAG_INVALID_FILE: Short = Short.MIN_VALUE

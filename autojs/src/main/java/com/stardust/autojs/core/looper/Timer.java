@@ -8,10 +8,6 @@ import android.util.SparseArray;
 import com.stardust.autojs.runtime.ScriptRuntime;
 import com.stardust.concurrent.VolatileBox;
 
-/**
- * Created by Stardust on 2017/12/27.
- */
-
 public class Timer {
 
     private static final String LOG_TAG = "Timer";

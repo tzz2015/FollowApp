@@ -1,10 +1,10 @@
 package com.stardust.autojs.core.ui.inflater.inflaters;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-
 import android.view.ViewGroup;
 import android.widget.Spinner;
+
+import androidx.annotation.Keep;
+import androidx.annotation.Nullable;
 
 import com.stardust.autojs.core.ui.inflater.ResourceParser;
 import com.stardust.autojs.core.ui.inflater.ViewCreator;
@@ -19,7 +19,7 @@ import java.util.Map;
 /**
  * Created by Stardust on 2017/11/29.
  */
-
+@Keep
 public class SpinnerInflater extends BaseViewInflater<JsSpinner> {
 
     protected static final ValueMapper<Integer> SPINNER_MODES = new ValueMapper<Integer>("spinnerMode")

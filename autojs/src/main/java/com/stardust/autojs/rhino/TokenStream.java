@@ -6,6 +6,8 @@
 
 package com.stardust.autojs.rhino;
 
+import androidx.annotation.Keep;
+
 import org.mozilla.javascript.Kit;
 import org.mozilla.javascript.ObjToIntMap;
 import org.mozilla.javascript.Token;
@@ -13,7 +15,7 @@ import org.mozilla.javascript.Token;
 import java.io.IOException;
 import java.io.Reader;
 
-
+@Keep
 public  class TokenStream {
 	public static final double NaN = Double
 			.longBitsToDouble(0x7ff8000000000000L);

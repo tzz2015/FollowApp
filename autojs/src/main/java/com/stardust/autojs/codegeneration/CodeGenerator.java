@@ -1,5 +1,6 @@
 package com.stardust.autojs.codegeneration;
 
+import androidx.annotation.Keep;
 import androidx.core.view.accessibility.AccessibilityNodeInfoCompat;
 
 import com.stardust.automator.UiGlobalSelector;
@@ -9,7 +10,7 @@ import com.stardust.view.accessibility.NodeInfo;
 /**
  * Created by Stardust on 2017/12/7.
  */
-
+@Keep
 public class CodeGenerator {
 
     public static final int UNTIL_FIND = 0;

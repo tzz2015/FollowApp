@@ -2,13 +2,15 @@ package com.stardust.autojs.core.ui.inflater.inflaters;
 
 import android.util.AttributeSet;
 
+import androidx.annotation.Keep;
+
 import java.util.ArrayList;
 import java.util.Map;
 
 /**
  * Created by Stardust on 2017/11/5.
  */
-
+@Keep
 public class MapAttrbuteSet implements AttributeSet {
     private Map<String, String> mMap;
     private ArrayList<String> mKeys;

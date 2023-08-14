@@ -58,13 +58,33 @@
 -keep class com.stardust.autojs.core.plugin.** { *; }
 -keep class com.stardust.autojs.core.pref.** { *; }
 -keep class com.stardust.autojs.core.record.** { *; }
+-keep class com.stardust.autojs.core.record.accessibility.** { *; }
+-keep class com.stardust.autojs.core.record.inputevent.** { *; }
 -keep class com.stardust.autojs.core.storage.** { *; }
 -keep class com.stardust.autojs.core.ui.** { *; }
+-keep class com.stardust.autojs.core.ui.attribute.**{*;}
+-keep class com.stardust.autojs.core.ui.dialog.**{*;}
+-keep class com.stardust.autojs.core.ui.nativeview.**{*;}
+-keep class com.stardust.autojs.core.ui.widget.**{*;}
+-keep class com.stardust.autojs.core.ui.xml.**{*;}
+-keep class com.stardust.autojs.core.ui.inflater.**{*;}
+-keep class com.stardust.autojs.core.ui.inflater.inflaters.**{*;}
+-keep class com.stardust.autojs.core.ui.inflater.util.**{*;}
 -keep class com.stardust.autojs.core.util.** { *; }
 -keep class com.stardust.autojs.core.web.** { *; }
+-keep class com.stardust.autojs.engine.** { *; }
+-keep class com.stardust.autojs.engine.encryption.** { *; }
+-keep class com.stardust.autojs.engine.module.** { *; }
+-keep class com.stardust.autojs.engine.preprocess.** { *; }
+-keep class com.stardust.autojs.execution.** { *; }
 -keep class com.stardust.autojs.project.** { *; }
 -keep class com.stardust.autojs.rhino.** { *; }
+-keep class com.stardust.autojs.rhino.continuation.** { *; }
+-keep class com.stardust.autojs.rhino.debug.** { *; }
 -keep class com.stardust.autojs.runtime.** { *; }
+-keep class com.stardust.autojs.runtime.accessibility.** { *; }
+-keep class com.stardust.autojs.runtime.api.** { *; }
+-keep class com.stardust.autojs.runtime.exception.** { *; }
 -keep class com.stardust.autojs.script.** { *; }
 -keep class com.stardust.autojs.util.** { *; }
 -keep class com.stardust.autojs.workground.** { *; }
@@ -115,6 +135,26 @@
 }
 
 ##---------------End: proguard configuration for Gson  ----------
+
+-keep class com.baidu.** { *; }
+-keep class vi.com.gdi.bgl.android.**{*;}
+-keep class com.google.gson.**{*;}
+-keep class com.android.volley.**{*;}
+-keep class org.mozilla.classfile.**{*;}
+-keep class org.mozilla.javascript.**{*;}
+-keep class com.android.multidex.**{*;}
+-keep class com.android.dex.**{*;}
+-keep class java.util.function.**{*;}
+
+
+-keep class org.mozilla.javascript.**{*;}
+
+
+
+
+
+
+
 
 
 

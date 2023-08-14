@@ -1,9 +1,11 @@
 package com.stardust.autojs.core.record.inputevent;
 
+import androidx.annotation.Keep;
+
 /**
  * Created by Stardust on 2017/3/7.
  */
-
+@Keep
 public class EventFormatException extends RuntimeException {
 
 

@@ -1,13 +1,11 @@
 package com.stardust.autojs.runtime.exception;
 
-import org.mozilla.javascript.EvaluatorException;
-import org.mozilla.javascript.RhinoException;
-
-import java.util.concurrent.atomic.AtomicInteger;
+import androidx.annotation.Keep;
 
 /**
  * Created by Stardust on 2017/1/29.
  */
+@Keep
 public class ScriptException extends RuntimeException {
 
 

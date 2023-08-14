@@ -14,6 +14,8 @@ import android.view.ViewGroup;
 import android.view.inputmethod.EditorInfo;
 import android.widget.TextView;
 
+import androidx.annotation.Keep;
+
 import com.stardust.autojs.core.ui.inflater.ResourceParser;
 import com.stardust.autojs.core.ui.inflater.util.Colors;
 import com.stardust.autojs.core.ui.inflater.util.Dimensions;
@@ -27,7 +29,7 @@ import java.util.Map;
 /**
  * Created by Stardust on 2017/11/3.
  */
-
+@Keep
 public class TextViewInflater<V extends TextView> extends BaseViewInflater<V> {
 
     private static final int LEFT = 0;

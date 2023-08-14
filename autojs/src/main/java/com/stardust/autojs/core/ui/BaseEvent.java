@@ -1,11 +1,12 @@
 package com.stardust.autojs.core.ui;
 
+import androidx.annotation.Keep;
+
 import com.stardust.autojs.rhino.NativeJavaObjectWithPrototype;
 
-import org.mozilla.javascript.NativeJavaObject;
 import org.mozilla.javascript.ScriptRuntime;
 import org.mozilla.javascript.Scriptable;
-
+@Keep
 public class BaseEvent extends NativeJavaObjectWithPrototype {
 
     private boolean mConsumed = false;

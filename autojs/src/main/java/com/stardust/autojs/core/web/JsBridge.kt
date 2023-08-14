@@ -3,6 +3,7 @@ package com.stardust.autojs.core.web
 import android.os.Build
 import android.os.Looper
 import android.webkit.*
+import androidx.annotation.Keep
 import androidx.annotation.RequiresApi
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
@@ -11,7 +12,7 @@ import com.stardust.autojs.core.ui.widget.JsWebView
 import org.mozilla.javascript.BaseFunction
 import org.mozilla.javascript.Scriptable
 import kotlin.random.Random
-
+@Keep
 class JsBridge(private val webView: WebView) {
     companion object {
         const val WEBOBJECTNAME = "\$autox"

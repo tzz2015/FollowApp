@@ -2,6 +2,7 @@ package com.stardust.autojs.core.looper;
 
 import android.os.Handler;
 import android.os.Looper;
+
 import androidx.annotation.CallSuper;
 
 import com.stardust.autojs.engine.RhinoJavaScriptEngine;
@@ -11,10 +12,6 @@ import com.stardust.concurrent.VolatileBox;
 import com.stardust.lang.ThreadCompat;
 
 import java.util.concurrent.ConcurrentHashMap;
-
-/**
- * Created by Stardust on 2017/12/27.
- */
 
 public class TimerThread extends ThreadCompat {
 

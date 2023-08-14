@@ -4,10 +4,6 @@ import android.os.Looper;
 
 import java.util.concurrent.ConcurrentHashMap;
 
-/**
- * Created by Stardust on 2017/12/27.
- */
-
 public class LooperHelper {
 
     private static volatile ConcurrentHashMap<Thread, Looper> sLoopers = new ConcurrentHashMap<>();

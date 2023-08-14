@@ -3,10 +3,11 @@ package com.stardust.autojs.core.ui.nativeview;
 import android.annotation.SuppressLint;
 import android.os.Build;
 import android.os.Looper;
-import androidx.core.view.ViewCompat;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.CompoundButton;
+
+import androidx.annotation.Keep;
 
 import com.stardust.autojs.core.eventloop.EventEmitter;
 import com.stardust.autojs.core.ui.BaseEvent;
@@ -20,7 +21,7 @@ import org.mozilla.javascript.Undefined;
 import java.util.Collections;
 import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
-
+@Keep
 public class ViewPrototype {
 
     private final EventEmitter mEventEmitter;

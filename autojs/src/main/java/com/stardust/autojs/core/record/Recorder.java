@@ -1,11 +1,13 @@
 package com.stardust.autojs.core.record;
 
+import androidx.annotation.Keep;
+
 import java.util.Arrays;
 
 /**
  * Created by Stardust on 2017/3/16.
  */
-
+@Keep
 public interface Recorder {
 
     interface OnStateChangedListener {

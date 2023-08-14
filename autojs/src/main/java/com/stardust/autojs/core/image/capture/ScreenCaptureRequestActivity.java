@@ -12,10 +12,6 @@ import androidx.annotation.RequiresApi;
 import com.stardust.app.OnActivityResultDelegate;
 import com.stardust.util.IntentExtras;
 
-/**
- * Created by Stardust on 2017/5/22.
- */
-
 @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
 public class ScreenCaptureRequestActivity extends Activity {
 

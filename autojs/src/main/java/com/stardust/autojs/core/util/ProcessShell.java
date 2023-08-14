@@ -3,6 +3,8 @@ package com.stardust.autojs.core.util;
 
 import android.util.Log;
 
+import androidx.annotation.Keep;
+
 import com.stardust.autojs.runtime.api.AbstractShell;
 import com.stardust.autojs.runtime.exception.ScriptInterruptedException;
 import com.stardust.autojs.util.ProcessUtils;
@@ -19,7 +21,7 @@ import java.io.InputStreamReader;
  * <p>
  * 来自网络~~
  */
-
+@Keep
 public class ProcessShell extends AbstractShell {
 
     private static final String TAG = "ProcessShell";

@@ -1,11 +1,12 @@
 package com.stardust.autojs.core.permission;
 
+import androidx.annotation.Keep;
 import androidx.annotation.NonNull;
 
 
 import java.util.ArrayList;
 import java.util.List;
-
+@Keep
 public class RequestPermissionCallbacks {
 
     private List<OnRequestPermissionsResultCallback> mCallbacks = new ArrayList<>();

@@ -1,18 +1,19 @@
 package com.stardust.autojs.core.ui.attribute;
 
+import static com.stardust.autojs.core.ui.inflater.inflaters.BaseViewInflater.TINT_MODES;
+
 import android.graphics.Color;
 import android.graphics.PorterDuff;
-
-import androidx.core.widget.ImageViewCompat;
 import android.view.View;
 import android.widget.ImageView;
+
+import androidx.annotation.Keep;
+import androidx.core.widget.ImageViewCompat;
 
 import com.stardust.autojs.core.ui.inflater.ResourceParser;
 import com.stardust.util.BiMap;
 import com.stardust.util.BiMaps;
-
-import static com.stardust.autojs.core.ui.inflater.inflaters.BaseViewInflater.TINT_MODES;
-
+@Keep
 public class ImageViewAttributes extends ViewAttributes {
 
     private static final BiMap<String, ImageView.ScaleType> SCALE_TYPES = BiMaps.<String, ImageView.ScaleType>newBuilder()

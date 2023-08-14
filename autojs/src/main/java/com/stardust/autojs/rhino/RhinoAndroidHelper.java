@@ -1,7 +1,7 @@
 package com.stardust.autojs.rhino;
 
+import androidx.annotation.Keep;
 import androidx.annotation.VisibleForTesting;
-
 
 import org.mozilla.javascript.Context;
 import org.mozilla.javascript.ContextFactory;
@@ -13,7 +13,7 @@ import java.io.IOException;
 /**
  * Created by Stardust on 2017/4/5.
  */
-
+@Keep
 public class RhinoAndroidHelper {
 
     private final File cacheDirectory;

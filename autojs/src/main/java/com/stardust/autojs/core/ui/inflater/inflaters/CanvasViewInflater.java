@@ -1,5 +1,6 @@
 package com.stardust.autojs.core.ui.inflater.inflaters;
 
+import androidx.annotation.Keep;
 import androidx.annotation.Nullable;
 
 import com.stardust.autojs.core.graphics.ScriptCanvasView;
@@ -10,7 +11,7 @@ import com.stardust.autojs.runtime.ScriptRuntime;
 /**
  * Created by Stardust on 2018/3/16.
  */
-
+@Keep
 public class CanvasViewInflater extends BaseViewInflater<ScriptCanvasView> {
 
     private ScriptRuntime mScriptRuntime;

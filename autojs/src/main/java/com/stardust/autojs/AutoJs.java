@@ -6,6 +6,7 @@ import android.content.Context;
 import android.os.Build;
 import android.os.Bundle;
 
+import androidx.annotation.Keep;
 import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
 
@@ -43,7 +44,7 @@ import java.io.File;
 /**
  * Created by Stardust on 2017/11/29.
  */
-
+@Keep
 public abstract class AutoJs {
 
     private final AccessibilityActionRecorder mAccessibilityActionRecorder = new AccessibilityActionRecorder();

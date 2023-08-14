@@ -2,6 +2,8 @@ package com.stardust.autojs.rhino;
 
 import android.util.Log;
 
+import androidx.annotation.Keep;
+
 import com.android.dx.command.dexer.Main;
 import com.stardust.pio.PFiles;
 import com.stardust.util.MD5;
@@ -17,7 +19,6 @@ import java.io.ByteArrayInputStream;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -26,7 +27,7 @@ import dalvik.system.DexClassLoader;
 /**
  * Created by Stardust on 2017/4/5.
  */
-
+@Keep
 public class AndroidClassLoader extends ClassLoader implements GeneratedClassLoader {
 
 

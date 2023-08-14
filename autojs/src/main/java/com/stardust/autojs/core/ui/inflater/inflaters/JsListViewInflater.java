@@ -1,7 +1,9 @@
 package com.stardust.autojs.core.ui.inflater.inflaters;
 
-import androidx.annotation.Nullable;
 import android.view.ViewGroup;
+
+import androidx.annotation.Keep;
+import androidx.annotation.Nullable;
 
 import com.stardust.autojs.core.ui.inflater.DynamicLayoutInflater;
 import com.stardust.autojs.core.ui.inflater.ResourceParser;
@@ -18,7 +20,7 @@ import java.util.Map;
 /**
  * Created by Stardust on 2018/3/28.
  */
-
+@Keep
 public class JsListViewInflater<V extends JsListView> extends BaseViewInflater<V> {
 
     private final ScriptRuntime mRuntime;

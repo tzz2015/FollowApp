@@ -14,6 +14,7 @@ import android.util.Base64;
 import android.view.View;
 import android.widget.ImageView;
 
+import androidx.annotation.Keep;
 import androidx.core.content.ContextCompat;
 
 import com.stardust.app.GlobalAppContext;
@@ -26,7 +27,7 @@ import java.util.regex.Pattern;
 /**
  * Created by Stardust on 2017/11/3.
  */
-
+@Keep
 public class Drawables {
 
     private static final Pattern DATA_PATTERN = Pattern.compile("data:(\\w+/\\w+);base64,(.+)");

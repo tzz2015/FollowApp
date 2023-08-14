@@ -3,12 +3,14 @@ package com.stardust.autojs.runtime.api;
 import android.content.Context;
 import android.webkit.JavascriptInterface;
 
+import androidx.annotation.Keep;
+
 import com.hzy.libp7zip.P7ZipApi;
 import com.stardust.autojs.runtime.ScriptRuntime;
 import com.stardust.autojs.runtime.exception.ScriptException;
 import com.stardust.pio.PFiles;
 
-
+@Keep
 public class SevenZip {
     private Context mContext;
     private ScriptRuntime mRuntime;

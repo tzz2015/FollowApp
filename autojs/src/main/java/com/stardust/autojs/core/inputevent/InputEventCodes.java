@@ -6,7 +6,6 @@ package com.stardust.autojs.core.inputevent;
  * from linux/input-event-codes.h
  */
 
-
 public class InputEventCodes {
 
 

@@ -1,8 +1,10 @@
 package org.mozilla.javascript;
 
+import androidx.annotation.Keep;
+
 import org.mozilla.javascript.debug.DebuggableScript;
 import org.mozilla.javascript.xml.XMLLib;
-
+@Keep
 public class ContextWrapper extends Context {
     private final Context mContext;
 

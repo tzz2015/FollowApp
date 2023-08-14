@@ -28,12 +28,6 @@ import com.stardust.util.ScreenMetrics;
 
 import java.util.concurrent.atomic.AtomicReference;
 
-/**
- * Created by Stardust on 2017/5/17.
- * Improvedd by TonyJiangWJ(https://github.com/TonyJiangWJ).
- * From [TonyJiangWJ/Auto.js](https://github.com/TonyJiangWJ/Auto.js)
- */
-
 @RequiresApi(Build.VERSION_CODES.LOLLIPOP)
 public class ScreenCapturer {
 

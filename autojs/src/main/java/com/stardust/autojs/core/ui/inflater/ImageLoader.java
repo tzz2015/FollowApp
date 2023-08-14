@@ -6,10 +6,12 @@ import android.net.Uri;
 import android.view.View;
 import android.widget.ImageView;
 
+import androidx.annotation.Keep;
+
 /**
  * Created by Stardust on 2017/11/3.
  */
-
+@Keep
 public interface ImageLoader {
 
     interface BitmapCallback {

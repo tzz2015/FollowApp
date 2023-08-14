@@ -4,6 +4,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
 
+import androidx.annotation.Keep;
+
 import com.stardust.autojs.core.ui.inflater.ResourceParser;
 import com.stardust.autojs.core.ui.inflater.util.Gravities;
 
@@ -12,7 +14,7 @@ import java.util.Map;
 /**
  * Created by Stardust on 2017/11/29.
  */
-
+@Keep
 public class FrameLayoutInflater<V extends FrameLayout> extends ViewGroupInflater<V> {
 
     private Integer mGravity;

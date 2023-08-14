@@ -1,6 +1,6 @@
 package com.stardust.autojs.core.ui.xml;
 
-import android.util.Log;
+import androidx.annotation.Keep;
 
 import org.w3c.dom.Node;
 
@@ -10,7 +10,7 @@ import java.util.Map;
 /**
  * Created by Stardust on 2017/5/14.
  */
-
+@Keep
 public interface AttributeHandler {
 
     boolean handle(String nodeName, Node attr, StringBuilder layoutXml);

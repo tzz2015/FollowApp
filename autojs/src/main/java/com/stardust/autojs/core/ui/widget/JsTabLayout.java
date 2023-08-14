@@ -3,8 +3,10 @@ package com.stardust.autojs.core.ui.widget;
 import android.content.Context;
 import android.util.AttributeSet;
 
-import com.google.android.material.tabs.TabLayout;
+import androidx.annotation.Keep;
 
+import com.google.android.material.tabs.TabLayout;
+@Keep
 public class JsTabLayout extends TabLayout {
 
     public JsTabLayout(Context context) {

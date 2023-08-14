@@ -5,12 +5,14 @@ import android.content.res.Resources;
 import android.graphics.Color;
 import android.view.View;
 
+import androidx.annotation.Keep;
+
 import com.stardust.app.GlobalAppContext;
 
 /**
  * Created by Stardust on 2017/11/3.
  */
-
+@Keep
 public class Colors {
 
     public static int parse(Context context, String color) {

@@ -1,11 +1,13 @@
 package com.stardust.autojs.runtime.api
 
 import android.content.Context
+import androidx.annotation.Keep
 import com.baidu.paddle.lite.demo.ocr.OcrResult
 import com.baidu.paddle.lite.demo.ocr.Predictor
 import com.stardust.app.GlobalAppContext.get
 import com.stardust.autojs.core.image.ImageWrapper
 
+@Keep
 class Paddle {
 
     private val predictor = Predictor()

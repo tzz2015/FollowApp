@@ -2,6 +2,8 @@ package com.stardust.autojs.core.mlkit
 
 import android.graphics.Rect
 import kotlin.math.abs
+import androidx.annotation.Keep
+
 
 data class GoogleMLKitOcrResult(
     val level: Int,

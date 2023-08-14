@@ -4,12 +4,14 @@ import android.content.Context;
 import android.content.res.Resources;
 import android.view.View;
 
+import androidx.annotation.Keep;
+
 import com.stardust.app.GlobalAppContext;
 
 /**
  * Created by Stardust on 2017/11/4.
  */
-
+@Keep
 public class Strings {
 
 

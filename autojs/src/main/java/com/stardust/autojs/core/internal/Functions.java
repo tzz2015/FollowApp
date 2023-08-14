@@ -1,9 +1,11 @@
 package com.stardust.autojs.core.internal;
 
+import androidx.annotation.Keep;
+
 /**
  * Created by Stardust on 2017/7/19.
  */
-
+@Keep
 public class Functions {
 
     @SuppressWarnings("unchecked")

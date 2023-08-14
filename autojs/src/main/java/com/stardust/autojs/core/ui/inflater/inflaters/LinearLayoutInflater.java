@@ -3,6 +3,8 @@ package com.stardust.autojs.core.ui.inflater.inflaters;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 
+import androidx.annotation.Keep;
+
 import com.stardust.autojs.core.ui.inflater.ResourceParser;
 import com.stardust.autojs.core.ui.inflater.util.Gravities;
 import com.stardust.autojs.core.ui.inflater.util.ValueMapper;
@@ -12,7 +14,7 @@ import java.util.Map;
 /**
  * Created by Stardust on 2017/11/4.
  */
-
+@Keep
 public class LinearLayoutInflater<V extends LinearLayout> extends ViewGroupInflater<V> {
 
     static final ValueMapper<Integer> ORIENTATIONS = new ValueMapper<Integer>("orientation")

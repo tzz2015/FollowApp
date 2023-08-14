@@ -1,13 +1,9 @@
 package com.stardust.autojs.core.inputevent;
 
-import androidx.annotation.Nullable;
 import android.util.Log;
 import android.view.InputDevice;
 
-
-/**
- * Created by Stardust on 2017/8/1.
- */
+import androidx.annotation.Nullable;
 
 public class InputDevices {
 

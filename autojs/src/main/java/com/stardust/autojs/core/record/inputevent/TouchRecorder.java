@@ -2,13 +2,15 @@ package com.stardust.autojs.core.record.inputevent;
 
 import android.content.Context;
 
+import androidx.annotation.Keep;
+
 import com.stardust.autojs.core.inputevent.InputEventObserver;
 import com.stardust.autojs.core.record.Recorder;
 
 /**
  * Created by Stardust on 2017/3/16.
  */
-
+@Keep
 public class TouchRecorder extends Recorder.AbstractRecorder {
 
     private InputEventRecorder mInputEventRecorder;

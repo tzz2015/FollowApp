@@ -6,6 +6,8 @@ import android.os.Looper;
 import android.view.ContextThemeWrapper;
 import android.view.View;
 
+import androidx.annotation.Keep;
+
 import com.stardust.autojs.R;
 import com.stardust.autojs.core.floaty.BaseResizableFloatyWindow;
 import com.stardust.autojs.core.floaty.RawWindow;
@@ -23,7 +25,7 @@ import java.util.concurrent.CopyOnWriteArraySet;
 /**
  * Created by Stardust on 2017/12/5.
  */
-
+@Keep
 public class Floaty {
 
     private DynamicLayoutInflater mLayoutInflater;

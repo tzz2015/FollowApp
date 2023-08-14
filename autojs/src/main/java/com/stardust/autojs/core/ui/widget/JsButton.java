@@ -3,14 +3,16 @@ package com.stardust.autojs.core.ui.widget;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.os.Build;
-import androidx.annotation.RequiresApi;
 import android.util.AttributeSet;
 import android.widget.Button;
+
+import androidx.annotation.Keep;
+import androidx.annotation.RequiresApi;
 
 /**
  * Created by Stardust on 2017/5/15.
  */
-
+@Keep
 @SuppressLint("AppCompatCustomView")
 public class JsButton extends Button {
     public JsButton(Context context) {

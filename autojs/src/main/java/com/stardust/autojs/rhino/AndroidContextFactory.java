@@ -1,6 +1,8 @@
 package com.stardust.autojs.rhino;
 
 
+import androidx.annotation.Keep;
+
 import com.stardust.autojs.runtime.exception.ScriptInterruptedException;
 
 import org.mozilla.javascript.Context;
@@ -11,7 +13,7 @@ import java.io.File;
 /**
  * Created by Stardust on 2017/4/5.
  */
-
+@Keep
 public class AndroidContextFactory extends ShellContextFactory {
     private final File cacheDirectory;
 

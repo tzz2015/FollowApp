@@ -1,8 +1,10 @@
 package com.stardust.autojs.core.ui.inflater.inflaters;
 
-import androidx.annotation.Nullable;
 import android.view.View;
 import android.view.ViewGroup;
+
+import androidx.annotation.Keep;
+import androidx.annotation.Nullable;
 
 import com.google.android.material.appbar.AppBarLayout;
 import com.stardust.autojs.R;
@@ -11,7 +13,7 @@ import com.stardust.autojs.core.ui.inflater.ViewCreator;
 import com.stardust.autojs.core.ui.inflater.util.Dimensions;
 
 import java.util.Map;
-
+@Keep
 public class AppBarInflater<V extends AppBarLayout> extends BaseViewInflater<V> {
 
     public AppBarInflater(ResourceParser resourceParser) {

@@ -1,23 +1,11 @@
 package com.stardust.autojs.core.opencv;
 
 import android.content.Context;
+import android.os.Looper;
 
 import androidx.annotation.Nullable;
 
-import android.os.Looper;
-import android.util.Log;
-
-import com.afollestad.materialdialogs.MaterialDialog;
-import com.stardust.app.DialogUtils;
-
-import org.opencv.android.InstallCallbackInterface;
-import org.opencv.android.LoaderCallbackInterface;
 import org.opencv.android.OpenCVLoader;
-
-
-/**
- * Created by Stardust on 2018/4/2.
- */
 
 public class OpenCVHelper {
 

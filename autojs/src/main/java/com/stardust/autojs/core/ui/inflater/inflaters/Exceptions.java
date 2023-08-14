@@ -2,10 +2,12 @@ package com.stardust.autojs.core.ui.inflater.inflaters;
 
 import android.view.View;
 
+import androidx.annotation.Keep;
+
 /**
  * Created by Stardust on 2017/11/4.
  */
-
+@Keep
 public class Exceptions {
 
     public static final RuntimeException NO_EXCEPTION = new RuntimeException();

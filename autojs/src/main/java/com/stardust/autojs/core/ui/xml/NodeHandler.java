@@ -1,5 +1,7 @@
 package com.stardust.autojs.core.ui.xml;
 
+import androidx.annotation.Keep;
+
 import org.w3c.dom.Node;
 
 import java.util.HashMap;
@@ -8,7 +10,7 @@ import java.util.Map;
 /**
  * Created by Stardust on 2017/5/15.
  */
-
+@Keep
 public interface NodeHandler {
 
     String handleNode(Node node, StringBuilder layoutXml);

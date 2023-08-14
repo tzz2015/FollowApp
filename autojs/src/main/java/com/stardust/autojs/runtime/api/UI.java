@@ -2,7 +2,8 @@ package com.stardust.autojs.runtime.api;
 
 import android.content.Context;
 import android.graphics.drawable.Drawable;
-import androidx.annotation.Nullable;
+
+import androidx.annotation.Keep;
 
 import com.stardust.autojs.core.graphics.ScriptCanvasView;
 import com.stardust.autojs.core.ui.inflater.DynamicLayoutInflater;
@@ -25,7 +26,7 @@ import java.util.concurrent.ConcurrentHashMap;
 /**
  * Created by Stardust on 2017/5/14.
  */
-
+@Keep
 public class UI extends ProxyObject {
 
 

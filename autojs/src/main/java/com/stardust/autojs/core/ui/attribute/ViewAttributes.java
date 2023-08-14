@@ -7,6 +7,7 @@ import android.graphics.PorterDuff;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
 import androidx.annotation.CallSuper;
+import androidx.annotation.Keep;
 import androidx.core.view.ViewCompat;
 import android.view.View;
 import android.view.ViewGroup;
@@ -38,7 +39,7 @@ import static com.stardust.autojs.core.ui.inflater.inflaters.BaseViewInflater.TE
 import static com.stardust.autojs.core.ui.inflater.inflaters.BaseViewInflater.TEXT_DIRECTIONS;
 import static com.stardust.autojs.core.ui.inflater.inflaters.BaseViewInflater.TINT_MODES;
 import static com.stardust.autojs.core.ui.inflater.inflaters.BaseViewInflater.VISIBILITY;
-
+@Keep
 public class ViewAttributes {
 
     public interface Getter<T> {

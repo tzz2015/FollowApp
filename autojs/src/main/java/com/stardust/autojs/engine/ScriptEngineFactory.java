@@ -1,5 +1,6 @@
 package com.stardust.autojs.engine;
 
+import androidx.annotation.Keep;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
@@ -12,7 +13,7 @@ import java.util.Map;
 /**
  * Created by Stardust on 2017/8/2.
  */
-
+@Keep
 public class ScriptEngineFactory {
 
     public static class EngineNotFoundException extends RuntimeException {

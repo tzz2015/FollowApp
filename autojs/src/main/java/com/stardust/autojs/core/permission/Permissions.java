@@ -1,14 +1,16 @@
 package com.stardust.autojs.core.permission;
 
+import static android.content.pm.PackageManager.PERMISSION_DENIED;
+
 import android.content.Context;
 import android.content.Intent;
 import android.os.Build;
+
+import androidx.annotation.Keep;
 import androidx.annotation.RequiresApi;
 
 import java.util.ArrayList;
-
-import static android.content.pm.PackageManager.PERMISSION_DENIED;
-
+@Keep
 public class Permissions {
 
     private static final String[] EMPTY_STRING_ARRAY = new String[0];

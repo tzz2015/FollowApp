@@ -1,11 +1,13 @@
 package com.stardust.autojs.core.ui.inflater;
 
+import androidx.annotation.Keep;
+
 import com.stardust.autojs.core.ui.inflater.util.Drawables;
 
 /**
  * Created by Stardust on 2018/1/24.
  */
-
+@Keep
 public class ResourceParser {
 
 

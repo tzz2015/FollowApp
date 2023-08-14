@@ -3,6 +3,8 @@ package com.stardust.autojs.core.ui.inflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import androidx.annotation.Keep;
+
 import com.stardust.autojs.core.ui.inflater.inflaters.ViewGroupInflater;
 
 import org.w3c.dom.Node;
@@ -13,7 +15,7 @@ import java.util.Map;
 /**
  * Created by Stardust on 2018/3/29.
  */
-
+@Keep
 public interface LayoutInflaterDelegate {
 
     LayoutInflaterDelegate NO_OP = new NoOp();
@@ -51,7 +53,7 @@ public interface LayoutInflaterDelegate {
 
     void afterApplyAttribute(InflateContext inflateContext, ViewInflater<View> inflater, View view, String ns, String attrName, String value, ViewGroup parent, Map<String, String> attrs);
 
-
+    @Keep
     class NoOp implements LayoutInflaterDelegate {
         @Override
         public String beforeConvertXml(InflateContext inflateContext, String xml) {

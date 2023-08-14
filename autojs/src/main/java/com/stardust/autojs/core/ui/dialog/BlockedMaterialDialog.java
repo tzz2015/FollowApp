@@ -6,6 +6,7 @@ import android.content.ContextWrapper;
 import android.os.Build;
 import android.os.Looper;
 
+import androidx.annotation.Keep;
 import androidx.annotation.Nullable;
 
 import android.view.WindowManager;
@@ -24,7 +25,7 @@ import com.stardust.util.UiHandler;
 /**
  * Created by Stardust on 2017/5/8.
  */
-
+@Keep
 public class BlockedMaterialDialog extends MaterialDialog {
 
     protected BlockedMaterialDialog(MaterialDialog.Builder builder) {

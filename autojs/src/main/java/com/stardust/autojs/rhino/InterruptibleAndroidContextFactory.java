@@ -3,13 +3,15 @@ package com.stardust.autojs.rhino;
 import android.os.Looper;
 import android.util.Log;
 
+import androidx.annotation.Keep;
+
 import com.stardust.autojs.runtime.exception.ScriptInterruptedException;
 
 import org.mozilla.javascript.Context;
 
 import java.io.File;
 import java.util.concurrent.atomic.AtomicInteger;
-
+@Keep
 public class InterruptibleAndroidContextFactory extends AndroidContextFactory {
 
     private AtomicInteger mContextCount = new AtomicInteger();
