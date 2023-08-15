@@ -8,6 +8,7 @@ import android.os.Looper
 import android.text.TextUtils
 import android.util.Log
 import com.linsh.utilseverywhere.ContextUtils.getFilesDir
+import com.linsh.utilseverywhere.FileUtils
 import com.linsh.utilseverywhere.StringUtils
 import com.mind.data.data.mmkv.KV
 import com.stardust.auojs.inrt.LogActivity
@@ -138,6 +139,7 @@ open class AssetsProjectLauncher(
             val privateDir = getFilesDir()
             // 创建一个名为 "output.txt" 的文件
             val outputFile = File(privateDir, "output.txt")
+            FileUtils.deleteFile(outputFile)
             val path = outputFile.path
             // 创建一个输出流来写入数据到文件
             val outputStream: OutputStream = FileOutputStream(outputFile)

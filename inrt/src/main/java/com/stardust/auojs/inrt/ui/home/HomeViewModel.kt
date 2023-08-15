@@ -5,6 +5,7 @@ import android.content.Context
 import android.content.Intent
 import android.os.Environment
 import com.google.gson.Gson
+import com.linsh.utilseverywhere.FileUtils
 import com.linsh.utilseverywhere.LogUtils
 import com.linsh.utilseverywhere.ToastUtils
 import com.mind.data.config.AppConfig
@@ -109,8 +110,9 @@ class HomeViewModel @Inject constructor() : BaseViewModel() {
         val file = File(appSpecificDirectory, "account.txt")
         val tokenFile = File(appSpecificDirectory, "token.txt")
         val hostFile = File(appSpecificDirectory, "host.txt")
-
-
+        FileUtils.deleteFile(file)
+        FileUtils.deleteFile(hostFile)
+        FileUtils.deleteFile(tokenFile)
         try {
             val fos = FileOutputStream(file)
             fos.write(toJson.toByteArray())
@@ -133,7 +135,7 @@ class HomeViewModel @Inject constructor() : BaseViewModel() {
     fun runFollowScript() {
         stopRunScript()
         Thread {
-            GlobalProjectLauncher.runScript(Constants.DOUYIN_JS,FollowAccountType.DOU_YIN)
+            GlobalProjectLauncher.runScript(Constants.DOUYIN_JS, FollowAccountType.DOU_YIN)
         }.start()
     }
 
