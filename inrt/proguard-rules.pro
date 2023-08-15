@@ -245,6 +245,16 @@
 -keep class java.nio.** { *; }
 -keep class okio.** {*;}
 
+#BaseRecyclerViewAdapterHelper
+-keepclassmembers  class **$** extends com.chad.library.adapter.base.viewholder.BaseViewHolder {
+     <init>(...);
+}
+-keep class com.chad.library.adapter.base.viewholder.BaseDataBindingHolder {*;}
+
+#-keepattributes InnerClasses
+#
+#-keep class androidx.** {*;}
+
 
 
 
