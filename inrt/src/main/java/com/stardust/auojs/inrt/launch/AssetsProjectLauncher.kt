@@ -27,9 +27,7 @@ import com.stardust.util.MD5
 import com.tencent.mmkv.MMKV
 import org.autojs.autoxjs.inrt.BuildConfig
 import java.io.File
-import java.io.FileOutputStream
 import java.io.IOException
-import java.io.OutputStream
 
 
 /**
@@ -141,12 +139,7 @@ open class AssetsProjectLauncher(
             val outputFile = File(privateDir, "output.txt")
             FileUtils.deleteFile(outputFile)
             val path = outputFile.path
-            // 创建一个输出流来写入数据到文件
-            val outputStream: OutputStream = FileOutputStream(outputFile)
-            // 将数据写入输出流
-            outputStream.write(text.toByteArray())
-            // 关闭输出流
-            outputStream.close()
+            FileUtils.writeString(outputFile,text)
             return path
         } catch (e: IOException) {
             e.printStackTrace()

@@ -114,16 +114,9 @@ class HomeViewModel @Inject constructor() : BaseViewModel() {
         FileUtils.deleteFile(hostFile)
         FileUtils.deleteFile(tokenFile)
         try {
-            val fos = FileOutputStream(file)
-            fos.write(toJson.toByteArray())
-            fos.close()
-            val tokenFos = FileOutputStream(tokenFile)
-            tokenFos.write(CacheManager.instance.getToken().toByteArray())
-            tokenFos.close()
-
-            val hostFos = FileOutputStream(hostFile)
-            hostFos.write(AppConfig.BASE_URL.toByteArray())
-            hostFos.close()
+            FileUtils.writeString(file,toJson)
+            FileUtils.writeString(tokenFile,CacheManager.instance.getToken())
+            FileUtils.writeString(hostFile,AppConfig.BASE_URL)
         } catch (e: IOException) {
             e.printStackTrace()
         }
