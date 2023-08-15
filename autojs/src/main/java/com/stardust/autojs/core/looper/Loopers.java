@@ -5,6 +5,7 @@ import android.os.Looper;
 import android.os.MessageQueue;
 import android.util.Log;
 
+import androidx.annotation.Keep;
 import androidx.annotation.Nullable;
 
 import com.stardust.autojs.rhino.AutoJsContext;
@@ -18,7 +19,7 @@ import org.mozilla.javascript.Context;
 
 import java.util.HashSet;
 import java.util.concurrent.CopyOnWriteArrayList;
-
+@Keep
 @SuppressWarnings("ConstantConditions")
 public class Loopers implements MessageQueue.IdleHandler {
 

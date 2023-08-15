@@ -1,11 +1,13 @@
 package com.stardust.autojs.core.inputevent;
 
+import androidx.annotation.Keep;
+
 /**
  * Created by Stardust on 2017/8/5.
  * <p>
  * from linux/input-event-codes.h
  */
-
+@Keep
 public class InputEventCodes {
 
 

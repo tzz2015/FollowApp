@@ -6,17 +6,16 @@ import android.view.View
 import android.view.ViewGroup
 import android.view.WindowManager
 import android.widget.FrameLayout
+import androidx.annotation.Keep
 import com.stardust.autojs.R
 import com.stardust.enhancedfloaty.*
-
 import com.stardust.enhancedfloaty.WindowBridge.DefaultImpl
 import com.stardust.enhancedfloaty.gesture.DragGesture
 import com.stardust.enhancedfloaty.gesture.ResizeGesture
 import com.stardust.enhancedfloaty.util.WindowTypeCompat
 import com.stardust.lib.R.layout
-import androidx.annotation.Keep
 
-
+@Keep
 class BaseResizableFloatyWindow(context: Context, viewSupplier: ViewSupplier) : FloatyWindow() {
     interface ViewSupplier {
         fun inflate(context: Context?, parent: ViewGroup?): View

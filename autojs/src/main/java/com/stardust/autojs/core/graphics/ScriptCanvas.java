@@ -13,13 +13,14 @@ import android.graphics.RectF;
 import android.graphics.Region;
 import android.os.Build;
 
+import androidx.annotation.Keep;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
 
 import com.stardust.autojs.core.image.ImageWrapper;
 import com.stardust.autojs.runtime.ScriptRuntime;
-
+@Keep
 public class ScriptCanvas {
 
     private Canvas mCanvas;

@@ -1,5 +1,8 @@
 package com.stardust.autojs.core.graphics
 
+/**
+ * Created by Stardust on 2018/3/16.
+ */
 import android.annotation.SuppressLint
 import android.content.Context
 import android.graphics.Canvas
@@ -8,6 +11,7 @@ import android.os.SystemClock
 import android.util.Log
 import android.view.TextureView
 import android.view.View
+import androidx.annotation.Keep
 import com.stardust.autojs.core.eventloop.EventEmitter
 import com.stardust.autojs.runtime.ScriptRuntime
 import com.stardust.autojs.runtime.exception.ScriptInterruptedException
@@ -15,12 +19,7 @@ import com.stardust.ext.ifNull
 import java.util.concurrent.ExecutorService
 import java.util.concurrent.Executors
 
-/**
- * Created by Stardust on 2018/3/16.
- */
-import androidx.annotation.Keep
-
-
+@Keep
 @SuppressLint("ViewConstructor")
 class ScriptCanvasView(context: Context, private val mScriptRuntime: ScriptRuntime) : TextureView(context), TextureView.SurfaceTextureListener {
     @Volatile

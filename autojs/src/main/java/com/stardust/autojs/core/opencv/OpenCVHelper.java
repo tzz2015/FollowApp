@@ -3,10 +3,11 @@ package com.stardust.autojs.core.opencv;
 import android.content.Context;
 import android.os.Looper;
 
+import androidx.annotation.Keep;
 import androidx.annotation.Nullable;
 
 import org.opencv.android.OpenCVLoader;
-
+@Keep
 public class OpenCVHelper {
 
     public interface InitializeCallback {

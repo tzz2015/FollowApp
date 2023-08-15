@@ -5,6 +5,7 @@ import android.graphics.Color;
 import android.media.Image;
 import android.os.Build;
 
+import androidx.annotation.Keep;
 import androidx.annotation.RequiresApi;
 
 import com.stardust.autojs.core.opencv.Mat;
@@ -17,7 +18,7 @@ import org.opencv.imgcodecs.Imgcodecs;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.nio.ByteBuffer;
-
+@Keep
 public class ImageWrapper {
 
     private Mat mMat;

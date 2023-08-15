@@ -1,12 +1,14 @@
 package com.stardust.autojs.core.opencv;
 
+import androidx.annotation.Keep;
+
 import com.stardust.util.ResourceMonitor;
 
 import org.opencv.core.Mat;
 import org.opencv.core.Point;
 
 import java.util.concurrent.atomic.AtomicInteger;
-
+@Keep
 public class MatOfPoint extends org.opencv.core.MatOfPoint implements ResourceMonitor.Resource {
 
     private static final AtomicInteger sResourceId = new AtomicInteger();

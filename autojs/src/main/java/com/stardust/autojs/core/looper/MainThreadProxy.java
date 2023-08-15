@@ -1,10 +1,12 @@
 package com.stardust.autojs.core.looper;
 
+import androidx.annotation.Keep;
+
 import com.stardust.autojs.runtime.ScriptRuntime;
 import com.stardust.lang.ThreadCompat;
 
 import java.util.Map;
-
+@Keep
 public class MainThreadProxy {
 
     private final Thread mThread;

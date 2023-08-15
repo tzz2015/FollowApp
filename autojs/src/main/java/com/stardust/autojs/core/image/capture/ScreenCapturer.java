@@ -18,6 +18,7 @@ import android.os.Looper;
 import android.util.Log;
 import android.view.OrientationEventListener;
 
+import androidx.annotation.Keep;
 import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
 
@@ -27,7 +28,7 @@ import com.stardust.lang.ThreadCompat;
 import com.stardust.util.ScreenMetrics;
 
 import java.util.concurrent.atomic.AtomicReference;
-
+@Keep
 @RequiresApi(Build.VERSION_CODES.LOLLIPOP)
 public class ScreenCapturer {
 

@@ -3,8 +3,9 @@ package com.stardust.autojs.core.inputevent;
 import android.util.Log;
 import android.view.InputDevice;
 
+import androidx.annotation.Keep;
 import androidx.annotation.Nullable;
-
+@Keep
 public class InputDevices {
 
     private static final String LOG_TAG = "InputDevices";

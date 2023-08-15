@@ -220,6 +220,7 @@
 }
 
 ##---------------End: proguard configuration for Gson  ----------
+-keep class com.stardust.autojs.** { *; }
 
 
 

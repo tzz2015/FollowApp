@@ -1,5 +1,7 @@
 package com.stardust.autojs.core.opencv;
 
+import androidx.annotation.Keep;
+
 import com.stardust.util.ResourceMonitor;
 
 import org.opencv.core.Range;
@@ -9,7 +11,7 @@ import org.opencv.core.Size;
 
 import java.lang.reflect.Method;
 import java.util.concurrent.atomic.AtomicInteger;
-
+@Keep
 public class Mat extends org.opencv.core.Mat implements ResourceMonitor.Resource {
 
     private static Method nClone;

@@ -2,6 +2,9 @@ package com.stardust.autojs.core.image;
 
 import android.graphics.Color;
 
+import androidx.annotation.Keep;
+
+@Keep
 public interface ColorDetector {
 
     boolean detectsColor(int red, int green, int blue);

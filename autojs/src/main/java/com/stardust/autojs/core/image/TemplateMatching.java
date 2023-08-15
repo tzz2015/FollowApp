@@ -2,6 +2,8 @@ package com.stardust.autojs.core.image;
 
 import android.util.TimingLogger;
 
+import androidx.annotation.Keep;
+
 import com.stardust.autojs.core.opencv.Mat;
 import com.stardust.autojs.core.opencv.OpenCVHelper;
 import com.stardust.util.Nath;
@@ -18,7 +20,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
-
+@Keep
 public class TemplateMatching {
 
     public static class Match {

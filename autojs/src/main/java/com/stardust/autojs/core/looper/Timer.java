@@ -5,9 +5,11 @@ import android.os.Looper;
 import android.os.SystemClock;
 import android.util.SparseArray;
 
+import androidx.annotation.Keep;
+
 import com.stardust.autojs.runtime.ScriptRuntime;
 import com.stardust.concurrent.VolatileBox;
-
+@Keep
 public class Timer {
 
     private static final String LOG_TAG = "Timer";

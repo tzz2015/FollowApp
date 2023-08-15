@@ -1,5 +1,6 @@
 package com.stardust.autojs.core.eventloop;
 
+import androidx.annotation.Keep;
 import androidx.annotation.NonNull;
 
 import com.stardust.autojs.core.looper.Timer;
@@ -12,7 +13,7 @@ import java.util.Iterator;
 import java.util.Map;
 import java.util.TooManyListenersException;
 import java.util.concurrent.CopyOnWriteArrayList;
-
+@Keep
 public class EventEmitter {
 
     private static class ListenerWrapper {

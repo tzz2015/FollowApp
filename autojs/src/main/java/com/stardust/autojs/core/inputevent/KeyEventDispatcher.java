@@ -1,7 +1,9 @@
 package com.stardust.autojs.core.inputevent;
 
-import java.util.concurrent.CopyOnWriteArrayList;
+import androidx.annotation.Keep;
 
+import java.util.concurrent.CopyOnWriteArrayList;
+@Keep
 public class KeyEventDispatcher {
 
     public interface OnKeyListener {

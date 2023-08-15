@@ -4,6 +4,7 @@ import android.os.Handler;
 import android.os.Looper;
 
 import androidx.annotation.CallSuper;
+import androidx.annotation.Keep;
 
 import com.stardust.autojs.engine.RhinoJavaScriptEngine;
 import com.stardust.autojs.runtime.ScriptRuntime;
@@ -12,7 +13,7 @@ import com.stardust.concurrent.VolatileBox;
 import com.stardust.lang.ThreadCompat;
 
 import java.util.concurrent.ConcurrentHashMap;
-
+@Keep
 public class TimerThread extends ThreadCompat {
 
     private static ConcurrentHashMap<Thread, Timer> sTimerMap = new ConcurrentHashMap<>();

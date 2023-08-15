@@ -1,3 +1,4 @@
+import com.android.builder.dexing.isProguardRule
 import java.util.*
 import kotlin.collections.*
 
@@ -125,7 +126,11 @@ android {
 }
 
 
-
+androidComponents {
+    onVariants(selector().withBuildType("release")) {
+        isProguardRule("proguard-rules.pro")
+    }
+}
 
 
 dependencies {

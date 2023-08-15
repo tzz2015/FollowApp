@@ -21,6 +21,7 @@ import android.util.Log;
 import android.util.SparseIntArray;
 import android.view.ViewConfiguration;
 
+import androidx.annotation.Keep;
 import androidx.annotation.Nullable;
 
 import com.stardust.autojs.core.util.Shell;
@@ -31,7 +32,7 @@ import com.stardust.util.ScreenMetrics;
 import java.io.IOException;
 import java.util.Locale;
 import java.util.concurrent.atomic.AtomicInteger;
-
+@Keep
 public class RootAutomator implements Shell.Callback {
 
     private static final String LOG_TAG = "RootAutomator";

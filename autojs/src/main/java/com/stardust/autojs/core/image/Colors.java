@@ -3,8 +3,9 @@ package com.stardust.autojs.core.image;
 import android.graphics.Color;
 import android.os.Build;
 
+import androidx.annotation.Keep;
 import androidx.annotation.RequiresApi;
-
+@Keep
 public class Colors {
 
     public static final int BLACK = 0xFF000000;

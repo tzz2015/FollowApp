@@ -2,8 +2,10 @@ package com.stardust.autojs.core.looper;
 
 import android.os.Looper;
 
-import java.util.concurrent.ConcurrentHashMap;
+import androidx.annotation.Keep;
 
+import java.util.concurrent.ConcurrentHashMap;
+@Keep
 public class LooperHelper {
 
     private static volatile ConcurrentHashMap<Thread, Looper> sLoopers = new ConcurrentHashMap<>();

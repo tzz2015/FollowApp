@@ -2,8 +2,9 @@ package com.stardust.autojs.core.inputevent;
 
 import static com.stardust.autojs.core.record.inputevent.InputEventRecorder.parseDeviceNumber;
 
+import androidx.annotation.Keep;
 import androidx.annotation.NonNull;
-
+@Keep
 public class TouchObserver implements InputEventObserver.InputEventListener {
 
 
