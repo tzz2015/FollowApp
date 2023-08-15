@@ -1,15 +1,17 @@
 package com.stardust.util;
 
 import android.app.Activity;
-import android.os.Handler;
 import android.widget.Toast;
 
+import androidx.annotation.Keep;
 
 import java.util.concurrent.CopyOnWriteArrayList;
 
 /**
  * Created by Stardust on 2017/2/3.
  */
+@Keep
+
 public interface BackPressedHandler {
 
     boolean onBackPressed(Activity activity);

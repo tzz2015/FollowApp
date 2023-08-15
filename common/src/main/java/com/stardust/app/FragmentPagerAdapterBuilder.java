@@ -1,11 +1,13 @@
 package com.stardust.app;
 
+import android.util.SparseArray;
+import android.view.ViewGroup;
+
+import androidx.annotation.Keep;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
-import android.util.SparseArray;
-import android.view.ViewGroup;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -13,6 +15,7 @@ import java.util.List;
 /**
  * Created by Stardust on 2017/3/24.
  */
+@Keep
 
 public class FragmentPagerAdapterBuilder {
 

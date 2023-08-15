@@ -1,10 +1,13 @@
 package com.stardust.event;
 
+import androidx.annotation.Keep;
+
 import java.util.concurrent.CopyOnWriteArrayList;
 
 /**
  * Created by Stardust on 2017/8/6.
  */
+@Keep
 
 public class EventDispatcher<Listener> {
 

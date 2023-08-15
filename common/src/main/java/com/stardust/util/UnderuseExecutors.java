@@ -1,12 +1,14 @@
 package com.stardust.util;
 
-import java.util.concurrent.Executor;
+import androidx.annotation.Keep;
+
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
 /**
  * Created by Stardust on 2017/5/2.
  */
+@Keep
 
 public class UnderuseExecutors {
 

@@ -1,10 +1,12 @@
 package com.stardust.io
 
+import androidx.annotation.Keep
 import java.io.File
 import java.io.FileInputStream
 import java.io.InputStream
 import java.util.zip.ZipEntry
 import java.util.zip.ZipInputStream
+@Keep
 
 object Zip {
 

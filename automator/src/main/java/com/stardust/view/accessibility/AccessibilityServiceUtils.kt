@@ -6,14 +6,13 @@ import android.content.Context
 import android.content.Intent
 import android.provider.Settings
 import android.text.TextUtils
-
-import java.util.Locale
+import androidx.annotation.Keep
 
 
 /**
  * Created by Stardust on 2017/1/26.
  */
-
+@Keep
 object AccessibilityServiceUtils {
 
     fun goToAccessibilitySetting(context: Context) {

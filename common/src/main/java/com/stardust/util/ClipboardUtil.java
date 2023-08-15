@@ -4,12 +4,14 @@ import android.content.ClipData;
 import android.content.ClipboardManager;
 import android.content.Context;
 
+import androidx.annotation.Keep;
 import androidx.annotation.NonNull;
 
 
 /**
  * Created by Stardust on 2017/3/10.
  */
+@Keep
 
 public class ClipboardUtil {
 

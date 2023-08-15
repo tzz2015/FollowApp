@@ -5,6 +5,7 @@ import android.os.Bundle
 import androidx.core.view.accessibility.AccessibilityNodeInfoCompat
 import android.util.Log
 import android.view.accessibility.AccessibilityNodeInfo
+import androidx.annotation.Keep
 
 import com.stardust.view.accessibility.AccessibilityNodeInfoAllocator
 import com.stardust.view.accessibility.AccessibilityNodeInfoHelper
@@ -24,7 +25,7 @@ import androidx.core.view.accessibility.AccessibilityNodeInfoCompat.Accessibilit
 /**
  * Created by Stardust on 2017/3/9.
  */
-
+@Keep
 open class UiObject(info: Any?, private val allocator: AccessibilityNodeInfoAllocator?, depth: Int, private val mIndexInParent: Int) : AccessibilityNodeInfoCompat(info) {
 
 

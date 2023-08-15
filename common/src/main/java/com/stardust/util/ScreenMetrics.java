@@ -2,16 +2,15 @@ package com.stardust.util;
 
 import android.app.Activity;
 import android.content.res.Configuration;
-import android.graphics.Point;
 import android.util.DisplayMetrics;
 import android.view.Display;
-import android.view.Surface;
 
-import static java.lang.System.out;
+import androidx.annotation.Keep;
 
 /**
  * Created by Stardust on 2017/4/26.
  */
+@Keep
 
 public class ScreenMetrics {
 

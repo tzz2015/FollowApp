@@ -1,20 +1,16 @@
 package com.stardust.view.accessibility
 
-import android.accessibilityservice.*
 import android.content.Context
 import android.util.Log
 import android.view.accessibility.AccessibilityEvent
-
+import androidx.annotation.Keep
 import com.stardust.notification.Notification
-
-import java.util.ArrayList
-import java.util.Collections
 import java.util.concurrent.CopyOnWriteArrayList
 
 /**
  * Created by Stardust on 2017/11/3.
  */
-
+@Keep
 class AccessibilityNotificationObserver(private val mContext: Context) : NotificationListener, AccessibilityDelegate {
     private val mNotificationListeners = CopyOnWriteArrayList<NotificationListener>()
     private val mToastListeners = CopyOnWriteArrayList<ToastListener>()

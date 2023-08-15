@@ -1,12 +1,13 @@
 package com.stardust.automator.simple_action
 
 
+import androidx.annotation.Keep
 import com.stardust.automator.UiObject
 
 /**
  * Created by Stardust on 2017/1/27.
  */
-
+@Keep
 class SearchUpTargetAction(action: Int, filter: FilterAction.Filter) : SearchTargetAction(action, filter) {
     private val mAble: Able = Able.ABLE_MAP.get(action)
 

@@ -7,12 +7,14 @@ import android.os.Build
 import android.os.Build.VERSION
 import android.provider.Settings
 import androidx.activity.result.ActivityResultLauncher
+import androidx.annotation.Keep
 import com.stardust.app.permission.PermissionsSettingsUtil.launchAppPermissionsSettings
 
 /**
  * @author wilinz
  * @date 2022/5/23
  */
+@Keep
 object DrawOverlaysPermission {
     fun isCanDrawOverlays(context: Context): Boolean {
         if (VERSION.SDK_INT >= 23) {

@@ -1,7 +1,9 @@
 package com.stardust.util
 
 import android.content.Context
-import android.content.Intent
+import androidx.annotation.Keep
+
+@Keep
 
 object IntentUtilKt {
     fun launchQQ(context: Context): Boolean {

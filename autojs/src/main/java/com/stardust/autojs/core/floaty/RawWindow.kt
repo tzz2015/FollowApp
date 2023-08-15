@@ -12,7 +12,7 @@ import com.stardust.enhancedfloaty.FloatyWindow
 import com.stardust.enhancedfloaty.util.WindowTypeCompat
 import androidx.annotation.Keep
 
-
+@Keep
 class RawWindow(rawFloaty: RawFloaty, context: Context) : FloatyWindow() {
     interface RawFloaty {
         fun inflateWindowView(context: Context, parent: ViewGroup): View

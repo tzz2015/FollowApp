@@ -3,11 +3,15 @@ package com.stardust.util;
 import android.app.Activity;
 import android.content.res.AssetManager;
 
+import androidx.annotation.Keep;
+
 import com.stardust.pio.PFiles;
 
 /**
  * Created by Stardust on 2017/3/14.
  */
+@Keep
+
 
 public class AssetsCache {
 

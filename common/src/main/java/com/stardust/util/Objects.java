@@ -1,8 +1,11 @@
 package com.stardust.util;
 
+import androidx.annotation.Keep;
+
 /**
  * Created by Stardust on 2017/12/31.
  */
+@Keep
 
 public class Objects {
 

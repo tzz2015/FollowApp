@@ -1,11 +1,12 @@
 package com.stardust.concurrent;
 
 
-import java.lang.reflect.Constructor;
+import androidx.annotation.Keep;
 
 /**
  * Created by Stardust on 2017/5/8.
  */
+@Keep
 
 public class VolatileBox<T> {
 

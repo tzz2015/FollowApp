@@ -1,12 +1,12 @@
 package com.stardust.automator.simple_action
 
+import androidx.annotation.Keep
 import com.stardust.automator.UiObject
-
-import java.util.ArrayList
 
 /**
  * Created by Stardust on 2017/2/12.
  */
+@Keep
 class ScrollAction(private val mAction: Int, private val mIndex: Int) : SimpleAction() {
 
     override fun perform(root: UiObject): Boolean {

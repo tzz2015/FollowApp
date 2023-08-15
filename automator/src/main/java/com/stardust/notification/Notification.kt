@@ -2,13 +2,13 @@ package com.stardust.notification
 
 import android.app.PendingIntent
 import android.os.Build
-import android.os.Parcel
+import androidx.annotation.Keep
 import androidx.annotation.RequiresApi
 
 /**
  * Created by Stardust on 2017/10/30.
  */
-
+@Keep
 class Notification private constructor(val packageName: String) : android.app.Notification() {
 
     val text: String?

@@ -1,7 +1,9 @@
 package android.widget;
 
-import java.lang.reflect.Field;
+import androidx.annotation.Keep;
 
+import java.lang.reflect.Field;
+@Keep
 public class TextViewHelper {
 
     private static final Field sSavedStateText;

@@ -1,16 +1,14 @@
 package com.stardust.automator.filter
 
 import android.os.Build
+import androidx.annotation.Keep
 import androidx.annotation.RequiresApi
-
 import com.stardust.automator.UiObject
-
-import java.util.HashMap
 
 /**
  * Created by Stardust on 2017/3/9.
  */
-
+@Keep
 class BooleanFilter(private val mBooleanSupplier: BooleanSupplier, private val mExceptedValue: Boolean) : Filter {
 
     interface BooleanSupplier {

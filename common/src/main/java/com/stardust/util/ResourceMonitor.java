@@ -5,9 +5,12 @@ import android.os.Looper;
 import android.util.Log;
 import android.util.SparseArray;
 
+import androidx.annotation.Keep;
+
 import com.stardust.BuildConfig;
 
 import java.util.concurrent.ConcurrentHashMap;
+@Keep
 
 
 public final class ResourceMonitor {

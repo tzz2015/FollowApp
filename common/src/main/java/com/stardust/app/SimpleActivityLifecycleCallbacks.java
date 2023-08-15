@@ -4,9 +4,12 @@ import android.app.Activity;
 import android.app.Application;
 import android.os.Bundle;
 
+import androidx.annotation.Keep;
+
 /**
  * Created by Stardust on 2017/4/2.
  */
+@Keep
 
 public class SimpleActivityLifecycleCallbacks implements Application.ActivityLifecycleCallbacks {
 

@@ -1,6 +1,8 @@
 package com.stardust.util;
 
 import android.os.Build;
+
+import androidx.annotation.Keep;
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 
@@ -11,6 +13,7 @@ import java.util.Set;
 import java.util.function.BiConsumer;
 import java.util.function.BiFunction;
 import java.util.function.Function;
+@Keep
 
 public class BiMaps {
 

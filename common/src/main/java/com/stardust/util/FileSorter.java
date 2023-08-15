@@ -1,5 +1,7 @@
 package com.stardust.util;
 
+import androidx.annotation.Keep;
+
 import com.stardust.pio.PFiles;
 
 import java.io.File;
@@ -12,6 +14,7 @@ import java.util.List;
 /**
  * Created by Stardust on 2017/3/31.
  */
+@Keep
 
 public class FileSorter {
 

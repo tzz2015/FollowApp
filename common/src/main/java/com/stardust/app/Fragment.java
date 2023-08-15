@@ -1,17 +1,20 @@
 package com.stardust.app;
 
 import android.os.Bundle;
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+import androidx.annotation.Keep;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 
 import com.stardust.util.ViewUtil;
 
 /**
  * Created by Stardust on 2017/1/30.
  */
+@Keep
 
 public abstract class Fragment extends androidx.fragment.app.Fragment {
 

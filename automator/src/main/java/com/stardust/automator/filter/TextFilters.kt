@@ -1,11 +1,12 @@
 package com.stardust.automator.filter
 
+import androidx.annotation.Keep
 import com.stardust.automator.UiObject
 
 /**
  * Created by Stardust on 2017/3/9.
  */
-
+@Keep
 object TextFilters {
 
     private val TEXT_GETTER = object : KeyGetter {

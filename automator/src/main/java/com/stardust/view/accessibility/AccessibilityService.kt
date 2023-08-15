@@ -5,10 +5,9 @@ import android.util.Log
 import android.view.KeyEvent
 import android.view.accessibility.AccessibilityEvent
 import android.view.accessibility.AccessibilityNodeInfo
+import androidx.annotation.Keep
 import com.stardust.event.EventDispatcher
-
-import java.util.HashSet
-import java.util.TreeMap
+import java.util.*
 import java.util.concurrent.ExecutorService
 import java.util.concurrent.Executors
 import java.util.concurrent.TimeUnit
@@ -18,7 +17,7 @@ import java.util.concurrent.locks.ReentrantLock
  * Created by Stardust on 2017/5/2.
  */
 
-
+@Keep
 open class AccessibilityService : android.accessibilityservice.AccessibilityService() {
 
     interface GestureListener {

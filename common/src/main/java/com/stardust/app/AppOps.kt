@@ -4,8 +4,9 @@ import android.app.AppOpsManager
 import android.content.Context
 import android.content.pm.PackageManager
 import android.os.Build
+import androidx.annotation.Keep
 
-
+@Keep
 fun Context.isOpPermissionGranted(permission: String): Boolean {
     val appOps = getSystemService(Context.APP_OPS_SERVICE) as AppOpsManager
     val mode = appOps.checkOpNoThrow(permission, android.os.Process.myUid(), packageName)

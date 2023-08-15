@@ -2,12 +2,13 @@ package com.stardust.automator.simple_action
 
 import android.graphics.Rect
 import android.os.Build
+import androidx.annotation.Keep
 import androidx.annotation.RequiresApi
 
 /**
  * Created by Stardust on 2017/1/27.
  */
-
+@Keep
 interface ActionTarget {
 
     fun createAction(action: Int, vararg params: Any): SimpleAction

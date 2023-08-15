@@ -1,7 +1,9 @@
 package com.stardust.util;
 
+import androidx.annotation.Keep;
+
 import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
+@Keep
 
 public class MD5 {
 

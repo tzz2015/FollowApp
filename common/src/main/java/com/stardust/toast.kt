@@ -2,12 +2,13 @@ package com.stardust
 
 import android.content.Context
 import android.util.Log
-import androidx.annotation.StringRes
 import android.widget.Toast
+import androidx.annotation.Keep
+import androidx.annotation.StringRes
 import java.lang.ref.WeakReference
 
 private var toast: WeakReference<Toast>? = null
-
+@Keep
 fun toast(context: Context, @StringRes resId: Int, isLongToast: Boolean = false) {
     toast(context, context.getString(resId), isLongToast)
 }

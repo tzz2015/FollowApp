@@ -4,11 +4,14 @@ import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 
+import androidx.annotation.Keep;
+
 import java.util.HashMap;
 
 /**
  * Created by Stardust on 2017/6/27.
  */
+@Keep
 
 public class MessageIntent extends Intent {
 

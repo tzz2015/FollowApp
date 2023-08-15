@@ -2,14 +2,13 @@ package com.stardust.view.accessibility
 
 import android.util.Log
 import android.view.KeyEvent
-import android.view.View
-
+import androidx.annotation.Keep
 import java.util.concurrent.CopyOnWriteArrayList
 
 /**
  * Created by Stardust on 2017/7/18.
  */
-
+@Keep
 interface OnKeyListener {
 
     fun onKeyEvent(keyCode: Int, event: KeyEvent)

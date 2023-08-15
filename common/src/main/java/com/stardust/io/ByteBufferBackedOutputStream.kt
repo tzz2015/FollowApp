@@ -1,8 +1,10 @@
 package com.stardust.io
 
+import androidx.annotation.Keep
 import java.io.IOException
 import java.io.OutputStream
 import java.nio.ByteBuffer
+@Keep
 
 class ByteBufferBackedOutputStream(private var buf: ByteBuffer) : OutputStream() {
 

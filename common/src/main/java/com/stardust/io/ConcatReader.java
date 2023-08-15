@@ -18,9 +18,11 @@ package com.stardust.io;
  * See COPYING.TXT for details.
  */
 
-import java.io.*;
+import androidx.annotation.Keep;
+
+import java.io.IOException;
+import java.io.Reader;
 import java.util.ArrayList;
-import java.util.Arrays;
 
 /**
  * A reader which reads sequentially from multiple sources.
@@ -30,6 +32,8 @@ import java.util.Arrays;
  * @author Stephen Ostermiller http://ostermiller.org/contact.pl?regarding=Java+Utilities
  * @since ostermillerutils 1.04.00
  */
+@Keep
+
 public class ConcatReader extends Reader {
 
     /**

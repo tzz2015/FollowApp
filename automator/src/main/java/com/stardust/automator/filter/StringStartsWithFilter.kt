@@ -1,11 +1,12 @@
 package com.stardust.automator.filter
 
+import androidx.annotation.Keep
 import com.stardust.automator.UiObject
 
 /**
  * Created by Stardust on 2017/3/9.
  */
-
+@Keep
 class StringStartsWithFilter(private val mPrefix: String, private val mKeyGetter: KeyGetter) : Filter {
 
     override fun filter(node: UiObject): Boolean {

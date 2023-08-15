@@ -1,7 +1,7 @@
 package com.stardust.pio;
 
+import androidx.annotation.Keep;
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 
 import java.io.File;
 import java.io.FileFilter;
@@ -12,6 +12,7 @@ import java.util.ArrayList;
 /**
  * Created by Stardust on 2017/10/19.
  */
+@Keep
 
 public class PFile extends File {
 

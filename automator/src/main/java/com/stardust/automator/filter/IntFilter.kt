@@ -1,11 +1,12 @@
 package com.stardust.automator.filter
 
+import androidx.annotation.Keep
 import com.stardust.automator.UiObject
 
 /**
  * Created by Stardust on 2017/11/5.
  */
-
+@Keep
 class IntFilter(private val mIntProperty: IntProperty, private val mValue: Int) : Filter {
 
     interface IntProperty {

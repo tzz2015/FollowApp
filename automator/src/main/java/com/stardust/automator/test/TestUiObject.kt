@@ -2,14 +2,14 @@ package com.stardust.automator.test
 
 import android.graphics.Rect
 import android.os.Bundle
-import android.view.accessibility.AccessibilityNodeInfo
+import androidx.annotation.Keep
 import com.stardust.automator.UiObject
 import java.util.*
 
 /**
  * Created by Stardust on 2017/5/5.
  */
-
+@Keep
 class TestUiObject @JvmOverloads constructor(private val mChildCount: Int = Math.max(0, random.nextInt(6) - 2)) : UiObject(null) {
 
     private val mHashCode = random.nextInt()

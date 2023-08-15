@@ -1,7 +1,10 @@
 package com.stardust.util;
 
+import androidx.annotation.Keep;
+
 import java.util.Map;
 import java.util.Set;
+@Keep
 
 public interface BiMap<K, V> extends Map<K, V> {
 

@@ -1,15 +1,14 @@
 package com.stardust.automator.search
 
+import androidx.annotation.Keep
 import com.stardust.automator.UiObject
 import com.stardust.automator.filter.Filter
 import java.util.*
 
-import kotlin.collections.ArrayList
-
 /**
  * Created by Stardust on 2017/3/9.
  */
-
+@Keep
 object DFS : SearchAlgorithm {
 
     override fun search(root: UiObject, filter: Filter, limit: Int): ArrayList<UiObject> {

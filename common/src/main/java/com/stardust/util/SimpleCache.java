@@ -1,5 +1,7 @@
 package com.stardust.util;
 
+import androidx.annotation.Keep;
+
 import java.util.Iterator;
 import java.util.Map;
 import java.util.Timer;
@@ -8,6 +10,7 @@ import java.util.TimerTask;
 /**
  * Created by Stardust on 2017/4/5.
  */
+@Keep
 
 public class SimpleCache<T> {
 

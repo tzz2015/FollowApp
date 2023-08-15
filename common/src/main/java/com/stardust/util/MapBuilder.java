@@ -1,11 +1,14 @@
 package com.stardust.util;
 
+import androidx.annotation.Keep;
+
 import java.util.HashMap;
 import java.util.Map;
 
 /**
  * Created by Stardust on 2017/1/26.
  */
+@Keep
 
 public class MapBuilder<K, V> {
 

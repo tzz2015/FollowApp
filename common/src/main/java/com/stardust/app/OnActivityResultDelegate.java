@@ -1,8 +1,10 @@
 package com.stardust.app;
 
 import android.content.Intent;
-import androidx.annotation.NonNull;
 import android.util.SparseArray;
+
+import androidx.annotation.Keep;
+import androidx.annotation.NonNull;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -10,6 +12,7 @@ import java.util.List;
 /**
  * Created by Stardust on 2017/3/5.
  */
+@Keep
 
 public interface OnActivityResultDelegate {
 

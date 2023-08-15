@@ -4,6 +4,7 @@ import android.content.Context
 import android.content.res.AssetManager
 import android.os.Environment
 import android.util.Log
+import androidx.annotation.Keep
 import com.stardust.util.Func1
 import java.io.*
 import java.nio.charset.Charset
@@ -14,6 +15,8 @@ import kotlin.math.pow
 /**
  * Created by Stardust on 2017/4/1.
  */
+@Keep
+
 object PFiles {
     private const val TAG = "PFiles"
     const val DEFAULT_BUFFER_SIZE = 8192

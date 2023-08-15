@@ -1,11 +1,14 @@
 package com.stardust.util;
 
+import androidx.annotation.Keep;
+
 import java.lang.reflect.Array;
 import java.util.List;
 
 /**
  * Created by Stardust on 2017/5/8.
  */
+@Keep
 
 public class ArrayUtils {
 

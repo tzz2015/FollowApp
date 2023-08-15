@@ -1,10 +1,12 @@
 package com.stardust.util;
 
+import androidx.annotation.Keep;
 import androidx.annotation.NonNull;
 
 /**
  * Created by Stardust on 2017/5/3.
  */
+@Keep
 
 public class TextUtils {
 

@@ -1,5 +1,9 @@
 package com.stardust.util;
 
+import androidx.annotation.Keep;
+
+@Keep
+
 public class ObjectHelper {
 
     public static void requireNonNull(Object obj, String name){

@@ -1,14 +1,15 @@
 package com.stardust.lang;
 
-import java.lang.ref.WeakReference;
+import androidx.annotation.Keep;
+
 import java.util.Collections;
-import java.util.Hashtable;
 import java.util.Set;
 import java.util.WeakHashMap;
 
 /**
  * Created by Stardust on 2017/4/30.
  */
+@Keep
 
 public class ThreadCompat extends Thread {
 

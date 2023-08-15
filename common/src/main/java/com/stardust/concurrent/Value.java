@@ -1,8 +1,11 @@
 package com.stardust.concurrent;
 
+import androidx.annotation.Keep;
+
 /**
  * Created by Stardust on 2017/12/27.
  */
+@Keep
 
 public class Value<T> {
 

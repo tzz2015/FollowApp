@@ -1,11 +1,14 @@
 package com.stardust.util;
 
 import android.app.Activity;
+
+import androidx.annotation.Keep;
 import androidx.drawerlayout.widget.DrawerLayout;
 
 /**
  * Created by Stardust on 2017/6/19.
  */
+@Keep
 
 public class DrawerAutoClose implements BackPressedHandler {
 

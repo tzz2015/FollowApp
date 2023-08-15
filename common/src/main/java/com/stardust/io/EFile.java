@@ -1,5 +1,6 @@
 package com.stardust.io;
 
+import androidx.annotation.Keep;
 import androidx.annotation.NonNull;
 
 import java.io.File;
@@ -8,6 +9,7 @@ import java.net.URI;
 /**
  * Created by Stardust on 2017/8/19.
  */
+@Keep
 
 public class EFile extends File {
 

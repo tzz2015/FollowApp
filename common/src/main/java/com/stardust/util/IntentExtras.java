@@ -3,6 +3,8 @@ package com.stardust.util;
 import android.content.Intent;
 import android.util.SparseArray;
 
+import androidx.annotation.Keep;
+
 import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
@@ -11,6 +13,7 @@ import java.util.concurrent.atomic.AtomicInteger;
 /**
  * Created by Stardust on 2017/7/11.
  */
+@Keep
 
 public class IntentExtras implements Serializable {
 

@@ -6,9 +6,12 @@ import android.util.TypedValue;
 import android.view.View;
 import android.view.ViewParent;
 
+import androidx.annotation.Keep;
+
 /**
  * Created by Stardust on 2017/7/2.
  */
+@Keep
 
 public class ViewUtils {
 

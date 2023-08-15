@@ -5,11 +5,13 @@ import android.content.Context
 import android.net.Uri
 import android.os.Build
 import android.provider.Settings
+import androidx.annotation.Keep
 
 /**
  * @author wilinz
  * @date 2022/5/23
  */
+@Keep
 object BackgroundStartPermission {
 
     private fun isXiaoMi(): Boolean {

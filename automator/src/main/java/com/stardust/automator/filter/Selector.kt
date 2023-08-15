@@ -1,8 +1,10 @@
 package com.stardust.automator.filter
 
+import androidx.annotation.Keep
 import com.stardust.automator.UiObject
 import java.util.*
 
+@Keep
 class Selector : Filter {
     private val mFilters = LinkedList<Filter>()
 

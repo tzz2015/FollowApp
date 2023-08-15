@@ -1,11 +1,12 @@
 package com.stardust.automator
 
 import android.os.Bundle
+import androidx.annotation.Keep
 
 /**
  * Created by Stardust on 2017/3/9.
  */
-
+@Keep
 abstract class ActionArgument private constructor(protected val mKey: String) {
 
     abstract fun putIn(bundle: Bundle)

@@ -1,5 +1,6 @@
 package com.stardust.util
 
+import androidx.annotation.Keep
 import java.io.File
 import java.io.InputStream
 import java.io.OutputStream
@@ -8,6 +9,7 @@ import javax.crypto.CipherInputStream
 import javax.crypto.spec.IvParameterSpec
 import javax.crypto.spec.SecretKeySpec
 
+@Keep
 
 class AdvancedEncryptionStandard(private val key: ByteArray, private val initVector: String) {
 

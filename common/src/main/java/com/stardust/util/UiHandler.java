@@ -5,9 +5,12 @@ import android.os.Handler;
 import android.os.Looper;
 import android.widget.Toast;
 
+import androidx.annotation.Keep;
+
 /**
  * Created by Stardust on 2017/5/2.
  */
+@Keep
 
 public class UiHandler extends Handler {
 

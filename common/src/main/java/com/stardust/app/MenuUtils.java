@@ -1,10 +1,13 @@
 package com.stardust.app;
 
 import android.graphics.drawable.Drawable;
-import androidx.core.graphics.drawable.DrawableCompat;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.SubMenu;
+
+import androidx.annotation.Keep;
+import androidx.core.graphics.drawable.DrawableCompat;
+@Keep
 
 public class MenuUtils {
 

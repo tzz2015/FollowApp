@@ -2,12 +2,15 @@ package com.stardust.util;
 
 import android.util.Base64;
 
+import androidx.annotation.Keep;
+
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
 /**
  * Created by Stardust on 2017/9/26.
  */
+@Keep
 
 public class HashUtils {
 

@@ -6,5 +6,5 @@ package com.mind.data.config
  */
 object AppConfig {
 //    const val BASE_URL = "https://s1.link-nemo.com/lyf/api/"
-    const val BASE_URL = "http://192.168.0.170:8080/api/"
+    const val BASE_URL = "http://192.168.0.1038080/api/"
 }

@@ -9,9 +9,10 @@ import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.ServiceInfo;
 import android.content.pm.Signature;
-import androidx.annotation.Nullable;
 import android.util.Base64;
-import android.util.Log;
+
+import androidx.annotation.Keep;
+import androidx.annotation.Nullable;
 
 import java.io.IOException;
 import java.lang.ref.WeakReference;
@@ -23,6 +24,7 @@ import java.util.zip.ZipFile;
 /**
  * Created by Stardust on 2017/4/5.
  */
+@Keep
 
 public class DeveloperUtils {
 

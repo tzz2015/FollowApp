@@ -6,6 +6,7 @@ import android.net.Uri
 import android.os.Build
 import android.util.Log
 import androidx.activity.result.ActivityResultLauncher
+import androidx.annotation.Keep
 import java.io.BufferedReader
 import java.io.IOException
 
@@ -13,6 +14,7 @@ import java.io.IOException
  * @author wilinz
  * @date 2022/5/23
  */
+@Keep
 object PermissionsSettingsUtil {
     /**
      * Build.MANUFACTURER判断各大手机厂商品牌

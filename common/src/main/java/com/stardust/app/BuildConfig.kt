@@ -2,7 +2,6 @@ package com.stardust.app
 
 import androidx.annotation.Keep
 import kotlin.reflect.full.primaryConstructor
-
 @Keep
 data class BuildConfig(
     @JvmField

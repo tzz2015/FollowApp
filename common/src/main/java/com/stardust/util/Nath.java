@@ -1,8 +1,11 @@
 package com.stardust.util;
 
+import androidx.annotation.Keep;
+
 /**
  * Created by Stardust on 2017/11/26.
  */
+@Keep
 
 public class Nath {
 

@@ -9,9 +9,12 @@ import android.os.Looper;
 import android.view.Window;
 import android.view.WindowManager;
 
+import androidx.annotation.Keep;
+
 /**
  * Created by Stardust on 2017/8/4.
  */
+@Keep
 
 public class DialogUtils {
 

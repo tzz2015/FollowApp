@@ -2,7 +2,8 @@ package com.stardust.util;
 
 import android.content.SharedPreferences;
 
-import java.lang.ref.WeakReference;
+import androidx.annotation.Keep;
+
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -11,6 +12,7 @@ import java.util.concurrent.CopyOnWriteArrayList;
 /**
  * Created by Stardust on 2017/2/3.
  */
+@Keep
 
 public class StateObserver {
 

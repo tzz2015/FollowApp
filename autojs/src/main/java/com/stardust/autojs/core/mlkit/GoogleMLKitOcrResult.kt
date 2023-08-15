@@ -4,7 +4,7 @@ import android.graphics.Rect
 import kotlin.math.abs
 import androidx.annotation.Keep
 
-
+@Keep
 data class GoogleMLKitOcrResult(
     val level: Int,
     val confidence: Float = -1f,

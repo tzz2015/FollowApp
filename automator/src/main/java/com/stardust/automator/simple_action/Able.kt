@@ -1,13 +1,14 @@
 package com.stardust.automator.simple_action
 
 import android.view.accessibility.AccessibilityNodeInfo
+import androidx.annotation.Keep
 import com.stardust.automator.UiObject
 import com.stardust.util.SparseArrayEntries
 
 /**
  * Created by Stardust on 2017/1/27.
  */
-
+@Keep
 interface Able {
 
     fun isAble(node: UiObject): Boolean
