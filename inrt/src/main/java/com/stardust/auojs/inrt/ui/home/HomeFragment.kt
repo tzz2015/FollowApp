@@ -11,6 +11,7 @@ import androidx.lifecycle.lifecycleScope
 import com.afollestad.materialdialogs.MaterialDialog
 import com.chad.library.BR
 import com.jeremyliao.liveeventbus.LiveEventBus
+import com.kc.openset.OSETBanner
 import com.linsh.utilseverywhere.LogUtils
 import com.mind.data.event.MsgEvent
 import com.mind.lib.base.BaseFragment
@@ -19,6 +20,7 @@ import com.mind.lib.util.CacheManager
 import com.stardust.app.GlobalAppContext
 import com.stardust.app.permission.DrawOverlaysPermission.launchCanDrawOverlaysSettings
 import com.stardust.auojs.inrt.autojs.AccessibilityServiceTool1
+import com.stardust.auojs.inrt.util.AdUtils
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
@@ -53,7 +55,9 @@ class HomeFragment : BaseFragment<HomeViewModel, FragmentHomeBinding>(),
         initData()
         viewModel.checkNeedPermissions()
         initObserve()
+        AdUtils.showBannerAd(requireActivity(), bind.fl)
     }
+
 
     private fun initData() {
         userViewModel.getTotalUserCount()
@@ -209,6 +213,11 @@ class HomeFragment : BaseFragment<HomeViewModel, FragmentHomeBinding>(),
         registerForActivityResult(ActivityResultContracts.StartActivityForResult()) {
             viewModel.checkNeedPermissions()
         }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        OSETBanner.getInstance().destroy()
+    }
 
 
 }

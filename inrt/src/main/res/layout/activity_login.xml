@@ -115,12 +115,11 @@
             app:layout_constraintStart_toEndOf="@+id/tv_register"
             app:layout_constraintTop_toBottomOf="@+id/et_pwd" />
 
-        <ImageView
+        <FrameLayout
+            android:id="@+id/fl"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tv_login"
-            app:loadGifDrawable='@{loginViewModel.getGifUrl()}' />
+            app:layout_constraintBottom_toBottomOf="parent" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

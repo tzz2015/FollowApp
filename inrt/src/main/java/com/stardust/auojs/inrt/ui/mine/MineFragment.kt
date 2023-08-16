@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import com.jeremyliao.liveeventbus.LiveEventBus
+import com.kc.openset.OSETBanner
 import com.linsh.utilseverywhere.ToastUtils
 import com.mind.data.event.MsgEvent
 import com.mind.lib.base.BaseFragment
@@ -43,11 +44,13 @@ class MineFragment : BaseFragment<MineViewModel, FragmentMineBinding>() {
         changeView(isLogined())
         doAnimation()
         initObserve()
+
     }
 
     override fun onResume() {
         super.onResume()
         AdUtils.initAd()
+        AdUtils.showBannerAd(requireActivity(), bind.fl)
     }
 
     private fun initObserve() {
@@ -137,5 +140,10 @@ class MineFragment : BaseFragment<MineViewModel, FragmentMineBinding>() {
     private fun setHeaderImage() {
         Glide.with(requireContext()).load(viewModel.getHeadImage())
             .apply(RequestOptions.circleCropTransform()).into(bind.ivHeader)
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        OSETBanner.getInstance().destroy()
     }
 }

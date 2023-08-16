@@ -2,18 +2,22 @@ package com.stardust.auojs.inrt.util;
 
 import android.app.Activity;
 import android.app.Application;
+import android.widget.FrameLayout;
 
 import com.apkfuns.logutils.LogUtils;
 import com.jiagu.sdk.OSETSDKProtected;
 import com.kc.openset.OSETBanner;
 import com.kc.openset.OSETFullVideo;
+import com.kc.openset.OSETListener;
 import com.kc.openset.OSETSDK;
 import com.kc.openset.ad.OSETInformationCache;
 import com.kc.openset.ad.OSETInsertCache;
 import com.kc.openset.ad.OSETInsertHorizontal;
 import com.kc.openset.ad.OSETRewardVideoCache;
 import com.kc.openset.listener.OSETInitListener;
+import com.mind.data.data.mmkv.KV;
 import com.stardust.app.GlobalAppContext;
+import com.tencent.mmkv.MMKV;
 
 public class AdUtils {
     public static boolean isInitAd = false;
@@ -99,6 +103,37 @@ public class AdUtils {
                 .startLoad();
 
 
+    }
+
+    public static void showBannerAd(Activity activity, FrameLayout fl) {
+        boolean show = MMKV.defaultMMKV().getBoolean(KV.BANNER_AD_SWITCH, true);
+        if (!show) {
+            return;
+        }
+        String simpleName = activity.getClass().getSimpleName();
+        OSETBanner.getInstance()
+                .show(activity, AdUtils.POS_ID_Banner, fl, new OSETListener() {
+                    @Override
+                    public void onClick() {
+                        LogUtils.e("onClick:" + simpleName);
+                    }
+
+                    @Override
+                    public void onClose() {
+                        LogUtils.e("onClose:" + simpleName);
+                    }
+
+                    @Override
+                    public void onShow() {
+                        LogUtils.e("onShow:" + simpleName);
+
+                    }
+
+                    @Override
+                    public void onError(String s, String s1) {
+                        LogUtils.e("onError:" + simpleName);
+                    }
+                });
     }
 
     public static void destroyAd() {

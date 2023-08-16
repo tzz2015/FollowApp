@@ -85,9 +85,9 @@
             android:layout_width="200dp"
             android:layout_height="200dp"
             android:layout_marginTop="@dimen/dp10"
-            app:layout_constraintTop_toBottomOf="@+id/iv_top"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/iv_top"
             app:waveColorBottom="@color/theme_color_yellow_green"
             app:waveColorCenter="@color/theme_color_cyan"
             app:waveColorTop="@color/theme_color_dark_purple"
@@ -144,6 +144,7 @@
             android:layout_width="match_parent"
             android:layout_height="55dp"
             android:layout_marginStart="@dimen/dp30"
+            android:layout_marginTop="@dimen/dp20"
             android:layout_marginEnd="@dimen/dp30"
             android:layout_marginBottom="@dimen/dp30"
             android:background="@drawable/bg_home_follow_text"
@@ -153,7 +154,7 @@
             android:text="@string/follow_notice_text"
             android:textColor="@color/black"
             android:textStyle="bold"
-            app:layout_constraintBottom_toTopOf="@+id/tv_notice_bind" />
+            app:layout_constraintTop_toBottomOf="@+id/waveCircleView" />
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/btn_follow"
@@ -177,9 +178,8 @@
             android:layout_width="match_parent"
             android:layout_height="55dp"
             android:layout_marginStart="@dimen/dp30"
-            android:layout_marginTop="15dp"
+            android:layout_marginTop="20dp"
             android:layout_marginEnd="@dimen/dp30"
-            android:layout_marginBottom="@dimen/dp40"
             android:background="@drawable/bg_home_follow_text"
             android:gravity="center_vertical"
             android:paddingStart="15dp"
@@ -187,7 +187,7 @@
             android:text="@string/follow_bind_text"
             android:textColor="@color/black"
             android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="parent" />
+            app:layout_constraintTop_toBottomOf="@+id/tv_notice" />
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/btn_bind_account"
@@ -196,16 +196,22 @@
             android:layout_marginEnd="@dimen/dp_10"
             android:background="@drawable/bg_home_follow_btn"
             android:gravity="center"
+            android:onClick="@{() -> userModel.toBindAccount()}"
             android:paddingStart="15dp"
             android:paddingEnd="15dp"
             android:text="@string/to_bind"
-            android:onClick="@{() -> userModel.toBindAccount()}"
             android:textAlignment="center"
             android:textColor="@color/white"
             android:textSize="14sp"
             app:layout_constraintBottom_toBottomOf="@+id/tv_notice_bind"
             app:layout_constraintEnd_toEndOf="@+id/tv_notice_bind"
             app:layout_constraintTop_toTopOf="@+id/tv_notice_bind" />
+
+        <FrameLayout
+            android:id="@+id/fl"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

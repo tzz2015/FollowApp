@@ -1,8 +1,10 @@
 package com.stardust.auojs.inrt.ui.mine
 
 import com.chad.library.BR
+import com.kc.openset.OSETBanner
 import com.mind.lib.base.BaseActivity
 import com.mind.lib.base.ViewModelConfig
+import com.stardust.auojs.inrt.util.AdUtils
 import org.autojs.autoxjs.inrt.R
 import org.autojs.autoxjs.inrt.databinding.ActivitySuggestionBinding
 
@@ -17,6 +19,11 @@ class SuggestionActivity : BaseActivity<UpdateInfoViewModel,ActivitySuggestionBi
                 finish()
             }
         }
+        AdUtils.showBannerAd(this, bind.fl)
+    }
+    override fun onDestroy() {
+        super.onDestroy()
+        OSETBanner.getInstance().destroy()
     }
 
 }
