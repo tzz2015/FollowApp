@@ -93,4 +93,5 @@ public final class Constants {
     public static String[] FUNCTION_ARRAY = new String[]{FunctionType.CHANGE_PHONE, FunctionType.CHANGE_PSW, FunctionType.CHANGE_EMAIL, FunctionType.FEEDBACK, FunctionType.LOGOUT};
     public static String UPDATE_FUNCTION = "update_function";
 
+
 }

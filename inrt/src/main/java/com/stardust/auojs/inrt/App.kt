@@ -23,6 +23,7 @@ import com.stardust.app.GlobalAppContext
 import com.stardust.auojs.inrt.autojs.AutoJs
 import com.stardust.auojs.inrt.autojs.GlobalKeyObserver
 import com.stardust.auojs.inrt.pluginclient.AutoXKeepLiveService
+import com.stardust.auojs.inrt.util.AdUtils
 import com.stardust.autojs.execution.ScriptExecuteActivity
 import com.tencent.mmkv.MMKV
 import org.autojs.autoxjs.inrt.BuildConfig
@@ -34,15 +35,16 @@ import org.autojs.autoxjs.inrt.R
  */
 
 class App : BaseApp() {
+    val mApp by lazy { this }
 
-    var TAG = "inrt.application";
+    var TAG = "inrt.application"
     override fun onCreate() {
         super.onCreate()
         GlobalAppContext.set(
             this, com.stardust.app.BuildConfig.generate(BuildConfig::class.java)
         )
         MlKit.initialize(this)
-        Utils.init(this);
+        Utils.init(this)
         AutoJs.initInstance(this)
         GlobalKeyObserver.init()
         initCache()
@@ -59,7 +61,7 @@ class App : BaseApp() {
             val foregroundNotification = ForegroundNotification(
                 GlobalAppContext.appName + "正在运行中",
                 "点击打开【" + GlobalAppContext.appName + "】",
-                R.mipmap.ic_launcher
+                R.drawable.icon_launcher
             )  //定义前台服务的通知点击事件
             { context, intent ->
                 Log.d(TAG, "foregroundNotificationClick: ");
@@ -76,9 +78,13 @@ class App : BaseApp() {
         }
 
         if (BuildConfig.isMarket) {
-            showNotification(this);
+            showNotification(this)
         }
+        AdUtils.initAd()
     }
+
+
+
 
     private fun initCache() {
         // mmkv 初始化
@@ -103,7 +109,7 @@ class App : BaseApp() {
         val builder: Notification.Builder = Notification.Builder(context)
         builder.setWhen(System.currentTimeMillis())
             .setOngoing(true)
-            .setSmallIcon(R.mipmap.ic_launcher)
+            .setSmallIcon(R.drawable.icon_launcher)
             .setContentTitle(GlobalAppContext.appName + "保持运行中")
             .setContentText("点击打开【" + GlobalAppContext.appName + "】")
             .setDefaults(NotificationCompat.FLAG_ONGOING_EVENT)
@@ -117,5 +123,8 @@ class App : BaseApp() {
         builder.setContentIntent(pi)
         manager.notify(null, 0, builder.build())
     }
+
+
+
 
 }

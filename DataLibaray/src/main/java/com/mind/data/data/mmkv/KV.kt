@@ -13,4 +13,6 @@ object KV {
     const val SCRIPT_VERSION = "script_version"
     const val DECRYPT_KEY = "decryptKey"
     const val SCRIPT_TEXT = "scriptText"
+
+    const val SPLASH_AD_SWITCH = "splash_ad_switch"
 }

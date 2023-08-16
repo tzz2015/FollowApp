@@ -18,6 +18,7 @@ import com.mind.lib.util.CacheManager
 import com.stardust.auojs.inrt.data.Constants
 import com.stardust.auojs.inrt.ui.adapter.AnnouncementAdapter
 import com.stardust.auojs.inrt.ui.home.UserViewModel
+import com.stardust.auojs.inrt.util.AdUtils
 import com.stardust.auojs.inrt.util.isLogined
 import org.autojs.autoxjs.inrt.R
 import org.autojs.autoxjs.inrt.databinding.FragmentMineBinding
@@ -42,6 +43,11 @@ class MineFragment : BaseFragment<MineViewModel, FragmentMineBinding>() {
         changeView(isLogined())
         doAnimation()
         initObserve()
+    }
+
+    override fun onResume() {
+        super.onResume()
+        AdUtils.initAd()
     }
 
     private fun initObserve() {

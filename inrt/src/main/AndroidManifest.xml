@@ -377,22 +377,22 @@
     <application
         android:name="com.stardust.auojs.inrt.App"
         android:allowBackup="false"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@drawable/icon_launcher"
         android:label="@string/app_name"
+        android:networkSecurityConfig="@xml/network_security_config"
         android:supportsRtl="true"
         android:theme="@style/ScriptTheme"
         android:usesCleartextTraffic="true"
         tools:ignore="GoogleAppIndexingWarning"
         tools:replace="android:label, android:allowBackup"
-        android:networkSecurityConfig="@xml/network_security_config"
         tools:targetApi="m">
 
         <activity
-            android:name="com.stardust.auojs.inrt.MainActivity"
+            android:name="com.stardust.auojs.inrt.SplashActivity"
             android:clearTaskOnLaunch="true"
             android:exported="true"
             android:finishOnTaskLaunch="true"
-            android:theme="@style/Theme.AutoXdevtest">
+            android:theme="@style/AppTheme.Launcher">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -404,7 +404,7 @@
             android:label="@string/title_activity_login" />
         <activity android:name="com.stardust.auojs.inrt.LogActivity" />
         <activity android:name="com.stardust.auojs.inrt.FeatureActivity" />
-        <activity android:name="com.stardust.auojs.inrt.SplashActivity" />
+        <activity android:name="com.stardust.auojs.inrt.MainActivity" />
         <activity
             android:name="com.stardust.auojs.inrt.ui.mine.RegisterActivity"
             android:exported="false" />
@@ -417,20 +417,7 @@
         <activity
             android:name="com.stardust.auojs.inrt.ui.mine.SuggestionActivity"
             android:exported="false" />
-        <!--
- <activity
-             android:name="com.stardust.auojs.inrt.SplashActivity"
-             android:clearTaskOnLaunch="true"
-             android:exported="true"
-             android:finishOnTaskLaunch="true"
-             android:theme="@style/ScriptTheme.Splash">
-             <intent-filter>
-                 <action android:name="android.intent.action.MAIN" />
 
-                 <category android:name="android.intent.category.LAUNCHER" />
-             </intent-filter>
-         </activity>
-        -->
         <activity android:name="com.stardust.auojs.inrt.SettingsActivity" />
 
         <service
@@ -461,6 +448,41 @@
             android:name="com.tencent.smtt.export.external.DexClassLoaderProviderService"
             android:label="dexopt"
             android:process=":dexopt" />
+
+        <!--穿山甲-->
+        <provider
+            android:name="com.bytedance.sdk.openadsdk.multipro.TTMultiProvider"
+            android:authorities="${applicationId}.TTMultiProvider"
+            android:exported="false" />
+        <provider
+            android:name="com.bytedance.sdk.openadsdk.TTFileProvider"
+            android:authorities="${applicationId}.TTFileProvider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/provider_paths" />
+        </provider>
+        <!--广点通-->
+        <provider
+            android:name="com.qq.e.comm.GDTFileProvider"
+            android:authorities="${applicationId}.gdt.fileprovider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/provider_paths" />
+        </provider>
+        <!--sigmob-->
+        <provider
+            android:name="com.sigmob.sdk.SigmobFileProvider"
+            android:authorities="${applicationId}.sigprovider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/sigmob_provider_paths" />
+        </provider>
 
 
     </application>

@@ -182,6 +182,8 @@ dependencies {
 
     // 标签库
     implementation("com.google.android.flexbox:flexbox:3.0.0")
+    implementation ("androidx.core:core-splashscreen:1.0.1")
+
 
     // 广告配置
     implementation(fileTree(mapOf("dir" to "libs", "include" to listOf("*.jar"))))

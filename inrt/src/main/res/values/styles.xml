@@ -73,4 +73,11 @@
         <item name="cornerSize">18dp</item>
     </style>
 
+
+    <style name="AppTheme.Launcher" parent="@android:style/Theme.Light.NoTitleBar.Fullscreen">
+        <item name="android:windowFullscreen">true</item>
+        <item name="colorControlActivated">@color/color_j</item>
+        <item name="android:windowBackground">@drawable/launcher_background</item>
+        <item name="android:windowAnimationStyle">@null</item>
+    </style>
 </resources>
