@@ -92,7 +92,11 @@ android {
         dataBinding = true
         viewBinding = true
     }
-
+    repositories {
+        flatDir {
+            dirs("libs")
+        }
+    }
     sourceSets {
         named("main") {
             jniLibs.srcDir("/libs")
@@ -178,5 +182,24 @@ dependencies {
 
     // 标签库
     implementation("com.google.android.flexbox:flexbox:3.0.0")
+
+    // 广告配置
+    implementation(fileTree(mapOf("dir" to "libs", "include" to listOf("*.jar"))))
+    //百度
+    implementation(files("libs/Baidu_MobAds_SDK-release_v9.31.aar"))
+    //穿山甲（+号代表版本号对应的是demo里面的）
+    implementation(files("libs/open_ad_sdk_5.4.1.6.aar"))
+    //sigmob
+    implementation(files("libs/wind-common-1.4.9.aar"))
+    implementation(files( "libs/wind-sdk-4.12.4.aar"))
+    implementation(files( "libs/oaid_sdk_1.0.25.aar"))
+    //广点通（+号代表版本号对应的是demo里面的）
+    implementation(files( "libs/GDTSDK.unionNormal.4.532.1402.aar"))
+
+    //openset（+号代表版本号对应的是demo里面的）
+    implementation(files( "libs/openset_sdk_6.2.1.2.aar"))
+    //快手（+号代表版本号对应的是demo里面的）
+    implementation(files( "libs/kssdk-ad-3.3.49-publishRelease-22129f3023.aar"))
+
 
 }
