@@ -1,10 +1,7 @@
 package com.mind.data.data.api
 
 
-import com.mind.data.data.model.AnnouncementModel
-import com.mind.data.data.model.ScriptModel
-import com.mind.data.data.model.SpreadModel
-import com.mind.data.data.model.SuggestionModel
+import com.mind.data.data.model.*
 import com.mind.lib.data.model.Res
 import retrofit2.http.*
 
@@ -26,6 +23,15 @@ interface ApiService {
         @Field("followType") followType: Int,
         @Field("isDebug") isDebug: Boolean
     ): Res<ScriptModel?>
+
+
+    @FormUrlEncoded
+    @POST("getAdSwitch")
+    suspend fun getAdSwitch(
+        @Field("version") version: String
+    ): Res<AdSwitchModel?>
+
+
 
 
 }

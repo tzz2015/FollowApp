@@ -22,6 +22,7 @@ import com.stardust.auojs.inrt.autojs.AccessibilityServiceTool
 import com.stardust.auojs.inrt.data.Constants
 import com.stardust.auojs.inrt.launch.GlobalProjectLauncher
 import com.stardust.auojs.inrt.ui.mine.LoginActivity
+import com.stardust.auojs.inrt.util.AdUtils
 import com.stardust.auojs.inrt.util.isLogined
 import com.stardust.autojs.BuildConfig
 import com.tencent.mmkv.MMKV
@@ -31,9 +32,9 @@ import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update
 import org.autojs.autoxjs.inrt.R
 import java.io.File
-import java.io.FileOutputStream
 import java.io.IOException
 import javax.inject.Inject
+import kotlin.random.Random
 
 @HiltViewModel
 class HomeViewModel @Inject constructor() : BaseViewModel() {
@@ -114,23 +115,60 @@ class HomeViewModel @Inject constructor() : BaseViewModel() {
         FileUtils.deleteFile(hostFile)
         FileUtils.deleteFile(tokenFile)
         try {
-            FileUtils.writeString(file,toJson)
-            FileUtils.writeString(tokenFile,CacheManager.instance.getToken())
-            FileUtils.writeString(hostFile,AppConfig.BASE_URL)
+            FileUtils.writeString(file, toJson)
+            FileUtils.writeString(tokenFile, CacheManager.instance.getToken())
+            FileUtils.writeString(hostFile, AppConfig.BASE_URL)
         } catch (e: IOException) {
             e.printStackTrace()
         }
     }
 
+
     /**
      * 运行关注脚本
      */
+    fun runFollowScript(activity: Activity) {
+        // 第一次关注 不展示广告
+        if (MMKV.defaultMMKV().getBoolean(KV.FIRST_FOLLOW, true)) {
+            MMKV.defaultMMKV().putBoolean(KV.FIRST_FOLLOW, false)
+            runFollowScript()
+            return
+        }
+        val num = MMKV.defaultMMKV().getInt(KV.FOLLOW_SWITCH_NUM, -1)
+        if (num <= 0) {
+            runFollowScript()
+            return
+        }
+        when (Random.nextInt(num + 1)) {
+            0 -> {
+                LogUtils.e("激励视频关注")
+                AdUtils.showRewardVideoAd(activity) {
+                    LogUtils.e("关闭激励视频")
+                    runFollowScript()
+                }
+            }
+            1 -> {
+                LogUtils.e("全屏视频关注")
+                AdUtils.showFullVideoAd(activity) {
+                    LogUtils.e("关闭全屏视频")
+                    runFollowScript()
+                }
+            }
+            else -> {
+                LogUtils.e("免费关注")
+                runFollowScript()
+            }
+        }
+
+    }
+
     fun runFollowScript() {
         stopRunScript()
         Thread {
             GlobalProjectLauncher.runScript(Constants.DOUYIN_JS, FollowAccountType.DOU_YIN)
         }.start()
     }
+
 
     private fun toLogin() {
         val intent = Intent(mContext, LoginActivity::class.java)

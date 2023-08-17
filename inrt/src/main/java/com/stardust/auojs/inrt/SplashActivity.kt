@@ -40,7 +40,7 @@ class SplashActivity : ComponentActivity() {
     }
 
     private fun initView() {
-        val show = MMKV.defaultMMKV().getBoolean(KV.SPLASH_AD_SWITCH, true)
+        val show = MMKV.defaultMMKV().getBoolean(KV.START_SWITCH, false)
         if (!show) {
             toMainActivity()
         } else {
@@ -51,6 +51,7 @@ class SplashActivity : ComponentActivity() {
 
     private fun initAdView() {
         val fl = findViewById<FrameLayout>(R.id.fl_ad)
+        AdUtils.initAd()
         OSETSplash.getInstance().show(this, fl, AdUtils.POS_ID_Splash, object : OSETListener {
             override fun onShow() {
                 Log.e(TAG, "onShow")

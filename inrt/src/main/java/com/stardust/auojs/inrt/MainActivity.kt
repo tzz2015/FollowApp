@@ -2,6 +2,7 @@ package com.stardust.auojs.inrt
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupWithNavController
@@ -20,6 +21,9 @@ import org.autojs.autoxjs.inrt.databinding.ActivityMainBinding
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
+    private val mainViewModel by lazy {
+        ViewModelProvider(this)[MainViewModel::class.java]
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -40,6 +44,7 @@ class MainActivity : AppCompatActivity() {
 //        setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
         initBus()
+        mainViewModel.getAdSwitch()
     }
 
     private fun initBus() {
@@ -48,6 +53,9 @@ class MainActivity : AppCompatActivity() {
             MMKV.defaultMMKV().putString(KV.USER_INFO, "")
             CacheManager.instance.clearLogin()
             ToastUtils.show("登录失效，请重新登录")
+        }
+        LiveEventBus.get(MsgEvent.LOGIN_TOKEN_EVENT).observe(this) {
+            mainViewModel.getAdSwitch()
         }
     }
 

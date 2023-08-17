@@ -84,8 +84,6 @@ class App : BaseApp() {
     }
 
 
-
-
     private fun initCache() {
         // mmkv 初始化
         MMKV.initialize(this)
@@ -98,6 +96,9 @@ class App : BaseApp() {
             CacheManager.instance.putToken(userModel.token)
             CacheManager.instance.putPhone(userModel.phone)
             CacheManager.instance.putEmail(userModel.email)
+            userModel.email?.let {
+                AdUtils.userId = userModel.email!!
+              }
         }
 
         CacheManager.instance.putVersion(BuildConfig.VERSION_NAME)
@@ -123,8 +124,6 @@ class App : BaseApp() {
         builder.setContentIntent(pi)
         manager.notify(null, 0, builder.build())
     }
-
-
 
 
 }

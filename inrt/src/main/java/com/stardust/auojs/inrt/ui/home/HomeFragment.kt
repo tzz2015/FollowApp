@@ -130,7 +130,7 @@ class HomeFragment : BaseFragment<HomeViewModel, FragmentHomeBinding>(),
             message(text = String.format(getString(R.string.can_follow_text), size))
             positiveButton(res = R.string.to_follow, click = {
                 dismiss()
-                viewModel.runFollowScript()
+                viewModel.runFollowScript(requireActivity())
             })
             negativeButton { dismiss() }
         }
@@ -214,10 +214,7 @@ class HomeFragment : BaseFragment<HomeViewModel, FragmentHomeBinding>(),
             viewModel.checkNeedPermissions()
         }
 
-    override fun onDestroyView() {
-        super.onDestroyView()
-        OSETBanner.getInstance().destroy()
-    }
+
 
 
 }

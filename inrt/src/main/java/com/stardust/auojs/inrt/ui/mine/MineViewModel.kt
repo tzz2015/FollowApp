@@ -30,10 +30,11 @@ class MineViewModel @Inject constructor() : BaseViewModel() {
     fun getAnnouncementList() {
         loadHttp(
             request = { ApiClient.otherApi.getAnnouncementList() },
-            resp = {
-                Log.e(javaClass.name, "getAnnouncementList:${it.toString()} ")
-                it?.let {
-                    announcementList.postValue(it)
+            resp = { data ->
+                Log.e(javaClass.name, "getAnnouncementList:${data.toString()} ")
+                data?.let { list ->
+                    list.sortByDescending { it.weight }
+                    announcementList.postValue(list)
                 }
             },
             isShowDialog = false

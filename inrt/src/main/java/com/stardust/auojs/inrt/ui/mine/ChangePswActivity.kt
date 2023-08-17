@@ -26,8 +26,5 @@ class ChangePswActivity : BaseActivity<UserViewModel, ActivityChangePswBinding>(
         AdUtils.showBannerAd(this, bind.fl)
     }
 
-    override fun onDestroy() {
-        super.onDestroy()
-        OSETBanner.getInstance().destroy()
-    }
+
 }

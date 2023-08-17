@@ -22,9 +22,6 @@ class RegisterActivity : BaseActivity<UserViewModel, ActivityRegisterBinding>() 
         }
         AdUtils.showBannerAd(this, bind.fl)
     }
-    override fun onDestroy() {
-        super.onDestroy()
-        OSETBanner.getInstance().destroy()
-    }
+
 
 }

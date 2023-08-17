@@ -37,9 +37,6 @@ class UpdateInfoActivity : BaseActivity<UpdateInfoViewModel, ActivityUpdateInfoB
         AdUtils.showBannerAd(this, bind.fl)
     }
 
-    override fun onDestroy() {
-        super.onDestroy()
-        OSETBanner.getInstance().destroy()
-    }
+
 
 }

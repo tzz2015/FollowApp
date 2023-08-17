@@ -21,9 +21,6 @@ class SuggestionActivity : BaseActivity<UpdateInfoViewModel,ActivitySuggestionBi
         }
         AdUtils.showBannerAd(this, bind.fl)
     }
-    override fun onDestroy() {
-        super.onDestroy()
-        OSETBanner.getInstance().destroy()
-    }
+
 
 }

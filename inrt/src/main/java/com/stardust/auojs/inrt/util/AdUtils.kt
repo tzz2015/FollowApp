@@ -1,77 +1,66 @@
-package com.stardust.auojs.inrt.util;
+package com.stardust.auojs.inrt.util
 
-import android.app.Activity;
-import android.app.Application;
-import android.widget.FrameLayout;
+import android.app.Activity
+import android.app.Application
+import android.util.Log
+import android.widget.FrameLayout
+import android.widget.Toast
+import com.apkfuns.logutils.LogUtils
+import com.jiagu.sdk.OSETSDKProtected
+import com.kc.openset.*
+import com.kc.openset.ad.OSETInformationCache
+import com.kc.openset.ad.OSETInsertCache
+import com.kc.openset.ad.OSETInsertHorizontal
+import com.kc.openset.ad.OSETRewardVideoCache
+import com.kc.openset.listener.OSETInitListener
+import com.mind.data.data.mmkv.KV
+import com.stardust.app.GlobalAppContext.get
+import com.tencent.mmkv.MMKV
 
-import com.apkfuns.logutils.LogUtils;
-import com.jiagu.sdk.OSETSDKProtected;
-import com.kc.openset.OSETBanner;
-import com.kc.openset.OSETFullVideo;
-import com.kc.openset.OSETListener;
-import com.kc.openset.OSETSDK;
-import com.kc.openset.ad.OSETInformationCache;
-import com.kc.openset.ad.OSETInsertCache;
-import com.kc.openset.ad.OSETInsertHorizontal;
-import com.kc.openset.ad.OSETRewardVideoCache;
-import com.kc.openset.listener.OSETInitListener;
-import com.mind.data.data.mmkv.KV;
-import com.stardust.app.GlobalAppContext;
-import com.tencent.mmkv.MMKV;
+object AdUtils {
+    private var isInitAd = false
+    private var isIniting = false
 
-public class AdUtils {
-    public static boolean isInitAd = false;
-    public static final String AppKey = "E6097975B89E83D6";
-    public static final String POS_ID_Splash = "7D5239D8D88EBF9B6D317912EDAC6439";
-    public static final String POS_ID_Banner = "107EB50EDFE65EA3306C8318FD57D0B3";
-    public static final String POS_ID_Insert = "1D273967F51868AF2C4E080D496D06D0";
-    public static final String POS_ID_Insert_Horizontal = "592AFB97E4FD2C63EC23AA781FF6E8B0";
-    public static final String POS_ID_RewardVideo = "09A177D681D6FB81241C3DCE963DCB46";
-    public static final String POS_ID_FullVideo = "D879C3DED01D5CE319CD2751474BA8E4";
-    public static final String POS_ID_INFORMATION = "89FEEA66F9228ED3F6420294B89A902B";//原生广告v
-    public static final String POS_ID_DRAEINFORMATION = "6328AB893D5DBA6B9D2791B54E1D2C16";//原生Draw广告
-    public static final String POS_ID_VIDEOCONTENT = "2A96205DFDDB8D27C784FF31F0625BA4";//视频内容
-    public static final String POS_ID_NEWSCONTENT = "4EC4251D616C69030A161A930A938596";//信息流内容
-    public static final String POS_ID_NOVELCONTENT = "6EBF6503C9379A85DC95C0AE8D787C35";//小说内容
-    public static final String POS_ID_NEWSYDCONTENT = "EBE266AAE65F52C37A28BF2D586132EB";//YD资讯内容
-    public static final String POS_ID_SUSPEND = "C20D0FDCA88E06E6718A33279AAD2B4D";//悬浮框
-    public static final String POS_ID_NOVEL_TASK = "C4BC47AE2DEE0D663BB14903F1400731";//30s小说任务
-
-    public static String userId = "39AF0C2A82CB8178";
-
-
-    public static void initAd() {
-        if (isInitAd) {
-            return;
+    const val AppKey = "16F1E572AB834A32"
+    const val POS_ID_Splash = "33C59AA1DCBFC104DCA82B5D18E72C34" // 开屏
+    const val POS_ID_Banner = "027E62B50F702E48318109A66C4D1F97" // banner
+    const val POS_ID_Insert = "A2FDF5E57D1C3643778E8C7C092AA4DA" // 插屏
+    const val POS_ID_Insert_Horizontal = "592AFB97E4FD2C63EC23AA781FF6E8B0"
+    const val POS_ID_RewardVideo = "2785D56002C9780ACA08156CA6CA857F" // 激励视频
+    const val POS_ID_FullVideo = "3E51EFB45956CE1074A0A2F1AFC5D88B" // 全屏视频
+    const val POS_ID_VIDEOCONTENT = "C36F13809B2EF4706FB2844025248B95" //视频内容
+    var userId = ""
+    fun initAd() {
+        if (isInitAd || isIniting) {
+            return
         }
-
-        OSETSDKProtected.install((Application) GlobalAppContext.get());
-        OSETSDK.getInstance().setUserId(userId);
-        OSETSDK.getInstance().init((Application) GlobalAppContext.get(), AppKey, new OSETInitListener() {
-            @Override
-            public void onError(String s) {
-                isInitAd = false;
-                LogUtils.e("初始化广告失败");
+        isIniting = true
+        OSETSDKProtected.install(get() as Application)
+        OSETSDK.getInstance().setUserId(userId)
+        OSETSDK.getInstance().init(get() as Application, AppKey, object : OSETInitListener {
+            override fun onError(s: String) {
+                isInitAd = false
+                isIniting = false
+                LogUtils.e("初始化广告失败")
             }
 
-            @Override
-            public void onSuccess() {
-                isInitAd = true;
-                LogUtils.e("初始化广告成功");
-
+            override fun onSuccess() {
+                isInitAd = true
+                isIniting = false
+                LogUtils.e("初始化广告成功")
             }
-        });
+        })
     }
 
-    public static void initCache(Activity activity) {
+    fun initCache(activity: Activity?) {
         //在首页开启缓存（首页生命周期比较长）
         OSETRewardVideoCache.getInstance()
-                .setContext(activity)
-                .setUserId(userId)
-                .setPosId(POS_ID_RewardVideo)
-                .startLoad();
+            .setContext(activity)
+            .setUserId(userId)
+            .setPosId(POS_ID_RewardVideo)
+            .startLoad()
 
-        //同激励广告
+        /*  //同激励广告
         OSETInsertCache.getInstance()
                 .setContext(activity)
                 .setUserId(userId)
@@ -83,66 +72,153 @@ public class AdUtils {
                 .setContext(activity)
                 .setUserId(userId)
                 .setPosId(POS_ID_Insert_Horizontal)
-                .startLoad();
+                .startLoad();*/
 
-        OSETInformationCache.getInstance()
+        /*OSETInformationCache.getInstance()
                 .setContext(activity)
                 .setUserId(userId)
                 .setPosId(POS_ID_INFORMATION)
-                .startLoad();
-
-        OSETFullVideo.getInstance()
-                .setContext(activity)
-                .setPosId(POS_ID_FullVideo)
-                .startLoad();
-
+                .startLoad();*/OSETFullVideo.getInstance()
+            .setContext(activity)
+            .setPosId(POS_ID_FullVideo)
+            .startLoad()
         OSETBanner.getInstance()
-                .setContext(activity)
-                .setUserId(userId)
-                .setPosId(POS_ID_Banner)
-                .startLoad();
-
-
+            .setContext(activity)
+            .setUserId(userId)
+            .setPosId(POS_ID_Banner)
+            .startLoad()
     }
 
-    public static void showBannerAd(Activity activity, FrameLayout fl) {
-        boolean show = MMKV.defaultMMKV().getBoolean(KV.BANNER_AD_SWITCH, true);
+    fun showBannerAd(activity: Activity, fl: FrameLayout?) {
+        initAd()
+        val show = MMKV.defaultMMKV().getBoolean(KV.BANNER_SWITCH, false)
         if (!show) {
-            return;
+            return
         }
-        String simpleName = activity.getClass().getSimpleName();
+        val simpleName = activity.javaClass.simpleName
         OSETBanner.getInstance()
-                .show(activity, AdUtils.POS_ID_Banner, fl, new OSETListener() {
-                    @Override
-                    public void onClick() {
-                        LogUtils.e("onClick:" + simpleName);
-                    }
+            .show(activity, POS_ID_Banner, fl, object : OSETListener {
+                override fun onClick() {
+                    LogUtils.e("onClick:$simpleName")
+                }
 
-                    @Override
-                    public void onClose() {
-                        LogUtils.e("onClose:" + simpleName);
-                    }
+                override fun onClose() {
+                    LogUtils.e("onClose:$simpleName")
+                }
 
-                    @Override
-                    public void onShow() {
-                        LogUtils.e("onShow:" + simpleName);
+                override fun onShow() {
+                    LogUtils.e("onShow:$simpleName")
+                }
 
-                    }
-
-                    @Override
-                    public void onError(String s, String s1) {
-                        LogUtils.e("onError:" + simpleName);
-                    }
-                });
+                override fun onError(s: String, s1: String) {
+                    LogUtils.e("加载banner失败:$simpleName")
+                }
+            })
     }
 
-    public static void destroyAd() {
-        OSETRewardVideoCache.getInstance().destroy();
-        OSETInsertCache.getInstance().destroy();
-        OSETInformationCache.getInstance().destroy();
-        OSETInsertHorizontal.getInstance().destroy();
-        OSETFullVideo.getInstance().destroy();
-        OSETBanner.getInstance().destroy();
+
+    /**
+     * 激励视频
+     */
+    fun showRewardVideoAd(activity: Activity, back: () -> Unit) {
+        initAd()
+        OSETRewardVideoCache.getInstance().setOSETVideoListener(object : OSETVideoListener {
+            override fun onLoad() {
+                // 执行此方法后可调用调用OSETFullVideo.getInstance().showAd()进行展示全屏视频
+//                Toast.makeText(activity, "加载成功，可以开始调用showAd方法显示广告", Toast.LENGTH_SHORT).show()
+            }
+
+            override fun onVideoStart() {
+                Log.e("RewardVideo", "onVideoStart---")
+            }
+
+            override fun onReward(s: String, arg: Int) {
+                Log.e("RewardVideo", "onReward---key:$s")
+                OSETRewardVideoCache.getInstance().verify(
+                    s
+                ) { b: Boolean ->
+                    Log.d(
+                        "RewardVideo",
+                        "onClose 服务器验证$b"
+                    )
+                }
+            }
+
+            override fun onShow(key: String) {
+                Toast.makeText(activity, "onShow", Toast.LENGTH_SHORT).show()
+            }
+
+            override fun onError(s: String, s1: String) {
+                Log.e("openseterror", "code:$s----message:$s1")
+                back()
+            }
+
+            override fun onClick() {
+                Log.e("RewardVideo", "onClick---")
+            }
+
+            override fun onClose(key: String) {
+                Log.e("RewardVideo", "onClose---key:$key")
+                back()
+            }
+
+            override fun onVideoEnd(key: String) {
+                Log.e("RewardVideo", "onVideoEnd---key:$key")
+            }
+        }).showAd(activity)
+
     }
 
+    /**
+     * 全屏广告
+     */
+    fun showFullVideoAd(activity: Activity, back: () -> Unit) {
+        initAd()
+        OSETFullVideo.getInstance().setOSETVideoListener(object : OSETVideoListener {
+            override fun onLoad() {
+                // 执行此方法后可调用调用OSETFullVideo.getInstance().showAd()进行展示全屏视频
+//                Toast.makeText(activity, "加载成功，可以开始调用showAd方法显示广告", Toast.LENGTH_SHORT).show()
+            }
+
+            override fun onVideoStart() {
+                Log.e("FullVideo", "onVideoStart---")
+            }
+
+            override fun onReward(s: String, arg: Int) {
+                Log.e("FullVideo", "onReward---key:$s")
+            }
+
+            override fun onShow(key: String) {
+                Toast.makeText(activity, "onShow", Toast.LENGTH_SHORT).show()
+            }
+
+            override fun onError(s: String, s1: String) {
+                Log.e("openseterror", "code:$s----message:$s1")
+                back()
+            }
+
+            override fun onClick() {
+                Log.e("FullVideo", "onClick---")
+            }
+
+            override fun onClose(key: String) {
+                Log.e("FullVideo", "onClose---key:$key")
+                back()
+            }
+
+            override fun onVideoEnd(key: String) {
+                Log.e("FullVideo", "onVideoEnd---key:$key")
+            }
+        }).showAd(activity)
+
+    }
+
+    fun destroyAd() {
+        OSETRewardVideoCache.getInstance().destroy()
+        OSETInsertCache.getInstance().destroy()
+        OSETInformationCache.getInstance().destroy()
+        OSETInsertHorizontal.getInstance().destroy()
+        OSETFullVideo.getInstance().destroy()
+        OSETBanner.getInstance().destroy()
+    }
 }
