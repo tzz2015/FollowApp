@@ -111,10 +111,7 @@ open class UserViewModel @Inject constructor() : BaseViewModel() {
 
     }
 
-    fun getGifUrl(): String {
-        val randomInt = Random.nextInt(0, Constants.GIF_ARRAY.size)
-        return Constants.GIF_ARRAY[randomInt]
-    }
+
 
     /**
      * 是否显示密码

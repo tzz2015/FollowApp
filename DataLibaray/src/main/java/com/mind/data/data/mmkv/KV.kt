@@ -15,5 +15,6 @@ object KV {
     const val SCRIPT_TEXT = "scriptText"
     const val BANNER_AD_SWITCH = "banner_ad_switch"
     const val SPLASH_AD_SWITCH = "splash_ad_switch"
+    const val SPREAD_URL ="SPREAD_URL"
 
 }

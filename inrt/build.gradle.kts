@@ -201,7 +201,6 @@ dependencies {
     //openset（+号代表版本号对应的是demo里面的）
     implementation(files( "libs/openset_sdk_6.2.1.2.aar"))
     //快手（+号代表版本号对应的是demo里面的）
-    implementation(files( "libs/kssdk-ad-3.3.49-publishRelease-22129f3023.aar"))
-
+    implementation(files( "libs/kssdk-ct-3.3.47-publishRelease-40bffe19b5.aar"))
 
 }

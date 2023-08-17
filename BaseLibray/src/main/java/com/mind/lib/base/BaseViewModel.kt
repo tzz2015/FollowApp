@@ -9,13 +9,10 @@ import com.mind.lib.data.model.Res
 import com.mind.lib.data.net.ResCode
 import com.mind.lib.util.Util
 import com.mind.lib.util.toast
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.cancel
+import kotlinx.coroutines.*
 import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.flowOn
-import kotlinx.coroutines.launch
 
 /**
  * Created by rui
@@ -25,10 +22,15 @@ import kotlinx.coroutines.launch
 open class BaseViewModel : ViewModel(), LifecycleObserver {
 
     val uiChange: UIChange by lazy { UIChange() }
+    val jobList: MutableList<Job> = ArrayList()
 
     //当组件结束时，会取消协程内的任务
     override fun onCleared() {
         viewModelScope.cancel()
+        for (job in jobList) {
+            job.cancel()
+        }
+        jobList.clear()
     }
 
     /**
@@ -234,16 +236,16 @@ open class BaseViewModel : ViewModel(), LifecycleObserver {
         isShowToast: Boolean = true,                   // 是否toast
         isShowDialog: Boolean = true,                  // 是否显示加载框
     ) {
-        viewModelScope.launch {
+        val job = viewModelScope.launch {
             try {
                 showDialog(isShowDialog)
                 val data = request()                   // 请求+响应数据
-                 if (data.code == ResCode.OK.getCode()) {    //业务响应成功
-                     resp(data.data)                   // 响应回调
-                 } else {
-                     showToast(isShowDialog, data.message)
-                     err(data.message)                       // 业务失败处理
-                 }
+                if (data.code == ResCode.OK.getCode()) {    //业务响应成功
+                    resp(data.data)                   // 响应回调
+                } else {
+                    showToast(isShowDialog, data.message)
+                    err(data.message)                       // 业务失败处理
+                }
             } catch (e: Exception) {
                 err(e.message ?: "")  //可根据具体异常显示具体错误提示   异常处理
                 showToast(isShowToast, e.message ?: "")
@@ -252,6 +254,8 @@ open class BaseViewModel : ViewModel(), LifecycleObserver {
                 dismissDialog(isShowDialog)
             }
         }
+
+        jobList.add(job)
 
     }
 

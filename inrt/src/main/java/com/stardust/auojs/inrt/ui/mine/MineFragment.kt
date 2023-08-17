@@ -11,6 +11,9 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import com.jeremyliao.liveeventbus.LiveEventBus
 import com.kc.openset.OSETBanner
+import com.kc.openset.OSETSuspend
+import com.kc.openset.listener.OSETSuspendListener
+import com.linsh.utilseverywhere.LogUtils
 import com.linsh.utilseverywhere.ToastUtils
 import com.mind.data.event.MsgEvent
 import com.mind.lib.base.BaseFragment
@@ -29,6 +32,9 @@ class MineFragment : BaseFragment<MineViewModel, FragmentMineBinding>() {
     override val viewModelConfig: ViewModelConfig
         get() = ViewModelConfig(R.layout.fragment_mine)
     private val mAdapter: AnnouncementAdapter by lazy { AnnouncementAdapter() }
+
+    //        initRiskGrid();
+    private val mOsetSuspend by lazy { OSETSuspend() }
 
     private val userViewModel by lazy {
         ViewModelProvider(this)[UserViewModel::class.java]
@@ -51,6 +57,22 @@ class MineFragment : BaseFragment<MineViewModel, FragmentMineBinding>() {
         super.onResume()
         AdUtils.initAd()
         AdUtils.showBannerAd(requireActivity(), bind.fl)
+        loadSuspendAd()
+    }
+
+    private fun loadSuspendAd() {
+        mOsetSuspend.loadSuspend(
+            requireActivity(),
+            bind.fl2,
+            AdUtils.POS_ID_SUSPEND,
+            object : OSETSuspendListener {
+                override fun loadSuccess() {}
+                override fun onError(s: String, s1: String) {
+                    LogUtils.e("onError:${s} \n ${s1}")
+                }
+
+                override fun onClick() {}
+            })
     }
 
     private fun initObserve() {
@@ -144,6 +166,7 @@ class MineFragment : BaseFragment<MineViewModel, FragmentMineBinding>() {
 
     override fun onDestroyView() {
         super.onDestroyView()
+        mOsetSuspend.destory()
         OSETBanner.getInstance().destroy()
     }
 }

@@ -1,8 +1,11 @@
 package com.stardust.auojs.inrt.data;
 
 import com.mind.data.data.model.FunctionType;
+import com.mind.data.data.model.SpreadModel;
 
 import org.autojs.autoxjs.inrt.R;
+
+import java.util.List;
 
 /**
  * Created by Stardust on 2017/7/7.
@@ -51,27 +54,6 @@ public final class Constants {
             "               }})()";
 
 
-    public static String[] GIF_ARRAY = new String[]{
-            "https://p.qqan.com/up/2022-10/16666620627993727.gif",
-            "https://p.qqan.com/up/2023-6/16861030441465787.gif",
-            "https://p.qqan.com/up/2022-11/16697747329595671.gif",
-            "https://p.qqan.com/up/2022-11/16697747329354796.gif",
-            "https://p.qqan.com/up/2022-11/16697747325869245.gif",
-            "https://p.qqan.com/up/2022-5/16535287371259931.gif",
-            "https://p.qqan.com/up/2021-12/16402254151729459.gif",
-            "https://p.qqan.com/up/2021-9/16316727987832090.gif",
-            "https://p.qqan.com/up/2021-7/16260571535241926.gif",
-            "https://p.qqan.com/up/2021-7/16257984276026075.gif",
-            "https://p.qqan.com/up/2021-7/16257984644790113.gif",
-            "https://p.qqan.com/up/2021-5/16215654997550154.gif",
-            "https://p.qqan.com/up/2021-4/16172552734668714.gif",
-            "https://p.qqan.com/up/2021-5/16206147578044126.gif",
-            "https://p.qqan.com/up/2020-11/16043966687504011.gif",
-            "https://p.qqan.com/up/2020-11/16043966707835386.gif",
-            "https://p.qqan.com/up/2020-10/16028335046195539.gif",
-            "https://p.qqan.com/up/2020-10/16028335052935895.gif",
-            "https://pic.qqtn.com/up/2018-7/2018072714262323273.gif"};
-
     public static int[] IMAGE_ARRAY = new int[]{
             R.mipmap.icon_header_1_1,
             R.mipmap.icon_header_1_2,
@@ -92,6 +74,10 @@ public final class Constants {
             R.mipmap.icon_header_1_17};
     public static String[] FUNCTION_ARRAY = new String[]{FunctionType.CHANGE_PHONE, FunctionType.CHANGE_PSW, FunctionType.CHANGE_EMAIL, FunctionType.FEEDBACK, FunctionType.LOGOUT};
     public static String UPDATE_FUNCTION = "update_function";
+
+    public static List<SpreadModel> SPREAD_URL;
+
+    public static String AD_VIDEO = "视频广告";
 
 
 }
