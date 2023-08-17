@@ -4,6 +4,7 @@ import com.linsh.utilseverywhere.LogUtils
 import com.mind.data.data.mmkv.KV
 import com.mind.data.http.ApiClient
 import com.mind.lib.base.BaseViewModel
+import com.stardust.auojs.inrt.util.isLogined
 import com.tencent.mmkv.MMKV
 
 /**
@@ -12,7 +13,11 @@ import com.tencent.mmkv.MMKV
  * @Description :
  */
 class MainViewModel : BaseViewModel() {
+
     fun getAdSwitch() {
+        if (!isLogined()) {
+            return
+        }
         loadHttp(
             request = {
                 ApiClient.otherApi.getAdSwitch(

@@ -18,7 +18,7 @@ class ResponseInterceptor : Interceptor {
         return if (response.body != null) {
             val body = response.body?.string()
             val model = Gson().fromJson(body, Res::class.java)
-            if (model.code == 401) {
+            if (model != null && model.code == 401) {
                 // 登录失效
                 MMKV.defaultMMKV().putString(KV.USER_INFO, "")
                 CacheManager.instance.clearLogin()
