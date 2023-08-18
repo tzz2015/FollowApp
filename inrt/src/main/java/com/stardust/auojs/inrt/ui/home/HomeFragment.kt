@@ -4,6 +4,7 @@ import android.Manifest
 import android.content.Intent
 import android.os.Bundle
 import android.provider.Settings
+import android.text.TextUtils
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.view.isVisible
@@ -64,6 +65,7 @@ class HomeFragment : BaseFragment<HomeViewModel, FragmentHomeBinding>(),
     private fun initView() {
         val num = MMKV.defaultMMKV().getInt(KV.FOLLOW_SWITCH_NUM, -1)
         bind.ivAd.isVisible = num > 0
+        setAccount()
     }
 
 
@@ -78,10 +80,7 @@ class HomeFragment : BaseFragment<HomeViewModel, FragmentHomeBinding>(),
         userViewModel.followAccount.observe(viewLifecycleOwner) {
             it?.run {
                 CacheManager.instance.putDYAccount(account)
-                bind.tvNoticeBind.text = String.format(
-                    requireContext().getText(R.string.follow_bind_account).toString(), account
-                )
-                bind.btnBindAccount.text = requireContext().getText(R.string.to_change).toString()
+                setAccount()
             }
         }
         LiveEventBus.get(MsgEvent.LOGIN_TOKEN_EVENT).observe(viewLifecycleOwner) {
@@ -89,7 +88,7 @@ class HomeFragment : BaseFragment<HomeViewModel, FragmentHomeBinding>(),
             viewModel.getScript()
         }
         LiveEventBus.get(MsgEvent.CHANGE_USER_INFO).observe(viewLifecycleOwner) {
-            userViewModel.getFollowAccount()
+            userViewModel.getFollowAccount(true)
         }
         viewModel.followList.observe(viewLifecycleOwner) {
             if (it.isNotEmpty()) {
@@ -97,6 +96,17 @@ class HomeFragment : BaseFragment<HomeViewModel, FragmentHomeBinding>(),
             }
         }
         bind.btnFollow.setOnClickListener { requestPermissions() }
+    }
+
+    private fun setAccount() {
+        val dyAccount = CacheManager.instance.getDYAccount()
+        if(!TextUtils.isEmpty(dyAccount)){
+            bind.tvNoticeBind.text = String.format(
+                requireContext().getText(R.string.follow_bind_account).toString(), dyAccount
+            )
+            bind.btnBindAccount.text = requireContext().getText(R.string.to_change).toString()
+        }
+
     }
 
 

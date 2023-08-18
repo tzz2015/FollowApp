@@ -25,7 +25,6 @@ import com.stardust.auojs.inrt.ui.mine.*
 import com.stardust.auojs.inrt.util.isLogined
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
-import kotlin.random.Random
 
 /**
  * @Author      : liuyufei
@@ -98,8 +97,12 @@ open class UserViewModel @Inject constructor() : BaseViewModel() {
     /**
      * 获取个人绑定账户
      */
-    fun getFollowAccount() {
+    fun getFollowAccount(isFore: Boolean = false) {
         if (isLogined()) {
+            val dyAccount = CacheManager.instance.getDYAccount()
+            if (isFore && StringUtils.isNotAllEmpty(dyAccount)) {
+                return
+            }
             loadHttp(
                 request = { ApiClient.followAccountApi.getFollowAccount(FollowAccountType.DOU_YIN) },
                 resp = {
@@ -110,7 +113,6 @@ open class UserViewModel @Inject constructor() : BaseViewModel() {
         }
 
     }
-
 
 
     /**

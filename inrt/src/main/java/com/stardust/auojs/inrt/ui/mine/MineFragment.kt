@@ -38,7 +38,7 @@ class MineFragment : BaseFragment<MineViewModel, FragmentMineBinding>() {
     override fun init(savedInstanceState: Bundle?) {
         bind.userViewModel = userViewModel
         viewModel.getAnnouncementList()
-        userViewModel.getFollowAccount()
+        userViewModel.getFollowAccount(true)
         setHeaderImage()
         initRecyclerView()
         initFunctionBtn()
@@ -65,7 +65,7 @@ class MineFragment : BaseFragment<MineViewModel, FragmentMineBinding>() {
         LiveEventBus.get(MsgEvent.LOGIN_TOKEN_EVENT).observe(viewLifecycleOwner) {
             changeView(isLogined())
             doAnimation()
-            userViewModel.getFollowAccount()
+            userViewModel.getFollowAccount(true)
         }
         LiveEventBus.get(MsgEvent.TOKEN_OUT).observe(viewLifecycleOwner) {
             changeView(isLogined())
