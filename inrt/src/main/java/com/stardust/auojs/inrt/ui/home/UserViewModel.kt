@@ -100,7 +100,7 @@ open class UserViewModel @Inject constructor() : BaseViewModel() {
     fun getFollowAccount(isFore: Boolean = false) {
         if (isLogined()) {
             val dyAccount = CacheManager.instance.getDYAccount()
-            if (isFore && StringUtils.isNotAllEmpty(dyAccount)) {
+            if (!isFore && StringUtils.isNotAllEmpty(dyAccount)) {
                 return
             }
             loadHttp(
