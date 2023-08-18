@@ -6,13 +6,14 @@ import android.os.Bundle
 import android.provider.Settings
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.core.view.isVisible
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import com.afollestad.materialdialogs.MaterialDialog
 import com.chad.library.BR
 import com.jeremyliao.liveeventbus.LiveEventBus
-import com.kc.openset.OSETBanner
 import com.linsh.utilseverywhere.LogUtils
+import com.mind.data.data.mmkv.KV
 import com.mind.data.event.MsgEvent
 import com.mind.lib.base.BaseFragment
 import com.mind.lib.base.ViewModelConfig
@@ -21,6 +22,7 @@ import com.stardust.app.GlobalAppContext
 import com.stardust.app.permission.DrawOverlaysPermission.launchCanDrawOverlaysSettings
 import com.stardust.auojs.inrt.autojs.AccessibilityServiceTool1
 import com.stardust.auojs.inrt.util.AdUtils
+import com.tencent.mmkv.MMKV
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
@@ -56,6 +58,12 @@ class HomeFragment : BaseFragment<HomeViewModel, FragmentHomeBinding>(),
         viewModel.checkNeedPermissions()
         initObserve()
         AdUtils.showBannerAd(requireActivity(), bind.fl)
+        initView()
+    }
+
+    private fun initView() {
+        val num = MMKV.defaultMMKV().getInt(KV.FOLLOW_SWITCH_NUM, -1)
+        bind.ivAd.isVisible = num > 0
     }
 
 
@@ -213,8 +221,6 @@ class HomeFragment : BaseFragment<HomeViewModel, FragmentHomeBinding>(),
         registerForActivityResult(ActivityResultContracts.StartActivityForResult()) {
             viewModel.checkNeedPermissions()
         }
-
-
 
 
 }

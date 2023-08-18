@@ -173,6 +173,16 @@
             app:layout_constraintEnd_toEndOf="@+id/tv_notice"
             app:layout_constraintTop_toTopOf="@+id/tv_notice" />
 
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/iv_ad"
+            android:visibility="gone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/icon_reward_ad_green"
+            app:layout_constraintBottom_toBottomOf="@+id/btn_follow"
+            app:layout_constraintEnd_toStartOf="@+id/btn_follow"
+            app:layout_constraintTop_toTopOf="@+id/btn_follow" />
+
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/tv_notice_bind"
             android:layout_width="match_parent"

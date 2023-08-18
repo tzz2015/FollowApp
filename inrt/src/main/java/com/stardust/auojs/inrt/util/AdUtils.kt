@@ -60,7 +60,7 @@ object AdUtils {
             .setPosId(POS_ID_RewardVideo)
             .startLoad()
 
-        /*  //同激励广告
+          //同激励广告
         OSETInsertCache.getInstance()
                 .setContext(activity)
                 .setUserId(userId)
@@ -72,7 +72,7 @@ object AdUtils {
                 .setContext(activity)
                 .setUserId(userId)
                 .setPosId(POS_ID_Insert_Horizontal)
-                .startLoad();*/
+                .startLoad();
 
         /*OSETInformationCache.getInstance()
                 .setContext(activity)
@@ -96,6 +96,7 @@ object AdUtils {
             return
         }
         val simpleName = activity.javaClass.simpleName
+        LogUtils.e("加载Banner广告：${simpleName}")
         OSETBanner.getInstance()
             .show(activity, POS_ID_Banner, fl, object : OSETListener {
                 override fun onClick() {
@@ -122,6 +123,8 @@ object AdUtils {
      */
     fun showRewardVideoAd(activity: Activity, back: () -> Unit) {
         initAd()
+        val simpleName = activity.javaClass.simpleName
+        LogUtils.e("加载激励视频广告：${simpleName}")
         OSETRewardVideoCache.getInstance().setOSETVideoListener(object : OSETVideoListener {
             override fun onLoad() {
                 // 执行此方法后可调用调用OSETFullVideo.getInstance().showAd()进行展示全屏视频
@@ -174,6 +177,8 @@ object AdUtils {
      */
     fun showFullVideoAd(activity: Activity, back: () -> Unit) {
         initAd()
+        val simpleName = activity.javaClass.simpleName
+        LogUtils.e("加载FullVideo广告：${simpleName}")
         OSETFullVideo.getInstance().setOSETVideoListener(object : OSETVideoListener {
             override fun onLoad() {
                 // 执行此方法后可调用调用OSETFullVideo.getInstance().showAd()进行展示全屏视频
@@ -208,6 +213,58 @@ object AdUtils {
 
             override fun onVideoEnd(key: String) {
                 Log.e("FullVideo", "onVideoEnd---key:$key")
+            }
+        }).showAd(activity)
+
+    }
+    fun showInsertAd(activity: Activity, back: () -> Unit) {
+        initAd()
+        val simpleName = activity.javaClass.simpleName
+        LogUtils.e("加载Insert广告：${simpleName}")
+        OSETInsertCache.getInstance().setOSETListener(object : OSETListener {
+            override fun onShow() {
+//                Toast.makeText(activity, "onShow", Toast.LENGTH_SHORT).show()
+            }
+
+            override fun onError(s: String, s1: String) {
+//                Toast.makeText(activity, "onError", Toast.LENGTH_SHORT).show()
+                Log.e("openseterror", "code:$s----message:$s1")
+                back()
+            }
+
+            override fun onClick() {
+//                Toast.makeText(activity, "onClick", Toast.LENGTH_SHORT).show()
+            }
+
+            override fun onClose() {
+//                Toast.makeText(activity, "onClose", Toast.LENGTH_SHORT).show()
+                back()
+            }
+        }).showAd(activity)
+
+    }
+    fun showInsertHorizontalAd(activity: Activity, back: () -> Unit) {
+        initAd()
+        val simpleName = activity.javaClass.simpleName
+        LogUtils.e("加载InsertHorizont广告：${simpleName}")
+        OSETInsertHorizontal.getInstance().setOSETListener(object : OSETListener {
+            override fun onShow() {
+//                Toast.makeText(activity, "onShow", Toast.LENGTH_SHORT).show()
+            }
+
+            override fun onError(s: String, s1: String) {
+//                Toast.makeText(activity, "onError", Toast.LENGTH_SHORT).show()
+                Log.e("openseterror", "code:$s----message:$s1")
+                back()
+            }
+
+            override fun onClick() {
+//                Toast.makeText(activity, "onClick", Toast.LENGTH_SHORT).show()
+            }
+
+            override fun onClose() {
+//                Toast.makeText(activity, "onClose", Toast.LENGTH_SHORT).show()
+                back()
             }
         }).showAd(activity)
 

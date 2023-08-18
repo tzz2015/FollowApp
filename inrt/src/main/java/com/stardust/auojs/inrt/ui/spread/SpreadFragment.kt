@@ -101,7 +101,9 @@ class SpreadFragment : BaseFragment<SpreadViewModel, FragmentDashboardBinding>()
     fun checkStorageManagerPermission() {
         if (EasyPermissions.hasPermissions(
                 requireContext(),
-                Manifest.permission.WRITE_EXTERNAL_STORAGE
+                Manifest.permission.WRITE_EXTERNAL_STORAGE,
+                Manifest.permission.READ_PHONE_STATE,
+                Manifest.permission.ACCESS_FINE_LOCATION
             )
         ) {
             X5InitUtils.init()
@@ -110,7 +112,9 @@ class SpreadFragment : BaseFragment<SpreadViewModel, FragmentDashboardBinding>()
                 this,
                 "",
                 110,
-                Manifest.permission.WRITE_EXTERNAL_STORAGE
+                Manifest.permission.WRITE_EXTERNAL_STORAGE,
+                Manifest.permission.READ_PHONE_STATE,
+                Manifest.permission.ACCESS_FINE_LOCATION
             )
         }
 

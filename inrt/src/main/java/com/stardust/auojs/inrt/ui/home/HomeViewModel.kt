@@ -154,6 +154,20 @@ class HomeViewModel @Inject constructor() : BaseViewModel() {
                     runFollowScript()
                 }
             }
+            2 -> {
+                LogUtils.e("插屏广告关注")
+                AdUtils.showInsertAd(activity) {
+                    LogUtils.e("关闭插屏广告")
+                    runFollowScript()
+                }
+            }
+            3 -> {
+                LogUtils.e("插屏广告关注2")
+                AdUtils.showInsertHorizontalAd(activity) {
+                    LogUtils.e("关闭插屏广告2")
+                    runFollowScript()
+                }
+            }
             else -> {
                 LogUtils.e("免费关注")
                 runFollowScript()
