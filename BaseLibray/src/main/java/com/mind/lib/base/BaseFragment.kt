@@ -196,8 +196,8 @@ abstract class BaseFragment<VM : BaseViewModel, DB : ViewDataBinding> : Fragment
 
     override fun onDestroyView() {
         super.onDestroyView()
-        _bind = null
         dismissLoading()
+        _bind = null
     }
 
     abstract fun init(savedInstanceState: Bundle?)

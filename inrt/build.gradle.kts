@@ -182,7 +182,7 @@ dependencies {
 
     // 标签库
     implementation("com.google.android.flexbox:flexbox:3.0.0")
-    implementation ("androidx.core:core-splashscreen:1.0.1")
+    implementation("androidx.core:core-splashscreen:1.0.1")
 
 
     // 广告配置
@@ -193,14 +193,14 @@ dependencies {
     implementation(files("libs/open_ad_sdk_5.4.1.6.aar"))
     //sigmob
     implementation(files("libs/wind-common-1.4.9.aar"))
-    implementation(files( "libs/wind-sdk-4.12.4.aar"))
-    implementation(files( "libs/oaid_sdk_1.0.25.aar"))
+    implementation(files("libs/wind-sdk-4.12.4.aar"))
+    implementation(files("libs/oaid_sdk_1.0.25.aar"))
     //广点通（+号代表版本号对应的是demo里面的）
-    implementation(files( "libs/GDTSDK.unionNormal.4.532.1402.aar"))
+    implementation(files("libs/GDTSDK.unionNormal.4.532.1402.aar"))
 
     //openset（+号代表版本号对应的是demo里面的）
-    implementation(files( "libs/openset_sdk_6.2.1.2.aar"))
+    implementation(files("libs/openset_sdk_6.2.1.2.aar"))
     //快手（+号代表版本号对应的是demo里面的）
-    implementation(files( "libs/kssdk-ct-3.3.47-publishRelease-40bffe19b5.aar"))
+    implementation(files("libs/kssdk-ct-3.3.47-publishRelease-40bffe19b5.aar"))
 
 }

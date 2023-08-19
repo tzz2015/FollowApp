@@ -125,9 +125,9 @@ class SpreadFragment : BaseFragment<SpreadViewModel, FragmentDashboardBinding>()
 
 
     override fun onDestroyView() {
-        super.onDestroyView()
         OSETRewardVideoCache.getInstance().destroy()
         mCallback.remove()
-        bind.webView.destroy()
+        _bind?.webView?.destroy()
+        super.onDestroyView()
     }
 }

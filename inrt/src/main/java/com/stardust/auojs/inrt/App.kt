@@ -26,6 +26,8 @@ import com.stardust.auojs.inrt.pluginclient.AutoXKeepLiveService
 import com.stardust.auojs.inrt.util.AdUtils
 import com.stardust.autojs.execution.ScriptExecuteActivity
 import com.tencent.mmkv.MMKV
+import de.mindpipe.android.logging.log4j.LogConfigurator
+import org.apache.log4j.Level
 import org.autojs.autoxjs.inrt.BuildConfig
 import org.autojs.autoxjs.inrt.R
 
@@ -48,7 +50,18 @@ class App : BaseApp() {
         AutoJs.initInstance(this)
         GlobalKeyObserver.init()
         initCache()
+        intKeepLive()
+        AdUtils.initAd()
+        initLog4j()
+    }
 
+    private fun initLog4j() {
+        val logConfigurator = LogConfigurator()
+        logConfigurator.rootLevel = Level.OFF
+    }
+
+
+    private fun intKeepLive() {
         //启动保活服务
         KeepLive.useSilenceMusice = false;
         val sharedPreferences =
@@ -76,11 +89,10 @@ class App : BaseApp() {
                 AutoXKeepLiveService()
             );
         }
-
         if (BuildConfig.isMarket) {
             showNotification(this)
         }
-        AdUtils.initAd()
+
     }
 
 
@@ -98,10 +110,11 @@ class App : BaseApp() {
             CacheManager.instance.putEmail(userModel.email)
             userModel.email?.let {
                 AdUtils.userId = userModel.email!!
-              }
+            }
         }
 
         CacheManager.instance.putVersion(BuildConfig.VERSION_NAME)
+
     }
 
     private fun showNotification(context: Context) {
