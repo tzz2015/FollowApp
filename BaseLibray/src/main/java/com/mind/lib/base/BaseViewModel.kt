@@ -234,7 +234,7 @@ open class BaseViewModel : ViewModel(), LifecycleObserver {
         err: (String) -> Unit = { },                   // 错误处理
         end: () -> Unit = {},                          // 最后执行方法
         isShowToast: Boolean = true,                   // 是否toast
-        isShowDialog: Boolean = false,                  // 是否显示加载框
+        isShowDialog: Boolean = true,                  // 是否显示加载框
     ) {
         val job = viewModelScope.launch {
             try {
@@ -243,7 +243,7 @@ open class BaseViewModel : ViewModel(), LifecycleObserver {
                 if (data.code == ResCode.OK.getCode()) {    //业务响应成功
                     resp(data.data)                   // 响应回调
                 } else {
-                    showToast(isShowDialog, data.message)
+                    showToast(isShowToast, data.message)
                     err(data.message)                       // 业务失败处理
                 }
             } catch (e: Exception) {

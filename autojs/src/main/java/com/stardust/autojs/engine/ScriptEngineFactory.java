@@ -15,7 +15,7 @@ import java.util.Map;
  */
 @Keep
 public class ScriptEngineFactory {
-
+    @Keep
     public static class EngineNotFoundException extends RuntimeException {
 
         public EngineNotFoundException(String s) {

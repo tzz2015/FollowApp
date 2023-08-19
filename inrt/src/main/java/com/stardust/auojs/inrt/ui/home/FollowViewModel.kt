@@ -26,7 +26,8 @@ class FollowViewModel @Inject constructor() : BaseViewModel() {
             },
             err = {
                 followCount.postValue("10000")
-            }
+            },
+            isShowDialog = false
         )
     }
 }

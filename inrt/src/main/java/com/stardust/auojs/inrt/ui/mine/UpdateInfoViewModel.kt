@@ -61,7 +61,8 @@ class UpdateInfoViewModel : UserViewModel() {
                     isChangeSuccess.postValue(true)
                 }
 
-            }
+            },
+            isShowDialog = true
         )
     }
 
@@ -77,7 +78,8 @@ class UpdateInfoViewModel : UserViewModel() {
                     isChangeSuccess.postValue(true)
                 }
 
-            }
+            },
+            isShowDialog = true
         )
     }
 

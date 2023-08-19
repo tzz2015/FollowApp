@@ -20,7 +20,7 @@ import java.util.Set;
  */
 @Keep
 public class ScriptEngineManager {
-
+    @Keep
     public interface EngineLifecycleCallback {
 
         void onEngineCreate(ScriptEngine engine);

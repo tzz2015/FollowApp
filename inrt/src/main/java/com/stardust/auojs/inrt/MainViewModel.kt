@@ -39,7 +39,8 @@ class MainViewModel : BaseViewModel() {
                     MMKV.defaultMMKV().putBoolean(KV.RESERVE_SWITCH, it.reserveSwitch)
 
                 }
-            }
+            },
+            isShowDialog = false
         )
     }
 }

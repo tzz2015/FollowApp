@@ -88,7 +88,8 @@ open class UserViewModel @Inject constructor() : BaseViewModel() {
             },
             err = {
                 userCount.postValue("1000")
-            }
+            },
+            isShowDialog = false
 
         )
 
@@ -108,7 +109,8 @@ open class UserViewModel @Inject constructor() : BaseViewModel() {
                 resp = {
                     Log.e(javaClass.name, "getFollowAccount:${it.toString()} ")
                     it?.let { followAccount.postValue(it) }
-                }
+                },
+                isShowDialog = false
             )
         }
 

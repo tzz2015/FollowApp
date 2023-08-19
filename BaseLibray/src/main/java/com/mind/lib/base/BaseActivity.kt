@@ -34,7 +34,9 @@ abstract class BaseActivity<VM : BaseViewModel, DB : ViewDataBinding>() : AppCom
 
     protected lateinit var viewModel: VM
 
-    protected lateinit var bind: DB
+    protected var _bind: DB? = null
+
+    protected val bind get() = _bind!!
 
     protected var baseBindView: ActivityBaseBinding? = null
 
@@ -81,7 +83,7 @@ abstract class BaseActivity<VM : BaseViewModel, DB : ViewDataBinding>() : AppCom
     private fun initViewDataBinding() {
         val config = viewModelConfig
         baseBindView = DataBindingUtil.inflate(layoutInflater, R.layout.activity_base, null, false)
-        bind = DataBindingUtil.inflate(layoutInflater, config.getLayout(), null, false)
+        _bind = DataBindingUtil.inflate(layoutInflater, config.getLayout(), null, false)
         baseBindView?.root?.findViewById<FrameLayout>(R.id.container)?.addView(bind.root)
         setContentView(baseBindView?.root)
         bind.lifecycleOwner = this
@@ -201,6 +203,7 @@ abstract class BaseActivity<VM : BaseViewModel, DB : ViewDataBinding>() : AppCom
 
     override fun onDestroy() {
         super.onDestroy()
+        _bind = null
         appManager.remove(this)
     }
 

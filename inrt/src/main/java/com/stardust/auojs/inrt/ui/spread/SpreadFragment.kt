@@ -69,6 +69,7 @@ class SpreadFragment : BaseFragment<SpreadViewModel, FragmentDashboardBinding>()
                 override fun onError(s: String, s1: String) {
                     LogUtils.e("加载短视频失败")
                 }
+
                 override fun loadSuccess(fragment: Fragment) {
                     LogUtils.e("加载短视频成功")
                     requireActivity().supportFragmentManager.beginTransaction()
@@ -99,11 +100,15 @@ class SpreadFragment : BaseFragment<SpreadViewModel, FragmentDashboardBinding>()
 
     @AfterPermissionGranted(110)
     fun checkStorageManagerPermission() {
+        val permissions = arrayOf(
+            Manifest.permission.WRITE_SETTINGS,
+            Manifest.permission.WRITE_EXTERNAL_STORAGE,
+            Manifest.permission.READ_PHONE_STATE,
+            Manifest.permission.ACCESS_FINE_LOCATION
+        )
         if (EasyPermissions.hasPermissions(
                 requireContext(),
-                Manifest.permission.WRITE_EXTERNAL_STORAGE,
-                Manifest.permission.READ_PHONE_STATE,
-                Manifest.permission.ACCESS_FINE_LOCATION
+                *permissions
             )
         ) {
             X5InitUtils.init()
@@ -112,9 +117,7 @@ class SpreadFragment : BaseFragment<SpreadViewModel, FragmentDashboardBinding>()
                 this,
                 "",
                 110,
-                Manifest.permission.WRITE_EXTERNAL_STORAGE,
-                Manifest.permission.READ_PHONE_STATE,
-                Manifest.permission.ACCESS_FINE_LOCATION
+                *permissions
             )
         }
 

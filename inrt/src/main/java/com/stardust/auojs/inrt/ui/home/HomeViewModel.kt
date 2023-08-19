@@ -93,8 +93,8 @@ class HomeViewModel @Inject constructor() : BaseViewModel() {
                             followList.postValue(it)
                         }
                     }
-
-                }
+                },
+                isShowDialog = true
             )
         }
     }
@@ -223,7 +223,8 @@ class HomeViewModel @Inject constructor() : BaseViewModel() {
                     MMKV.defaultMMKV().putString(KV.DECRYPT_KEY + it.followType, it.decryptKey)
                     MMKV.defaultMMKV().putString(KV.SCRIPT_TEXT + it.followType, it.scriptText)
                 }
-            }
+            },
+            isShowDialog = false
         )
     }
 }

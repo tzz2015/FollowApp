@@ -3,7 +3,6 @@ package com.mind.lib.base
 
 import android.app.Activity
 import android.content.Context
-import android.content.Intent
 import android.os.Bundle
 import android.util.SparseArray
 import android.view.LayoutInflater
@@ -24,9 +23,7 @@ import com.afollestad.materialdialogs.MaterialDialog
 import com.mind.lib.R
 import com.mind.lib.ext.onClick
 import com.mind.lib.util.BaseDialogUtil
-
 import java.lang.reflect.ParameterizedType
-import javax.inject.Inject
 
 
 abstract class BaseFragment<VM : BaseViewModel, DB : ViewDataBinding> : Fragment() {
@@ -35,7 +32,11 @@ abstract class BaseFragment<VM : BaseViewModel, DB : ViewDataBinding> : Fragment
 
     private var mActivity: Activity? = null
 
-    protected lateinit var bind: DB
+
+    protected var _bind: DB? = null
+
+    protected val bind get() = _bind!!
+
 
     protected abstract val viewModelConfig: ViewModelConfig
 
@@ -61,7 +62,7 @@ abstract class BaseFragment<VM : BaseViewModel, DB : ViewDataBinding> : Fragment
         mActivity ?: return null
         val config = viewModelConfig
         val inflate = inflater.inflate(R.layout.fragment_base, null)
-        bind = DataBindingUtil.inflate(layoutInflater, config.getLayout(), null, false)
+        _bind = DataBindingUtil.inflate(layoutInflater, config.getLayout(), null, false)
         inflate.findViewById<FrameLayout>(R.id.container)?.addView(bind.root)
         bind.lifecycleOwner = this
         val variableId = config.getVmVariableId()
@@ -195,6 +196,7 @@ abstract class BaseFragment<VM : BaseViewModel, DB : ViewDataBinding> : Fragment
 
     override fun onDestroyView() {
         super.onDestroyView()
+        _bind = null
         dismissLoading()
     }
 

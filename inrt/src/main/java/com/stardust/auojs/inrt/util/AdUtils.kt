@@ -4,7 +4,6 @@ import android.app.Activity
 import android.app.Application
 import android.util.Log
 import android.widget.FrameLayout
-import android.widget.Toast
 import com.apkfuns.logutils.LogUtils
 import com.jiagu.sdk.OSETSDKProtected
 import com.kc.openset.*
@@ -132,11 +131,11 @@ object AdUtils {
             }
 
             override fun onVideoStart() {
-                Log.e("RewardVideo", "onVideoStart---")
+                LogUtils.e("onVideoStart---")
             }
 
             override fun onReward(s: String, arg: Int) {
-                Log.e("RewardVideo", "onReward---key:$s")
+                LogUtils.e("onReward---key:$s")
                 OSETRewardVideoCache.getInstance().verify(
                     s
                 ) { b: Boolean ->
@@ -148,25 +147,26 @@ object AdUtils {
             }
 
             override fun onShow(key: String) {
-                Toast.makeText(activity, "onShow", Toast.LENGTH_SHORT).show()
+//                Toast.makeText(activity, "onShow", Toast.LENGTH_SHORT).show()
+                LogUtils.e( "onShow  key:$key")
             }
 
             override fun onError(s: String, s1: String) {
-                Log.e("openseterror", "code:$s----message:$s1")
+                LogUtils.e( "code:$s----message:$s1")
                 back()
             }
 
             override fun onClick() {
-                Log.e("RewardVideo", "onClick---")
+                LogUtils.e("onClick---")
             }
 
             override fun onClose(key: String) {
-                Log.e("RewardVideo", "onClose---key:$key")
+                LogUtils.e( "onClose---key:$key")
                 back()
             }
 
             override fun onVideoEnd(key: String) {
-                Log.e("RewardVideo", "onVideoEnd---key:$key")
+                LogUtils.e( "onVideoEnd---key:$key")
             }
         }).showAd(activity)
 
@@ -186,33 +186,33 @@ object AdUtils {
             }
 
             override fun onVideoStart() {
-                Log.e("FullVideo", "onVideoStart---")
+                LogUtils.e("FullVideo onVideoStart---")
             }
 
             override fun onReward(s: String, arg: Int) {
-                Log.e("FullVideo", "onReward---key:$s")
+                LogUtils.e("FullVideo  onReward---key:$s")
             }
 
             override fun onShow(key: String) {
-                Toast.makeText(activity, "onShow", Toast.LENGTH_SHORT).show()
+//                Toast.makeText(activity, "onShow", Toast.LENGTH_SHORT).show()
             }
 
             override fun onError(s: String, s1: String) {
-                Log.e("openseterror", "code:$s----message:$s1")
+                LogUtils.e("openseterror code:$s----message:$s1")
                 back()
             }
 
             override fun onClick() {
-                Log.e("FullVideo", "onClick---")
+                LogUtils.e("FullVideo onClick---")
             }
 
             override fun onClose(key: String) {
-                Log.e("FullVideo", "onClose---key:$key")
+                LogUtils.e("FullVideo onClose---key:$key")
                 back()
             }
 
             override fun onVideoEnd(key: String) {
-                Log.e("FullVideo", "onVideoEnd---key:$key")
+                LogUtils.e("FullVideo onVideoEnd---key:$key")
             }
         }).showAd(activity)
 
@@ -228,7 +228,7 @@ object AdUtils {
 
             override fun onError(s: String, s1: String) {
 //                Toast.makeText(activity, "onError", Toast.LENGTH_SHORT).show()
-                Log.e("openseterror", "code:$s----message:$s1")
+                LogUtils.e("openseterror code:$s----message:$s1")
                 back()
             }
 
@@ -254,7 +254,7 @@ object AdUtils {
 
             override fun onError(s: String, s1: String) {
 //                Toast.makeText(activity, "onError", Toast.LENGTH_SHORT).show()
-                Log.e("openseterror", "code:$s----message:$s1")
+                LogUtils.e("openseterror code:$s----message:$s1")
                 back()
             }
 

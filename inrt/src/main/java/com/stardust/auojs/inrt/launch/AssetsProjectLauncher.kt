@@ -135,11 +135,12 @@ open class AssetsProjectLauncher(
         try {
             // 获取应用的私有文件目录
             val privateDir = getFilesDir()
+            val parentPath = privateDir.absolutePath + File.separator + "project/"
             // 创建一个名为 "output.txt" 的文件
-            val outputFile = File(privateDir, "output.txt")
+            val outputFile = File(parentPath, "output.txt")
             FileUtils.deleteFile(outputFile)
             val path = outputFile.path
-            FileUtils.writeString(outputFile,text)
+            FileUtils.writeString(outputFile, text)
             return path
         } catch (e: IOException) {
             e.printStackTrace()
