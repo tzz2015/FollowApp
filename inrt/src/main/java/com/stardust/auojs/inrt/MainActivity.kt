@@ -56,6 +56,7 @@ class MainActivity : AppCompatActivity() {
         }
         LiveEventBus.get(MsgEvent.LOGIN_TOKEN_EVENT).observe(this) {
             mainViewModel.getAdSwitch()
+            AdUtils.initCache(this)
         }
     }
 
