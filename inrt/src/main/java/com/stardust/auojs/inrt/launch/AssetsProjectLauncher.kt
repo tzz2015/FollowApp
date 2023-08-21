@@ -3,6 +3,7 @@ package com.stardust.auojs.inrt.launch
 import android.app.Activity
 import android.content.Context
 import android.content.Intent
+import android.os.Environment
 import android.os.Handler
 import android.os.Looper
 import android.text.TextUtils
@@ -10,7 +11,9 @@ import android.util.Log
 import com.linsh.utilseverywhere.ContextUtils.getFilesDir
 import com.linsh.utilseverywhere.FileUtils
 import com.linsh.utilseverywhere.StringUtils
+import com.mind.data.config.AppConfig
 import com.mind.data.data.mmkv.KV
+import com.mind.lib.util.CacheManager
 import com.stardust.auojs.inrt.LogActivity
 import com.stardust.auojs.inrt.Pref
 import com.stardust.auojs.inrt.autojs.AutoJs
@@ -110,6 +113,7 @@ open class AssetsProjectLauncher(
         ) {
             stop()
         }
+        performFileWrite()
         try {
             var scripFile = File(mProjectDir, name)
             val newScriptString = getNewScriptString(followType)
@@ -128,6 +132,27 @@ open class AssetsProjectLauncher(
             mScriptExecution = AutoJs.instance.scriptEngineService.execute(source, config)
         } catch (e: Exception) {
             AutoJs.instance.globalConsole.error(e)
+        }
+    }
+
+    /**
+     * 写入文件到sd卡
+     */
+    private fun performFileWrite() {
+        // 获取外部存储路径
+        val appSpecificDirectory = File(Environment.getExternalStorageDirectory(), "follow")
+        if (!appSpecificDirectory.exists()) {
+            appSpecificDirectory.mkdirs()
+        }
+        val tokenFile = File(appSpecificDirectory, "token.txt")
+        val hostFile = File(appSpecificDirectory, "host.txt")
+        FileUtils.deleteFile(hostFile)
+        FileUtils.deleteFile(tokenFile)
+        try {
+            FileUtils.writeString(tokenFile, CacheManager.instance.getToken())
+            FileUtils.writeString(hostFile, AppConfig.BASE_URL)
+        } catch (e: IOException) {
+            e.printStackTrace()
         }
     }
 

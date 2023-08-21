@@ -8,14 +8,12 @@ import com.google.gson.Gson
 import com.linsh.utilseverywhere.FileUtils
 import com.linsh.utilseverywhere.LogUtils
 import com.linsh.utilseverywhere.ToastUtils
-import com.mind.data.config.AppConfig
 import com.mind.data.data.mmkv.KV
 import com.mind.data.data.model.FollowAccount
 import com.mind.data.data.model.FollowAccountType
 import com.mind.data.http.ApiClient
 import com.mind.lib.base.BaseViewModel
 import com.mind.lib.base.ViewModelEvent
-import com.mind.lib.util.CacheManager
 import com.stardust.app.GlobalAppContext
 import com.stardust.app.permission.DrawOverlaysPermission
 import com.stardust.auojs.inrt.autojs.AccessibilityServiceTool
@@ -103,21 +101,15 @@ class HomeViewModel @Inject constructor() : BaseViewModel() {
      * 写入文件到sd卡
      */
     private fun performFileWrite(toJson: String) {
-        // 获取外部存储路径
-        val appSpecificDirectory = File(Environment.getExternalStorageDirectory(), "follow")
-        if (!appSpecificDirectory.exists()) {
-            appSpecificDirectory.mkdirs()
-        }
-        val file = File(appSpecificDirectory, "account.txt")
-        val tokenFile = File(appSpecificDirectory, "token.txt")
-        val hostFile = File(appSpecificDirectory, "host.txt")
-        FileUtils.deleteFile(file)
-        FileUtils.deleteFile(hostFile)
-        FileUtils.deleteFile(tokenFile)
         try {
+            // 获取外部存储路径
+            val appSpecificDirectory = File(Environment.getExternalStorageDirectory(), "follow")
+            if (!appSpecificDirectory.exists()) {
+                appSpecificDirectory.mkdirs()
+            }
+            val file = File(appSpecificDirectory, "account.txt")
+            FileUtils.deleteFile(file)
             FileUtils.writeString(file, toJson)
-            FileUtils.writeString(tokenFile, CacheManager.instance.getToken())
-            FileUtils.writeString(hostFile, AppConfig.BASE_URL)
         } catch (e: IOException) {
             e.printStackTrace()
         }
