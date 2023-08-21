@@ -7,7 +7,6 @@ import androidx.activity.OnBackPressedCallback
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import com.kc.openset.OSETVideoContent
-import com.kc.openset.ad.OSETRewardVideoCache
 import com.kc.openset.listener.OSETVideoContentFragmentListener
 import com.linsh.utilseverywhere.LogUtils
 import com.mind.lib.base.BaseFragment
@@ -125,7 +124,7 @@ class SpreadFragment : BaseFragment<SpreadViewModel, FragmentDashboardBinding>()
 
 
     override fun onDestroyView() {
-        OSETRewardVideoCache.getInstance().destroy()
+        OSETVideoContent.getInstance().destroy()
         mCallback.remove()
         _bind?.webView?.destroy()
         super.onDestroyView()

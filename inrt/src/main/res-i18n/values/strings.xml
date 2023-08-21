@@ -56,6 +56,7 @@
     <string name="text_clear_logcat">清除日志</string>
     <string name="text_stop_run">停止运行</string>
     <string name="title_home" translatable="false">首页</string>
+    <string name="title_praise" translatable="false">点赞</string>
     <string name="title_dashboard" translatable="false">推广</string>
     <string name="title_notifications" translatable="false">我的</string>
     <string name="need_permiss">你需要开启以下权限才能进行关注粉丝操作</string>

@@ -12,6 +12,12 @@
         tools:layout="@layout/fragment_home" />
 
     <fragment
+        android:id="@+id/navigation_praise"
+        android:name="com.stardust.auojs.inrt.ui.praise.PraiseFragment"
+        android:label="@string/title_praise"
+        tools:layout="@layout/fragment_praise" />
+
+    <fragment
         android:id="@+id/navigation_dashboard"
         android:name="com.stardust.auojs.inrt.ui.spread.SpreadFragment"
         android:label="@string/title_dashboard"

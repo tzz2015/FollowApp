@@ -11,7 +11,13 @@ import java.lang.annotation.Retention;
  **/
 @Retention(SOURCE)
 public @interface FollowAccountType {
+    /**
+     * 抖音关注
+     */
     int DOU_YIN = 0;
-    int X_HONG_SHU = 1;
+    /**
+     * 抖音点赞
+     */
+    int DOU_YIN_PRAISE = 1;
 
 }
