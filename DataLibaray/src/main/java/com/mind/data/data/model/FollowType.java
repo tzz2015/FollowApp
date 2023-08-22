@@ -10,7 +10,7 @@ import java.lang.annotation.Retention;
  * @date 2023/7/8
  **/
 @Retention(SOURCE)
-public @interface FollowAccountType {
+public @interface FollowType {
     /**
      * 抖音关注
      */

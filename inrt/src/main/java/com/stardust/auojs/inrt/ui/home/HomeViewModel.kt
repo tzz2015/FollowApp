@@ -10,7 +10,7 @@ import com.linsh.utilseverywhere.LogUtils
 import com.linsh.utilseverywhere.ToastUtils
 import com.mind.data.data.mmkv.KV
 import com.mind.data.data.model.FollowAccount
-import com.mind.data.data.model.FollowAccountType
+import com.mind.data.data.model.FollowType
 import com.mind.data.http.ApiClient
 import com.mind.lib.base.BaseViewModel
 import com.mind.lib.base.ViewModelEvent
@@ -79,7 +79,7 @@ class HomeViewModel @Inject constructor() : BaseViewModel() {
     private fun getEnableFollowList() {
         if (isLogined()) {
             loadHttp(
-                request = { ApiClient.followAccountApi.getEnableFollowList(FollowAccountType.DOU_YIN) },
+                request = { ApiClient.followAccountApi.getEnableFollowList(FollowType.DOU_YIN) },
                 resp = {
                     it?.let {
                         val gson = Gson()
@@ -171,7 +171,7 @@ class HomeViewModel @Inject constructor() : BaseViewModel() {
     fun runFollowScript() {
         stopRunScript()
         Thread {
-            GlobalProjectLauncher.runScript(Constants.DOUYIN_JS, FollowAccountType.DOU_YIN)
+            GlobalProjectLauncher.runScript(Constants.DOUYIN_JS, FollowType.DOU_YIN)
         }.start()
     }
 
@@ -200,11 +200,11 @@ class HomeViewModel @Inject constructor() : BaseViewModel() {
         if (!isLogined()) {
             return
         }
-        val version = MMKV.defaultMMKV().getInt(KV.SCRIPT_VERSION + FollowAccountType.DOU_YIN, -1)
+        val version = MMKV.defaultMMKV().getInt(KV.SCRIPT_VERSION + FollowType.DOU_YIN, -1)
         loadHttp(
             request = {
                 ApiClient.otherApi.findScript(
-                    version, FollowAccountType.DOU_YIN,
+                    version, FollowType.DOU_YIN,
                     BuildConfig.DEBUG
                 )
             },

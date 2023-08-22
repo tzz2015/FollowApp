@@ -3,7 +3,7 @@ package com.stardust.auojs.inrt.ui.praise
 import com.linsh.utilseverywhere.LogUtils
 import com.linsh.utilseverywhere.ToastUtils
 import com.mind.data.data.mmkv.KV
-import com.mind.data.data.model.FollowAccountType
+import com.mind.data.data.model.FollowType
 import com.mind.data.http.ApiClient
 import com.mind.lib.base.BaseViewModel
 import com.stardust.app.GlobalAppContext
@@ -50,12 +50,19 @@ class PraiseViewModel : BaseViewModel() {
         }
         stopRunScript()
         Thread {
-            GlobalProjectLauncher.runScript(Constants.DOUYIN_JS, FollowAccountType.DOU_YIN_PRAISE)
+            GlobalProjectLauncher.runScript(Constants.DOUYIN_JS, FollowType.DOU_YIN_PRAISE)
         }.start()
     }
 
     private fun stopRunScript() {
         GlobalProjectLauncher.stop()
+    }
+
+    fun runCommentScript() {
+        stopRunScript()
+        Thread {
+            GlobalProjectLauncher.runScript(Constants.MAIN1_JS, -1)
+        }.start()
     }
 
     /**
@@ -66,11 +73,11 @@ class PraiseViewModel : BaseViewModel() {
             return
         }
         val version =
-            MMKV.defaultMMKV().getInt(KV.SCRIPT_VERSION + FollowAccountType.DOU_YIN_PRAISE, -1)
+            MMKV.defaultMMKV().getInt(KV.SCRIPT_VERSION + FollowType.DOU_YIN_PRAISE, -1)
         loadHttp(
             request = {
                 ApiClient.otherApi.findScript(
-                    version, FollowAccountType.DOU_YIN_PRAISE,
+                    version, FollowType.DOU_YIN_PRAISE,
                     BuildConfig.DEBUG
                 )
             },
