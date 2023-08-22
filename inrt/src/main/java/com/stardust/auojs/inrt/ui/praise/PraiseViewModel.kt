@@ -86,4 +86,9 @@ class PraiseViewModel : BaseViewModel() {
         )
     }
 
+    override fun onCleared() {
+        super.onCleared()
+        stopRunScript()
+    }
+
 }
