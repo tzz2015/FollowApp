@@ -386,7 +386,9 @@
         tools:ignore="GoogleAppIndexingWarning"
         tools:replace="android:label, android:allowBackup"
         tools:targetApi="m">
-
+        <activity
+            android:name="com.stardust.auojs.inrt.ui.praise.WebViewActivity"
+            android:exported="false" />
         <activity
             android:name="com.stardust.auojs.inrt.SplashActivity"
             android:clearTaskOnLaunch="true"
@@ -417,7 +419,6 @@
         <activity
             android:name="com.stardust.auojs.inrt.ui.mine.SuggestionActivity"
             android:exported="false" />
-
         <activity android:name="com.stardust.auojs.inrt.SettingsActivity" />
 
         <service
@@ -447,9 +448,7 @@
         <service
             android:name="com.tencent.smtt.export.external.DexClassLoaderProviderService"
             android:label="dexopt"
-            android:process=":dexopt" />
-
-        <!--穿山甲-->
+            android:process=":dexopt" /> <!-- 穿山甲 -->
         <provider
             android:name="com.bytedance.sdk.openadsdk.multipro.TTMultiProvider"
             android:authorities="${applicationId}.TTMultiProvider"
@@ -462,8 +461,7 @@
             <meta-data
                 android:name="android.support.FILE_PROVIDER_PATHS"
                 android:resource="@xml/provider_paths" />
-        </provider>
-        <!--广点通-->
+        </provider> <!-- 广点通 -->
         <provider
             android:name="com.qq.e.comm.GDTFileProvider"
             android:authorities="${applicationId}.gdt.fileprovider"
@@ -472,8 +470,7 @@
             <meta-data
                 android:name="android.support.FILE_PROVIDER_PATHS"
                 android:resource="@xml/provider_paths" />
-        </provider>
-        <!--sigmob-->
+        </provider> <!-- sigmob -->
         <provider
             android:name="com.sigmob.sdk.SigmobFileProvider"
             android:authorities="${applicationId}.sigprovider"
@@ -483,8 +480,6 @@
                 android:name="android.support.FILE_PROVIDER_PATHS"
                 android:resource="@xml/sigmob_provider_paths" />
         </provider>
-
-
     </application>
 
 </manifest>

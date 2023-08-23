@@ -1,11 +1,15 @@
 package com.stardust.auojs.inrt.ui.praise
 
+import android.util.Log
 import com.linsh.utilseverywhere.LogUtils
 import com.linsh.utilseverywhere.ToastUtils
 import com.mind.data.data.mmkv.KV
 import com.mind.data.data.model.FollowType
+import com.mind.data.data.model.praise.PraiseAccountModel
+import com.mind.data.data.model.praise.PraiseVideoModel
 import com.mind.data.http.ApiClient
 import com.mind.lib.base.BaseViewModel
+import com.mind.lib.base.ViewModelEvent
 import com.stardust.app.GlobalAppContext
 import com.stardust.app.permission.DrawOverlaysPermission
 import com.stardust.auojs.inrt.autojs.AccessibilityServiceTool
@@ -22,8 +26,61 @@ import org.autojs.autoxjs.inrt.R
  * @Description :
  */
 class PraiseViewModel : BaseViewModel() {
+    val praiseCount by lazy { ViewModelEvent<String>() }
+    val praiseAccount by lazy { ViewModelEvent<PraiseAccountModel>() }
+    val praiseVideoList by lazy { ViewModelEvent<MutableList<PraiseVideoModel>>() }
+
 
     private lateinit var mPermiss: Pair<Boolean, Boolean>
+
+
+    /**
+     * 获取点赞总数
+     */
+    fun getTotalPraiseCount() {
+        loadHttp(
+            request = { ApiClient.praiseApi.getTotalPraiseCount() },
+            resp = {
+                Log.e(javaClass.name, "getTotalPraiseCount:${it} ")
+                praiseCount.postValue("$it")
+            },
+            err = {
+                praiseCount.postValue("0")
+            },
+            isShowDialog = false
+        )
+
+    }
+
+    /**
+     * 获取个人绑定账户
+     */
+    fun getPraiseAccount() {
+        if (isLogined()) {
+            loadHttp(
+                request = { ApiClient.praiseApi.getPraiseAccount(FollowType.DOU_YIN_PRAISE) },
+                resp = {
+                    Log.e(javaClass.name, "getPraiseAccount:${it.toString()} ")
+                    it?.let { praiseAccount.postValue(it) }
+                },
+                isShowDialog = false
+            )
+        }
+    }
+
+    fun getPraiseVideoList() {
+        if (isLogined()) {
+            loadHttp(
+                request = { ApiClient.praiseApi.getPraiseVideoList(FollowType.DOU_YIN_PRAISE) },
+                resp = {
+                    Log.e(javaClass.name, "getPraiseVideoList:${it.toString()} ")
+                    it?.let { praiseVideoList.postValue(it) }
+                },
+                isShowDialog = false
+            )
+        }
+    }
+
 
     fun checkNeedPermissions() {
         val accessibilityEnabled =

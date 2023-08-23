@@ -1,8 +1,6 @@
 package com.stardust.auojs.inrt.ui.home
 
 import android.app.Activity
-import android.content.ClipData
-import android.content.ClipboardManager
 import android.content.Context
 import android.content.Intent
 import android.util.Log
@@ -22,6 +20,7 @@ import com.mind.lib.util.CacheManager
 import com.stardust.app.GlobalAppContext
 import com.stardust.auojs.inrt.data.Constants
 import com.stardust.auojs.inrt.ui.mine.*
+import com.stardust.auojs.inrt.util.copyToClipboard
 import com.stardust.auojs.inrt.util.isLogined
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
@@ -300,22 +299,8 @@ open class UserViewModel @Inject constructor() : BaseViewModel() {
 
     fun copyDevAccount() {
         copyToClipboard("103447750")
+        ToastUtils.show("已复制开发者抖音号到剪切板")
     }
 
-    fun copyToClipboard(text: String) {
-        try {
-            // 获取剪切板管理器实例
-            val clipboardManager: ClipboardManager =
-                GlobalAppContext.get()
-                    .getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
-            // 要复制的文本
-            // 创建一个 ClipData 对象，包含要复制的文本
-            val clipData: ClipData = ClipData.newPlainText("label", text)
-            // 将 ClipData 对象放入剪切板
-            clipboardManager.setPrimaryClip(clipData)
-            ToastUtils.show("已复制开发者抖音号到剪切板")
-        } catch (e: Exception) {
-            e.printStackTrace()
-        }
-    }
+
 }

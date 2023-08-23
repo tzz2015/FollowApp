@@ -1,6 +1,7 @@
 package com.mind.data.data.api
 
 import com.mind.data.data.model.praise.PraiseAccountModel
+import com.mind.data.data.model.praise.PraiseVideoModel
 import com.mind.lib.data.model.Res
 import retrofit2.http.GET
 import retrofit2.http.Path
@@ -23,4 +24,10 @@ interface PraiseApi {
      */
     @GET("praiseAccount/account/{followType}")
     suspend fun getPraiseAccount(@Path("followType") followType: Int): Res<PraiseAccountModel?>
+
+    /**
+     * 获取点赞的账户信息
+     */
+    @GET("praiseVideo/praiseList/{followType}")
+    suspend fun getPraiseVideoList(@Path("followType") followType: Int): Res<MutableList<PraiseVideoModel>?>
 }

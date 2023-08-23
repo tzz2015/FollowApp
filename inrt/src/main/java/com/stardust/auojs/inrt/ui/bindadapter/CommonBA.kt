@@ -191,8 +191,8 @@ object CommonBA {
 
     @JvmStatic
     @BindingAdapter("app:isVisible")
-    fun setVisibility(view: View, isVisible: Boolean) {
-        view.visibility = if (isVisible) View.VISIBLE else View.GONE
+    fun setVisibility(view: View?, isVisible: Boolean) {
+        view?.visibility = if (isVisible) View.VISIBLE else View.GONE
     }
     @JvmStatic
     @InverseBindingAdapter(attribute = "app:isVisible", event = "app:isVisibleAttrChanged")

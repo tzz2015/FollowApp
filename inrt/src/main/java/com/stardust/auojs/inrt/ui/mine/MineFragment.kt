@@ -19,6 +19,7 @@ import com.stardust.auojs.inrt.data.Constants
 import com.stardust.auojs.inrt.ui.adapter.AnnouncementAdapter
 import com.stardust.auojs.inrt.ui.home.UserViewModel
 import com.stardust.auojs.inrt.util.AdUtils
+import com.stardust.auojs.inrt.util.copyToClipboard
 import com.stardust.auojs.inrt.util.isLogined
 import org.autojs.autoxjs.inrt.R
 import org.autojs.autoxjs.inrt.databinding.FragmentMineBinding
@@ -97,7 +98,7 @@ class MineFragment : BaseFragment<MineViewModel, FragmentMineBinding>() {
         }
         mAdapter.setOnItemClickListener { _, _, position ->
             val item = mAdapter.getItem(position)
-            userViewModel.copyToClipboard(item.content)
+            copyToClipboard(item.content)
             ToastUtils.show("复制到剪切板")
         }
     }
