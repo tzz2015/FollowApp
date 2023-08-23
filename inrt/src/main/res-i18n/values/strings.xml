@@ -74,5 +74,12 @@
     <string name="change_psw_title">贵人多忘事</string>
     <string name="can_follow_title">关注须知</string>
     <string name="can_follow_text">当前可关注人数为%s,请先打开抖音并且点击搜索，停留在搜索页面，然后将抖音退到后台，才可以使用该功能。</string>
+    <string name="praise_notice">1.去互赞会去截屏，以便获取点赞的图标，判断是否已经点赞。2.添加的视频连接最好不要超过三条，被用一个粉丝连续点赞三次会被限流。3.去刷屏后期开放自定义文本。</string>
+    <string name="to_comment">去刷评论</string>
+    <string name="to_praise">去互赞</string>
+    <string name="add_video_url">添加连接</string>
+
+
+
 
 </resources>

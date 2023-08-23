@@ -3,6 +3,7 @@ package com.stardust.auojs.inrt.ui.praise
 import android.os.Bundle
 import com.mind.lib.base.BaseFragment
 import com.mind.lib.base.ViewModelConfig
+import com.stardust.auojs.inrt.util.AdUtils
 import org.autojs.autoxjs.inrt.BR
 import org.autojs.autoxjs.inrt.R
 import org.autojs.autoxjs.inrt.databinding.FragmentPraiseBinding
@@ -17,7 +18,9 @@ class PraiseFragment : BaseFragment<PraiseViewModel, FragmentPraiseBinding>() {
         get() = ViewModelConfig(R.layout.fragment_praise).bindViewModel(BR.praiseViewModel)
 
     override fun init(savedInstanceState: Bundle?) {
+        bind.marqueeTextView.isSelected = true
         viewModel.checkNeedPermissions()
         viewModel.getScript()
+        AdUtils.showBannerAd(requireActivity(), bind.fl)
     }
 }

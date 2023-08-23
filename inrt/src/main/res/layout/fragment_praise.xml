@@ -15,24 +15,196 @@
         android:layout_height="match_parent"
         android:background="@color/c_de">
 
-        <androidx.appcompat.widget.AppCompatButton
-            android:layout_width="wrap_content"
+        <FrameLayout
+            android:id="@+id/fl"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:onClick="@{()->praiseViewModel.runPraiseScript()}"
-            android:text="去互赞"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <androidx.appcompat.widget.AppCompatButton
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cv_follow"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/dp5"
+            app:cardCornerRadius="5dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/fl">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingStart="@dimen/dp5"
+                android:paddingTop="@dimen/dp10"
+                android:paddingEnd="@dimen/dp5"
+                android:paddingBottom="@dimen/dp10">
+
+                <TextView
+                    android:id="@+id/tv_title_zero"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="总点赞"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/sp15"
+                    app:layout_constraintEnd_toStartOf="@+id/tv_title_one"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/tv_zero"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="0"
+                    android:textColor="@color/color_ffb254"
+                    app:layout_constraintEnd_toEndOf="@+id/tv_title_zero"
+                    app:layout_constraintStart_toStartOf="@+id/tv_title_zero"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_title_zero" />
+
+                <TextView
+                    android:id="@+id/tv_title_one"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="剩余被点赞"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/sp15"
+                    app:layout_constraintEnd_toStartOf="@+id/tv_title_two"
+                    app:layout_constraintStart_toEndOf="@+id/tv_title_zero"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/tv_one"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="0"
+                    android:textColor="@color/purple_200"
+                    app:layout_constraintEnd_toEndOf="@+id/tv_title_one"
+                    app:layout_constraintStart_toStartOf="@+id/tv_title_one"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_title_one" />
+
+                <TextView
+                    android:id="@+id/tv_title_two"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="累计关注"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/sp15"
+                    app:layout_constraintEnd_toStartOf="@+id/tv_title_three"
+                    app:layout_constraintStart_toEndOf="@+id/tv_title_one"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/tv_two"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="0"
+                    android:textColor="@color/color_1ec898"
+                    app:layout_constraintEnd_toEndOf="@+id/tv_title_two"
+                    app:layout_constraintStart_toStartOf="@+id/tv_title_two"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_title_two" />
+
+                <TextView
+                    android:id="@+id/tv_title_three"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="累计被关注"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/sp15"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/tv_title_two"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/tv_three"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="0"
+                    android:textColor="@color/color_0d6cff"
+                    app:layout_constraintEnd_toEndOf="@+id/tv_title_three"
+                    app:layout_constraintStart_toStartOf="@+id/tv_title_three"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_title_three" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+        </androidx.cardview.widget.CardView>
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/marqueeTextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:ellipsize="marquee"
+            android:marqueeRepeatLimit="marquee_forever"
+            android:padding="@dimen/dp10"
+            android:singleLine="true"
+            android:text="@string/praise_notice"
+            android:textColor="@color/color_ff3455"
+            android:textSize="14sp"
+            app:layout_constraintTop_toBottomOf="@+id/cv_follow" />
+
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv_praise"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:onClick="@{()->praiseViewModel.runCommentScript()}"
-            android:text="去刷评论"
-            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="@dimen/dp10"
+            android:background="@drawable/bg_mine_function_tag"
+            android:gravity="center"
+            android:maxLines="1"
+            android:onClick="@{()->praiseViewModel.runPraiseScript()}"
+            android:paddingStart="10dp"
+            android:paddingTop="3dp"
+            android:paddingEnd="10dp"
+            android:paddingBottom="3dp"
+            android:text="@string/to_praise"
+            android:textColor="#FF333333"
+            android:textSize="14sp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toBottomOf="@+id/marqueeTextView" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv_comment"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/dp10"
+            android:layout_marginTop="@dimen/dp10"
+            android:background="@drawable/bg_mine_function_tag"
+            android:gravity="center"
+            android:maxLines="1"
+            android:onClick="@{()->praiseViewModel.runCommentScript()}"
+            android:paddingStart="10dp"
+            android:paddingTop="3dp"
+            android:paddingEnd="10dp"
+            android:paddingBottom="3dp"
+            android:text="@string/to_comment"
+            android:textColor="#FF333333"
+            android:textSize="14sp"
+            app:layout_constraintStart_toEndOf="@+id/tv_praise"
+            app:layout_constraintTop_toBottomOf="@+id/marqueeTextView" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv_add"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/dp10"
+            android:layout_marginTop="@dimen/dp10"
+            android:background="@drawable/bg_mine_function_tag"
+            android:gravity="center"
+            android:maxLines="1"
+            android:paddingStart="10dp"
+            android:paddingTop="3dp"
+            android:paddingEnd="10dp"
+            android:paddingBottom="3dp"
+            android:text="@string/add_video_url"
+            android:textColor="#FF333333"
+            android:textSize="14sp"
+            app:layout_constraintStart_toEndOf="@+id/tv_comment"
+            app:layout_constraintTop_toBottomOf="@+id/marqueeTextView" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
