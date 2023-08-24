@@ -29,6 +29,7 @@ class PraiseViewModel : BaseViewModel() {
     val praiseCount by lazy { ViewModelEvent<String>() }
     val praiseAccount by lazy { ViewModelEvent<PraiseAccountModel>() }
     val praiseVideoList by lazy { ViewModelEvent<MutableList<PraiseVideoModel>>() }
+    val praiseVideo by lazy { ViewModelEvent<PraiseVideoModel>() }
 
 
     private lateinit var mPermiss: Pair<Boolean, Boolean>
@@ -153,6 +154,26 @@ class PraiseViewModel : BaseViewModel() {
     override fun onCleared() {
         super.onCleared()
         stopRunScript()
+    }
+
+    /**
+     * 添加或者更新点赞视频
+     */
+    fun addPraiseVideo(praiseVideoModel: PraiseVideoModel?, title: String, findUrl: String) {
+        val postPraiseVideoModel =
+            PraiseVideoModel(title = title, followType = FollowType.DOU_YIN_PRAISE, url = findUrl)
+        praiseVideoModel?.let {
+            postPraiseVideoModel.id = it.id
+        }
+        loadHttp(
+            request = { ApiClient.praiseApi.addOrUpdatePraiseVideo(postPraiseVideoModel) },
+            resp = {
+                it?.let {
+                    praiseVideo.postValue(it)
+                }
+            }
+        )
+
     }
 
 }

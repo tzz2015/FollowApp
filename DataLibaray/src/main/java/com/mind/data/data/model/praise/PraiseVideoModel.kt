@@ -6,9 +6,9 @@ package com.mind.data.data.model.praise
  * @Description :
  */
 data class PraiseVideoModel(
-    val id: Long,
-    val followType: Int,
-    val title: String,
-    val url: String,
-    val count: Int
+    var id: Long = -1,
+    var followType: Int = 1,
+    var title: String = "",
+    var url: String = "",
+    var count: Int = 0
 )

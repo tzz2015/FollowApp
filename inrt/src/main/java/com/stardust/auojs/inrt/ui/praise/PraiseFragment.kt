@@ -5,12 +5,13 @@ import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
 import android.text.TextUtils
-import android.text.util.Linkify
 import androidx.appcompat.widget.AppCompatEditText
 import androidx.appcompat.widget.AppCompatTextView
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.linsh.utilseverywhere.KeyboardUtils
+import com.linsh.utilseverywhere.RegexUtils
 import com.linsh.utilseverywhere.ToastUtils
+import com.mind.data.data.model.praise.PraiseVideoModel
 import com.mind.lib.base.BaseFragment
 import com.mind.lib.base.ViewModelConfig
 import com.stardust.auojs.inrt.ui.adapter.PraiseVideoAdapter
@@ -55,6 +56,22 @@ class PraiseFragment : BaseFragment<PraiseViewModel, FragmentPraiseBinding>() {
         viewModel.praiseVideoList.observe(viewLifecycleOwner) {
             mAdapter.setNewInstance(it)
         }
+        viewModel.praiseVideo.observe(viewLifecycleOwner) {
+            updateAdapter(it)
+        }
+    }
+
+    private fun updateAdapter(praiseVideoModel: PraiseVideoModel) {
+        val data = mAdapter.data
+        for ((index, praiseVideo) in data.withIndex()) {
+            if (praiseVideo.id == praiseVideoModel.id) {
+                praiseVideo.title = praiseVideoModel.title
+                praiseVideo.url = praiseVideoModel.url
+                mAdapter.notifyItemChanged(index)
+                return
+            }
+        }
+        mAdapter.addData(0, praiseVideoModel)
     }
 
     private fun initRecyclerView() {
@@ -71,7 +88,7 @@ class PraiseFragment : BaseFragment<PraiseViewModel, FragmentPraiseBinding>() {
         }
     }
 
-    private fun showEditDialog(praiseViewModel: PraiseViewModel?) {
+    private fun showEditDialog(praiseVideoModel: PraiseVideoModel?) {
         val customDialog = Dialog(requireContext())
         customDialog.setContentView(R.layout.input_praise_video_layout)
         // 设置对话框标题
@@ -81,19 +98,21 @@ class PraiseFragment : BaseFragment<PraiseViewModel, FragmentPraiseBinding>() {
         val etUrl: AppCompatEditText = customDialog.findViewById(R.id.et_url)
         val btnOk: AppCompatTextView = customDialog.findViewById(R.id.tv_ok)
         etTitle.postDelayed({ KeyboardUtils.showKeyboard(etTitle) }, 100)
-        Linkify.addLinks(etUrl, Linkify.WEB_URLS);
         btnOk.setOnClickListener {
-            val title = etTitle.text
+            val title = etTitle.text.toString()
             if (TextUtils.isEmpty(title)) {
                 ToastUtils.show(requireContext().getString(R.string.please_enter_title))
                 return@setOnClickListener
             }
-            val url = etUrl.text.toString()
-            if (TextUtils.isEmpty(url)) {
+            val url = etUrl.text?.toString()
+            val regex = "https://[a-zA-Z0-9\\-._~:/?#\\[\\]@!$&'()*+,;=]+"
+            val findUrl = RegexUtils.find(url, regex, 0)
+            if (TextUtils.isEmpty(findUrl)) {
                 ToastUtils.show(requireContext().getString(R.string.please_enter_url))
                 return@setOnClickListener
             }
             customDialog.dismiss()
+            viewModel.addPraiseVideo(praiseVideoModel, title, findUrl)
         }
         customDialog.show()
 
