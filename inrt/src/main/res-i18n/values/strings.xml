@@ -77,7 +77,14 @@
     <string name="praise_notice">1.去互赞会去截屏，以便获取点赞的图标，判断是否已经点赞。2.添加的视频连接最好不要超过三条，被用一个粉丝连续点赞三次会被限流。3.去刷屏后期开放自定义文本。</string>
     <string name="to_comment">去刷评论</string>
     <string name="to_praise">去互赞</string>
-    <string name="add_video_url">添加连接</string>
+    <string name="add_video_url">添加链接</string>
+    <string name="input_title">输入标题</string>
+    <string name="input_praise_video_url">打开视频->复制链接->粘贴到这</string>
+    <string name="please_enter_title">请输入标题</string>
+    <string name="please_enter_url">请输入带https的文本</string>
+
+
+
 
 
 
