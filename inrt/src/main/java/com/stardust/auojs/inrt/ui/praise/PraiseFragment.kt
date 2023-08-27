@@ -1,5 +1,6 @@
 package com.stardust.auojs.inrt.ui.praise
 
+import android.Manifest
 import android.app.Dialog
 import android.content.Intent
 import android.net.Uri
@@ -16,17 +17,22 @@ import com.mind.data.data.model.praise.PraiseVideoModel
 import com.mind.lib.base.BaseFragment
 import com.mind.lib.base.ViewModelConfig
 import com.stardust.auojs.inrt.ui.adapter.PraiseVideoAdapter
+import com.stardust.auojs.inrt.ui.home.HomeFragment
 import com.stardust.auojs.inrt.util.AdUtils
 import org.autojs.autoxjs.inrt.BR
 import org.autojs.autoxjs.inrt.R
 import org.autojs.autoxjs.inrt.databinding.FragmentPraiseBinding
+import pub.devrel.easypermissions.AfterPermissionGranted
+import pub.devrel.easypermissions.EasyPermissions
+import pub.devrel.easypermissions.PermissionRequest
 
 /**
  * @Author      : liuyufei
  * @Date        : on 2023-08-21 22:10.
  * @Description :
  */
-class PraiseFragment : BaseFragment<PraiseViewModel, FragmentPraiseBinding>() {
+class PraiseFragment : BaseFragment<PraiseViewModel, FragmentPraiseBinding>(),
+    EasyPermissions.PermissionCallbacks {
     override val viewModelConfig: ViewModelConfig
         get() = ViewModelConfig(R.layout.fragment_praise).bindViewModel(BR.praiseViewModel)
     private val mAdapter: PraiseVideoAdapter by lazy { PraiseVideoAdapter() }
@@ -46,6 +52,7 @@ class PraiseFragment : BaseFragment<PraiseViewModel, FragmentPraiseBinding>() {
 
     private fun initView() {
         bind.tvAdd.setOnClickListener { showEditDialog(null) }
+        bind.tvPraise.setOnClickListener { requestPermissions() }
     }
 
     private fun initObserve() {
@@ -59,6 +66,21 @@ class PraiseFragment : BaseFragment<PraiseViewModel, FragmentPraiseBinding>() {
         }
         viewModel.praiseVideo.observe(viewLifecycleOwner) {
             updateAdapter(it)
+        }
+        viewModel.enablePraiseVideoList.observe(viewLifecycleOwner) {
+                showPraiseDialog(it.size)
+        }
+    }
+
+    private fun showPraiseDialog(size: Int) {
+        MaterialDialog(requireActivity()).show {
+            setTitle(R.string.can_praise_title)
+            message(text = String.format(getString(R.string.can_praise_text), size))
+            positiveButton(res = R.string.to_praise, click = {
+                dismiss()
+                viewModel.runPraiseScript(requireActivity())
+            })
+            negativeButton { dismiss() }
         }
     }
 
@@ -159,6 +181,43 @@ class PraiseFragment : BaseFragment<PraiseViewModel, FragmentPraiseBinding>() {
         customDialog.show()
 
 
+    }
+
+    @AfterPermissionGranted(HomeFragment.RC_STORAGE)
+    private fun requestPermissions() {
+        // 请求权限
+        val permissions = arrayOf(
+            Manifest.permission.READ_EXTERNAL_STORAGE,
+            Manifest.permission.WRITE_EXTERNAL_STORAGE
+        )
+        if (EasyPermissions.hasPermissions(requireContext(), *permissions)) {
+           viewModel.checkRunScript()
+        } else {
+            // 请求权限
+            EasyPermissions.requestPermissions(
+                PermissionRequest.Builder(this, HomeFragment.RC_STORAGE, *permissions)
+                    .setRationale("需要读写存储权限以进行操作。")
+                    .setPositiveButtonText("授予")
+                    .setNegativeButtonText("取消")
+                    .build()
+            )
+        }
+
+    }
+
+    override fun onRequestPermissionsResult(
+        requestCode: Int,
+        permissions: Array<String>,
+        grantResults: IntArray
+    ) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
+        EasyPermissions.onRequestPermissionsResult(requestCode, permissions, grantResults, this)
+    }
+
+    override fun onPermissionsGranted(requestCode: Int, perms: MutableList<String>) {
+    }
+
+    override fun onPermissionsDenied(requestCode: Int, perms: MutableList<String>) {
     }
 
 

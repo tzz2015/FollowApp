@@ -43,4 +43,11 @@ interface PraiseApi {
     @DELETE("praiseVideo/delete/{id}")
     suspend fun deletePraiseVideo(@Path("id") id: Long): Res<Boolean>
 
+    /**
+     * 可互赞列表
+     */
+    @GET("praiseVideo/enablePraiseList/{followType}")
+    suspend fun getEnablePraiseList(@Path("followType") followType: Int): Res<MutableList<PraiseVideoModel>?>
+
+
 }

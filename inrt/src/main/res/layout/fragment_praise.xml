@@ -156,7 +156,6 @@
             android:background="@drawable/bg_mine_function_tag"
             android:gravity="center"
             android:maxLines="1"
-            android:onClick="@{()->praiseViewModel.runPraiseScript()}"
             android:paddingStart="10dp"
             android:paddingTop="3dp"
             android:paddingEnd="10dp"

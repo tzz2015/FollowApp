@@ -18,7 +18,7 @@ import com.stardust.auojs.inrt.ui.mine.LoginActivity
  * 是否登录
  */
 fun isLogined(): Boolean {
-    return  CacheManager.instance.getToken().isNotEmpty()
+    return CacheManager.instance.getToken().isNotEmpty()
 }
 
 /**
@@ -29,7 +29,7 @@ fun afterLogin(method: () -> Unit) {
     if (isLogined()) {
         method()
     } else {
-        val context =GlobalAppContext.get()
+        val context = GlobalAppContext.get()
         val intent = Intent(context, LoginActivity::class.java)
         if (context !is Activity) {
             intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
@@ -37,6 +37,7 @@ fun afterLogin(method: () -> Unit) {
         context.startActivity(intent)
     }
 }
+
 fun copyToClipboard(text: String) {
     try {
         // 获取剪切板管理器实例

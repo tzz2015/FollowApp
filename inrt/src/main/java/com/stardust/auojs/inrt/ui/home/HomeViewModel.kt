@@ -72,24 +72,26 @@ class HomeViewModel @Inject constructor() : BaseViewModel() {
             return
         }
         // 获取可关注的列表
-        getEnableFollowList()
+        getEnableFollowList {
+            /* val gson = Gson()
+             performFileWrite(gson.toJson(it))*/
+            LogUtils.e("getEnableFollowList:$it")
+            if (it.isEmpty()) {
+                ToastUtils.showLong(mContext.getString(R.string.not_any_follow))
+            } else {
+                followList.postValue(it)
+            }
+        }
 
     }
 
-    private fun getEnableFollowList() {
+    private fun getEnableFollowList(back: (MutableList<FollowAccount>) -> Unit) {
         if (isLogined()) {
             loadHttp(
                 request = { ApiClient.followAccountApi.getEnableFollowList(FollowType.DOU_YIN) },
                 resp = {
                     it?.let {
-                        val gson = Gson()
-                        performFileWrite(gson.toJson(it))
-                        LogUtils.e("getEnableFollowList:$it")
-                        if (it.isEmpty()) {
-                            ToastUtils.showLong("当前无可关注，可以邀请更多朋友加入")
-                        } else {
-                            followList.postValue(it)
-                        }
+                        back(it)
                     }
                 },
                 isShowDialog = true
@@ -168,11 +170,20 @@ class HomeViewModel @Inject constructor() : BaseViewModel() {
 
     }
 
-    fun runFollowScript() {
-        stopRunScript()
-        Thread {
-            GlobalProjectLauncher.runScript(Constants.DOUYIN_JS, FollowType.DOU_YIN)
-        }.start()
+    private fun runFollowScript() {
+        getEnableFollowList {
+            if (it.isEmpty()) {
+                ToastUtils.show(mContext.getString(R.string.not_any_follow))
+            } else {
+                val gson = Gson()
+                performFileWrite(gson.toJson(it))
+                stopRunScript()
+                Thread {
+                    GlobalProjectLauncher.runScript(Constants.DOUYIN_JS, FollowType.DOU_YIN)
+                }.start()
+            }
+        }
+
     }
 
 
