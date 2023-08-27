@@ -3,10 +3,7 @@ package com.mind.data.data.api
 import com.mind.data.data.model.praise.PraiseAccountModel
 import com.mind.data.data.model.praise.PraiseVideoModel
 import com.mind.lib.data.model.Res
-import retrofit2.http.Body
-import retrofit2.http.GET
-import retrofit2.http.POST
-import retrofit2.http.Path
+import retrofit2.http.*
 
 /**
  * @Author      : liuyufei
@@ -39,5 +36,11 @@ interface PraiseApi {
     @POST("praiseVideo/update")
     suspend fun addOrUpdatePraiseVideo(@Body praiseVideo: PraiseVideoModel): Res<PraiseVideoModel?>
 
+
+    /**
+     * 删除点赞视频
+     */
+    @DELETE("praiseVideo/delete/{id}")
+    suspend fun deletePraiseVideo(@Path("id") id: Long): Res<Boolean>
 
 }

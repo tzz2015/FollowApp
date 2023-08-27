@@ -176,4 +176,15 @@ class PraiseViewModel : BaseViewModel() {
 
     }
 
+    fun deletePraise(item: PraiseVideoModel, back: (Boolean) -> Unit = { }) {
+        loadHttp(
+            request = { ApiClient.praiseApi.deletePraiseVideo(item.id) },
+            resp = {
+                it?.let {
+                    back(it)
+                }
+            }
+        )
+    }
+
 }

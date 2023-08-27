@@ -8,6 +8,7 @@ import android.text.TextUtils
 import androidx.appcompat.widget.AppCompatEditText
 import androidx.appcompat.widget.AppCompatTextView
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.afollestad.materialdialogs.MaterialDialog
 import com.linsh.utilseverywhere.KeyboardUtils
 import com.linsh.utilseverywhere.RegexUtils
 import com.linsh.utilseverywhere.ToastUtils
@@ -78,14 +79,51 @@ class PraiseFragment : BaseFragment<PraiseViewModel, FragmentPraiseBinding>() {
         val layoutManager = LinearLayoutManager(requireContext())
         bind.recyclerView.layoutManager = layoutManager
         bind.recyclerView.adapter = mAdapter
-        mAdapter.setOnItemClickListener { _, _, position ->
+        /* mAdapter.setOnItemClickListener { _, _, position ->
+             val item = mAdapter.getItem(position)
+             val intent = Intent()
+             intent.action = "android.intent.action.VIEW"
+             val contentUrl = Uri.parse(item.url)
+             intent.data = contentUrl
+             startActivity(intent)
+         }*/
+        mAdapter.setOnItemChildClickListener { adapter, view, position ->
             val item = mAdapter.getItem(position)
-            val intent = Intent()
-            intent.action = "android.intent.action.VIEW"
-            val contentUrl = Uri.parse(item.url)
-            intent.data = contentUrl
-            startActivity(intent)
+            when (view.id) {
+                R.id.tv_check -> toCheck(item)
+                R.id.tv_delete -> showDeleteDialog(item)
+                R.id.tv_edit -> showEditDialog(item)
+            }
         }
+    }
+
+    private fun showDeleteDialog(item: PraiseVideoModel) {
+        MaterialDialog(requireActivity()).show {
+            setTitle(R.string.delete)
+            message(text = getString(R.string.delete_notice))
+            positiveButton(res = R.string.delete, click = {
+                dismiss()
+                viewModel.deletePraise(item) { success ->
+                    if (success) {
+                        mAdapter.remove(item)
+                    } else {
+                        ToastUtils.show(requireContext().getString(R.string.delete_fail))
+                    }
+                }
+            })
+            negativeButton { dismiss() }
+        }
+    }
+
+    /**
+     * 校验
+     */
+    private fun toCheck(item: PraiseVideoModel) {
+        val intent = Intent()
+        intent.action = "android.intent.action.VIEW"
+        val contentUrl = Uri.parse(item.url)
+        intent.data = contentUrl
+        startActivity(intent)
     }
 
     private fun showEditDialog(praiseVideoModel: PraiseVideoModel?) {
@@ -97,6 +135,10 @@ class PraiseFragment : BaseFragment<PraiseViewModel, FragmentPraiseBinding>() {
         val etTitle: AppCompatEditText = customDialog.findViewById(R.id.et_title)
         val etUrl: AppCompatEditText = customDialog.findViewById(R.id.et_url)
         val btnOk: AppCompatTextView = customDialog.findViewById(R.id.tv_ok)
+        praiseVideoModel?.let {
+            etTitle.setText(it.title)
+            etUrl.setText(it.url)
+        }
         etTitle.postDelayed({ KeyboardUtils.showKeyboard(etTitle) }, 100)
         btnOk.setOnClickListener {
             val title = etTitle.text.toString()

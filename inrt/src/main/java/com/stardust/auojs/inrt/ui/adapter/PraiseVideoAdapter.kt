@@ -20,6 +20,10 @@ class PraiseVideoAdapter :
         item: PraiseVideoModel
     ) {
         holder.dataBinding?.praiseVideoModel = item
+        addChildClickViewIds(R.id.tv_delete)
+        addChildClickViewIds(R.id.tv_edit)
+        addChildClickViewIds(R.id.tv_check)
+        bindViewClickListener(holder, 0)
     }
 
 }

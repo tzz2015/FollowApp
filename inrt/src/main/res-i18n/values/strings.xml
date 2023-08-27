@@ -82,10 +82,11 @@
     <string name="input_praise_video_url">打开视频->复制链接->粘贴到这</string>
     <string name="please_enter_title">请输入标题</string>
     <string name="please_enter_url">请输入带https的文本</string>
-
-
-
-
+    <string name="delete">删除</string>
+    <string name="edit">编辑</string>
+    <string name="check">校验</string>
+    <string name="delete_notice">删除后将无法恢复，你确定要删除吗？</string>
+    <string name="delete_fail">删除失败</string>
 
 
 
