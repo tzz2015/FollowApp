@@ -268,7 +268,7 @@ class PraiseViewModel : BaseViewModel() {
                         back(it)
                     }
                 },
-                isShowDialog = false
+                isShowDialog = true
             )
         }
     }

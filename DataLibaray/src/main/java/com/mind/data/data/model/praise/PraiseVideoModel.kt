@@ -7,6 +7,7 @@ package com.mind.data.data.model.praise
  */
 data class PraiseVideoModel(
     var id: Long = -1,
+    var userId: Long = -1,
     var followType: Int = 1,
     var title: String = "",
     var url: String = "",
