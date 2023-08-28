@@ -65,6 +65,10 @@ class MainActivity : AppCompatActivity() {
         AdUtils.initCache(this)
     }
 
+    override fun onBackPressed() {
+        moveTaskToBack(true)
+    }
+
     override fun onDestroy() {
         super.onDestroy()
         AdUtils.destroyAd()

@@ -82,7 +82,7 @@ open class UserViewModel @Inject constructor() : BaseViewModel() {
         loadHttp(
             request = { ApiClient.userApi.getTotalUserCount() },
             resp = {
-                Log.e(javaClass.name, "getUserCount:${it} ")
+                Log.e(javaClass.simpleName, "getUserCount:${it} ")
                 userCount.postValue("$it")
             },
             err = {
@@ -106,7 +106,7 @@ open class UserViewModel @Inject constructor() : BaseViewModel() {
             loadHttp(
                 request = { ApiClient.followAccountApi.getFollowAccount(FollowType.DOU_YIN) },
                 resp = {
-                    Log.e(javaClass.name, "getFollowAccount:${it.toString()} ")
+                    Log.e(javaClass.simpleName, "getFollowAccount:${it.toString()} ")
                     it?.let { followAccount.postValue(it) }
                 },
                 isShowDialog = false

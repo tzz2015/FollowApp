@@ -9,23 +9,29 @@
         android:id="@+id/navigation_home"
         android:name="com.stardust.auojs.inrt.ui.home.HomeFragment"
         android:label="@string/title_home"
+        app:popUpTo="@+id/navigation_home"
+        app:popUpToInclusive="true"
+        app:launchSingleTop="true"
         tools:layout="@layout/fragment_home" />
 
     <fragment
         android:id="@+id/navigation_praise"
         android:name="com.stardust.auojs.inrt.ui.praise.PraiseFragment"
         android:label="@string/title_praise"
+        app:launchSingleTop="true"
         tools:layout="@layout/fragment_praise" />
 
     <fragment
         android:id="@+id/navigation_dashboard"
         android:name="com.stardust.auojs.inrt.ui.spread.SpreadFragment"
         android:label="@string/title_dashboard"
+        app:launchSingleTop="true"
         tools:layout="@layout/fragment_dashboard" />
 
     <fragment
         android:id="@+id/navigation_notifications"
         android:name="com.stardust.auojs.inrt.ui.mine.MineFragment"
         android:label="@string/title_notifications"
+        app:launchSingleTop="true"
         tools:layout="@layout/fragment_mine" />
 </navigation>

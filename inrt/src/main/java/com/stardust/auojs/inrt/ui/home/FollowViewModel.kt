@@ -21,7 +21,7 @@ class FollowViewModel @Inject constructor() : BaseViewModel() {
         loadHttp(
             request = { ApiClient.followApi.getTotalFollowCount() },
             resp = {
-                Log.e(javaClass.name, "getTotalFollowCount:${it} ")
+                Log.e(javaClass.simpleName, "getTotalFollowCount:${it} ")
                 followCount.postValue("$it")
             },
             err = {
