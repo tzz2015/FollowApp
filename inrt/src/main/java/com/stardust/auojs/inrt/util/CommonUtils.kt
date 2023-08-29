@@ -5,6 +5,7 @@ import android.content.ClipData
 import android.content.ClipboardManager
 import android.content.Context
 import android.content.Intent
+import android.os.SystemClock
 import com.mind.lib.util.CacheManager
 import com.stardust.app.GlobalAppContext
 import com.stardust.auojs.inrt.ui.mine.LoginActivity
@@ -53,5 +54,17 @@ fun copyToClipboard(text: String) {
         e.printStackTrace()
     }
 }
+
+private var lastClickTime = 0L
+private const val CLICK_INTERVAL = 1000 // 1 second
+fun afterSafeOnClick(method: () -> Unit) {
+    val currentTime = SystemClock.elapsedRealtime()
+    if (currentTime - lastClickTime >= CLICK_INTERVAL) {
+        lastClickTime = currentTime
+        method()
+    }
+}
+
+
 
 

@@ -76,6 +76,7 @@ class MineFragment : BaseFragment<MineViewModel, FragmentMineBinding>() {
 
 
     private fun initFunctionBtn() {
+        bind.flFunction.removeAllViews()
         for (item in Constants.FUNCTION_ARRAY) {
             val parent = bind.flFunction.parent as ViewGroup
             val view =

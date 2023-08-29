@@ -49,9 +49,33 @@
                 android:background="@color/gray_40" />
 
             <androidx.constraintlayout.widget.ConstraintLayout
-                android:paddingTop="@dimen/dp10"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:paddingTop="@dimen/dp10">
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tv_num_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/curr_praise_num"
+                    android:textColor="@color/gray"
+                    android:textSize="11sp"
+                    app:layout_constraintBottom_toBottomOf="@+id/tv_delete"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/tv_delete" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@{String.valueOf(praiseVideoModel.count)}"
+                    android:textStyle="bold"
+                    android:textSize="11sp"
+                    android:padding="@dimen/dp5"
+                    android:textColor="@color/red"
+                    app:layout_constraintBottom_toBottomOf="@+id/tv_delete"
+                    app:layout_constraintStart_toEndOf="@+id/tv_num_title"
+                    app:layout_constraintTop_toTopOf="@+id/tv_delete" />
+
 
                 <androidx.appcompat.widget.AppCompatTextView
                     android:id="@+id/tv_delete"

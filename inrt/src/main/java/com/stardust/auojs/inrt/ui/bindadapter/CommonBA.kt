@@ -190,17 +190,17 @@ object CommonBA {
 
 
     @JvmStatic
-    @BindingAdapter("app:isVisible")
+    @BindingAdapter("isVisible")
     fun setVisibility(view: View?, isVisible: Boolean) {
         view?.visibility = if (isVisible) View.VISIBLE else View.GONE
     }
     @JvmStatic
-    @InverseBindingAdapter(attribute = "app:isVisible", event = "app:isVisibleAttrChanged")
+    @InverseBindingAdapter(attribute = "isVisible", event = "isVisibleAttrChanged")
     fun getVisibility(view: View): Boolean? {
         return view.visibility == View.VISIBLE
     }
     @JvmStatic
-    @BindingAdapter("app:isVisibleAttrChanged")
+    @BindingAdapter("isVisibleAttrChanged")
     fun setListener(view: View?, listener: InverseBindingListener?) {
         // 不需要实现任何逻辑，只要添加监听器即可
     }

@@ -91,6 +91,8 @@
     <string name="not_any_praise">当前无可点赞，可以邀请更多朋友加入</string>
     <string name="can_praise_title">点赞须知</string>
     <string name="can_praise_text">当前可互赞视频个数为%s</string>
+    <string name="curr_praise_num">点赞数:</string>
+
 
 
 

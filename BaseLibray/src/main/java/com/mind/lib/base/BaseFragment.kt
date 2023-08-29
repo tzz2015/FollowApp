@@ -44,7 +44,7 @@ abstract class BaseFragment<VM : BaseViewModel, DB : ViewDataBinding> : Fragment
 
 
     var reloadListener: () -> Unit = {}
-
+    var isShow = false
     override fun onAttach(context: Context) {
         super.onAttach(context)
         mActivity = context as AppCompatActivity
@@ -98,6 +98,7 @@ abstract class BaseFragment<VM : BaseViewModel, DB : ViewDataBinding> : Fragment
         super.onViewCreated(view, savedInstanceState)
         registerUIChange()
         init(savedInstanceState)
+        isShow = true
     }
 
 
