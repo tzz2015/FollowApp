@@ -44,7 +44,7 @@ class PraiseViewModel : BaseViewModel() {
     private val mContext: Context by lazy { GlobalAppContext.get() }
 
 
-    private lateinit var mPermiss: Pair<Boolean, Boolean>
+    private var mPermiss: Pair<Boolean, Boolean>? = null
 
 
     /**
@@ -157,7 +157,7 @@ class PraiseViewModel : BaseViewModel() {
     /**
      * 执行点赞
      */
-    fun runPraiseScript() {
+    private fun runPraiseScript() {
         getEnablePraiseList { list ->
             if (list.isEmpty()) {
                 ToastUtils.show(mContext.getString(R.string.not_any_praise))
@@ -274,8 +274,8 @@ class PraiseViewModel : BaseViewModel() {
     }
 
     fun checkRunScript() {
-        val first = mPermiss.first
-        val second = mPermiss.second
+        val first = mPermiss?.first == true
+        val second = mPermiss?.second == true
         if (!first) {
             ToastUtils.show(
                 GlobalAppContext.get()
