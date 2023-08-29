@@ -5,6 +5,9 @@ import android.content.Intent
 import android.os.Bundle
 import android.provider.Settings
 import android.text.TextUtils
+import android.view.View
+import android.widget.AdapterView
+import android.widget.ArrayAdapter
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.view.isVisible
@@ -14,6 +17,7 @@ import com.afollestad.materialdialogs.MaterialDialog
 import com.chad.library.BR
 import com.jeremyliao.liveeventbus.LiveEventBus
 import com.linsh.utilseverywhere.LogUtils
+import com.linsh.utilseverywhere.ToastUtils
 import com.mind.data.data.mmkv.KV
 import com.mind.data.event.MsgEvent
 import com.mind.lib.base.BaseFragment
@@ -66,6 +70,28 @@ class HomeFragment : BaseFragment<HomeViewModel, FragmentHomeBinding>(),
         val num = MMKV.defaultMMKV().getInt(KV.FOLLOW_SWITCH_NUM, -1)
         bind.ivAd.isVisible = num > 0
         setAccount()
+        initAppType()
+    }
+
+    private fun initAppType() {
+        val options = arrayOf("抖音", "TikTok", "快手", "小红书")
+        val adapter = ArrayAdapter(requireContext(), android.R.layout.simple_spinner_dropdown_item, options)
+        bind.cbAppType.adapter = adapter
+        bind.cbAppType.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+            override fun onItemSelected(
+                parent: AdapterView<*>?,
+                view: View?,
+                position: Int,
+                id: Long
+            ) {
+                if (position != 0) {
+                    ToastUtils.show("敬请期待")
+                }
+            }
+
+            override fun onNothingSelected(parent: AdapterView<*>?) {
+            }
+        }
     }
 
 
@@ -100,7 +126,7 @@ class HomeFragment : BaseFragment<HomeViewModel, FragmentHomeBinding>(),
 
     private fun setAccount() {
         val dyAccount = CacheManager.instance.getDYAccount()
-        if(!TextUtils.isEmpty(dyAccount)){
+        if (!TextUtils.isEmpty(dyAccount)) {
             bind.tvNoticeBind.text = String.format(
                 requireContext().getText(R.string.follow_bind_account).toString(), dyAccount
             )

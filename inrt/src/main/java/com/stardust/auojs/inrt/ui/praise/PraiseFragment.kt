@@ -10,10 +10,12 @@ import androidx.appcompat.widget.AppCompatEditText
 import androidx.appcompat.widget.AppCompatTextView
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.afollestad.materialdialogs.MaterialDialog
+import com.jeremyliao.liveeventbus.LiveEventBus
 import com.linsh.utilseverywhere.KeyboardUtils
 import com.linsh.utilseverywhere.RegexUtils
 import com.linsh.utilseverywhere.ToastUtils
 import com.mind.data.data.model.praise.PraiseVideoModel
+import com.mind.data.event.MsgEvent
 import com.mind.lib.base.BaseFragment
 import com.mind.lib.base.ViewModelConfig
 import com.stardust.auojs.inrt.ui.adapter.PraiseVideoAdapter
@@ -69,6 +71,11 @@ class PraiseFragment : BaseFragment<PraiseViewModel, FragmentPraiseBinding>(),
         }
         viewModel.enablePraiseVideoList.observe(viewLifecycleOwner) {
                 showPraiseDialog(it.size)
+        }
+        LiveEventBus.get(MsgEvent.LOGIN_TOKEN_EVENT).observe(viewLifecycleOwner) {
+            viewModel.getTotalPraiseCount()
+            viewModel.getPraiseAccount()
+            viewModel.getPraiseVideoList()
         }
     }
 
