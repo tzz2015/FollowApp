@@ -40,7 +40,7 @@ public class ScriptExecutionObserver implements ScriptExecutionListener {
     public boolean removeScriptExecutionListener(ScriptExecutionListener listener) {
         return mScriptExecutionListeners.remove(listener);
     }
-
+    @Keep
     public static class Wrapper implements ScriptExecutionListener {
 
         private final ScriptExecutionObserver mScriptExecutionObserver;

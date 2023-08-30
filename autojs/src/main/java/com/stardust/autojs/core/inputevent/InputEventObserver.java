@@ -14,7 +14,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 @Keep
 public class InputEventObserver {
-
+    @Keep
     public static class InputEvent {
         static final Pattern PATTERN = Pattern.compile("^\\[([^\\]]*)\\]\\s+([^:]*):\\s+([^\\s]*)\\s+([^\\s]*)\\s+([^\\s]*)\\s*$");
 
@@ -59,7 +59,7 @@ public class InputEventObserver {
                     '}';
         }
     }
-
+    @Keep
     public interface InputEventListener {
         void onInputEvent(@NonNull InputEvent e);
     }

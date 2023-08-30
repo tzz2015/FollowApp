@@ -210,7 +210,7 @@ public abstract class AutoJs {
     protected AccessibilityConfig createAccessibilityConfig() {
         return new AccessibilityConfig();
     }
-
+    @Keep
     private class AccessibilityBridgeImpl extends AccessibilityBridge {
 
         public AccessibilityBridgeImpl(UiHandler uiHandler) {
@@ -244,7 +244,7 @@ public abstract class AutoJs {
         }
 
     }
-
+    @Keep
     private class ScreenCaptureRequesterImpl extends ScreenCaptureRequester.AbstractScreenCaptureRequester {
 
         @Override

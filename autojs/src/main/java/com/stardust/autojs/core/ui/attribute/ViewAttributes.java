@@ -1,20 +1,31 @@
 package com.stardust.autojs.core.ui.attribute;
 
+import static com.stardust.autojs.core.ui.inflater.inflaters.BaseViewInflater.DRAWABLE_CACHE_QUALITIES;
+import static com.stardust.autojs.core.ui.inflater.inflaters.BaseViewInflater.IMPORTANT_FOR_ACCESSIBILITY;
+import static com.stardust.autojs.core.ui.inflater.inflaters.BaseViewInflater.LAYOUT_DIRECTIONS;
+import static com.stardust.autojs.core.ui.inflater.inflaters.BaseViewInflater.SCROLLBARS_STYLES;
+import static com.stardust.autojs.core.ui.inflater.inflaters.BaseViewInflater.SCROLL_INDICATORS;
+import static com.stardust.autojs.core.ui.inflater.inflaters.BaseViewInflater.TEXT_ALIGNMENTS;
+import static com.stardust.autojs.core.ui.inflater.inflaters.BaseViewInflater.TEXT_DIRECTIONS;
+import static com.stardust.autojs.core.ui.inflater.inflaters.BaseViewInflater.TINT_MODES;
+import static com.stardust.autojs.core.ui.inflater.inflaters.BaseViewInflater.VISIBILITY;
+
 import android.annotation.SuppressLint;
 import android.content.res.ColorStateList;
 import android.graphics.Color;
 import android.graphics.PorterDuff;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
-import androidx.annotation.CallSuper;
-import androidx.annotation.Keep;
-import androidx.core.view.ViewCompat;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewParent;
 import android.widget.CompoundButton;
 import android.widget.FrameLayout;
 import android.widget.LinearLayout;
+
+import androidx.annotation.CallSuper;
+import androidx.annotation.Keep;
+import androidx.core.view.ViewCompat;
 
 import com.stardust.autojs.core.internal.Functions;
 import com.stardust.autojs.core.ui.inflater.ResourceParser;
@@ -29,27 +40,17 @@ import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 import java.util.HashMap;
 import java.util.Map;
-
-import static com.stardust.autojs.core.ui.inflater.inflaters.BaseViewInflater.DRAWABLE_CACHE_QUALITIES;
-import static com.stardust.autojs.core.ui.inflater.inflaters.BaseViewInflater.IMPORTANT_FOR_ACCESSIBILITY;
-import static com.stardust.autojs.core.ui.inflater.inflaters.BaseViewInflater.LAYOUT_DIRECTIONS;
-import static com.stardust.autojs.core.ui.inflater.inflaters.BaseViewInflater.SCROLLBARS_STYLES;
-import static com.stardust.autojs.core.ui.inflater.inflaters.BaseViewInflater.SCROLL_INDICATORS;
-import static com.stardust.autojs.core.ui.inflater.inflaters.BaseViewInflater.TEXT_ALIGNMENTS;
-import static com.stardust.autojs.core.ui.inflater.inflaters.BaseViewInflater.TEXT_DIRECTIONS;
-import static com.stardust.autojs.core.ui.inflater.inflaters.BaseViewInflater.TINT_MODES;
-import static com.stardust.autojs.core.ui.inflater.inflaters.BaseViewInflater.VISIBILITY;
 @Keep
 public class ViewAttributes {
-
+    @Keep
     public interface Getter<T> {
         T get();
     }
-
+    @Keep
     public interface Setter<T> {
         void set(T value);
     }
-
+    @Keep
     public interface Attribute {
         String get();
 
@@ -77,14 +78,14 @@ public class ViewAttributes {
             mAttributeSetter.set(value);
         }
     }
-
+    @Keep
     protected interface AttributeGetter extends Getter<String> {
     }
 
-
+    @Keep
     protected interface AttributeSetter extends Setter<String> {
     }
-
+    @Keep
     protected interface ValueConverter<T> {
         T convert(String value);
     }

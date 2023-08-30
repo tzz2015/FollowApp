@@ -10,7 +10,7 @@ import java.util.Map;
 @Keep
 public class DatabaseResultSet {
 
-
+    @Keep
     public static class RowList {
 
         public final int length;

@@ -52,7 +52,7 @@ public class Sensors extends EventEmitter implements Loopers.LooperQuitHandler {
             Sensors.this.unregister(this);
         }
     }
-
+    @Keep
     public static class Delay {
         public static final int normal = SensorManager.SENSOR_DELAY_NORMAL;
         public static final int ui = SensorManager.SENSOR_DELAY_UI;

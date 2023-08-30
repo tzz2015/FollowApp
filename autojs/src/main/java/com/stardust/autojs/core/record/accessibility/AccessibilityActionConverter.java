@@ -67,12 +67,12 @@ public class AccessibilityActionConverter {
     public void onResume() {
         mFirstAction = true;
     }
-
+    @Keep
     interface EventToScriptConverter {
 
         void onAccessibilityEvent(AccessibilityService service, AccessibilityEvent event, StringBuilder sb);
     }
-
+    @Keep
     private static abstract class BoundsEventConverter implements EventToScriptConverter {
 
         @Override

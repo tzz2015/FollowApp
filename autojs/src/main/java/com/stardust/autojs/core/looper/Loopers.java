@@ -19,12 +19,14 @@ import org.mozilla.javascript.Context;
 
 import java.util.HashSet;
 import java.util.concurrent.CopyOnWriteArrayList;
+
 @Keep
 @SuppressWarnings("ConstantConditions")
 public class Loopers implements MessageQueue.IdleHandler {
 
     private static final String LOG_TAG = "Loopers";
 
+    @Keep
     public interface LooperQuitHandler {
         boolean shouldQuit();
     }

@@ -61,7 +61,7 @@ public interface ScriptEngine<S extends ScriptSource> {
      * @hide
      */
     void init();
-
+    @Keep
     interface OnDestroyListener {
         void onDestroy(ScriptEngine engine);
     }

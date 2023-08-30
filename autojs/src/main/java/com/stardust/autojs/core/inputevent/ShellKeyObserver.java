@@ -10,7 +10,7 @@ import java.util.HashMap;
 import java.util.Map;
 @Keep
 public class ShellKeyObserver implements InputEventObserver.InputEventListener {
-
+    @Keep
     public interface KeyListener {
 
         void onKeyDown(String keyName);

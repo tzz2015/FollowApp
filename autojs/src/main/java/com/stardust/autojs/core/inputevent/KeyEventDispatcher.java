@@ -5,7 +5,7 @@ import androidx.annotation.Keep;
 import java.util.concurrent.CopyOnWriteArrayList;
 @Keep
 public class KeyEventDispatcher {
-
+    @Keep
     public interface OnKeyListener {
         void onVolumeUp();
 

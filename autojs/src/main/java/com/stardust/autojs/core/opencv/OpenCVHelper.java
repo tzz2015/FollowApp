@@ -9,7 +9,7 @@ import androidx.annotation.Nullable;
 import org.opencv.android.OpenCVLoader;
 @Keep
 public class OpenCVHelper {
-
+    @Keep
     public interface InitializeCallback {
         void onInitFinish();
     }

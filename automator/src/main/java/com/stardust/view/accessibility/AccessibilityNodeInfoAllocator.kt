@@ -109,6 +109,7 @@ open class AccessibilityNodeInfoAllocator {
         }
     }
 
+    @Keep
     private class NoOpAllocator : AccessibilityNodeInfoAllocator() {
 
         override fun getParent(n: AccessibilityNodeInfoCompat): AccessibilityNodeInfoCompat {

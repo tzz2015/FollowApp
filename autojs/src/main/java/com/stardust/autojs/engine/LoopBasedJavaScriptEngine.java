@@ -18,7 +18,7 @@ import org.mozilla.javascript.ContinuationPending;
  */
 @Keep
 public class LoopBasedJavaScriptEngine extends RhinoJavaScriptEngine {
-
+    @Keep
     public interface ExecuteCallback {
         void onResult(Object r);
 
@@ -38,7 +38,7 @@ public class LoopBasedJavaScriptEngine extends RhinoJavaScriptEngine {
         return null;
     }
 
-
+    @Keep
     public void execute(final ScriptSource source, final ExecuteCallback callback) {
         Runnable r = () -> {
             try {

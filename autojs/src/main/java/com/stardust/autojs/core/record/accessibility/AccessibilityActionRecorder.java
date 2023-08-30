@@ -18,7 +18,7 @@ import java.util.Set;
  */
 @Keep
 public class AccessibilityActionRecorder extends Recorder.AbstractRecorder implements AccessibilityDelegate {
-
+    @Keep
     public static class AccessibilityActionRecordEvent {
 
         private final AccessibilityEvent mAccessibilityEvent;

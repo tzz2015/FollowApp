@@ -13,11 +13,11 @@ import androidx.annotation.Keep;
  */
 @Keep
 public interface ImageLoader {
-
+    @Keep
     interface BitmapCallback {
         void onLoaded(Bitmap bitmap);
     }
-
+    @Keep
     interface DrawableCallback {
         void onLoaded(Drawable drawable);
     }

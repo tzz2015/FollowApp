@@ -6,11 +6,11 @@ import androidx.annotation.Keep;
 
 @Keep
 public interface ViewAttributeDelegate {
-
+    @Keep
     interface ViewAttributeGetter {
         String get(String name);
     }
-
+    @Keep
     interface ViewAttributeSetter {
         void set(String name, String value);
     }

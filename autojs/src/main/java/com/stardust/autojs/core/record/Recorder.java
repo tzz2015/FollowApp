@@ -9,7 +9,7 @@ import java.util.Arrays;
  */
 @Keep
 public interface Recorder {
-
+    @Keep
     interface OnStateChangedListener {
 
         void onStart();
@@ -62,7 +62,7 @@ public interface Recorder {
     int getState();
 
     void setOnStateChangedListener(OnStateChangedListener onStateChangedListener);
-
+    @Keep
     abstract class AbstractRecorder implements Recorder {
 
         private static final OnStateChangedListener NO_OPERATION_LISTENER = new OnStateChangedListener() {

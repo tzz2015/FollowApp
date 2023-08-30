@@ -12,7 +12,7 @@ public class Exceptions {
 
     public static final RuntimeException NO_EXCEPTION = new RuntimeException();
 
-
+    @Keep
     public interface ExceptionHandler {
         boolean handleUnsupportedException(UnsupportedOperationException e, View v, String attrName, String value);
     }

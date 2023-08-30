@@ -12,7 +12,7 @@ import com.stardust.autojs.runtime.ScriptRuntime;
 import java.lang.reflect.Method;
 @Keep
 public class Plugin {
-
+    @Keep
     public static class PluginLoadException extends RuntimeException {
         public PluginLoadException(Throwable cause) {
             super(cause);

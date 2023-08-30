@@ -148,6 +148,7 @@ open class RhinoJavaScriptEngine(private val mAndroidContext: android.content.Co
         context.wrapFactory = WrapFactory()
     }
 
+    @Keep
     private inner class WrapFactory : org.mozilla.javascript.WrapFactory() {
 
         override fun wrap(cx: Context, scope: Scriptable, obj: Any?, staticType: Class<*>?): Any? {

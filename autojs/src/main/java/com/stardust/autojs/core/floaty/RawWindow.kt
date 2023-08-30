@@ -6,14 +6,15 @@ import android.view.Gravity
 import android.view.View
 import android.view.ViewGroup
 import android.view.WindowManager
+import androidx.annotation.Keep
 import com.stardust.autojs.R
 import com.stardust.enhancedfloaty.FloatyService
 import com.stardust.enhancedfloaty.FloatyWindow
 import com.stardust.enhancedfloaty.util.WindowTypeCompat
-import androidx.annotation.Keep
 
 @Keep
 class RawWindow(rawFloaty: RawFloaty, context: Context) : FloatyWindow() {
+    @Keep
     interface RawFloaty {
         fun inflateWindowView(context: Context, parent: ViewGroup): View
     }

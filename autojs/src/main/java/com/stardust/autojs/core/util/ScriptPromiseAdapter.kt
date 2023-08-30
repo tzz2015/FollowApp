@@ -4,7 +4,7 @@ import androidx.annotation.Keep
 
 @Keep
 class ScriptPromiseAdapter {
-
+    @Keep
     interface Callback {
         fun call(arg: Any?)
     }

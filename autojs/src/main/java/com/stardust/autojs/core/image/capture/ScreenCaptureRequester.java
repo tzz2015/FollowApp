@@ -14,7 +14,7 @@ import com.stardust.app.OnActivityResultDelegate;
 public interface ScreenCaptureRequester {
 
     void cancel();
-
+    @Keep
     interface Callback {
 
         void onRequestResult(int result, Intent data);
@@ -26,7 +26,7 @@ public interface ScreenCaptureRequester {
     void setOnActivityResultCallback(Callback callback);
 
     void recycle();
-
+    @Keep
     abstract class AbstractScreenCaptureRequester implements ScreenCaptureRequester {
 
         protected Callback mCallback;

@@ -108,7 +108,7 @@ public class Floaty {
     public synchronized void requestPermission() {
         FloatingPermission.manageDrawOverlays(mContext);
     }
-
+    @Keep
     public interface JsWindow {
         void close(boolean removeFromWindows);
     }

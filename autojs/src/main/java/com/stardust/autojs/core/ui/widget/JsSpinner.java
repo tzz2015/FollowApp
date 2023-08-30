@@ -115,7 +115,7 @@ public class JsSpinner extends androidx.appcompat.widget.AppCompatSpinner {
         }
     }
 
-
+    @Keep
     public class Adapter extends ArrayAdapter<String> {
 
         public Adapter(@NonNull Context context, int resource, @NonNull String[] objects) {

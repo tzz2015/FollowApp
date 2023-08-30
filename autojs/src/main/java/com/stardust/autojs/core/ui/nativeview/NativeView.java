@@ -15,7 +15,7 @@ import org.mozilla.javascript.Scriptable;
 public class NativeView extends NativeJavaObjectWithPrototype {
 
     private static final String LOG_TAG = "NativeView";
-
+    @Keep
     public static class ScrollEvent {
         public int scrollX;
         public int scrollY;
@@ -29,7 +29,7 @@ public class NativeView extends NativeJavaObjectWithPrototype {
             this.oldScrollY = oldScrollY;
         }
     }
-
+    @Keep
     public static class LongClickEvent {
         public final View view;
 

@@ -28,7 +28,7 @@ import java.util.List;
  */
 @Keep
 public abstract class AccessibilityBridge {
-
+    @Keep
     public interface WindowFilter {
         boolean filter(AccessibilityWindowInfo info);
     }

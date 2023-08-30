@@ -8,7 +8,7 @@ import androidx.annotation.Keep;
 public interface ColorDetector {
 
     boolean detectsColor(int red, int green, int blue);
-
+    @Keep
     abstract class AbstractColorDetector implements ColorDetector {
 
         protected final int mColor;

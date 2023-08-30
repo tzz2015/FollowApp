@@ -23,43 +23,43 @@ public class Functions {
         }
         throw new IllegalArgumentException("Unknown func: " + func);
     }
-
+    @Keep
     public interface Func {
 
     }
-
+    @Keep
     public interface Func0<R> extends Func {
         R call();
     }
-
+    @Keep
     public interface Func1<T1, R> extends Func {
         R call(T1 t1);
     }
-
+    @Keep
     public interface Func2<T1, T2, R> extends Func {
         R call(T1 t1, T2 t2);
     }
-
+    @Keep
     public interface Func3<T1, T2, T3, R> extends Func {
         R call(T1 t1, T2 t2, T3 t3);
     }
-
+    @Keep
     public interface Func4<T1, T2, T3, T4, R> extends Func {
         R call(T1 t1, T2 t2, T3 t3, T4 t4);
     }
-
+    @Keep
     public interface VoidFunc1<T1> extends Func {
         void call(T1 t1);
     }
-
+    @Keep
     public interface VoidFunc2<T1, T2> extends Func {
         void call(T1 t1, T2 t2);
     }
-
+    @Keep
     public interface VoidFunc3<T1, T2, T3> extends Func {
         void call(T1 t1, T2 t2, T3 t3);
     }
-
+    @Keep
     public interface VoidFunc4<T1, T2, T3, T4> extends Func {
         void call(T1 t1, T2 t2, T3 t3, T4 t4);
     }

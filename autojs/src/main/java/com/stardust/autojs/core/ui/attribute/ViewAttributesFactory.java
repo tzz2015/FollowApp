@@ -15,7 +15,7 @@ import java.util.HashMap;
 @Keep
 
 public class ViewAttributesFactory {
-
+    @Keep
     interface ViewAttributesCreator {
         ViewAttributes create(ResourceParser resourceParser, View view);
     }

@@ -26,7 +26,7 @@ public class EventEmitter {
         }
     }
 
-
+    @Keep
     private class Listeners {
         private CopyOnWriteArrayList<ListenerWrapper> mListenerWrappers = new CopyOnWriteArrayList<>();
 

@@ -24,7 +24,7 @@ import jackpal.androidterm.util.TermSettings;
  */
 @Keep
 public class Shell extends AbstractShell {
-
+    @Keep
     public interface Callback {
 
         void onOutput(String str);
@@ -35,7 +35,7 @@ public class Shell extends AbstractShell {
 
         void onInterrupted(InterruptedException e);
     }
-
+    @Keep
     public static class SimpleCallback implements Callback {
 
         @Override
@@ -212,7 +212,7 @@ public class Shell extends AbstractShell {
     public TermSession getTermSession() {
         return mTermSession;
     }
-
+    @Keep
     private class MyShellTermSession extends ShellTermSession {
 
         private StringBuilder mStringBuffer = new StringBuilder();

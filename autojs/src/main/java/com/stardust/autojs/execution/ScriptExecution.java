@@ -25,7 +25,7 @@ public interface ScriptExecution {
     ExecutionConfig getConfig();
 
     int getId();
-
+    @Keep
     abstract class AbstractScriptExecution implements ScriptExecution {
 
         private static AtomicInteger sMaxId = new AtomicInteger(0);

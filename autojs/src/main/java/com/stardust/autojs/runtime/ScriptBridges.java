@@ -8,7 +8,7 @@ import androidx.annotation.Keep;
 @Keep
 public class ScriptBridges {
 
-
+    @Keep
     public interface Bridges {
 
         Object[] NO_ARGUMENTS = new Object[0];

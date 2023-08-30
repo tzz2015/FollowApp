@@ -36,6 +36,7 @@ import java.util.concurrent.atomic.AtomicInteger;
 public class ConsoleImpl extends AbstractConsole {
 
     private int maxLines=-1;
+    @Keep
     public static class LogEntry implements Comparable<LogEntry> {
 
         public int id;
@@ -61,7 +62,7 @@ public class ConsoleImpl extends AbstractConsole {
             return 0;
         }
     }
-
+    @Keep
     public interface LogListener {
         void onNewLog(LogEntry logEntry);
 

@@ -13,7 +13,7 @@ import com.stardust.util.ScreenMetrics;
  */
 @Keep
 public abstract class AbstractShell {
-
+    @Keep
     public static class Result {
         public int code = -1;
         public String error;

@@ -229,7 +229,7 @@ public class ConsoleView extends FrameLayout implements ConsoleImpl.LogListener 
 
     }
 
-
+    @Keep
     private class ViewHolder extends RecyclerView.ViewHolder {
 
         TextView textView;
@@ -239,7 +239,7 @@ public class ConsoleView extends FrameLayout implements ConsoleImpl.LogListener 
             textView = (TextView) itemView;
         }
     }
-
+    @Keep
     private class Adapter extends RecyclerView.Adapter<ViewHolder> {
 
         @Override

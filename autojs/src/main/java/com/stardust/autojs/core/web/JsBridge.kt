@@ -12,6 +12,7 @@ import com.stardust.autojs.core.ui.widget.JsWebView
 import org.mozilla.javascript.BaseFunction
 import org.mozilla.javascript.Scriptable
 import kotlin.random.Random
+
 @Keep
 class JsBridge(private val webView: WebView) {
     companion object {
@@ -76,6 +77,7 @@ class JsBridge(private val webView: WebView) {
         }
     }
 
+    @Keep
     inner class JsObject {
         val callBackData = HashMap<Int, Any>()
 
@@ -142,6 +144,7 @@ class JsBridge(private val webView: WebView) {
         var callBack: CrFunction? = null
     }
 
+    @Keep
     interface CrFunction {
         fun run(args: Any?)
         fun run(arg1: Any?, arg2: Any?)

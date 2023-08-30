@@ -22,7 +22,7 @@ import org.w3c.dom.NodeList;
  */
 @Keep
 public class JsListView extends RecyclerView {
-
+    @Keep
     public interface DataSourceAdapter {
 
         int getItemCount(Object dataSource);
@@ -31,7 +31,7 @@ public class JsListView extends RecyclerView {
 
         void setDataSource(Object dataSource);
     }
-
+    @Keep
     public interface OnItemTouchListener {
         void onItemClick(JsListView listView, View itemView, Object item, int pos);
 
@@ -85,7 +85,7 @@ public class JsListView extends RecyclerView {
         mItemTemplate = itemTemplate;
     }
 
-
+    @Keep
     public static class ItemHolder {
         private final ViewHolder mViewHolder;
 
@@ -101,7 +101,7 @@ public class JsListView extends RecyclerView {
             return mViewHolder.item;
         }
     }
-
+    @Keep
     public class ViewHolder extends RecyclerView.ViewHolder {
 
         Object item = null;
@@ -129,7 +129,7 @@ public class JsListView extends RecyclerView {
 
 
     }
-
+    @Keep
     private class Adapter extends RecyclerView.Adapter<ViewHolder> {
 
         @Override

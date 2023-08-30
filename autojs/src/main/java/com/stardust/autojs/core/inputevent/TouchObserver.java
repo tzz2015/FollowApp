@@ -7,7 +7,7 @@ import androidx.annotation.NonNull;
 @Keep
 public class TouchObserver implements InputEventObserver.InputEventListener {
 
-
+    @Keep
     public interface OnTouchEventListener {
         void onTouch(int x, int y);
     }

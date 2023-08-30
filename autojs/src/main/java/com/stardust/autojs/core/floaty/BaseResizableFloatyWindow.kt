@@ -131,6 +131,7 @@ class BaseResizableFloatyWindow(context: Context, viewSupplier: ViewSupplier) : 
         windowView.requestLayout()
     }
 
+    @Keep
     private class MyFloaty(
         mContext: Context,
         mContentViewSupplier: ViewSupplier

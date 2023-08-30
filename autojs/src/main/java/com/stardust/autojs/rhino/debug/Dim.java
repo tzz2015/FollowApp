@@ -899,6 +899,7 @@ public class Dim {
      * Proxy class to implement debug interfaces without bloat of class
      * files.
      */
+    @Keep
     private class DimIProxy
             implements ContextAction, ScriptEngineManager.EngineLifecycleCallback, Debugger {
 
@@ -1072,6 +1073,7 @@ public class Dim {
     /**
      * Class to store information about a stack.
      */
+    @Keep
     public static class ContextData {
 
         /**
@@ -1140,6 +1142,7 @@ public class Dim {
     /**
      * Object to represent one stack frame.
      */
+    @Keep
     public static class StackFrame implements DebugFrame {
 
         /**
@@ -1301,6 +1304,7 @@ public class Dim {
     /**
      * Class to store information about a function.
      */
+    @Keep
     public static class FunctionSource {
 
         /**
@@ -1355,6 +1359,7 @@ public class Dim {
     /**
      * Class to store information about a script source.
      */
+    @Keep
     public static class SourceInfo {
 
         /**

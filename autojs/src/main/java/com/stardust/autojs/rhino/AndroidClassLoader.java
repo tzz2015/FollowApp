@@ -189,6 +189,7 @@ public class AndroidClassLoader extends ClassLoader implements GeneratedClassLoa
     /**
      * Might be thrown in any Rhino method that loads bytecode if the loading failed
      */
+    @Keep
     public static class FatalLoadingException extends RuntimeException {
         FatalLoadingException(Throwable t) {
             super("Failed to define class", t);

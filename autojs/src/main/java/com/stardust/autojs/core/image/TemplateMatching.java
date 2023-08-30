@@ -22,7 +22,7 @@ import java.util.Iterator;
 import java.util.List;
 @Keep
 public class TemplateMatching {
-
+    @Keep
     public static class Match {
         public final Point point;
         public final double similarity;

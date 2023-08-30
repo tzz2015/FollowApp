@@ -85,7 +85,7 @@ public class InjectableWebClient extends WebViewClient {
         return callback.waitResult();
     }
 
-
+    @Keep
     private class ScriptBridge {
 
         private Object result;

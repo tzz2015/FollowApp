@@ -16,7 +16,7 @@ public interface NodeHandler {
     String handleNode(Node node, StringBuilder layoutXml);
 
     String handleNode(Node node, String namespace, StringBuilder layoutXml);
-
+    @Keep
     abstract class Adapter implements NodeHandler {
 
         @Override

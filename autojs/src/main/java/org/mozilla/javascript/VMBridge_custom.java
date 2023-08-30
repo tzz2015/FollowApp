@@ -118,7 +118,7 @@ public class VMBridge_custom extends VMBridge_jdk18 {
         }
         return null;
     }
-
+    @Keep
     private class InterfaceAdapterWrapper {
 
         private final InterfaceAdapter mInterfaceAdapter;
