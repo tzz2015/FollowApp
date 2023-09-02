@@ -197,7 +197,7 @@ class PraiseViewModel : BaseViewModel() {
     fun runCommentScript() {
         stopRunScript()
         Thread {
-            GlobalProjectLauncher.runScript(Constants.MAIN1_JS, -1)
+            GlobalProjectLauncher.runScript(Constants.MAIN1_JS, FollowType.DOUYIN_COMMENT)
         }.start()
     }
 

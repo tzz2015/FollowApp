@@ -20,4 +20,9 @@ public @interface FollowType {
      */
     int DOU_YIN_PRAISE = 1;
 
+    /**
+     * 抖音刷屏
+     */
+    int DOUYIN_COMMENT = 4;
+
 }
