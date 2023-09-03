@@ -9,7 +9,7 @@ import com.linsh.utilseverywhere.FileUtils
 import com.linsh.utilseverywhere.LogUtils
 import com.linsh.utilseverywhere.ToastUtils
 import com.mind.data.data.mmkv.KV
-import com.mind.data.data.model.FollowType
+import com.mind.data.data.model.ScriptType
 import com.mind.data.data.model.praise.PraiseAccountModel
 import com.mind.data.data.model.praise.PraiseVideoModel
 import com.mind.data.http.ApiClient
@@ -22,6 +22,7 @@ import com.stardust.auojs.inrt.data.Constants
 import com.stardust.auojs.inrt.launch.GlobalProjectLauncher
 import com.stardust.auojs.inrt.util.AdUtils
 import com.stardust.auojs.inrt.util.afterLogin
+import com.stardust.auojs.inrt.util.getPraiseType
 import com.stardust.auojs.inrt.util.isLogined
 import com.stardust.autojs.BuildConfig
 import com.tencent.mmkv.MMKV
@@ -67,7 +68,7 @@ class PraiseViewModel : BaseViewModel() {
     fun getPraiseAccount() {
         if (isLogined()) {
             loadHttp(
-                request = { ApiClient.praiseApi.getPraiseAccount(FollowType.DOU_YIN_PRAISE) },
+                request = { ApiClient.praiseApi.getPraiseAccount(getPraiseType()) },
                 resp = {
                     Log.e(javaClass.name, "getPraiseAccount:${it.toString()} ")
                     it?.let { praiseAccount.postValue(it) }
@@ -83,7 +84,7 @@ class PraiseViewModel : BaseViewModel() {
     fun getPraiseVideoList() {
         if (isLogined()) {
             loadHttp(
-                request = { ApiClient.praiseApi.getPraiseVideoList(FollowType.DOU_YIN_PRAISE) },
+                request = { ApiClient.praiseApi.getPraiseVideoList(getPraiseType()) },
                 resp = {
                     Log.e(javaClass.name, "getPraiseVideoList:${it.toString()} ")
                     it?.let { praiseVideoList.postValue(it) }
@@ -166,7 +167,7 @@ class PraiseViewModel : BaseViewModel() {
                 performFileWrite(gson.toJson(list))
                 stopRunScript()
                 Thread {
-                    GlobalProjectLauncher.runScript(Constants.DOUYIN_JS, FollowType.DOU_YIN_PRAISE)
+                    GlobalProjectLauncher.runScript(Constants.DOUYIN_JS, getPraiseType())
                 }.start()
             }
         }
@@ -197,7 +198,7 @@ class PraiseViewModel : BaseViewModel() {
     fun runCommentScript() {
         stopRunScript()
         Thread {
-            GlobalProjectLauncher.runScript(Constants.MAIN1_JS, FollowType.DOUYIN_COMMENT)
+            GlobalProjectLauncher.runScript(Constants.MAIN1_JS, ScriptType.DOUYIN_COMMENT)
         }.start()
     }
 
@@ -208,10 +209,10 @@ class PraiseViewModel : BaseViewModel() {
         if (!isLogined()) {
             return
         }
-        val version = MMKV.defaultMMKV().getInt(KV.SCRIPT_VERSION + FollowType.DOU_YIN_PRAISE, -1)
+        val version = MMKV.defaultMMKV().getInt(KV.SCRIPT_VERSION + getPraiseType(), -1)
         loadHttp(request = {
             ApiClient.otherApi.findScript(
-                version, FollowType.DOU_YIN_PRAISE, BuildConfig.DEBUG
+                version, getPraiseType(), BuildConfig.DEBUG
             )
         }, resp = {
             it?.let {
@@ -234,7 +235,7 @@ class PraiseViewModel : BaseViewModel() {
      */
     fun addPraiseVideo(praiseVideoModel: PraiseVideoModel?, title: String, findUrl: String) {
         val postPraiseVideoModel =
-            PraiseVideoModel(title = title, followType = FollowType.DOU_YIN_PRAISE, url = findUrl)
+            PraiseVideoModel(title = title, followType = getPraiseType(), url = findUrl)
         praiseVideoModel?.let {
             postPraiseVideoModel.id = it.id
         }
@@ -261,7 +262,7 @@ class PraiseViewModel : BaseViewModel() {
     private fun getEnablePraiseList(back: (MutableList<PraiseVideoModel>) -> Unit) {
         if (isLogined()) {
             loadHttp(
-                request = { ApiClient.praiseApi.getEnablePraiseList(FollowType.DOU_YIN_PRAISE) },
+                request = { ApiClient.praiseApi.getEnablePraiseList(getPraiseType()) },
                 resp = {
                     Log.e(javaClass.name, "getEnablePraiseList:${it.toString()} ")
                     it?.let {

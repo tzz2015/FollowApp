@@ -10,7 +10,6 @@ import com.linsh.utilseverywhere.LogUtils
 import com.linsh.utilseverywhere.StringUtils
 import com.linsh.utilseverywhere.ToastUtils
 import com.mind.data.data.model.FollowAccount
-import com.mind.data.data.model.FollowType
 import com.mind.data.data.model.FunctionType
 import com.mind.data.data.model.UserModel
 import com.mind.data.http.ApiClient
@@ -21,6 +20,7 @@ import com.stardust.app.GlobalAppContext
 import com.stardust.auojs.inrt.data.Constants
 import com.stardust.auojs.inrt.ui.mine.*
 import com.stardust.auojs.inrt.util.copyToClipboard
+import com.stardust.auojs.inrt.util.getFollowType
 import com.stardust.auojs.inrt.util.isLogined
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
@@ -104,7 +104,7 @@ open class UserViewModel @Inject constructor() : BaseViewModel() {
                 return
             }
             loadHttp(
-                request = { ApiClient.followAccountApi.getFollowAccount(FollowType.DOU_YIN) },
+                request = { ApiClient.followAccountApi.getFollowAccount(getFollowType()) },
                 resp = {
                     Log.e(javaClass.simpleName, "getFollowAccount:${it.toString()} ")
                     it?.let { followAccount.postValue(it) }

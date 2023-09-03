@@ -23,5 +23,8 @@ object KV {
     const val RESERVE_SWITCH = "reserveSwitch"
     const val FIRST_FOLLOW = "firstFollow"
 
+    // app 类型
+    const val APP_TYPE = "APP_TYPE"
+
 
 }

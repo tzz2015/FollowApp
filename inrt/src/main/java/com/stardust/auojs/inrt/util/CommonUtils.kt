@@ -6,9 +6,13 @@ import android.content.ClipboardManager
 import android.content.Context
 import android.content.Intent
 import android.os.SystemClock
+import com.mind.data.data.mmkv.KV
+import com.mind.data.data.model.AppType
+import com.mind.data.data.model.ScriptType
 import com.mind.lib.util.CacheManager
 import com.stardust.app.GlobalAppContext
 import com.stardust.auojs.inrt.ui.mine.LoginActivity
+import com.tencent.mmkv.MMKV
 
 /**
  *Created by Rui
@@ -64,6 +68,47 @@ fun afterSafeOnClick(method: () -> Unit) {
         method()
     }
 }
+
+/**
+ * 关注类型
+ */
+fun getFollowType(): Int {
+    val appType = MMKV.defaultMMKV().getInt(KV.APP_TYPE, 0)
+    if (appType == AppType.DOU_YIN) {
+        return ScriptType.DOU_YIN
+    } else if (appType == AppType.TIKTOP) {
+        return ScriptType.TIK_TOP
+    }
+    return ScriptType.DOU_YIN
+}
+
+/**
+ * 点赞类型
+ */
+fun getPraiseType(): Int {
+    val appType = MMKV.defaultMMKV().getInt(KV.APP_TYPE, 0)
+    if (appType == AppType.DOU_YIN) {
+        return ScriptType.DOU_YIN_PRAISE
+    } else if (appType == AppType.TIKTOP) {
+        return ScriptType.TIK_TOP_PRAISE
+    }
+    return ScriptType.DOU_YIN_PRAISE
+}
+
+/**
+ * 刷评论
+ */
+fun getCommentType(): Int {
+    val appType = MMKV.defaultMMKV().getInt(KV.APP_TYPE, 0)
+    if (appType == AppType.DOU_YIN) {
+        return ScriptType.DOUYIN_COMMENT
+    } else if (appType == AppType.TIKTOP) {
+        return ScriptType.TIK_TOP_COMMENT
+    }
+    return ScriptType.DOUYIN_COMMENT
+}
+
+
 
 
 

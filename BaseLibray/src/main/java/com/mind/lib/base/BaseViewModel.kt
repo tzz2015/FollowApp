@@ -260,6 +260,8 @@ open class BaseViewModel : ViewModel(), LifecycleObserver {
     }
 
 
+
+
     /**
      * toast
      */
@@ -286,6 +288,8 @@ open class BaseViewModel : ViewModel(), LifecycleObserver {
             uiChange.dismissDialog.call()
         }
     }
+
+
 
 
     inner class UIChange {

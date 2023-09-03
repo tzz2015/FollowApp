@@ -10,7 +10,6 @@ import com.linsh.utilseverywhere.LogUtils
 import com.linsh.utilseverywhere.ToastUtils
 import com.mind.data.data.mmkv.KV
 import com.mind.data.data.model.FollowAccount
-import com.mind.data.data.model.FollowType
 import com.mind.data.http.ApiClient
 import com.mind.lib.base.BaseViewModel
 import com.mind.lib.base.ViewModelEvent
@@ -21,6 +20,8 @@ import com.stardust.auojs.inrt.data.Constants
 import com.stardust.auojs.inrt.launch.GlobalProjectLauncher
 import com.stardust.auojs.inrt.ui.mine.LoginActivity
 import com.stardust.auojs.inrt.util.AdUtils
+import com.stardust.auojs.inrt.util.getFollowType
+import com.stardust.auojs.inrt.util.getPraiseType
 import com.stardust.auojs.inrt.util.isLogined
 import com.stardust.autojs.BuildConfig
 import com.tencent.mmkv.MMKV
@@ -88,7 +89,7 @@ class HomeViewModel @Inject constructor() : BaseViewModel() {
     private fun getEnableFollowList(back: (MutableList<FollowAccount>) -> Unit) {
         if (isLogined()) {
             loadHttp(
-                request = { ApiClient.followAccountApi.getEnableFollowList(FollowType.DOU_YIN) },
+                request = { ApiClient.followAccountApi.getEnableFollowList(getFollowType()) },
                 resp = {
                     it?.let {
                         back(it)
@@ -179,7 +180,7 @@ class HomeViewModel @Inject constructor() : BaseViewModel() {
                 performFileWrite(gson.toJson(it))
                 stopRunScript()
                 Thread {
-                    GlobalProjectLauncher.runScript(Constants.DOUYIN_JS, FollowType.DOU_YIN)
+                    GlobalProjectLauncher.runScript(Constants.DOUYIN_JS, getFollowType())
                 }.start()
             }
         }
@@ -211,11 +212,11 @@ class HomeViewModel @Inject constructor() : BaseViewModel() {
         if (!isLogined()) {
             return
         }
-        val version = MMKV.defaultMMKV().getInt(KV.SCRIPT_VERSION + FollowType.DOU_YIN, -1)
+        val version = MMKV.defaultMMKV().getInt(KV.SCRIPT_VERSION + getPraiseType(), -1)
         loadHttp(
             request = {
                 ApiClient.otherApi.findScript(
-                    version, FollowType.DOU_YIN,
+                    version, getFollowType(),
                     BuildConfig.DEBUG
                 )
             },

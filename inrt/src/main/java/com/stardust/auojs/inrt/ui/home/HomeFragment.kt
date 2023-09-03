@@ -74,8 +74,9 @@ class HomeFragment : BaseFragment<HomeViewModel, FragmentHomeBinding>(),
     }
 
     private fun initAppType() {
-        val options = arrayOf("抖音", "TikTok", "快手", "小红书")
-        val adapter = ArrayAdapter(requireContext(), android.R.layout.simple_spinner_dropdown_item, options)
+        val options = arrayOf("抖音", "TikTok", "快手", "小红书", "YouTube")
+        val adapter =
+            ArrayAdapter(requireContext(), android.R.layout.simple_spinner_dropdown_item, options)
         bind.cbAppType.adapter = adapter
         bind.cbAppType.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onItemSelected(
@@ -84,14 +85,20 @@ class HomeFragment : BaseFragment<HomeViewModel, FragmentHomeBinding>(),
                 position: Int,
                 id: Long
             ) {
-                if (position != 0) {
+                if (position > 1) {
                     ToastUtils.show("敬请期待")
+                } else {
+                    MMKV.defaultMMKV().putInt(KV.APP_TYPE, position)
+                    // 相当于重新登录
+                    LiveEventBus.get(MsgEvent.LOGIN_TOKEN_EVENT).post("")
                 }
             }
 
             override fun onNothingSelected(parent: AdapterView<*>?) {
             }
         }
+        val selectIndex = MMKV.defaultMMKV().getInt(KV.APP_TYPE, 0)
+        bind.cbAppType.setSelection(selectIndex)
     }
 
 

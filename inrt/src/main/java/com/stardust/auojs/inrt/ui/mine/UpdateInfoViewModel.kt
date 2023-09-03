@@ -5,10 +5,14 @@ import com.google.gson.Gson
 import com.linsh.utilseverywhere.StringUtils
 import com.linsh.utilseverywhere.ToastUtils
 import com.mind.data.data.mmkv.KV
-import com.mind.data.data.model.*
+import com.mind.data.data.model.FollowAccount
+import com.mind.data.data.model.FunctionType
+import com.mind.data.data.model.SuggestionModel
+import com.mind.data.data.model.UserModel
 import com.mind.data.http.ApiClient
 import com.mind.lib.util.CacheManager
 import com.stardust.auojs.inrt.ui.home.UserViewModel
+import com.stardust.auojs.inrt.util.getFollowType
 import com.tencent.mmkv.MMKV
 
 /**
@@ -37,7 +41,7 @@ class UpdateInfoViewModel : UserViewModel() {
         when (title) {
             FunctionType.ADD_DOEYIN_ACCOUNT, FunctionType.CHANGE_DOEYIN_ACCOUNT -> {
                 val account =
-                    FollowAccount(account = text.value, followType = FollowType.DOU_YIN)
+                    FollowAccount(account = text.value, scriptType = getFollowType())
                 updateFollowAccount(account)
             }
             FunctionType.CHANGE_PHONE -> {

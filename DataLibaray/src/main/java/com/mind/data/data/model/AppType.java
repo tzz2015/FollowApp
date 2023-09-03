@@ -10,19 +10,15 @@ import java.lang.annotation.Retention;
  * @date 2023/7/8
  **/
 @Retention(SOURCE)
-public @interface FollowType {
+public @interface AppType {
     /**
-     * 抖音关注
+     * 抖音
      */
     int DOU_YIN = 0;
     /**
-     * 抖音点赞
+     * Tiktop
      */
-    int DOU_YIN_PRAISE = 1;
+    int TIKTOP = 1;
 
-    /**
-     * 抖音刷屏
-     */
-    int DOUYIN_COMMENT = 4;
 
 }
