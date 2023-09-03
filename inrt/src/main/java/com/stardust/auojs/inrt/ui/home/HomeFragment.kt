@@ -90,6 +90,7 @@ class HomeFragment : BaseFragment<HomeViewModel, FragmentHomeBinding>(),
                 } else {
                     MMKV.defaultMMKV().putInt(KV.APP_TYPE, position)
                     // 相当于重新登录
+                    CacheManager.instance.putDYAccount("")
                     LiveEventBus.get(MsgEvent.LOGIN_TOKEN_EVENT).post("")
                 }
             }
@@ -138,6 +139,9 @@ class HomeFragment : BaseFragment<HomeViewModel, FragmentHomeBinding>(),
                 requireContext().getText(R.string.follow_bind_account).toString(), dyAccount
             )
             bind.btnBindAccount.text = requireContext().getText(R.string.to_change).toString()
+        } else {
+            bind.tvNoticeBind.text = requireContext().getText(R.string.follow_bind_text).toString()
+            bind.btnBindAccount.text = requireContext().getText(R.string.to_bind).toString()
         }
 
     }

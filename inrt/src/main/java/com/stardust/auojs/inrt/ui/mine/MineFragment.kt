@@ -44,7 +44,7 @@ class MineFragment : BaseFragment<MineViewModel, FragmentMineBinding>() {
         initRecyclerView()
         initFunctionBtn()
         changeView(isLogined())
-        doAnimation()
+//        doAnimation()
         initObserve()
 
     }
@@ -65,12 +65,12 @@ class MineFragment : BaseFragment<MineViewModel, FragmentMineBinding>() {
         }
         LiveEventBus.get(MsgEvent.LOGIN_TOKEN_EVENT).observe(viewLifecycleOwner) {
             changeView(isLogined())
-            doAnimation()
+//            doAnimation()
             userViewModel.getFollowAccount(true)
         }
         LiveEventBus.get(MsgEvent.TOKEN_OUT).observe(viewLifecycleOwner) {
             changeView(isLogined())
-            doAnimation()
+//            doAnimation()
         }
     }
 

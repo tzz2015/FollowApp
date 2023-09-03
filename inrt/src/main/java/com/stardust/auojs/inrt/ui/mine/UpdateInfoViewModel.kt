@@ -41,7 +41,7 @@ class UpdateInfoViewModel : UserViewModel() {
         when (title) {
             FunctionType.ADD_DOEYIN_ACCOUNT, FunctionType.CHANGE_DOEYIN_ACCOUNT -> {
                 val account =
-                    FollowAccount(account = text.value, scriptType = getFollowType())
+                    FollowAccount(account = text.value, followType = getFollowType())
                 updateFollowAccount(account)
             }
             FunctionType.CHANGE_PHONE -> {

@@ -108,6 +108,9 @@ open class UserViewModel @Inject constructor() : BaseViewModel() {
                 resp = {
                     Log.e(javaClass.simpleName, "getFollowAccount:${it.toString()} ")
                     it?.let { followAccount.postValue(it) }
+                    if (it == null) {
+                        followAccount.postValue(FollowAccount())
+                    }
                 },
                 isShowDialog = false
             )
