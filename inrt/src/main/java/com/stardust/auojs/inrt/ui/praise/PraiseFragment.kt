@@ -21,6 +21,8 @@ import com.mind.lib.base.ViewModelConfig
 import com.stardust.auojs.inrt.ui.adapter.PraiseVideoAdapter
 import com.stardust.auojs.inrt.ui.home.HomeFragment
 import com.stardust.auojs.inrt.util.AdUtils
+import com.stardust.auojs.inrt.util.getCommentType
+import com.stardust.auojs.inrt.util.getPraiseType
 import org.autojs.autoxjs.inrt.BR
 import org.autojs.autoxjs.inrt.R
 import org.autojs.autoxjs.inrt.databinding.FragmentPraiseBinding
@@ -42,14 +44,19 @@ class PraiseFragment : BaseFragment<PraiseViewModel, FragmentPraiseBinding>(),
     override fun init(savedInstanceState: Bundle?) {
         initObserve()
         bind.marqueeTextView.isSelected = true
-        viewModel.checkNeedPermissions()
-        viewModel.getScript()
         initRecyclerView()
         AdUtils.showBannerAd(requireActivity(), bind.fl)
+        initView()
+        initData()
+    }
+
+    private fun initData() {
+        viewModel.checkNeedPermissions()
+        viewModel.getScript(getPraiseType())
+        viewModel.getScript(getCommentType())
         viewModel.getTotalPraiseCount()
         viewModel.getPraiseAccount()
         viewModel.getPraiseVideoList()
-        initView()
     }
 
     private fun initView() {
@@ -70,12 +77,10 @@ class PraiseFragment : BaseFragment<PraiseViewModel, FragmentPraiseBinding>(),
             updateAdapter(it)
         }
         viewModel.enablePraiseVideoList.observe(viewLifecycleOwner) {
-                showPraiseDialog(it.size)
+            showPraiseDialog(it.size)
         }
         LiveEventBus.get(MsgEvent.LOGIN_TOKEN_EVENT).observe(viewLifecycleOwner) {
-            viewModel.getTotalPraiseCount()
-            viewModel.getPraiseAccount()
-            viewModel.getPraiseVideoList()
+            initData()
         }
     }
 
@@ -198,7 +203,7 @@ class PraiseFragment : BaseFragment<PraiseViewModel, FragmentPraiseBinding>(),
             Manifest.permission.WRITE_EXTERNAL_STORAGE
         )
         if (EasyPermissions.hasPermissions(requireContext(), *permissions)) {
-           viewModel.checkRunScript()
+            viewModel.checkRunScript()
         } else {
             // 请求权限
             EasyPermissions.requestPermissions(

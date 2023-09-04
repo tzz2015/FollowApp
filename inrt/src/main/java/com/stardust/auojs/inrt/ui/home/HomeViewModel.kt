@@ -21,7 +21,6 @@ import com.stardust.auojs.inrt.launch.GlobalProjectLauncher
 import com.stardust.auojs.inrt.ui.mine.LoginActivity
 import com.stardust.auojs.inrt.util.AdUtils
 import com.stardust.auojs.inrt.util.getFollowType
-import com.stardust.auojs.inrt.util.getPraiseType
 import com.stardust.auojs.inrt.util.isLogined
 import com.stardust.autojs.BuildConfig
 import com.tencent.mmkv.MMKV
@@ -208,15 +207,15 @@ class HomeViewModel @Inject constructor() : BaseViewModel() {
     /**
      * 获取脚本
      */
-    fun getScript() {
+    fun getScript(type: Int) {
         if (!isLogined()) {
             return
         }
-        val version = MMKV.defaultMMKV().getInt(KV.SCRIPT_VERSION + getPraiseType(), -1)
+        val version = MMKV.defaultMMKV().getInt(KV.SCRIPT_VERSION + type, -1)
         loadHttp(
             request = {
                 ApiClient.otherApi.findScript(
-                    version, getFollowType(),
+                    version, type,
                     BuildConfig.DEBUG
                 )
             },

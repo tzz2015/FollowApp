@@ -27,6 +27,7 @@ import com.stardust.app.GlobalAppContext
 import com.stardust.app.permission.DrawOverlaysPermission.launchCanDrawOverlaysSettings
 import com.stardust.auojs.inrt.autojs.AccessibilityServiceTool1
 import com.stardust.auojs.inrt.util.AdUtils
+import com.stardust.auojs.inrt.util.getFollowType
 import com.tencent.mmkv.MMKV
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -107,7 +108,7 @@ class HomeFragment : BaseFragment<HomeViewModel, FragmentHomeBinding>(),
         userViewModel.getTotalUserCount()
         followViewModel.getTotalFollowCount()
         userViewModel.getFollowAccount()
-        viewModel.getScript()
+        viewModel.getScript(getFollowType())
     }
 
     private fun initObserve() {
@@ -119,7 +120,7 @@ class HomeFragment : BaseFragment<HomeViewModel, FragmentHomeBinding>(),
         }
         LiveEventBus.get(MsgEvent.LOGIN_TOKEN_EVENT).observe(viewLifecycleOwner) {
             userViewModel.getFollowAccount()
-            viewModel.getScript()
+            viewModel.getScript(getFollowType())
         }
         LiveEventBus.get(MsgEvent.CHANGE_USER_INFO).observe(viewLifecycleOwner) {
             userViewModel.getFollowAccount(true)

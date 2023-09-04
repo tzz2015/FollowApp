@@ -205,11 +205,11 @@ class PraiseViewModel : BaseViewModel() {
     /**
      * 获取脚本
      */
-    fun getScript() {
+    fun getScript(type:Int) {
         if (!isLogined()) {
             return
         }
-        val version = MMKV.defaultMMKV().getInt(KV.SCRIPT_VERSION + getPraiseType(), -1)
+        val version = MMKV.defaultMMKV().getInt(KV.SCRIPT_VERSION + type, -1)
         loadHttp(request = {
             ApiClient.otherApi.findScript(
                 version, getPraiseType(), BuildConfig.DEBUG
