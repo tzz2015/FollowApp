@@ -37,7 +37,7 @@ public @interface ScriptType {
     /**
      * tik top刷屏
      */
-    int TIK_TOP_COMMENT = 5;
+    int  TIK_TOP_COMMENT = 5;
 
 
 }
