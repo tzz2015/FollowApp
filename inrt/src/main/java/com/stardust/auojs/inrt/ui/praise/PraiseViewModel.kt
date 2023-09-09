@@ -9,7 +9,6 @@ import com.linsh.utilseverywhere.FileUtils
 import com.linsh.utilseverywhere.LogUtils
 import com.linsh.utilseverywhere.ToastUtils
 import com.mind.data.data.mmkv.KV
-import com.mind.data.data.model.ScriptType
 import com.mind.data.data.model.praise.PraiseAccountModel
 import com.mind.data.data.model.praise.PraiseVideoModel
 import com.mind.data.http.ApiClient
@@ -20,10 +19,7 @@ import com.stardust.app.permission.DrawOverlaysPermission
 import com.stardust.auojs.inrt.autojs.AccessibilityServiceTool
 import com.stardust.auojs.inrt.data.Constants
 import com.stardust.auojs.inrt.launch.GlobalProjectLauncher
-import com.stardust.auojs.inrt.util.AdUtils
-import com.stardust.auojs.inrt.util.afterLogin
-import com.stardust.auojs.inrt.util.getPraiseType
-import com.stardust.auojs.inrt.util.isLogined
+import com.stardust.auojs.inrt.util.*
 import com.stardust.autojs.BuildConfig
 import com.tencent.mmkv.MMKV
 import org.autojs.autoxjs.inrt.R
@@ -198,7 +194,7 @@ class PraiseViewModel : BaseViewModel() {
     fun runCommentScript() {
         stopRunScript()
         Thread {
-            GlobalProjectLauncher.runScript(Constants.MAIN1_JS, ScriptType.DOUYIN_COMMENT)
+            GlobalProjectLauncher.runScript(Constants.MAIN1_JS, getCommentType())
         }.start()
     }
 

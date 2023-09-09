@@ -87,6 +87,7 @@ function findLikeView(color) {
             region: [width - 100, height -500, 100, 200],
             threshold: 4
         })) {
+            console.log("找到相应颜色")
             return true
         }
         console.log("没有找到相应颜色")

@@ -384,6 +384,8 @@
 
 #拼多多
 -keep class com.xunmeng.** {*;}
+-keep class org.opencv.core.** {*;}
+
 
 
 
