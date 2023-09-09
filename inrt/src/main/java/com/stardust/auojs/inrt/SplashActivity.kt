@@ -11,6 +11,10 @@ import com.kc.openset.OSETSplash
 import com.mind.data.data.mmkv.KV
 import com.stardust.auojs.inrt.util.AdUtils
 import com.tencent.mmkv.MMKV
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.Job
+import kotlinx.coroutines.launch
 import org.autojs.autoxjs.inrt.R
 
 /**
@@ -31,7 +35,8 @@ class SplashActivity : ComponentActivity() {
 
     private var isClose = false //是否回调了Close
 
-
+    private var isShow = false
+    private var job: Job? = null
     override fun onCreate(@Nullable savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         mActivity = this
@@ -50,11 +55,13 @@ class SplashActivity : ComponentActivity() {
     }
 
     private fun initAdView() {
+
         val fl = findViewById<FrameLayout>(R.id.fl_ad)
         AdUtils.initAd()
         OSETSplash.getInstance().show(this, fl, AdUtils.POS_ID_Splash, object : OSETListener {
             override fun onShow() {
                 Log.e(TAG, "onShow")
+                isShow = true
             }
 
             override fun onError(s: String, s1: String) {
@@ -75,7 +82,12 @@ class SplashActivity : ComponentActivity() {
                 }
             }
         })
-
+        job = CoroutineScope(Dispatchers.IO).launch {
+            kotlinx.coroutines.delay(3000)
+            if (!isShow) {
+                toMainActivity()
+            }
+        }
     }
 
     private fun toMainActivity() {
@@ -105,6 +117,7 @@ class SplashActivity : ComponentActivity() {
 
     override fun onDestroy() {
         OSETSplash.getInstance().destroy()
+        job?.cancel()
         super.onDestroy()
     }
 
