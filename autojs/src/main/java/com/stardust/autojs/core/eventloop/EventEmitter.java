@@ -15,7 +15,7 @@ import java.util.TooManyListenersException;
 import java.util.concurrent.CopyOnWriteArrayList;
 @Keep
 public class EventEmitter {
-
+    @Keep
     private static class ListenerWrapper {
         Object listener;
         boolean isOnce;

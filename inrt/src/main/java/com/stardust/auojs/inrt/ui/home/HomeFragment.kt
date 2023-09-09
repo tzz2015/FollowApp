@@ -61,10 +61,14 @@ class HomeFragment : BaseFragment<HomeViewModel, FragmentHomeBinding>(),
         bind.followModel = followViewModel
         setCheckedChangeListener()
         initData()
-        viewModel.checkNeedPermissions()
         initObserve()
         AdUtils.showBannerAd(requireActivity(), bind.fl)
         initView()
+    }
+
+    override fun onResume() {
+        super.onResume()
+        viewModel.checkNeedPermissions()
     }
 
     private fun initView() {

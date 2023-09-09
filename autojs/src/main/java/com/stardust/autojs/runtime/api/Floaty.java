@@ -108,11 +108,13 @@ public class Floaty {
     public synchronized void requestPermission() {
         FloatingPermission.manageDrawOverlays(mContext);
     }
+
     @Keep
     public interface JsWindow {
         void close(boolean removeFromWindows);
     }
 
+    @Keep
     public class JsRawWindow implements JsWindow {
 
         private RawWindow mWindow;
@@ -121,13 +123,13 @@ public class Floaty {
         public JsRawWindow(RawWindow.RawFloaty floaty) {
             mWindow = new RawWindow(floaty, mUiHandler.getContext());
             mUiHandler.getContext().startService(new Intent(mUiHandler.getContext(), FloatyService.class));
-            Runnable r=() -> {
+            Runnable r = () -> {
                 FloatyService.addWindow(mWindow);
             };
             //如果是ui线程则直接创建
-            if (Looper.myLooper()==Looper.getMainLooper()){
+            if (Looper.myLooper() == Looper.getMainLooper()) {
                 r.run();
-            }else {//否则放入ui线程
+            } else {//否则放入ui线程
                 mUiHandler.post(r);
             }
         }
@@ -204,6 +206,7 @@ public class Floaty {
 
     }
 
+    @Keep
     public class JsResizableWindow implements JsWindow {
 
         private View mView;
@@ -220,9 +223,9 @@ public class Floaty {
                 FloatyService.addWindow(mWindow);
             };
             //如果是ui线程则直接创建
-            if (Looper.myLooper()==Looper.getMainLooper()){
+            if (Looper.myLooper() == Looper.getMainLooper()) {
                 r.run();
-            }else {//否则放入ui线程
+            } else {//否则放入ui线程
                 mUiHandler.post(r);
             }
 

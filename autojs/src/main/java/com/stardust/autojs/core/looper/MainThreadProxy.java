@@ -170,7 +170,7 @@ public class MainThreadProxy {
     public void checkAccess() {
         mThread.checkAccess();
     }
-
+    @Keep
     public ClassLoader getContextClassLoader() {
         return mThread.getContextClassLoader();
     }

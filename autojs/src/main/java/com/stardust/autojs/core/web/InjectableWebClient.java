@@ -111,7 +111,7 @@ public class InjectableWebClient extends WebViewClient {
             return result.toString();
         }
     }
-
+    @Keep
     private static class InjectReturnCallback implements ValueCallback<String> {
 
         private String result;

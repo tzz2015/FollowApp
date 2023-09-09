@@ -67,11 +67,13 @@ public class AccessibilityActionConverter {
     public void onResume() {
         mFirstAction = true;
     }
+
     @Keep
     interface EventToScriptConverter {
 
         void onAccessibilityEvent(AccessibilityService service, AccessibilityEvent event, StringBuilder sb);
     }
+
     @Keep
     private static abstract class BoundsEventConverter implements EventToScriptConverter {
 
@@ -89,6 +91,7 @@ public class AccessibilityActionConverter {
 
     }
 
+    @Keep
     private static class DoOnceConverter extends BoundsEventConverter {
 
         private String mActionFunction;
@@ -103,6 +106,7 @@ public class AccessibilityActionConverter {
         }
     }
 
+    @Keep
     private static class DoUtilSucceedConverter extends BoundsEventConverter {
 
         private String mActionFunction;
@@ -116,7 +120,7 @@ public class AccessibilityActionConverter {
             sb.append("while(!").append(mActionFunction).append(bounds).append(");");
         }
     }
-
+    @Keep
     private static class SetTextEventConverter implements EventToScriptConverter {
 
         @Override

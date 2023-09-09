@@ -144,7 +144,7 @@ public class Dialogs {
         return new JsDialogBuilder(context, mRuntime)
                 .theme(Theme.LIGHT);
     }
-
+    @Keep
     public class NonUiDialogs {
 
         public String rawInput(String title, String prefill, Object callback) {

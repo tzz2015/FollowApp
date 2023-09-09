@@ -89,7 +89,7 @@ public class ViewAttributes {
     protected interface ValueConverter<T> {
         T convert(String value);
     }
-
+    @Keep
     protected static class MappingAttributeSetter<T> implements AttributeSetter {
 
         private final ValueConverter<T> mValueConverter;

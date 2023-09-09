@@ -120,7 +120,7 @@ public class Media implements MediaScannerConnection.MediaScannerConnectionClien
             mMediaPlayer.release();
         }
     }
-
+    @Keep
     private static class MediaPlayerWrapper extends MediaPlayer {
 
         static final int STATE_NOT_INITIALIZED = 0;

@@ -51,12 +51,16 @@ class PraiseFragment : BaseFragment<PraiseViewModel, FragmentPraiseBinding>(),
     }
 
     private fun initData() {
-        viewModel.checkNeedPermissions()
         viewModel.getScript(getPraiseType())
         viewModel.getScript(getCommentType())
         viewModel.getTotalPraiseCount()
         viewModel.getPraiseAccount()
         viewModel.getPraiseVideoList()
+    }
+
+    override fun onResume() {
+        super.onResume()
+        viewModel.checkNeedPermissions()
     }
 
     private fun initView() {

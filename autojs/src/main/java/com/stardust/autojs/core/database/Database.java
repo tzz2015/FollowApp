@@ -68,7 +68,7 @@ public class Database {
         });
     }
 
-
+    @Keep
     private static class DatabasesOpenHelper extends SQLiteOpenHelper {
 
         public DatabasesOpenHelper(Context context, String name, SQLiteDatabase.CursorFactory factory, int version) {

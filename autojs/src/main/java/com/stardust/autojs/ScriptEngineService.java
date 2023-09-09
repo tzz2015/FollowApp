@@ -221,7 +221,7 @@ public class ScriptEngineService {
         return sInstance;
     }
 
-
+    @Keep
     private static class EngineLifecycleObserver implements ScriptEngineManager.EngineLifecycleCallback {
 
         private final Set<ScriptEngineManager.EngineLifecycleCallback> mEngineLifecycleCallbacks = new LinkedHashSet<>();
@@ -258,7 +258,7 @@ public class ScriptEngineService {
         }
     }
 
-
+    @Keep
     private static class ScriptExecutionEvent {
 
         static final int ON_START = 1001;

@@ -208,7 +208,7 @@ class PraiseViewModel : BaseViewModel() {
         val version = MMKV.defaultMMKV().getInt(KV.SCRIPT_VERSION + type, -1)
         loadHttp(request = {
             ApiClient.otherApi.findScript(
-                version, getPraiseType(), BuildConfig.DEBUG
+                version, type, BuildConfig.DEBUG
             )
         }, resp = {
             it?.let {

@@ -138,7 +138,7 @@ public class Drawables {
     public ImageLoader getImageLoader() {
         return mImageLoader;
     }
-
+    @Keep
     private static class DefaultImageLoader implements ImageLoader {
 
         @Override

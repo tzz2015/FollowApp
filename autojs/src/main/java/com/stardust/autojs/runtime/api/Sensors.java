@@ -26,7 +26,7 @@ import java.util.Set;
 @Keep
 public class Sensors extends EventEmitter implements Loopers.LooperQuitHandler {
 
-
+    @Keep
     public class SensorEventEmitter extends EventEmitter implements SensorEventListener {
 
         public SensorEventEmitter(ScriptBridges bridges) {
