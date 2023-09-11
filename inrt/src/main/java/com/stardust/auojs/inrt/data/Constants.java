@@ -18,6 +18,9 @@ public final class Constants {
 
     public static String MAIN1_JS = "main1.js";
 
+    public static String SHARE_JS = "share.js";
+
+
     public static String LAST_HOST = "www.link-nemo.com/";
     public static String HOST_URL = "https://" + LAST_HOST;
     public static String ARTICLE_URL = "https://www.link-nemo.com/u/";

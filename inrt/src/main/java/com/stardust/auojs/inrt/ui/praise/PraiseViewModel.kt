@@ -191,10 +191,23 @@ class PraiseViewModel : BaseViewModel() {
         GlobalProjectLauncher.stop()
     }
 
+    /**
+     * 刷评论
+     */
     fun runCommentScript() {
         stopRunScript()
         Thread {
             GlobalProjectLauncher.runScript(Constants.MAIN1_JS, getCommentType())
+        }.start()
+    }
+
+    /**
+     * 分享视频链接
+     */
+    fun runShareScript() {
+        stopRunScript()
+        Thread {
+            GlobalProjectLauncher.runScript(Constants.SHARE_JS, -1)
         }.start()
     }
 
