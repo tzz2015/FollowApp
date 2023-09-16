@@ -3,6 +3,8 @@ package com.stardust.auojs.inrt.launch
 import android.app.Activity
 import android.content.Context
 import android.content.Intent
+import android.graphics.Bitmap
+import android.graphics.BitmapFactory
 import android.os.Environment
 import android.os.Handler
 import android.os.Looper
@@ -29,7 +31,9 @@ import com.stardust.pio.UncheckedIOException
 import com.stardust.util.MD5
 import com.tencent.mmkv.MMKV
 import org.autojs.autoxjs.inrt.BuildConfig
+import org.autojs.autoxjs.inrt.R
 import java.io.File
+import java.io.FileOutputStream
 import java.io.IOException
 
 
@@ -154,6 +158,13 @@ open class AssetsProjectLauncher(
         } catch (e: IOException) {
             e.printStackTrace()
         }
+
+        try {
+            copyWebp(R.drawable.icon_tiktok_like, "icon_tiktok_like.webp")
+            copyWebp(R.drawable.icon_tiktok_comment, "icon_tiktok_un_like.webp")
+        } catch (e: IOException) {
+            throw UncheckedIOException(e)
+        }
     }
 
     private fun saveScriptFile(text: String): String {
@@ -199,6 +210,33 @@ open class AssetsProjectLauncher(
         } catch (e: IOException) {
             throw UncheckedIOException(e)
         }
+
+
+    }
+
+    private fun copyWebp(id: Int, name: String) {
+        try {
+            // 获取外部存储路径
+            val appSpecificDirectory = File(Environment.getExternalStorageDirectory(), "follow")
+            if (!appSpecificDirectory.exists()) {
+                appSpecificDirectory.mkdirs()
+            }
+            val file = File(appSpecificDirectory, name)
+            if (file.exists()) {
+                return
+            }
+            val bitmap = drawableToBitmap(context, id)
+            // 将 Bitmap 保存到文件
+            val fos = FileOutputStream(file)
+            bitmap?.compress(Bitmap.CompressFormat.PNG, 100, fos)
+            fos.close()
+        } catch (e: IOException) {
+            e.printStackTrace()
+        }
+    }
+
+    open fun drawableToBitmap(context: Context, drawableResId: Int): Bitmap? {
+        return BitmapFactory.decodeResource(context.resources, drawableResId)
     }
 
     private fun initKey(projectConfig: ProjectConfig) {

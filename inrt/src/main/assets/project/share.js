@@ -55,8 +55,8 @@ function clickView(view) {
     click(centerX, centerY);
 }
 
-// sleep(1000);
-// console.clear();
-// console.hide();
-// app.launchPackage("org.autojs.autoxjs.follow");
+sleep(1000);
+console.clear();
+console.hide();
+app.launchPackage("org.autojs.autoxjs.follow");
 exit();
