@@ -161,7 +161,7 @@ open class AssetsProjectLauncher(
 
         try {
             copyWebp(R.drawable.icon_tiktok_like, "icon_tiktok_like.webp")
-            copyWebp(R.drawable.icon_tiktok_comment, "icon_tiktok_un_like.webp")
+            copyWebp(R.drawable.icon_tiktok_un_like, "icon_tiktok_un_like.webp")
         } catch (e: IOException) {
             throw UncheckedIOException(e)
         }
