@@ -114,7 +114,7 @@ class App : BaseApp() {
         }
 
         CacheManager.instance.putVersion(BuildConfig.VERSION_NAME)
-
+        CacheManager.instance.putLanguage(resources.configuration.locale.language)
     }
 
     private fun showNotification(context: Context) {

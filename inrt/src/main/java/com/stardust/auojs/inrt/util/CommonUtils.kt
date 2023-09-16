@@ -109,7 +109,10 @@ fun getCommentType(): Int {
 }
 
 
-
-
+fun isZh(): Boolean {
+    val locale = GlobalAppContext.get().resources.configuration.locale
+    val language = locale.language
+    return language.contains("zh")
+}
 
 

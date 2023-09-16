@@ -1,19 +1,21 @@
 package com.stardust.auojs.inrt.ui.mine
 
+import android.content.Context
 import androidx.lifecycle.MutableLiveData
 import com.google.gson.Gson
 import com.linsh.utilseverywhere.StringUtils
 import com.linsh.utilseverywhere.ToastUtils
 import com.mind.data.data.mmkv.KV
 import com.mind.data.data.model.FollowAccount
-import com.mind.data.data.model.FunctionType
 import com.mind.data.data.model.SuggestionModel
 import com.mind.data.data.model.UserModel
 import com.mind.data.http.ApiClient
 import com.mind.lib.util.CacheManager
+import com.stardust.app.GlobalAppContext
 import com.stardust.auojs.inrt.ui.home.UserViewModel
 import com.stardust.auojs.inrt.util.getFollowType
 import com.tencent.mmkv.MMKV
+import org.autojs.autoxjs.inrt.R
 
 /**
  * @Author      : liuyufei
@@ -24,6 +26,7 @@ class UpdateInfoViewModel : UserViewModel() {
 
     val text = MutableLiveData<String>()
     private var title: String = ""
+    private val mContext: Context by lazy { GlobalAppContext.get() }
 
     /**
      * 修改成功
@@ -35,20 +38,20 @@ class UpdateInfoViewModel : UserViewModel() {
      */
     fun change() {
         if (text.value.isNullOrEmpty()) {
-            ToastUtils.show("输入不能为空")
+            ToastUtils.show(mContext.getString(R.string.input_not_empty))
             return
         }
         when (title) {
-            FunctionType.ADD_DOEYIN_ACCOUNT, FunctionType.CHANGE_DOEYIN_ACCOUNT -> {
+            mContext.getString(R.string.add_bind_account), mContext.getString(R.string.modify_bind_account) -> {
                 val account =
                     FollowAccount(account = text.value, followType = getFollowType())
                 updateFollowAccount(account)
             }
-            FunctionType.CHANGE_PHONE -> {
+            mContext.getString(R.string.modify_username) -> {
                 val user = UserModel(phone = text.value)
                 updateUser(user)
             }
-            FunctionType.CHANGE_EMAIL -> {
+            mContext.getString(R.string.modify_email) -> {
                 val user = UserModel(email = text.value)
                 updateUser(user)
             }
@@ -60,7 +63,7 @@ class UpdateInfoViewModel : UserViewModel() {
             request = { ApiClient.followAccountApi.updateAccount(account) },
             resp = {
                 it?.run {
-                    ToastUtils.show("修改成功")
+                    ToastUtils.show(mContext.getString(R.string.modify_success))
                     CacheManager.instance.putDYAccount(it.account)
                     isChangeSuccess.postValue(true)
                 }
@@ -75,7 +78,7 @@ class UpdateInfoViewModel : UserViewModel() {
             request = { ApiClient.userApi.updateUserInfo(user) },
             resp = {
                 it?.run {
-                    ToastUtils.show("修改成功")
+                    ToastUtils.show(mContext.getString(R.string.modify_success))
                     CacheManager.instance.putPhone(it.phone)
                     CacheManager.instance.putEmail(it.email)
                     updateLocalUserInfo()
@@ -90,9 +93,9 @@ class UpdateInfoViewModel : UserViewModel() {
     fun changeText(title: String) {
         this.title = title
         when (title) {
-            FunctionType.CHANGE_DOEYIN_ACCOUNT -> text.postValue(CacheManager.instance.getDYAccount())
-            FunctionType.CHANGE_PHONE -> text.postValue(CacheManager.instance.getPhone())
-            FunctionType.CHANGE_EMAIL -> text.postValue(CacheManager.instance.getEmail())
+            mContext.getString(R.string.modify_bind_account) -> text.postValue(CacheManager.instance.getDYAccount())
+            mContext.getString(R.string.modify_username) -> text.postValue(CacheManager.instance.getPhone())
+            mContext.getString(R.string.modify_email) -> text.postValue(CacheManager.instance.getEmail())
         }
     }
 
@@ -112,7 +115,7 @@ class UpdateInfoViewModel : UserViewModel() {
      */
     fun suggestion() {
         if (text.value.isNullOrEmpty()) {
-            ToastUtils.show("输入不能为空")
+            ToastUtils.show(mContext.getString(R.string.input_not_empty))
             return
         }
         val suggestionModel = SuggestionModel(text.value ?: "")
@@ -120,7 +123,7 @@ class UpdateInfoViewModel : UserViewModel() {
             request = { ApiClient.otherApi.postSuggestion(suggestionModel) },
             resp = {
                 it?.run {
-                    ToastUtils.show("感谢反馈")
+                    ToastUtils.show(mContext.getString(R.string.thinks_feedback))
                     isChangeSuccess.postValue(true)
                 }
 

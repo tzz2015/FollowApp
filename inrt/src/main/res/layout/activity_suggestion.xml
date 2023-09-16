@@ -44,7 +44,7 @@
             android:background="@drawable/bg_home_follow_btn"
             android:gravity="center"
             android:onClick="@{()->infoViewModel.suggestion()}"
-            android:text="提交反馈"
+            android:text="@string/submit_feedback"
             android:textColor="@color/white"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"

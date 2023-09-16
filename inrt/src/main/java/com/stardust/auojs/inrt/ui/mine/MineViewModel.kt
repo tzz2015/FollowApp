@@ -8,7 +8,6 @@ import android.view.View
 import android.view.animation.LinearInterpolator
 import com.jeremyliao.liveeventbus.LiveEventBus
 import com.mind.data.data.model.AnnouncementModel
-import com.mind.data.data.model.FunctionType
 import com.mind.data.event.MsgEvent
 import com.mind.data.http.ApiClient
 import com.mind.lib.base.BaseViewModel
@@ -17,6 +16,7 @@ import com.stardust.app.GlobalAppContext
 import com.stardust.auojs.inrt.data.Constants.IMAGE_ARRAY
 import com.stardust.auojs.inrt.ui.home.UserViewModel
 import dagger.hilt.android.lifecycle.HiltViewModel
+import org.autojs.autoxjs.inrt.R
 import javax.inject.Inject
 import kotlin.random.Random
 
@@ -98,14 +98,14 @@ class MineViewModel @Inject constructor() : BaseViewModel() {
     /**
      * 点击功能
      */
-    fun clickFunction(item: String, userViewModel: UserViewModel) {
-        when (item) {
-            FunctionType.LOGOUT -> logout()
-            FunctionType.CHANGE_PSW -> userViewModel.toChangePsw()
-            FunctionType.CHANGE_PHONE -> userViewModel.toUpdateActivity(FunctionType.CHANGE_PHONE)
-            FunctionType.CHANGE_EMAIL -> userViewModel.toUpdateActivity(FunctionType.CHANGE_EMAIL)
-            FunctionType.CHANGE_DOEYIN_ACCOUNT -> userViewModel.toUpdateActivity(FunctionType.CHANGE_DOEYIN_ACCOUNT)
-            FunctionType.FEEDBACK -> userViewModel.toSuggestionActivity()
+    fun clickFunction(id: Int, userViewModel: UserViewModel) {
+        when (id) {
+            R.string.logout -> logout()
+            R.string.modify_psw -> userViewModel.toChangePsw()
+            R.string.modify_username -> userViewModel.toUpdateActivity(mContext.getString(R.string.modify_username))
+            R.string.modify_email -> userViewModel.toUpdateActivity((mContext.getString(R.string.modify_email)))
+            R.string.modify_bind_account -> userViewModel.toUpdateActivity((mContext.getString(R.string.modify_bind_account)))
+            R.string.feedback -> userViewModel.toSuggestionActivity()
         }
     }
 

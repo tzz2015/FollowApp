@@ -51,7 +51,7 @@ dependencies {
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
 
-    kapt "org.xerial:sqlite-jdbc:3.34.0"
+//    kapt "org.xerial:sqlite-jdbc:3.34.0"
     //room
     kapt "androidx.room:room-compiler:2.2.6"
 

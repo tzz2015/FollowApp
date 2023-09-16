@@ -1,6 +1,5 @@
 package com.stardust.auojs.inrt.data;
 
-import com.mind.data.data.model.FunctionType;
 import com.mind.data.data.model.SpreadModel;
 
 import org.autojs.autoxjs.inrt.R;
@@ -78,7 +77,6 @@ public final class Constants {
             R.mipmap.icon_header_1_15,
             R.mipmap.icon_header_1_16,
             R.mipmap.icon_header_1_17};
-    public static String[] FUNCTION_ARRAY = new String[]{FunctionType.CHANGE_PHONE, FunctionType.CHANGE_PSW, FunctionType.CHANGE_EMAIL, FunctionType.FEEDBACK, FunctionType.LOGOUT};
     public static String UPDATE_FUNCTION = "update_function";
 
     public static List<SpreadModel> SPREAD_URL;

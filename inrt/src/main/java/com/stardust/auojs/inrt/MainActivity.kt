@@ -89,7 +89,7 @@ class MainActivity : AppCompatActivity() {
         LiveEventBus.get(MsgEvent.TOKEN_OUT).observe(this) {
             MMKV.defaultMMKV().putString(KV.USER_INFO, "")
             CacheManager.instance.clearLogin()
-            ToastUtils.show("登录失效，请重新登录")
+            ToastUtils.show(getString(R.string.login_again))
         }
         LiveEventBus.get(MsgEvent.LOGIN_TOKEN_EVENT).observe(this) {
             mainViewModel.getAdSwitch()

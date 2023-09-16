@@ -11,6 +11,8 @@ class CacheManager private constructor() {
         private const val EMAIL = "email"
         private const val DOUYIN_ACCOUNT = "douyin_account"
         private const val VERSION = "version"
+        private const val LANGUAGE = "language"
+
 
 
 
@@ -66,6 +68,14 @@ class CacheManager private constructor() {
     fun putPhone(value: String?) {
         value?.let {
             map[PHONE] = value
+        }
+    }
+
+    fun getLanguage() = map[LANGUAGE] ?: ""
+
+    fun putLanguage(value: String?) {
+        value?.let {
+            map[LANGUAGE] = value
         }
     }
 

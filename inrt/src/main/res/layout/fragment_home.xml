@@ -97,8 +97,8 @@
             app:waveColorBottom="@color/theme_color_yellow_green"
             app:waveColorCenter="@color/theme_color_cyan"
             app:waveColorTop="@color/theme_color_dark_purple"
-            app:waveTextBottom="累计用户量"
-            app:waveTextTop="累计关注量" />
+            app:waveTextBottom="@string/total_user_num"
+            app:waveTextTop="@string/total_followed_num" />
 
         <Space
             android:id="@+id/wave_center"
@@ -149,6 +149,11 @@
             android:id="@+id/tv_notice"
             android:layout_width="match_parent"
             android:layout_height="55dp"
+            android:textSize="@dimen/sp14"
+            app:autoSizeMaxTextSize="14sp"
+            app:autoSizeMinTextSize="9sp"
+            app:autoSizeStepGranularity="1sp"
+            app:autoSizeTextType="uniform"
             android:layout_marginStart="@dimen/dp30"
             android:layout_marginTop="@dimen/dp20"
             android:layout_marginEnd="@dimen/dp30"
@@ -195,6 +200,11 @@
             android:layout_height="55dp"
             android:layout_marginStart="@dimen/dp30"
             android:layout_marginTop="20dp"
+            android:textSize="@dimen/sp14"
+            app:autoSizeMaxTextSize="14sp"
+            app:autoSizeMinTextSize="9sp"
+            app:autoSizeStepGranularity="1sp"
+            app:autoSizeTextType="uniform"
             android:layout_marginEnd="@dimen/dp30"
             android:background="@drawable/bg_home_follow_text"
             android:gravity="center_vertical"

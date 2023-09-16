@@ -46,7 +46,7 @@
             android:background="@drawable/bg_home_follow_text"
             android:gravity="center"
             android:onClick="@{()->infoViewModel.change()}"
-            android:text="修改"
+            android:text="@string/modify"
             android:textColor="@color/white"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"

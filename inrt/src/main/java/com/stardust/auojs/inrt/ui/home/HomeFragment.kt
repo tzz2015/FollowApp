@@ -28,6 +28,7 @@ import com.stardust.app.permission.DrawOverlaysPermission.launchCanDrawOverlaysS
 import com.stardust.auojs.inrt.autojs.AccessibilityServiceTool1
 import com.stardust.auojs.inrt.util.AdUtils
 import com.stardust.auojs.inrt.util.getFollowType
+import com.stardust.auojs.inrt.util.isZh
 import com.tencent.mmkv.MMKV
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -91,7 +92,7 @@ class HomeFragment : BaseFragment<HomeViewModel, FragmentHomeBinding>(),
                 id: Long
             ) {
                 if (position > 1) {
-                    ToastUtils.show("敬请期待")
+                    ToastUtils.show(requireContext().getString(R.string.stay_tuned))
                 } else {
                     MMKV.defaultMMKV().putInt(KV.APP_TYPE, position)
                     // 相当于重新登录
@@ -103,7 +104,10 @@ class HomeFragment : BaseFragment<HomeViewModel, FragmentHomeBinding>(),
             override fun onNothingSelected(parent: AdapterView<*>?) {
             }
         }
-        val selectIndex = MMKV.defaultMMKV().getInt(KV.APP_TYPE, 0)
+        var selectIndex = MMKV.defaultMMKV().getInt(KV.APP_TYPE, -1)
+        if (selectIndex == -1) {
+            selectIndex = if (isZh()) 0 else 1
+        }
         bind.cbAppType.setSelection(selectIndex)
     }
 

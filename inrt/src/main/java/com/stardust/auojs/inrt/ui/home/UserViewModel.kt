@@ -9,8 +9,9 @@ import androidx.lifecycle.MutableLiveData
 import com.linsh.utilseverywhere.LogUtils
 import com.linsh.utilseverywhere.StringUtils
 import com.linsh.utilseverywhere.ToastUtils
+import com.mind.data.data.mmkv.KV
+import com.mind.data.data.model.AppType
 import com.mind.data.data.model.FollowAccount
-import com.mind.data.data.model.FunctionType
 import com.mind.data.data.model.UserModel
 import com.mind.data.http.ApiClient
 import com.mind.lib.base.BaseViewModel
@@ -22,7 +23,9 @@ import com.stardust.auojs.inrt.ui.mine.*
 import com.stardust.auojs.inrt.util.copyToClipboard
 import com.stardust.auojs.inrt.util.getFollowType
 import com.stardust.auojs.inrt.util.isLogined
+import com.tencent.mmkv.MMKV
 import dagger.hilt.android.lifecycle.HiltViewModel
+import org.autojs.autoxjs.inrt.R
 import javax.inject.Inject
 
 /**
@@ -129,11 +132,11 @@ open class UserViewModel @Inject constructor() : BaseViewModel() {
 
     fun login() {
         if (phone.value.isNullOrEmpty()) {
-            ToastUtils.show("手机号不能为空")
+            ToastUtils.show(mContext.getString(R.string.username_not_empty))
             return
         }
         if (password.value.isNullOrEmpty()) {
-            ToastUtils.show("密码不能为空")
+            ToastUtils.show(mContext.getString(R.string.password_not_empty))
             return
         }
         val map = hashMapOf(
@@ -143,7 +146,7 @@ open class UserViewModel @Inject constructor() : BaseViewModel() {
         loadHttp(
             request = { ApiClient.userApi.login(map) },
             resp = {
-                ToastUtils.show("登录成功")
+                ToastUtils.show(mContext.getString(R.string.login_success))
                 LogUtils.e(it.toString())
                 loginResult.postValue(it)
             },
@@ -185,9 +188,9 @@ open class UserViewModel @Inject constructor() : BaseViewModel() {
             return
         }
         if (StringUtils.isAllNotEmpty(CacheManager.instance.getDYAccount())) {
-            toUpdateActivity(FunctionType.CHANGE_DOEYIN_ACCOUNT)
+            toUpdateActivity(mContext.getString(R.string.modify_bind_account))
         } else {
-            toUpdateActivity(FunctionType.ADD_DOEYIN_ACCOUNT)
+            toUpdateActivity(mContext.getString(R.string.add_bind_account))
         }
     }
 
@@ -211,15 +214,15 @@ open class UserViewModel @Inject constructor() : BaseViewModel() {
 
     fun register() {
         if (phone.value.isNullOrEmpty()) {
-            ToastUtils.show("手机号不能为空")
+            ToastUtils.show(mContext.getString(R.string.username_not_empty))
             return
         }
         if (password.value.isNullOrEmpty()) {
-            ToastUtils.show("密码不能为空")
+            ToastUtils.show(mContext.getString(R.string.password_not_empty))
             return
         }
         if (email.value.isNullOrEmpty()) {
-            ToastUtils.show("邮箱不能为空")
+            ToastUtils.show(mContext.getString(R.string.email_not_empty))
             return
         }
         val map = hashMapOf(
@@ -230,7 +233,7 @@ open class UserViewModel @Inject constructor() : BaseViewModel() {
         loadHttp(
             request = { ApiClient.userApi.register(map) },
             resp = {
-                ToastUtils.show("注册成功")
+                ToastUtils.show(mContext.getString(R.string.register_success))
                 isRegisterSuccess.postValue(true)
             },
             isShowDialog = true
@@ -242,11 +245,11 @@ open class UserViewModel @Inject constructor() : BaseViewModel() {
      */
     fun sendCode(view: View) {
         if (phone.value.isNullOrEmpty()) {
-            ToastUtils.show("手机号不能为空")
+            ToastUtils.show(mContext.getString(R.string.username_not_empty))
             return
         }
         if (email.value.isNullOrEmpty()) {
-            ToastUtils.show("邮箱不能为空")
+            ToastUtils.show(mContext.getString(R.string.email_not_empty))
             return
         }
         view.isEnabled = false
@@ -257,7 +260,7 @@ open class UserViewModel @Inject constructor() : BaseViewModel() {
         loadHttp(
             request = { ApiClient.userApi.senCode(map) },
             resp = {
-                ToastUtils.show("发送验证码成功")
+                ToastUtils.show(mContext.getString(R.string.send_code_success))
                 view.isEnabled = true
             },
             err = {
@@ -273,15 +276,15 @@ open class UserViewModel @Inject constructor() : BaseViewModel() {
      */
     fun changePsw() {
         if (phone.value.isNullOrEmpty()) {
-            ToastUtils.show("手机号不能为空")
+            ToastUtils.show(mContext.getString(R.string.username_not_empty))
             return
         }
         if (password.value.isNullOrEmpty()) {
-            ToastUtils.show("密码不能为空")
+            ToastUtils.show(mContext.getString(R.string.password_not_empty))
             return
         }
         if (email.value.isNullOrEmpty()) {
-            ToastUtils.show("邮箱不能为空")
+            ToastUtils.show(mContext.getString(R.string.email_not_empty))
             return
         }
         val map = hashMapOf(
@@ -292,7 +295,7 @@ open class UserViewModel @Inject constructor() : BaseViewModel() {
         loadHttp(
             request = { ApiClient.userApi.changePsw(captchaCode.value ?: "", map) },
             resp = {
-                ToastUtils.show("修改成功")
+                ToastUtils.show(mContext.getString(R.string.modify_success))
                 isChangePswSuccess.postValue(true)
             },
             isShowDialog = true
@@ -301,8 +304,13 @@ open class UserViewModel @Inject constructor() : BaseViewModel() {
     }
 
     fun copyDevAccount() {
-        copyToClipboard("103447750")
-        ToastUtils.show("已复制开发者抖音号到剪切板")
+        val appType = MMKV.defaultMMKV().getInt(KV.APP_TYPE, 0)
+        if (appType == AppType.DOU_YIN) {
+            copyToClipboard("103447750")
+        }else{
+            copyToClipboard("followappdeveloper")
+        }
+        ToastUtils.show(mContext.getString(R.string.copy_dev_account))
     }
 
 

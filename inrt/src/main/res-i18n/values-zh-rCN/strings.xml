@@ -2,48 +2,161 @@
 
 <!--Automatically translated by Globalization Translator (https://github.com/wilinz/globalization-translator)-->
 <resources>
-  <string name="text_no_accessibility_permission">无障碍服务未启动</string>
-  <string name="text_auto_operate_service_enabled_but_not_running">无障碍服务已启用但没有运行，您可以尝试重新启用或重启手机</string>
-  <string name="text_enable_accessibility_service_by_root_timeout">使用root权限启用无障碍服务失败</string>
-  <string name="text_settings">设置</string>
-  <string name="text_script_running">脚本运行</string>
-  <string name="text_keep_running_with_foreground_service">使用前台服务使应用保持运行</string>
-  <string name="text_use_accessibility_service">无障碍服务</string>
-  <string name="text_use_floating_window">悬浮窗</string>
-  <string name="summary_enable_accessibility_service">必须要开启无障碍服务任务才能执行(保留项)</string>
-  <string name="summary_enable_floating_window">必须要开启悬浮窗才能查看日志(保留项)</string>
-  <string name="text_use_volume_to_stop_running">音量上键停止所有脚本</string>
-  <string name="summary_enable_accessibility_service_by_root">开启后运行脚本会使用Root权限自动开启无障碍服务(保留项)</string>
-  <string name="text_enable_accessibility_service_by_root">使用Root权限自动启用服务</string>
-  <string name="summary_stable_mode">开启后布局分析更稳定，但小部分脚本可能无法正常运行。 重启无障碍服务生效</string>
-  <string name="text_stable_mode">稳定模式</string>
-  <string name="text_accessibility_service">无障碍服务</string>
-  <string name="text_dont_show_main_activity">不显示主界面</string>
-  <string name="summary_dont_show_main_activity">打开应用后直接运行脚本</string>
-  <string name="text_hide_logs">隐藏日志</string>
-  <string name="summary_hide_logs">不显示日志界面,在次打开本界面需要脚本支持</string>
-  <string name="text_others">其他</string>
-  <string name="text_execution_finished" formatted="false">\n ------------ \n [ %s ]运行结束，用时%f秒</string>
-  <string name="prompt_email">电子邮件</string>
-  <string name="prompt_password">密码</string>
-  <string name="action_sign_in">登录或注册</string>
-  <string name="action_sign_in_short">登入</string>
-  <string name="welcome">“欢迎！”</string>
-  <string name="invalid_username">不是有效的用户名</string>
-  <string name="invalid_password">密码必须大于5 个字符</string>
-  <string name="login_failed">“登录失败”</string>
-  <string name="explain_accessibility_permission">软件需要打开“无障碍服务”才能运行，请打开“设置->无障碍服务”或“设置->无障碍服务->更多已下载的服务”，找到“%s”，开启无障碍服务</string>
-  <string name="text_need_to_enable_accessibility_service">需要启用无障碍服务</string>
-  <string name="summary_use_volume_to_stop_running">通知栏将会一直显示“此应用运行中”的通知，使程序保持运行</string>
-  <string name="text_to_open">去打开</string>
-  <string name="text_cancel">取消</string>
-  <string name="text_requires_background_start">需要后台打开界面权限</string>
-  <string name="text_requires_background_start_desc">需要后台打开界面权限才能运行，请前往设置打开</string>
-  <string name="text_required_floating_window_permission">需要悬浮窗权限</string>
-  <string name="text_please_enable_permissions_before_running">请开启权限后，再运行!</string>
-  <string name="text_accessibility_service_is_not_turned_on">无障碍服务未开启</string>
-  <string name="text_accessibility_service_turned_on">无障碍服务已开启</string>
-  <string name="text_rerun">重新运行</string>
-  <string name="text_clear_logcat">清除日志</string>
-  <string name="text_stop_run">停止运行</string>
+    <string name="text_no_accessibility_permission">无障碍服务未启动</string>
+    <string name="text_auto_operate_service_enabled_but_not_running">无障碍服务已启用但没有运行，您可以尝试重新启用或重启手机</string>
+    <string name="text_enable_accessibility_service_by_root_timeout">使用root权限启用无障碍服务失败</string>
+    <string name="text_settings">设置</string>
+    <string name="text_script_running">脚本运行</string>
+    <string name="text_keep_running_with_foreground_service">使用前台服务使应用保持运行</string>
+    <string name="text_use_accessibility_service">无障碍服务</string>
+    <string name="text_use_floating_window">悬浮窗</string>
+    <string name="summary_enable_accessibility_service">必须要开启无障碍服务任务才能执行(保留项)</string>
+    <string name="summary_enable_floating_window">必须要开启悬浮窗才能查看日志(保留项)</string>
+    <string name="text_use_volume_to_stop_running">音量上键停止所有脚本</string>
+    <string name="summary_enable_accessibility_service_by_root">开启后运行脚本会使用Root权限自动开启无障碍服务(保留项)</string>
+    <string name="text_enable_accessibility_service_by_root">使用Root权限自动启用服务</string>
+    <string name="summary_stable_mode">开启后布局分析更稳定，但小部分脚本可能无法正常运行。 重启无障碍服务生效</string>
+    <string name="text_stable_mode">稳定模式</string>
+    <string name="text_accessibility_service">无障碍服务</string>
+    <string name="text_dont_show_main_activity">不显示主界面</string>
+    <string name="summary_dont_show_main_activity">打开应用后直接运行脚本</string>
+    <string name="text_hide_logs">隐藏日志</string>
+    <string name="summary_hide_logs">不显示日志界面,在次打开本界面需要脚本支持</string>
+    <string name="text_others">其他</string>
+    <string name="text_execution_finished" formatted="false">\n ------------ \n [ %s ]运行结束，用时%f秒</string>
+    <string name="prompt_email">电子邮件</string>
+    <string name="prompt_password">密码</string>
+    <string name="action_sign_in">登录或注册</string>
+    <string name="action_sign_in_short">登入</string>
+    <string name="welcome">“欢迎！”</string>
+    <string name="invalid_username">不是有效的用户名</string>
+    <string name="invalid_password">密码必须大于5 个字符</string>
+    <string name="login_failed">“登录失败”</string>
+    <string name="explain_accessibility_permission">软件需要打开“无障碍服务”才能运行，请打开“设置->无障碍服务”或“设置->无障碍服务->更多已下载的服务”，找到“%s”，开启无障碍服务</string>
+    <string name="text_need_to_enable_accessibility_service">需要启用无障碍服务</string>
+    <string name="summary_use_volume_to_stop_running">通知栏将会一直显示“此应用运行中”的通知，使程序保持运行</string>
+    <string name="text_to_open">去打开</string>
+    <string name="text_cancel">取消</string>
+    <string name="text_requires_background_start">需要后台打开界面权限</string>
+    <string name="text_requires_background_start_desc">需要后台打开界面权限才能运行，请前往设置打开</string>
+    <string name="text_required_floating_window_permission">需要悬浮窗权限</string>
+    <string name="text_please_enable_permissions_before_running">请开启权限后，再运行!</string>
+    <string name="text_accessibility_service_is_not_turned_on">无障碍服务未开启</string>
+    <string name="text_accessibility_service_turned_on">无障碍服务已开启</string>
+    <string name="text_rerun">重新运行</string>
+    <string name="text_clear_logcat">清除日志</string>
+    <string name="text_stop_run">停止运行</string>
+
+
+    <string name="title_home">首页</string>
+    <string name="title_praise">点赞</string>
+    <string name="title_dashboard">推广</string>
+    <string name="title_notifications">我的</string>
+    <string name="need_permiss">你需要开启以下权限才能进行关注粉丝操作</string>
+    <string name="accessibility_permiss">无障碍权限</string>
+    <string name="drawOverlays_permiss">悬浮窗权限</string>
+    <string name="to_follow">去互粉</string>
+    <string name="follow_notice_text">每关注一个用户你就有一次被关注的机会</string>
+    <string name="to_bind">去绑定</string>
+    <string name="to_change">去修改</string>
+    <string name="follow_bind_text">绑定你的抖音号/TikTok就可以被TA人关注</string>
+    <string name="follow_bind_account">当前绑定的抖音号为:%s</string>
+    <string name="login_title">我来了</string>
+    <string name="suggestion_title">有啥说啥</string>
+    <string name="login_register_title">人生赢家</string>
+    <string name="change_psw_title">贵人多忘事</string>
+    <string name="can_follow_title">关注须知</string>
+    <string name="can_follow_text">当前可关注人数为%s,请先打开抖音并且点击搜索，停留在搜索页面，然后将抖音退到后台，才可以使用该功能。</string>
+    <string name="praise_notice">1.去互赞会去截屏，以便获取点赞的图标，判断是否已经点赞。2.添加的视频连接最好不要超过三条，被用一个粉丝连续点赞三次会被限流。3.去刷屏后期开放自定义文本。</string>
+    <string name="to_comment">去刷评论</string>
+    <string name="to_praise">去互赞</string>
+    <string name="add_video_url">添加链接</string>
+    <string name="share_video_url">分享视频</string>
+    <string name="input_title">输入标题</string>
+    <string name="input_praise_video_url">打开视频->复制链接->粘贴到这</string>
+    <string name="please_enter_title">请输入标题</string>
+    <string name="please_enter_url">请输入带https的文本</string>
+    <string name="delete">删除</string>
+    <string name="edit">编辑</string>
+    <string name="check">校验</string>
+    <string name="delete_notice">删除后将无法恢复，你确定要删除吗？</string>
+    <string name="delete_fail">删除失败</string>
+    <string name="not_any_follow">当前无可关注，可以邀请更多朋友加入</string>
+    <string name="not_any_praise">当前无可点赞，可以邀请更多朋友加入</string>
+    <string name="can_praise_title">点赞须知</string>
+    <string name="can_praise_text">当前可互赞视频个数为%s</string>
+    <string name="curr_praise_num">点赞数:</string>
+    <string name="total_user_num">累计用户量</string>
+    <string name="total_followed_num">累计关注量</string>
+    <!--我的页面-->
+    <string name="login">登录</string>
+    <string name="retrieve_password">找回密码</string>
+    <string name="remaining_follow">剩余被关注</string>
+    <string name="cumulative_follow">累计关注</string>
+    <string name="cumulative_followed">累计被关注</string>
+    <string name="modify_username">修改用户名</string>
+    <string name="modify_email">修改邮箱</string>
+    <string name="modify_psw">修改密码</string>
+    <string name="Feedback">意见反馈</string>
+    <string name="logout">注销登录</string>
+    <string name="modify_bind_account">修改抖音/TikTok号</string>
+    <string name="add_bind_account">添加抖音/TikTok号</string>
+    <string name="add">添加</string>
+    <string name="copy_account">打开抖音/TikTok->我的->点击抖音/TikTok号复制</string>
+    <string name="modify">修改</string>
+    <string name="enter_confirmation_code">输入验证码</string>
+    <string name="send_confirmation_code">发送验证码</string>
+    <string name="enter_username">输入用户名</string>
+    <string name="enter_email">输入邮箱</string>
+    <string name="enter_psw">输入密码</string>
+    <string name="enter_username_or_email">输入用户名或者邮箱号</string>
+    <string name="register">注册</string>
+    <string name="submit_feedback">提交反馈</string>
+    <string name="stay_tuned">敬请期待</string>
+    <string name="login_again">登录失效，请重新登录</string>
+    <string name="username_not_empty">用户名不能为空</string>
+    <string name="password_not_empty">密码不能为空</string>
+    <string name="email_not_empty">邮箱不能为空</string>
+    <string name="login_success">登录成功</string>
+    <string name="register_success">注册成功</string>
+    <string name="modify_success">修改成功</string>
+    <string name="send_code_success">发送验证码成功</string>
+    <string name="copy_dev_account">已复制开发者抖音/TikTok号到剪切板</string>
+    <string name="copy_to_clipboard">复制到剪切板</string>
+    <string name="input_not_empty">输入不能为空</string>
+    <string name="thinks_feedback">感谢反馈</string>
+
+    <string name="total_likes">总点赞</string>
+    <string name="the_rest_were_liked">剩余被点赞</string>
+    <string name="accumulated_likes">累计点赞</string>
+    <string name="total_liked">累计被点赞</string>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 </resources>

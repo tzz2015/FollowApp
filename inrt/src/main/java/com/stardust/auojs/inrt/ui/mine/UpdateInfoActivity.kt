@@ -3,8 +3,6 @@ package com.stardust.auojs.inrt.ui.mine
 import androidx.appcompat.widget.AppCompatTextView
 import com.chad.library.BR
 import com.jeremyliao.liveeventbus.LiveEventBus
-import com.kc.openset.OSETBanner
-import com.mind.data.data.model.FunctionType
 import com.mind.data.event.MsgEvent
 import com.mind.lib.base.BaseActivity
 import com.mind.lib.base.ViewModelConfig
@@ -24,9 +22,9 @@ class UpdateInfoActivity : BaseActivity<UpdateInfoViewModel, ActivityUpdateInfoB
         val titleView = bind.root.findViewById<AppCompatTextView>(com.mind.lib.R.id.tv_title)
         titleView.text = mTitle
         viewModel.changeText(mTitle)
-        if (mTitle == FunctionType.ADD_DOEYIN_ACCOUNT) {
-            bind.tvLogin.text = "添加"
-            bind.etInput.hint = "打开抖音->我的->点击抖音号复制"
+        if (mTitle == getString(R.string.add_bind_account)) {
+            bind.tvLogin.text = getString(R.string.add)
+            bind.etInput.hint = getString(R.string.copy_account)
         }
         viewModel.isChangeSuccess.observe(this) {
             if (it == true) {

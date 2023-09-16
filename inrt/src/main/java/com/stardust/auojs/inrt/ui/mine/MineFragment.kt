@@ -15,7 +15,6 @@ import com.mind.data.event.MsgEvent
 import com.mind.lib.base.BaseFragment
 import com.mind.lib.base.ViewModelConfig
 import com.mind.lib.util.CacheManager
-import com.stardust.auojs.inrt.data.Constants
 import com.stardust.auojs.inrt.ui.adapter.AnnouncementAdapter
 import com.stardust.auojs.inrt.ui.home.UserViewModel
 import com.stardust.auojs.inrt.util.AdUtils
@@ -77,15 +76,23 @@ class MineFragment : BaseFragment<MineViewModel, FragmentMineBinding>() {
 
     private fun initFunctionBtn() {
         bind.flFunction.removeAllViews()
-        for (item in Constants.FUNCTION_ARRAY) {
+        val functionArray = arrayOf(
+            R.string.modify_username,
+            R.string.modify_psw,
+            R.string.modify_email,
+            R.string.feedback,
+            R.string.logout
+        )
+        for (id in functionArray) {
+            val text = requireContext().getText(id).toString()
             val parent = bind.flFunction.parent as ViewGroup
             val view =
                 LayoutInflater.from(context).inflate(R.layout.item_function_tag, parent, false)
             val textView = view.findViewById<AppCompatTextView>(R.id.tv_tab_title)
-            textView?.text = item
+            textView?.text = text
             bind.flFunction.addView(view)
             view.setOnClickListener {
-                viewModel.clickFunction(item, userViewModel)
+                viewModel.clickFunction(id, userViewModel)
             }
         }
     }
@@ -100,7 +107,7 @@ class MineFragment : BaseFragment<MineViewModel, FragmentMineBinding>() {
         mAdapter.setOnItemClickListener { _, _, position ->
             val item = mAdapter.getItem(position)
             copyToClipboard(item.content)
-            ToastUtils.show("复制到剪切板")
+            ToastUtils.show(requireContext().getString(R.string.copy_to_clipboard))
         }
     }
 

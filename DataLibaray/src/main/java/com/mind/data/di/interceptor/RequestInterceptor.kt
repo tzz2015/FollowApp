@@ -12,6 +12,7 @@ class RequestInterceptor: Interceptor {
             .addHeader("version", CacheManager.instance.getVersion())
             .addHeader("model", Build.MODEL)
             .addHeader("token", CacheManager.instance.getToken())
+            .addHeader("language", CacheManager.instance.getLanguage())
             .build()
       return  chain.proceed(request)
     }
