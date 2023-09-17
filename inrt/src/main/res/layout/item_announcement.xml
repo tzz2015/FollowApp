@@ -3,12 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
-    <data>
 
-        <variable
-            name="anModel"
-            type="com.mind.data.data.model.AnnouncementModel" />
-    </data>
 
     <androidx.cardview.widget.CardView
         android:layout_margin="@dimen/dp5"
@@ -25,19 +20,19 @@
             android:padding="@dimen/dp_10">
 
             <TextView
+                android:id="@+id/tv_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/dp5"
-                android:text="@{anModel.title}"
                 android:textColor="@color/black"
                 android:textSize="@dimen/sp14"
                 tools:text="这是一个主标题" />
 
             <TextView
+                android:id="@+id/tv_content"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/dp5"
-                android:text="@{anModel.content}"
                 android:textColor="@color/color_999"
                 android:textSize="@dimen/sp12"
                 tools:text="这是一个副标题" />

@@ -130,6 +130,8 @@
   <string name="the_rest_were_liked">剩余被点赞</string>
   <string name="accumulated_likes">累计点赞</string>
   <string name="total_liked">累计被点赞</string>
+  <string name="click_add_url">点击“%s”按钮,添加你的视频连接，之后别人可以为你点赞。</string>
+
 
 
 </resources>

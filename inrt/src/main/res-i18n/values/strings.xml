@@ -76,7 +76,7 @@
     <string name="can_follow_title">Instructions for attention</string>
     <string name="can_follow_text">The current number of people you can follow is %s. Please open Douyin/TikTok first and click search, and then exit Douyin/TikTok to the background.</string>
     <string name="praise_notice">1. When you like each other, you will take a screenshot to get the like icon and determine whether it has been liked. 2. It is best not to add more than three video links. If a fan likes it three times in a row, the video will be limited. 3. Press the volume up key to exit script execution.</string>
-    <string name="to_comment">Go and comment</string>
+    <string name="to_comment">Comment</string>
     <string name="to_praise">Praise</string>
     <string name="add_video_url">Add a link</string>
     <string name="share_video_url">Share video</string>
@@ -99,7 +99,7 @@
     <!--我的页面-->
     <string name="login">Login</string>
     <string name="retrieve_password">Retrieve psw</string>
-    <string name="remaining_follow">Remain follow</string>
+    <string name="remaining_follow">Remaining follow</string>
     <string name="cumulative_follow">Cumulative follow</string>
     <string name="cumulative_followed">Cumulative followed</string>
     <string name="modify_username">Modify Username</string>
@@ -134,8 +134,10 @@
     <string name="input_not_empty">Input can not be empty</string>
     <string name="thinks_feedback">Thanks for the feedback</string>
     <string name="total_likes">Total likes</string>
-    <string name="the_rest_were_liked">not yet liked</string>
-    <string name="accumulated_likes">my likes</string>
-    <string name="total_liked">total liked</string>
+    <string name="the_rest_were_liked">Need liked</string>
+    <string name="accumulated_likes">My likes</string>
+    <string name="total_liked">Total liked</string>
+    <string name="click_add_url">Click \"%s\" button to add your video link, and then others can like it for you.</string>
+
 
 </resources>

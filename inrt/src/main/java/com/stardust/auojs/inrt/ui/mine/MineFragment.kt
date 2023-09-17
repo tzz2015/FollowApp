@@ -19,6 +19,7 @@ import com.stardust.auojs.inrt.ui.adapter.AnnouncementAdapter
 import com.stardust.auojs.inrt.ui.home.UserViewModel
 import com.stardust.auojs.inrt.util.AdUtils
 import com.stardust.auojs.inrt.util.copyToClipboard
+import com.stardust.auojs.inrt.util.formatLargeNumber
 import com.stardust.auojs.inrt.util.isLogined
 import org.autojs.autoxjs.inrt.R
 import org.autojs.autoxjs.inrt.databinding.FragmentMineBinding
@@ -58,9 +59,9 @@ class MineFragment : BaseFragment<MineViewModel, FragmentMineBinding>() {
     private fun initObserve() {
         userViewModel.followAccount.observe(viewLifecycleOwner) {
             CacheManager.instance.putDYAccount(it.account)
-            bind.tvOne.text = "${it.needFollowedCount}"
-            bind.tvTwo.text = "${it.followCount}"
-            bind.tvThree.text = "${it.followedCount}"
+            bind.tvOne.text = formatLargeNumber(it.needFollowedCount.toLong())
+            bind.tvTwo.text = formatLargeNumber(it.followCount.toLong())
+            bind.tvThree.text = formatLargeNumber(it.followedCount.toLong())
         }
         LiveEventBus.get(MsgEvent.LOGIN_TOKEN_EVENT).observe(viewLifecycleOwner) {
             changeView(isLogined())

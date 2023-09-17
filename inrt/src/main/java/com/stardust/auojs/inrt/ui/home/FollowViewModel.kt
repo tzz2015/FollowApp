@@ -4,6 +4,7 @@ import android.util.Log
 import com.mind.data.http.ApiClient
 import com.mind.lib.base.BaseViewModel
 import com.mind.lib.base.ViewModelEvent
+import com.stardust.auojs.inrt.util.formatLargeNumber
 import javax.inject.Inject
 
 /**
@@ -21,11 +22,13 @@ class FollowViewModel @Inject constructor() : BaseViewModel() {
         loadHttp(
             request = { ApiClient.followApi.getTotalFollowCount() },
             resp = {
-                Log.e(javaClass.simpleName, "getTotalFollowCount:${it} ")
-                followCount.postValue("$it")
+                it?.let {
+                    Log.e(javaClass.simpleName, "getTotalFollowCount:${it} ")
+                    followCount.postValue(formatLargeNumber(it))
+                }
             },
             err = {
-                followCount.postValue("10000")
+                followCount.postValue(formatLargeNumber(4556762359))
             },
             isShowDialog = false
         )

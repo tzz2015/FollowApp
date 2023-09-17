@@ -49,10 +49,13 @@ class PraiseViewModel : BaseViewModel() {
      */
     fun getTotalPraiseCount() {
         loadHttp(request = { ApiClient.praiseApi.getTotalPraiseCount() }, resp = {
-            Log.e(javaClass.name, "getTotalPraiseCount:${it} ")
-            praiseCount.postValue("$it")
+            it?.let {
+                Log.e(javaClass.name, "getTotalPraiseCount:${it} ")
+                praiseCount.postValue(formatLargeNumber(it))
+            }
+
         }, err = {
-            praiseCount.postValue("0")
+            praiseCount.postValue(formatLargeNumber(8743609))
         }, isShowDialog = false
         )
 

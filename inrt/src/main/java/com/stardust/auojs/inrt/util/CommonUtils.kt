@@ -116,3 +116,18 @@ fun isZh(): Boolean {
 }
 
 
+fun formatLargeNumber(number: Long): String {
+    return if (number < 1000) {
+        number.toString() // 数字小于1000，不需要后缀
+    } else if (number < 10000) {
+        // 数字在1000和9999之间，将其转换成x.xk的格式
+        val thousands = number / 1000.0
+        String.format("%.1fk", thousands)
+    } else {
+        // 数字大于等于10000，将其转换成x.xw的格式
+        val millions = number / 10000.0
+        String.format("%.1fw", millions)
+    }
+}
+
+

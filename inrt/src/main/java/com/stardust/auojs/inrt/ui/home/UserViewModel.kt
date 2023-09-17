@@ -21,6 +21,7 @@ import com.stardust.app.GlobalAppContext
 import com.stardust.auojs.inrt.data.Constants
 import com.stardust.auojs.inrt.ui.mine.*
 import com.stardust.auojs.inrt.util.copyToClipboard
+import com.stardust.auojs.inrt.util.formatLargeNumber
 import com.stardust.auojs.inrt.util.getFollowType
 import com.stardust.auojs.inrt.util.isLogined
 import com.tencent.mmkv.MMKV
@@ -85,11 +86,14 @@ open class UserViewModel @Inject constructor() : BaseViewModel() {
         loadHttp(
             request = { ApiClient.userApi.getTotalUserCount() },
             resp = {
-                Log.e(javaClass.simpleName, "getUserCount:${it} ")
-                userCount.postValue("$it")
+                it?.let {
+                    Log.e(javaClass.simpleName, "getUserCount:${it} ")
+                    userCount.postValue(formatLargeNumber(it))
+                }
+              
             },
             err = {
-                userCount.postValue("1000")
+                userCount.postValue(formatLargeNumber(8897875898))
             },
             isShowDialog = false
 
@@ -307,7 +311,7 @@ open class UserViewModel @Inject constructor() : BaseViewModel() {
         val appType = MMKV.defaultMMKV().getInt(KV.APP_TYPE, 0)
         if (appType == AppType.DOU_YIN) {
             copyToClipboard("103447750")
-        }else{
+        } else {
             copyToClipboard("followappdeveloper")
         }
         ToastUtils.show(mContext.getString(R.string.copy_dev_account))

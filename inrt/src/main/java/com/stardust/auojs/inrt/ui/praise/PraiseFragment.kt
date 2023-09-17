@@ -8,6 +8,7 @@ import android.os.Bundle
 import android.text.TextUtils
 import androidx.appcompat.widget.AppCompatEditText
 import androidx.appcompat.widget.AppCompatTextView
+import androidx.core.view.isVisible
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.afollestad.materialdialogs.MaterialDialog
 import com.jeremyliao.liveeventbus.LiveEventBus
@@ -21,14 +22,17 @@ import com.mind.lib.base.ViewModelConfig
 import com.stardust.auojs.inrt.ui.adapter.PraiseVideoAdapter
 import com.stardust.auojs.inrt.ui.home.HomeFragment
 import com.stardust.auojs.inrt.util.AdUtils
+import com.stardust.auojs.inrt.util.formatLargeNumber
 import com.stardust.auojs.inrt.util.getCommentType
 import com.stardust.auojs.inrt.util.getPraiseType
 import org.autojs.autoxjs.inrt.BR
+import org.autojs.autoxjs.inrt.BuildConfig
 import org.autojs.autoxjs.inrt.R
 import org.autojs.autoxjs.inrt.databinding.FragmentPraiseBinding
 import pub.devrel.easypermissions.AfterPermissionGranted
 import pub.devrel.easypermissions.EasyPermissions
 import pub.devrel.easypermissions.PermissionRequest
+import java.util.*
 
 /**
  * @Author      : liuyufei
@@ -66,16 +70,27 @@ class PraiseFragment : BaseFragment<PraiseViewModel, FragmentPraiseBinding>(),
     private fun initView() {
         bind.tvAdd.setOnClickListener { showEditDialog(null) }
         bind.tvPraise.setOnClickListener { requestPermissions() }
+        if (!BuildConfig.DEBUG) {
+            bind.tvShare.isVisible = false
+            bind.tvComment.isVisible = false
+        }
+        val emptyText = String.format(
+            Locale.ENGLISH,
+            requireContext().getText(R.string.click_add_url).toString(),
+            requireContext().getText(R.string.add_video_url).toString()
+        )
+        bind.tvEmpty.text = emptyText
     }
 
     private fun initObserve() {
         viewModel.praiseAccount.observe(viewLifecycleOwner) {
-            bind.tvOne.text = "${it.needPraiseCount}"
-            bind.tvTwo.text = "${it.praiseCount}"
-            bind.tvThree.text = "${it.praisedCount}"
+            bind.tvOne.text = formatLargeNumber(it.needPraiseCount.toLong())
+            bind.tvTwo.text = formatLargeNumber(it.praiseCount.toLong())
+            bind.tvThree.text = formatLargeNumber(it.praisedCount.toLong())
         }
         viewModel.praiseVideoList.observe(viewLifecycleOwner) {
             mAdapter.setNewInstance(it)
+            bind.tvEmpty.isVisible = it.isEmpty()
         }
         viewModel.praiseVideo.observe(viewLifecycleOwner) {
             updateAdapter(it)
