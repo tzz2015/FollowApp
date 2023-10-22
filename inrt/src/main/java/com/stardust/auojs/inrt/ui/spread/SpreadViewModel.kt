@@ -45,15 +45,18 @@ class SpreadViewModel @Inject constructor() : BaseViewModel() {
             val gson = Gson()
             val list: MutableList<SpreadModel> =
                 gson.fromJson(spread, object : TypeToken<List<SpreadModel>?>() {}.type)
-            saveLocal(list)
+            saveLocal(list, false)
         } else {
             val list: MutableList<SpreadModel> = ArrayList()
             saveLocal(list)
         }
     }
 
-    private fun saveLocal(it: MutableList<SpreadModel>) {
-        it.add(SpreadModel(Constants.AD_VIDEO, Constants.AD_VIDEO))
+    private fun saveLocal(it: MutableList<SpreadModel>, isAdd: Boolean = true) {
+        if (isAdd) {
+            it.add(SpreadModel(Constants.AD_VIDEO, Constants.AD_VIDEO))
+            it.add(SpreadModel("视频教程", Constants.TUTORIAL_URL))
+        }
         Constants.SPREAD_URL = it
         val gson = Gson()
         MMKV.defaultMMKV().putString(KV.SPREAD_URL, gson.toJson(it))

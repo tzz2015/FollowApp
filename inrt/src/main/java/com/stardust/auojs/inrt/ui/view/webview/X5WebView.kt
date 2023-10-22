@@ -110,7 +110,7 @@ class X5WebView : WebView {
             //硬件加速
             setLayerType(View.LAYER_TYPE_HARDWARE, null)
             addJavascriptInterface(MJavascriptInterface(mContext), "imagelistener")
-            setUserAgent("From:很帅的飞飞")
+//            setUserAgent("From:很帅的飞飞")
         }
         settingsExtension?.run {
             // 内容缓存和回退保留

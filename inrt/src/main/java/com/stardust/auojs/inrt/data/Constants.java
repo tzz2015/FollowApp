@@ -83,5 +83,7 @@ public final class Constants {
 
     public static String AD_VIDEO = "视频广告";
 
+    public static String TUTORIAL_URL = "https://v.douyin.com/id4hbL5K/";
+
 
 }

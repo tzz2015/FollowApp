@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name" translatable="false">互粉助手</string>
+    <string name="app_name" translatable="false">涨粉神器</string>
     <string name="key_use_volume_control_running" translatable="false">key_use_volume_control_running</string>
     <string name="key_keep_running_with_foreground_service" translatable="false">key_keep_running_with_foreground_service</string>
     <string name="key_enable_accessibility_service_by_root" translatable="false">key_enable_accessibility_service_by_root</string>
@@ -138,6 +138,6 @@
     <string name="accumulated_likes">My likes</string>
     <string name="total_liked">Total liked</string>
     <string name="click_add_url">Click \"%s\" button to add your video link, and then others can like it for you.</string>
-
+    <string name="switch_app">Switch apps:</string>
 
 </resources>
