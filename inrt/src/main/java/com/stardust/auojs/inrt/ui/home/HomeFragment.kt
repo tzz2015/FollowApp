@@ -234,7 +234,11 @@ class HomeFragment : BaseFragment<HomeViewModel, FragmentHomeBinding>(),
     private fun showDrawOverlaysDialog() {
         MaterialDialog(requireActivity()).show {
             setTitle(R.string.text_required_floating_window_permission)
-            message(text = getString(R.string.text_required_floating_window_permission))
+            message(
+                text = getString(R.string.text_required_floating_window_permission).format(
+                    GlobalAppContext.appName
+                )
+            )
             positiveButton(res = R.string.text_to_open, click = {
                 dismiss()
                 drawOverlaysSettingsLauncher.launchCanDrawOverlaysSettings(requireActivity().packageName)
