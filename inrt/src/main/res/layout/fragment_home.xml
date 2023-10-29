@@ -231,12 +231,12 @@
             android:id="@+id/tv_switch"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/dp20"
             android:text="@string/switch_app"
             android:textColor="@color/c_333"
-            android:layout_marginEnd="@dimen/dp20"
-            app:layout_constraintHorizontal_chainStyle="packed"
             app:layout_constraintBottom_toBottomOf="@+id/cb_app_type"
             app:layout_constraintEnd_toStartOf="@+id/cb_app_type"
+            app:layout_constraintHorizontal_chainStyle="packed"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@+id/cb_app_type" />
 
@@ -247,6 +247,46 @@
             app:layout_constraintBottom_toTopOf="@+id/fl"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/tv_switch" />
+
+        <include
+            android:id="@+id/tip_switch"
+            layout="@layout/item_tip_show"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            app:layout_constraintBottom_toTopOf="@+id/cb_app_type"
+            app:layout_constraintEnd_toEndOf="@+id/cb_app_type"
+            app:layout_constraintStart_toStartOf="@+id/cb_app_type" />
+
+        <include
+            android:id="@+id/tip_bind"
+            layout="@layout/item_tip_show"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            app:layout_constraintBottom_toTopOf="@+id/btn_bind_account"
+            app:layout_constraintEnd_toEndOf="@+id/btn_bind_account"
+            app:layout_constraintStart_toStartOf="@+id/btn_bind_account" />
+
+        <include
+            android:id="@+id/tip_follow"
+            layout="@layout/item_tip_show"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            app:layout_constraintBottom_toTopOf="@+id/btn_follow"
+            app:layout_constraintEnd_toEndOf="@+id/btn_follow"
+            app:layout_constraintStart_toStartOf="@+id/btn_follow" />
+
+        <include
+            android:id="@+id/tip_open"
+            layout="@layout/item_tip_show"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            app:layout_constraintBottom_toTopOf="@+id/sw_accessibility"
+            app:layout_constraintEnd_toEndOf="@+id/sw_drawOverlays"
+            app:layout_constraintStart_toStartOf="@+id/sw_accessibility" />
 
         <FrameLayout
             android:id="@+id/fl"

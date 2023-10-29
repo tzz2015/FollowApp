@@ -132,7 +132,10 @@
   <string name="total_liked">累计被点赞</string>
   <string name="click_add_url">点击“%s”按钮,添加你的视频连接，之后别人可以为你点赞。</string>
   <string name="switch_app">切換App:</string>
-
+  <string name="tip_1">1:切換App</string>
+  <string name="tip_2">2:綁定ID</string>
+  <string name="tip_3">3:授予權限</string>
+  <string name="tip_4">4:獲得更多粉絲</string>
 
 
 </resources>

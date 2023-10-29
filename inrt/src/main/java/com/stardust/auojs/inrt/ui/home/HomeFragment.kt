@@ -1,11 +1,13 @@
 package com.stardust.auojs.inrt.ui.home
 
 import android.Manifest
+import android.animation.ObjectAnimator
 import android.content.Intent
 import android.os.Bundle
 import android.provider.Settings
 import android.text.TextUtils
 import android.view.View
+import android.view.animation.AccelerateDecelerateInterpolator
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.Toast
@@ -29,6 +31,7 @@ import com.stardust.auojs.inrt.autojs.AccessibilityServiceTool1
 import com.stardust.auojs.inrt.util.AdUtils
 import com.stardust.auojs.inrt.util.getFollowType
 import com.stardust.auojs.inrt.util.isZh
+import com.stardust.util.ViewUtils
 import com.tencent.mmkv.MMKV
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -56,6 +59,7 @@ class HomeFragment : BaseFragment<HomeViewModel, FragmentHomeBinding>(),
         const val RC_STORAGE = 101
     }
 
+    private var mTipAnimator: ObjectAnimator? = null
 
     override fun init(savedInstanceState: Bundle?) {
         bind.userModel = userViewModel
@@ -77,6 +81,60 @@ class HomeFragment : BaseFragment<HomeViewModel, FragmentHomeBinding>(),
         bind.ivAd.isVisible = num > 0
         setAccount()
         initAppType()
+        initTipShow()
+    }
+
+    private fun initTipShow() {
+        bind.tipSwitch.hideText.setText(R.string.tip_1)
+        bind.tipBind.hideText.setText(R.string.tip_2)
+        bind.tipOpen.hideText.setText(R.string.tip_3)
+        bind.tipFollow.hideText.setText(R.string.tip_4)
+        bind.tipSwitch.tipRoot.setOnClickListener {
+            bind.tipSwitch.tipRoot.isVisible = false
+            bind.tipBind.tipRoot.isVisible = true
+            MMKV.defaultMMKV().putInt(KV.TIP_MAIN_SHOW, 2)
+            showAnimation(bind.tipBind.tipRoot)
+        }
+        bind.tipBind.tipRoot.setOnClickListener {
+            bind.tipBind.tipRoot.isVisible = false
+            bind.tipOpen.tipRoot.isVisible = true
+            MMKV.defaultMMKV().putInt(KV.TIP_MAIN_SHOW, 3)
+            showAnimation(bind.tipOpen.tipRoot)
+        }
+        bind.tipOpen.tipRoot.setOnClickListener {
+            bind.tipOpen.tipRoot.isVisible = false
+            bind.tipFollow.tipRoot.isVisible = true
+            MMKV.defaultMMKV().putInt(KV.TIP_MAIN_SHOW, 4)
+            showAnimation(bind.tipFollow.tipRoot)
+        }
+        bind.tipFollow.tipRoot.setOnClickListener {
+            bind.tipFollow.tipRoot.isVisible = false
+            MMKV.defaultMMKV().putInt(KV.TIP_MAIN_SHOW, 5)
+            mTipAnimator?.cancel()
+        }
+        val showIndex = MMKV.defaultMMKV().getInt(KV.TIP_MAIN_SHOW, 1)
+        bind.tipSwitch.tipRoot.isVisible = showIndex == 1
+        bind.tipBind.tipRoot.isVisible = showIndex == 2
+        bind.tipOpen.tipRoot.isVisible = showIndex == 3
+        bind.tipFollow.tipRoot.isVisible = showIndex == 4
+        if (showIndex == 1) {
+            showAnimation(bind.tipSwitch.tipRoot)
+        }
+    }
+
+    private fun showAnimation(view: View) {
+        mTipAnimator?.cancel()
+        mTipAnimator = ObjectAnimator.ofFloat(
+            view,
+            View.TRANSLATION_Y,
+            0f,
+            ViewUtils.dpToPx(context, 5).toFloat(),
+            0f
+        )
+        mTipAnimator?.interpolator = AccelerateDecelerateInterpolator()
+        mTipAnimator?.duration = 1000
+        mTipAnimator?.repeatCount = -1
+        mTipAnimator?.start()
     }
 
     private fun initAppType() {
@@ -198,6 +256,11 @@ class HomeFragment : BaseFragment<HomeViewModel, FragmentHomeBinding>(),
             })
             negativeButton { dismiss() }
         }
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        mTipAnimator?.cancel()
     }
 
     private fun showAccessibilityDialog() {

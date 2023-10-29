@@ -139,5 +139,13 @@
     <string name="total_liked">Total liked</string>
     <string name="click_add_url">Click \"%s\" button to add your video link, and then others can like it for you.</string>
     <string name="switch_app">Switch apps:</string>
+    <string name="tip_1">1:Switch app</string>
+    <string name="tip_2">2:Bind account</string>
+    <string name="tip_3">3:Enable permissions</string>
+    <string name="tip_4">4:Get fans</string>
+
+
+
+
 
 </resources>

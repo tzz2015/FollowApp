@@ -26,5 +26,8 @@ object KV {
     // app 类型
     const val APP_TYPE = "APP_TYPE"
 
+    // 首页 tip 显示
+    const val TIP_MAIN_SHOW = "TIP_SHOW"
+
 
 }

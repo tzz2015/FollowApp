@@ -17,15 +17,21 @@ class ResponseInterceptor : Interceptor {
         val response = chain.proceed(chain.request())
         return if (response.body != null) {
             val body = response.body?.string()
-            val model = Gson().fromJson(body, Res::class.java)
-            if (model != null && model.code == 401) {
-                // 登录失效
-                MMKV.defaultMMKV().putString(KV.USER_INFO, "")
-                CacheManager.instance.clearLogin()
-                LiveEventBus.get(TOKEN_OUT).post(model.message)
+            try {
+                val model = Gson().fromJson(body, Res::class.java)
+                if (model != null && model.code == 401) {
+                    // 登录失效
+                    MMKV.defaultMMKV().putString(KV.USER_INFO, "")
+                    CacheManager.instance.clearLogin()
+                    LiveEventBus.get(TOKEN_OUT).post(model.message)
+                }
+                val responseBody = body?.toResponseBody()
+                response.newBuilder().body(responseBody).build()
+            } catch (e: Exception) {
+                e.printStackTrace()
+                response
             }
-            val responseBody = body?.toResponseBody()
-            response.newBuilder().body(responseBody).build()
+
         } else {
             response
         }
