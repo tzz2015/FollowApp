@@ -39,7 +39,7 @@
     <string name="text_cancel">取消</string>
     <string name="text_requires_background_start">需要后台打开界面权限</string>
     <string name="text_requires_background_start_desc">需要后台打开界面权限才能运行，请前往设置打开</string>
-    <string name="text_required_floating_window_permission">需要悬浮窗权限</string>
+    <string name="text_required_floating_window_permission">找到“%s”,打开悬浮窗权限</string>
     <string name="text_please_enable_permissions_before_running">请开启权限后，再运行!</string>
     <string name="text_accessibility_service_is_not_turned_on">无障碍服务未开启</string>
     <string name="text_accessibility_service_turned_on">无障碍服务已开启</string>
