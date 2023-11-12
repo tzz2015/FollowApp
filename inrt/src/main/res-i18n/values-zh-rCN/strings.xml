@@ -2,6 +2,7 @@
 
 <!--Automatically translated by Globalization Translator (https://github.com/wilinz/globalization-translator)-->
 <resources>
+    <string name="app_name" >涨粉神器</string>
     <string name="text_no_accessibility_permission">无障碍服务未启动</string>
     <string name="text_auto_operate_service_enabled_but_not_running">无障碍服务已启用但没有运行，您可以尝试重新启用或重启手机</string>
     <string name="text_enable_accessibility_service_by_root_timeout">使用root权限启用无障碍服务失败</string>
@@ -136,6 +137,7 @@
     <string name="tip_2">2:绑定ID</string>
     <string name="tip_3">3:授予权限</string>
     <string name="tip_4">4:获取更多粉丝</string>
+    <string name="setting_privacypolicy_title">隐私政策</string>
 
 
 

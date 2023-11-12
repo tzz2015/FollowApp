@@ -2,6 +2,7 @@
 
 <!--Automatically translated by Globalization Translator (https://github.com/wilinz/globalization-translator)-->
 <resources>
+  <string name="app_name" >漲粉神器</string>
   <string name="text_no_accessibility_permission">無障礙服務未啟動</string>
   <string name="text_auto_operate_service_enabled_but_not_running">無障礙服務已啟用但沒有運行，您可以嘗試重新啟用或重啟手機</string>
   <string name="text_enable_accessibility_service_by_root_timeout">使用root權限啟用無障礙服務失敗</string>
@@ -136,6 +137,7 @@
   <string name="tip_2">2:綁定ID</string>
   <string name="tip_3">3:授予權限</string>
   <string name="tip_4">4:獲得更多粉絲</string>
+  <string name="setting_privacypolicy_title">隱私政策</string>
 
 
 </resources>

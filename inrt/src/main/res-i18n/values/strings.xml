@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name" translatable="false">涨粉神器</string>
+    <string name="app_name" >Follower</string>
     <string name="key_use_volume_control_running" translatable="false">key_use_volume_control_running</string>
     <string name="key_keep_running_with_foreground_service" translatable="false">key_keep_running_with_foreground_service</string>
     <string name="key_enable_accessibility_service_by_root" translatable="false">key_enable_accessibility_service_by_root</string>
@@ -143,6 +143,8 @@
     <string name="tip_2">2:Bind account</string>
     <string name="tip_3">3:Enable permissions</string>
     <string name="tip_4">4:Get fans</string>
+    <string name="Feedback">Feedback</string>
+    <string name="setting_privacypolicy_title">Privacy policy</string>
 
 
 

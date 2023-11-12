@@ -106,6 +106,7 @@ class MineViewModel @Inject constructor() : BaseViewModel() {
             R.string.modify_email -> userViewModel.toUpdateActivity((mContext.getString(R.string.modify_email)))
             R.string.modify_bind_account -> userViewModel.toUpdateActivity((mContext.getString(R.string.modify_bind_account)))
             R.string.feedback -> userViewModel.toSuggestionActivity()
+            R.string.setting_privacypolicy_title -> userViewModel.toPrivacyPolicy()
         }
     }
 

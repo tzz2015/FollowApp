@@ -2,6 +2,7 @@
 
 <!--Automatically translated by Globalization Translator (https://github.com/wilinz/globalization-translator)-->
 <resources>
+  <string name="app_name" >Follower</string>
   <string name="text_no_accessibility_permission">Accessibility service not started</string>
   <string name="text_auto_operate_service_enabled_but_not_running">Accessibility services are enabled but not running, you can try re-enabling or restarting your phone</string>
   <string name="text_enable_accessibility_service_by_root_timeout">Failed to enable accessibility service with root privileges</string>
@@ -46,4 +47,8 @@
   <string name="text_rerun">Rerun</string>
   <string name="text_clear_logcat">Clear log</string>
   <string name="text_stop_run">Stop running</string>
+  <string name="Feedback">Feedback</string>
+  <string name="setting_privacypolicy_title">Privacy policy</string>
+
+
 </resources>

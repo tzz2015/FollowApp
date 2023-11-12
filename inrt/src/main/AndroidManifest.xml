@@ -387,6 +387,9 @@
         tools:replace="android:label, android:allowBackup"
         tools:targetApi="m">
         <activity
+            android:name="com.stardust.auojs.inrt.ui.mine.PrivacyPolicyActivity"
+            android:exported="false" />
+        <activity
             android:name="com.stardust.auojs.inrt.ui.praise.WebViewActivity"
             android:exported="false" />
         <activity

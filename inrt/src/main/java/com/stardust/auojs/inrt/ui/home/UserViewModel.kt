@@ -215,6 +215,15 @@ open class UserViewModel @Inject constructor() : BaseViewModel() {
         mContext.startActivity(intent)
     }
 
+    fun toPrivacyPolicy() {
+        val intent = Intent(mContext, PrivacyPolicyActivity::class.java)
+        if (mContext !is Activity) {
+            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+        }
+        mContext.startActivity(intent)
+    }
+
+
 
     fun register() {
         if (phone.value.isNullOrEmpty()) {

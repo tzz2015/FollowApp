@@ -45,7 +45,7 @@ class SplashActivity : ComponentActivity() {
     }
 
     private fun initView() {
-        val show = MMKV.defaultMMKV().getBoolean(KV.START_SWITCH, true)
+        val show = MMKV.defaultMMKV().getBoolean(KV.START_SWITCH, false)
         if (!show) {
             toMainActivity()
         } else {

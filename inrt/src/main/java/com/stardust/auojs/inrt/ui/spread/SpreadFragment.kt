@@ -123,9 +123,9 @@ class SpreadFragment : BaseFragment<SpreadViewModel, FragmentDashboardBinding>()
 
 
     override fun onDestroyView() {
+        _bind?.webView?.destroy()
         OSETVideoContent.getInstance().destroy()
         mCallback.remove()
-        _bind?.webView?.destroy()
         super.onDestroyView()
     }
 }

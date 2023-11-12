@@ -82,7 +82,8 @@ class MineFragment : BaseFragment<MineViewModel, FragmentMineBinding>() {
             R.string.modify_psw,
             R.string.modify_email,
             R.string.feedback,
-            R.string.logout
+            R.string.logout,
+            R.string.setting_privacypolicy_title
         )
         for (id in functionArray) {
             val text = requireContext().getText(id).toString()
