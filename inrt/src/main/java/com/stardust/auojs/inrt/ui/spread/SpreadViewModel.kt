@@ -9,6 +9,7 @@ import com.mind.data.http.ApiClient
 import com.mind.lib.base.BaseViewModel
 import com.mind.lib.base.ViewModelEvent
 import com.stardust.auojs.inrt.data.Constants
+import com.stardust.auojs.inrt.util.isZh
 import com.tencent.mmkv.MMKV
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
@@ -21,6 +22,14 @@ class SpreadViewModel @Inject constructor() : BaseViewModel() {
     fun getSpreadList() {
         if (Constants.SPREAD_URL != null) {
             spreadList.postValue(Constants.SPREAD_URL)
+            return
+        }
+        // 不显示开屏广告即为要显示隐私协议
+        val showPrivacy = !MMKV.defaultMMKV().getBoolean(KV.START_SWITCH, false)
+        if (showPrivacy) {
+            val url = if (isZh()) "file:////android_asset/privacy_cn.html"
+            else "file:////android_asset/privacy.html"
+            saveLocal(arrayListOf(SpreadModel("", url)),false)
             return
         }
         loadHttp(

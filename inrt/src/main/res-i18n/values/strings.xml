@@ -58,7 +58,7 @@
 
     <string name="title_home">HOME</string>
     <string name="title_praise">LIKE</string>
-    <string name="title_dashboard">PROMOTION</string>
+    <string name="title_dashboard">LINK</string>
     <string name="title_notifications">MINE</string>
     <string name="need_permiss">You need to enable the following permissions to follow fans</string>
     <string name="accessibility_permiss">Accessibility</string>

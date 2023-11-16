@@ -51,7 +51,7 @@
 
     <string name="title_home">首页</string>
     <string name="title_praise">点赞</string>
-    <string name="title_dashboard">推广</string>
+    <string name="title_dashboard">链接</string>
     <string name="title_notifications">我的</string>
     <string name="need_permiss">你需要开启以下权限才能进行关注粉丝操作</string>
     <string name="accessibility_permiss">无障碍权限</string>

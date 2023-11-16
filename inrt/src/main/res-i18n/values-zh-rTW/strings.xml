@@ -52,7 +52,7 @@
 
   <string name="title_home" >首頁</string>
   <string name="title_praise" >點贊</string>
-  <string name="title_dashboard" >推廣</string>
+  <string name="title_dashboard" >連結</string>
   <string name="title_notifications" >我的</string>
   <string name="need_permiss">你需要開啟以下權限才能進行關注粉絲操作</string>
   <string name="accessibility_permiss">無障礙權限</string>

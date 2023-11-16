@@ -1,6 +1,8 @@
 package com.stardust.auojs.inrt
 
+import android.annotation.SuppressLint
 import android.os.Bundle
+import android.view.MotionEvent
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import androidx.viewpager2.widget.ViewPager2
@@ -77,11 +79,23 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+    @SuppressLint("ClickableViewAccessibility")
     private fun initViewPage() {
         binding.viewPager.adapter = mAdapter
         binding.viewPager.offscreenPageLimit = 1
         binding.navView.setOnItemSelectedListener(mOnItemSelectedListener)
         binding.viewPager.registerOnPageChangeCallback(mPageChangeCallback)
+        var lastY = 0f
+        binding.viewPager.setOnTouchListener { v, event ->
+            if (event.action == MotionEvent.ACTION_MOVE) {
+                val deltaY: Float = event.y - lastY
+                if (deltaY > 0 || deltaY < 0) {
+                    return@setOnTouchListener true
+                }
+            }
+            lastY = event.y
+            return@setOnTouchListener false
+        }
     }
 
     private fun initBus() {

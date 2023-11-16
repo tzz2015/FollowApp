@@ -90,7 +90,7 @@ object AdUtils {
 
     fun showBannerAd(activity: Activity, fl: FrameLayout?) {
         initAd()
-        val show = MMKV.defaultMMKV().getBoolean(KV.BANNER_SWITCH, true)
+        val show = MMKV.defaultMMKV().getBoolean(KV.BANNER_SWITCH, false)
         if (!show) {
             return
         }
