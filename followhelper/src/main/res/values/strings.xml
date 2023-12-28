@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">FollowHelper</string>
+    <string name="title_home">HOME</string>
+    <string name="title_praise">LIKE</string>
+</resources>
