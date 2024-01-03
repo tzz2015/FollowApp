@@ -1,11 +1,9 @@
-package com.stardust.auojs.inrt
+package com.lyflovelyy.followhelper.viewmodel
 
-import com.linsh.utilseverywhere.AppUtils
-import com.linsh.utilseverywhere.LogUtils
+import com.lyflovelyy.followhelper.utils.isLogined
 import com.mind.data.data.mmkv.KV
 import com.mind.data.http.ApiClient
 import com.mind.lib.base.BaseViewModel
-import com.stardust.auojs.inrt.util.isLogined
 import com.tencent.mmkv.MMKV
 
 /**
@@ -22,12 +20,12 @@ class MainViewModel : BaseViewModel() {
         loadHttp(
             request = {
                 ApiClient.otherApi.getAdSwitch(
-                    AppUtils.getVersionName()
+                    com.linsh.utilseverywhere.AppUtils.getVersionName()
                 )
             },
             resp = {
                 it?.let {
-                    LogUtils.e("getAdSwitch:$it")
+                    com.linsh.utilseverywhere.LogUtils.e("getAdSwitch:$it")
                     MMKV.defaultMMKV().putBoolean(KV.START_SWITCH, it.startSwitch)
                     MMKV.defaultMMKV().putBoolean(KV.BANNER_SWITCH, it.bannerSwitch)
                     MMKV.defaultMMKV().putInt(KV.FOLLOW_SWITCH_NUM, it.followSwitchNum)

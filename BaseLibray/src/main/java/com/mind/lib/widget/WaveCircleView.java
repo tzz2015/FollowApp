@@ -1,4 +1,4 @@
-package com.stardust.auojs.inrt.ui.view;
+package com.mind.lib.widget;
 
 import android.animation.ValueAnimator;
 import android.content.Context;
@@ -15,10 +15,9 @@ import android.util.AttributeSet;
 import android.view.View;
 import android.view.animation.LinearInterpolator;
 
-import com.linsh.utilseverywhere.StringUtils;
+import com.mind.lib.R;
 import com.mind.lib.util.DensityUtil;
 
-import org.autojs.autoxjs.inrt.R;
 
 public class WaveCircleView extends View {
 
@@ -167,7 +166,7 @@ public class WaveCircleView extends View {
         drawWave(canvas, wavePathTop, wavePaintTop);
 
         // 绘制文字
-        if(StringUtils.isNotAllEmpty(topText,bottomText)){
+        if (topText != null && bottomText != null) {
             float topWidth = textPaint.measureText(topText);
             float topTextHOffset = (textPathLength - topWidth) / 2;
             textPaint.setColor(waveColorBottom);
