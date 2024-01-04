@@ -7,7 +7,7 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:name=".App"
-        android:theme="@style/Theme.AutoXdevtest">
+        android:theme="@style/ScriptTheme">
         <activity
             android:name=".MainActivity"
             android:exported="true">

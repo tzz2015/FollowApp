@@ -12,15 +12,20 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/tv_text"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Home"
+        <com.mind.lib.widget.WaveCircleView
+            android:id="@+id/waveCircleView"
+            android:layout_width="200dp"
+            android:layout_height="200dp"
             app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:waveColorBottom="@color/theme_color_yellow_green"
+            app:waveColorCenter="@color/theme_color_cyan"
+            app:waveColorTop="@color/theme_color_dark_purple"
+            app:waveTextBottom="@string/total_user_num"
+            app:waveTextTop="@string/total_followed_num" />
+
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

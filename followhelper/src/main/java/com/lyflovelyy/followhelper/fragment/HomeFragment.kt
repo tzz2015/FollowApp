@@ -18,6 +18,5 @@ class HomeFragment : BaseFragment<HomeViewModel, FragmentHomeBinding>() {
         get() = ViewModelConfig(R.layout.fragment_home).bindViewModel(BR._all)
 
     override fun init(savedInstanceState: Bundle?) {
-        bind.tvText.text = viewModel.getText()
     }
 }
