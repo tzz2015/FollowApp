@@ -29,5 +29,10 @@ object KV {
     // 首页 tip 显示
     const val TIP_MAIN_SHOW = "TIP_SHOW"
 
+    // follow helper app
+    const val LAST_USER_COUNT = "last_user_count"
+
+    const val LAST_FOLLOW_COUNT = "last_follow_count"
+
 
 }

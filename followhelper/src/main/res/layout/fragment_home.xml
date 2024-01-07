@@ -6,26 +6,159 @@
     <data>
 
         <import type="android.view.View" />
+
+        <variable
+            name="homeModel"
+            type="com.lyflovelyy.followhelper.viewmodel.HomeViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:background="@color/cw_2">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/cl_function"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/dp20"
+            android:layout_marginTop="@dimen/dp20"
+            android:layout_marginEnd="@dimen/dp20"
+            android:background="@color/white"
+            android:padding="@dimen/dp10"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tv_function_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/function_title"
+                android:textColor="@color/black"
+                android:textSize="@dimen/sp15"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tv_function_dec1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp10"
+                android:text="@string/function_des1"
+                android:textColor="@color/cg_1"
+                android:textSize="@dimen/sp13"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_function_title" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tv_function_dec2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp10"
+                android:text="@string/function_des2"
+                android:textColor="@color/cg_1"
+                android:textSize="@dimen/sp13"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_function_dec1" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <View
+            android:id="@+id/tab_bg"
+            android:layout_width="160dp"
+            android:layout_height="30dp"
+            android:layout_marginTop="@dimen/dp10"
+            android:background="@color/white"
+            android:textSize="12sp"
+            app:layout_constraintEnd_toEndOf="@+id/cl_function"
+            app:layout_constraintStart_toStartOf="@+id/cl_function"
+            app:layout_constraintTop_toBottomOf="@+id/cl_function" />
+
+        <TextView
+            android:id="@+id/tv_tiktop"
+            android:layout_width="80dp"
+            android:layout_height="35dp"
+            android:background="@color/btn_tab_selector"
+            android:gravity="center"
+            android:text="Tiktop"
+            android:textColor="@color/btn_tab_text_color_selector"
+            android:textSize="12sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="@+id/tab_bg"
+            app:layout_constraintTop_toTopOf="@+id/tab_bg" />
+
+        <TextView
+            android:id="@+id/tv_douyin"
+            android:layout_width="80dp"
+            android:layout_height="35dp"
+            android:background="@color/btn_tab_selector"
+            android:gravity="center"
+            android:text="抖音"
+            android:textColor="@color/btn_tab_text_color_selector"
+            android:textSize="13sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="@+id/tab_bg"
+            app:layout_constraintTop_toTopOf="@+id/tab_bg" />
 
         <com.mind.lib.widget.WaveCircleView
             android:id="@+id/waveCircleView"
             android:layout_width="200dp"
             android:layout_height="200dp"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
             app:waveColorBottom="@color/theme_color_yellow_green"
             app:waveColorCenter="@color/theme_color_cyan"
             app:waveColorTop="@color/theme_color_dark_purple"
             app:waveTextBottom="@string/total_user_num"
             app:waveTextTop="@string/total_followed_num" />
 
+        <Space
+            android:id="@+id/wave_center"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="@+id/waveCircleView"
+            app:layout_constraintEnd_toEndOf="@+id/waveCircleView"
+            app:layout_constraintStart_toStartOf="@+id/waveCircleView"
+            app:layout_constraintTop_toTopOf="@+id/waveCircleView" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv_follow_count"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp_10"
+            android:shadowColor="#80000000"
+            android:shadowDx="2"
+            android:shadowDy="2"
+            android:shadowRadius="4"
+            android:text="@{homeModel.followCount}"
+            android:textColor="@color/white"
+            android:textSize="@dimen/sp20"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@+id/wave_center"
+            app:layout_constraintEnd_toEndOf="@+id/waveCircleView"
+            app:layout_constraintStart_toStartOf="@+id/waveCircleView"
+            app:layout_constraintTop_toTopOf="@+id/waveCircleView" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv_user_count"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/dp_10"
+            android:shadowColor="#80000000"
+            android:shadowDx="2"
+            android:shadowDy="2"
+            android:shadowRadius="4"
+            android:text="@{homeModel.userCount}"
+            android:textColor="@color/white"
+            android:textSize="@dimen/sp20"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@+id/waveCircleView"
+            app:layout_constraintEnd_toEndOf="@+id/waveCircleView"
+            app:layout_constraintStart_toStartOf="@+id/waveCircleView"
+            app:layout_constraintTop_toTopOf="@+id/wave_center" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

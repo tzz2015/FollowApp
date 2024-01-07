@@ -4,4 +4,10 @@
     <string name="title_praise">LIKE</string>
     <string name="total_user_num">TOTAL USERS</string>
     <string name="total_followed_num">TOTAL ATTENTION</string>
+    <string name="function_title">What can this software help with?</string>
+    <string name="function_des1">1.Can help quickly increase your fans</string>
+    <string name="function_des2">2.Can help quickly increase your fans</string>
+
+
+
 </resources>
