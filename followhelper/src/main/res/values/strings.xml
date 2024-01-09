@@ -4,10 +4,17 @@
     <string name="title_praise">LIKE</string>
     <string name="total_user_num">TOTAL USERS</string>
     <string name="total_followed_num">TOTAL ATTENTION</string>
-    <string name="function_title">What can this software help with?</string>
-    <string name="function_des1">1.Can help quickly increase your fans</string>
-    <string name="function_des2">2.Can help quickly increase your fans</string>
-
+    <string name="function_title">这个软件可以帮助你干什么？</string>
+    <string name="function_des1">1.绑定你的账户，就可以拥有海量的用户与你一起互粉。</string>
+    <string name="function_des2">2.添加你的视频连接，就能大家一起互赞，上热门。</string>
+    <string name="follow_bind_text">还未绑定你的%s号</string>
+    <string name="follow_bind_text2">你的%s号为:%s</string>
+    <string name="to_bind">去绑定</string>
+    <string name="to_change_account">去修改</string>
+    <string name="follow_follow_text">一起来互粉吧</string>
+    <string name="to_follow">去互粉</string>
+    <string name="follow_app1">抖音</string>
+    <string name="follow_app2">Tiktop</string>
 
 
 </resources>

@@ -3,6 +3,7 @@ package com.lyflovelyy.followhelper.fragment
 import android.os.Bundle
 import com.chad.library.BR
 import com.jeremyliao.liveeventbus.LiveEventBus
+import com.linsh.utilseverywhere.StringUtils
 import com.lyflovelyy.followhelper.R
 import com.lyflovelyy.followhelper.databinding.FragmentHomeBinding
 import com.lyflovelyy.followhelper.utils.isZh
@@ -13,6 +14,7 @@ import com.mind.lib.base.BaseFragment
 import com.mind.lib.base.ViewModelConfig
 import com.mind.lib.util.CacheManager
 import com.tencent.mmkv.MMKV
+import java.util.*
 
 /**
  * @Author : liuyufei
@@ -29,7 +31,6 @@ class HomeFragment : BaseFragment<HomeViewModel, FragmentHomeBinding>() {
         initAppType()
         initClick()
         initObserve()
-        setAccount()
     }
 
     private fun initObserve() {
@@ -43,18 +44,23 @@ class HomeFragment : BaseFragment<HomeViewModel, FragmentHomeBinding>() {
             initData()
         }
     }
-    private fun setAccount() {
-        val dyAccount = CacheManager.instance.getDYAccount()
-       /* if (!TextUtils.isEmpty(dyAccount)) {
-            bind.tvNoticeBind.text = String.format(
-                requireContext().getText(R.string.follow_bind_account).toString(), dyAccount
-            )
-            bind.btnBindAccount.text = requireContext().getText(R.string.to_change).toString()
-        } else {
-            bind.tvNoticeBind.text = requireContext().getText(R.string.follow_bind_text).toString()
-            bind.btnBindAccount.text = requireContext().getText(R.string.to_bind).toString()
-        }*/
 
+    private fun setAccount() {
+        val account = CacheManager.instance.getDYAccount()
+        val appName = getCurrFollowAppName()
+        if (StringUtils.isEmpty(account)) {
+            bind.tvBindAccount.text =
+                String.format(Locale.ENGLISH, getString(R.string.follow_bind_text), appName)
+            bind.btnBindAccount.text = getString(R.string.to_bind)
+        } else {
+            bind.tvBindAccount.text = String.format(
+                Locale.ENGLISH,
+                getString(R.string.follow_bind_text2),
+                appName,
+                account
+            )
+            bind.btnBindAccount.text = getString(R.string.to_change_account)
+        }
     }
 
     private fun initClick() {
@@ -82,7 +88,13 @@ class HomeFragment : BaseFragment<HomeViewModel, FragmentHomeBinding>() {
         }
         bind.tvTiktop.isSelected = selectIndex != 0
         bind.tvDouyin.isSelected = selectIndex == 0
+        setAccount()
     }
+
+    private fun getCurrFollowAppName(): String {
+        return if (bind.tvTiktop.isSelected) bind.tvTiktop.text.toString() else bind.tvDouyin.text.toString()
+    }
+
 
     private fun initData() {
         viewModel.getTotalUserCount()
