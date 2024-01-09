@@ -26,6 +26,9 @@ class HomeViewModel @Inject constructor() : BaseViewModel() {
     val userCount by lazy { ViewModelEvent<String>() }
     val followAccount by lazy { ViewModelEvent<FollowAccount>() }
     val followCount by lazy { ViewModelEvent<String>() }
+    private var randomFollowCount: Int = 50
+    private var randomUserCount: Int = 10
+
 
     /**
      * 获取用户总数量
@@ -37,7 +40,11 @@ class HomeViewModel @Inject constructor() : BaseViewModel() {
                 it?.let {
                     val lastCount =
                         MMKV.defaultMMKV()
-                            .getLong(KV.LAST_USER_COUNT, it) + (Math.random() * 10).toLong()
+                            .getLong(
+                                KV.LAST_USER_COUNT,
+                                it
+                            ) + (Math.random() * randomUserCount).toLong()
+                    randomUserCount = 0
                     var count = max(it, lastCount)
                     if (count < 500) {
                         count += 500
@@ -91,8 +98,12 @@ class HomeViewModel @Inject constructor() : BaseViewModel() {
                 it?.let {
                     val lastCount =
                         MMKV.defaultMMKV()
-                            .getLong(KV.LAST_FOLLOW_COUNT, it) + (Math.random() * 50).toLong()
+                            .getLong(
+                                KV.LAST_FOLLOW_COUNT,
+                                it
+                            ) + (Math.random() * randomFollowCount).toLong()
                     var count = max(it, lastCount)
+                    randomFollowCount = 0
                     if (count < 1000) {
                         count += 1000
                     }
