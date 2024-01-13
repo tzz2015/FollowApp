@@ -1,9 +1,11 @@
 package com.lyflovelyy.followhelper.utils
 
+import android.app.Activity
 import android.content.ClipData
 import android.content.ClipboardManager
 import android.content.Context
 import android.content.Intent
+import android.net.Uri
 import android.os.SystemClock
 import com.lyflovelyy.followhelper.App
 import com.lyflovelyy.followhelper.activity.LoginActivity
@@ -125,6 +127,14 @@ fun formatLargeNumber(number: Long): String {
         val millions = number / 10000.0
         String.format("%.1fw", millions)
     }
+}
+
+fun toOutWebView(activity: Activity, url: String) {
+    val intent = Intent()
+    intent.action = "android.intent.action.VIEW"
+    val contentUrl = Uri.parse(url)
+    intent.data = contentUrl
+    activity.startActivity(intent)
 }
 
 

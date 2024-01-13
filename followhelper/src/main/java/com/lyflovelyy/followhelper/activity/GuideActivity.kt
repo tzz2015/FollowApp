@@ -4,13 +4,19 @@ import android.annotation.SuppressLint
 import android.webkit.WebSettings
 import android.webkit.WebView
 import android.webkit.WebViewClient
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.chad.library.BR
+import com.linsh.utilseverywhere.ToastUtils
 import com.lyflovelyy.followhelper.R
+import com.lyflovelyy.followhelper.adapter.GuideCopyAdapter
 import com.lyflovelyy.followhelper.databinding.ActivityGuideBinding
 import com.lyflovelyy.followhelper.entity.BundleKeys
 import com.lyflovelyy.followhelper.entity.Constants
+import com.lyflovelyy.followhelper.utils.copyToClipboard
+import com.lyflovelyy.followhelper.utils.toOutWebView
 import com.lyflovelyy.followhelper.viewmodel.GuideViewModel
 import com.mind.data.data.mmkv.KV
+import com.mind.data.data.model.praise.PraiseVideoModel
 import com.mind.lib.base.BaseActivity
 import com.mind.lib.base.ViewModelConfig
 import com.tencent.mmkv.MMKV
@@ -20,10 +26,36 @@ class GuideActivity : BaseActivity<GuideViewModel, ActivityGuideBinding>() {
     override val viewModelConfig: ViewModelConfig
         get() = ViewModelConfig(R.layout.activity_guide).bindViewModel(BR.guideViewModel)
             .bindTitle(if (mType == 0) R.string.to_follow else R.string.to_praise)
+    private val mAdapter: GuideCopyAdapter by lazy { GuideCopyAdapter() }
 
     override fun initialize() {
         initWebview()
+        initRecycleView()
+        initObserve()
+    }
 
+    private fun initObserve() {
+        viewModel.getCopyList(mType)
+        viewModel.enablePraiseVideoList.observe(this) {
+            mAdapter.setNewInstance(it)
+        }
+    }
+
+    private fun initRecycleView() {
+        val layoutManager = LinearLayoutManager(this)
+        bind.recyclerView.layoutManager = layoutManager
+        bind.recyclerView.adapter = mAdapter
+        mAdapter.setOnItemChildClickListener { adapter, view, position ->
+            val item = mAdapter.getItem(position)
+            when (view.id) {
+                R.id.tv_copy -> copyTitle(item)
+            }
+        }
+    }
+
+    private fun copyTitle(item: PraiseVideoModel) {
+        copyToClipboard(item.title)
+        ToastUtils.show(getString(R.string.copy_to_clipboard))
     }
 
     @SuppressLint("SetJavaScriptEnabled")
@@ -42,6 +74,9 @@ class GuideActivity : BaseActivity<GuideViewModel, ActivityGuideBinding>() {
                 return true
             }
         }
+        bind.methodOne.setOnClickListener { toOutWebView(this, Constants.DOWN_APK_URL) }
+        bind.methodTwo.setOnClickListener { toOutWebView(this, Constants.DOWN_APK_URL) }
+        bind.tvTopTitle.setOnClickListener { toOutWebView(this, Constants.DOWN_APK_URL) }
     }
 
     override fun onResume() {

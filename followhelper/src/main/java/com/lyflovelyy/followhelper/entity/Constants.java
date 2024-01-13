@@ -30,5 +30,7 @@ public final class Constants {
 
     public static String TUTORIAL_URL = "https://v.douyin.com/id4hbL5K/";
 
+    public static String DOWN_APK_URL = "https://s1.link-nemo.com/bot/lyf/inrt-release.apk";
+
 
 }
