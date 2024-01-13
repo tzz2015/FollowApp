@@ -19,6 +19,7 @@ import com.mind.data.data.mmkv.KV
 import com.mind.data.data.model.praise.PraiseVideoModel
 import com.mind.lib.base.BaseActivity
 import com.mind.lib.base.ViewModelConfig
+import com.mind.lib.util.extensions.visibleOrGone
 import com.tencent.mmkv.MMKV
 
 class GuideActivity : BaseActivity<GuideViewModel, ActivityGuideBinding>() {
@@ -32,6 +33,16 @@ class GuideActivity : BaseActivity<GuideViewModel, ActivityGuideBinding>() {
         initWebview()
         initRecycleView()
         initObserve()
+        initView()
+    }
+
+    private fun initView() {
+        bind.methodOne.setOnClickListener { toOutWebView(this, Constants.DOWN_APK_URL) }
+        bind.methodTwo.setOnClickListener { toOutWebView(this, Constants.DOWN_APK_URL) }
+        bind.tvTopTitle.setOnClickListener { toOutWebView(this, Constants.DOWN_APK_URL) }
+        val showMethodOne = MMKV.defaultMMKV().getBoolean(KV.START_SWITCH, false)
+        bind.methodOne.visibleOrGone(showMethodOne)
+        bind.webview.visibleOrGone(showMethodOne)
     }
 
     private fun initObserve() {
@@ -74,9 +85,7 @@ class GuideActivity : BaseActivity<GuideViewModel, ActivityGuideBinding>() {
                 return true
             }
         }
-        bind.methodOne.setOnClickListener { toOutWebView(this, Constants.DOWN_APK_URL) }
-        bind.methodTwo.setOnClickListener { toOutWebView(this, Constants.DOWN_APK_URL) }
-        bind.tvTopTitle.setOnClickListener { toOutWebView(this, Constants.DOWN_APK_URL) }
+
     }
 
     override fun onResume() {

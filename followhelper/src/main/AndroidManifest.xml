@@ -30,6 +30,9 @@
         <activity
             android:name=".activity.GuideActivity"
             android:exported="false" />
+        <activity
+            android:name=".activity.PrivacyPolicyActivity"
+            android:exported="false" />
     </application>
 
 </manifest>

@@ -104,6 +104,11 @@
     <string name="method_one">方法一：点击此处，下载完整的App，可进行自动化操作，效果如下视频所展示。</string>
     <string name="method_two">方法二：点击“复制”,打开抖音/Tiktop,搜索复制内容。</string>
     <string name="copy">复制</string>
+    <string name="privacy_policy_content">欢迎使用TFollow！&lt;br&gt;
+        我们努力在产品的各方面为用户带来优秀的使用体验。我们会不定期更新
+        &lt;a href=%s&gt;《隐私政策》&lt;/a&gt;.&lt;br&gt;如你同意，请点击“同意”并开始使用TFollow。</string>
+    <string name="agree">同意</string>
+    <string name="not_used">暂不使用</string>
 
 
 </resources>

@@ -34,5 +34,7 @@ object KV {
 
     const val LAST_FOLLOW_COUNT = "last_follow_count"
 
+    const val AGREE_PRIVACY = "agree_privacy"
+
 
 }

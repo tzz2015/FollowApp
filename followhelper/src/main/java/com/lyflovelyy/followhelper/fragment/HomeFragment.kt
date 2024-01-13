@@ -1,10 +1,13 @@
 package com.lyflovelyy.followhelper.fragment
 
+import android.content.Intent
 import android.os.Bundle
+import com.afollestad.materialdialogs.MaterialDialog
 import com.chad.library.BR
 import com.jeremyliao.liveeventbus.LiveEventBus
 import com.linsh.utilseverywhere.StringUtils
 import com.lyflovelyy.followhelper.R
+import com.lyflovelyy.followhelper.activity.PrivacyPolicyActivity
 import com.lyflovelyy.followhelper.databinding.FragmentHomeBinding
 import com.lyflovelyy.followhelper.utils.isZh
 import com.lyflovelyy.followhelper.viewmodel.HomeViewModel
@@ -40,7 +43,9 @@ class HomeFragment : BaseFragment<HomeViewModel, FragmentHomeBinding>() {
         bind.tvDouyin.setRadius(6.dp)
         bind.tvTiktop.setRadius(6.dp)
         bind.tabBg.setRadius(6.dp)
+        showPrivacyIfNeed()
     }
+
 
     private fun initObserve() {
         viewModel.followAccount.observe(viewLifecycleOwner) {
@@ -109,5 +114,35 @@ class HomeFragment : BaseFragment<HomeViewModel, FragmentHomeBinding>() {
         viewModel.getTotalUserCount()
         viewModel.getTotalFollowCount()
         viewModel.getFollowAccount()
+    }
+
+    private fun showPrivacyIfNeed() {
+        val agree = MMKV.defaultMMKV().getInt(KV.AGREE_PRIVACY, -1)
+        if (agree >= 0) {
+            return
+        }
+        MaterialDialog(requireActivity()).show {
+            setTitle(R.string.delete)
+            cancelOnTouchOutside(false)
+            cancelable(false)
+            message(text = getString(R.string.privacy_policy_content), applySettings = {
+                html {
+                    toPrivacyPolicy()
+                }
+            })
+            negativeButton(res = R.string.not_used, click = {
+                dismiss()
+                requireActivity().finish()
+            })
+            positiveButton(res = R.string.agree, click = {
+                MMKV.defaultMMKV().putInt(KV.AGREE_PRIVACY, 1)
+                dismiss()
+            })
+        }
+    }
+
+    private fun toPrivacyPolicy() {
+        val intent = Intent(requireActivity(), PrivacyPolicyActivity::class.java)
+        requireActivity().startActivity(intent)
     }
 }

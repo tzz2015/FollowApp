@@ -4,11 +4,14 @@ import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.MotionEvent
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.ViewModelProvider
 import androidx.viewpager2.widget.ViewPager2
 import com.google.android.material.navigation.NavigationBarView
 import com.jeremyliao.liveeventbus.LiveEventBus
+import com.linsh.utilseverywhere.ToastUtils
 import com.lyflovelyy.followhelper.adapter.MainPagerAdapter
 import com.lyflovelyy.followhelper.databinding.ActivityMainBinding
+import com.lyflovelyy.followhelper.viewmodel.MainViewModel
 import com.mind.data.data.mmkv.KV
 import com.mind.data.event.MsgEvent
 import com.mind.lib.util.CacheManager
@@ -16,6 +19,9 @@ import com.tencent.mmkv.MMKV
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
+    private val mainViewModel by lazy {
+        ViewModelProvider(this)[MainViewModel::class.java]
+    }
     private val mAdapter by lazy { MainPagerAdapter(this) }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -23,7 +29,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
         initViewPage()
         initBus()
-//        mainViewModel.getAdSwitch()
+        mainViewModel.getAdSwitch()
     }
 
     private fun initBus() {
@@ -31,10 +37,10 @@ class MainActivity : AppCompatActivity() {
         LiveEventBus.get(MsgEvent.TOKEN_OUT).observe(this) {
             MMKV.defaultMMKV().putString(KV.USER_INFO, "")
             CacheManager.instance.clearLogin()
-//            ToastUtils.show(getString(R.string.login_again))
+            ToastUtils.show(getString(R.string.login_again))
         }
         LiveEventBus.get(MsgEvent.LOGIN_TOKEN_EVENT).observe(this) {
-//            mainViewModel.getAdSwitch()
+            mainViewModel.getAdSwitch()
         }
     }
 
