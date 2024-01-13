@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--Automatically translated by Globalization Translator (https://github.com/wilinz/globalization-translator)-->
+<resources>
+  <string name="app_name" >TFollow</string>
+  <string name="function_title">這個軟體可以幫助你做什麼?</string>
+  <string name="function_des1">1.綁定你的帳戶，就可以擁有海量的用戶與你一起互粉。</string>
+  <string name="function_des2">2.添加你的視訊連接，就能大家一起互贊，上熱門。</string>
+  <string name="follow_bind_text">還未綁定你的%s號</string>
+  <string name="follow_bind_text2">你的%s號為:%s</string>
+  <string name="follow_follow_text">一起來互粉吧</string>
+
+
+
+  <string name="title_home" >首頁</string>
+  <string name="title_praise" >點贊</string>
+  <string name="title_dashboard" >連結</string>
+  <string name="title_notifications" >我的</string>
+  <string name="need_permiss">你需要開啟以下權限才能進行關注粉絲操作</string>
+  <string name="accessibility_permiss">無障礙權限</string>
+  <string name="drawOverlays_permiss">懸浮窗權限</string>
+  <string name="to_follow">去互粉</string>
+  <string name="follow_notice_text">每關註一個用戶你就有一次被關注的機會</string>
+  <string name="to_bind">去綁定</string>
+  <string name="to_change">去修改</string>
+  <string name="follow_bind_account">當前綁定的抖音號為:%s</string>
+  <string name="login_title">我來了</string>
+  <string name="suggestion_title">有啥說啥</string>
+  <string name="login_register_title">人生贏家</string>
+  <string name="change_psw_title">貴人多忘事</string>
+  <string name="can_follow_title">關注須知</string>
+  <string name="can_follow_text">當前可關注人數為%s,請先打開抖音並且點擊搜索，停留在搜索頁面，然後將抖音退到後台，才可以使用該功能。</string>
+  <string name="praise_notice">1.去互讚會去截屏，以便獲取點讚的圖標，判斷是否已經點贊。 2.添加的視頻連接最好不要超過三條，被用一個粉絲連續點贊三次會被限流。 3.按音量上鍵退出腳本執行。</string>
+  <string name="to_comment">去刷評論</string>
+  <string name="to_praise">去互讚</string>
+  <string name="add_video_url">添加鏈接</string>
+  <string name="share_video_url">分享視頻</string>
+  <string name="input_title">輸入標題</string>
+  <string name="input_praise_video_url">打開視頻->複製鏈接->粘貼到這</string>
+  <string name="please_enter_title">請輸入標題</string>
+  <string name="please_enter_url">請輸入帶https的文本</string>
+  <string name="delete">删除</string>
+  <string name="edit">編輯</string>
+  <string name="check">校驗</string>
+  <string name="delete_notice">刪除後將無法恢復，你確定要刪除嗎？</string>
+  <string name="delete_fail">刪除失敗</string>
+  <string name="not_any_follow">當前無可關注，可以邀請更多朋友加入</string>
+  <string name="not_any_praise">當前無可點贊，可以邀請更多朋友加入</string>
+  <string name="can_praise_title">點贊須知</string>
+  <string name="can_praise_text">當前可互讚視頻個數為%s</string>
+  <string name="curr_praise_num">點贊數:</string>
+  <string name="total_user_num">累计用户量</string>
+  <string name="total_followed_num">累计关注量</string>
+  <!--我的页面-->
+  <string name="login">登录</string>
+  <string name="retrieve_password">找回密码</string>
+  <string name="remaining_follow">剩余被关注</string>
+  <string name="cumulative_follow">累计关注</string>
+  <string name="cumulative_followed">累计被关注</string>
+  <string name="modify_username">修改用户名</string>
+  <string name="modify_email">修改邮箱</string>
+  <string name="modify_psw">修改密码</string>
+  <string name="Feedback">意见反馈</string>
+  <string name="logout">注销登录</string>
+  <string name="modify_bind_account">修改抖音/TikTok号</string>
+  <string name="add_bind_account">添加抖音/TikTok号</string>
+  <string name="add">添加</string>
+  <string name="copy_account">打开抖音/TikTok->我的->点击抖音/TikTok号复制</string>
+  <string name="modify">修改</string>
+  <string name="enter_confirmation_code">输入验证码</string>
+  <string name="send_confirmation_code">发送验证码</string>
+  <string name="enter_username">输入用户名</string>
+  <string name="enter_email">输入邮箱</string>
+  <string name="enter_psw">输入密码</string>
+  <string name="enter_username_or_email">输入用户名或者邮箱号</string>
+  <string name="register">注册</string>
+  <string name="submit_feedback">提交反馈</string>
+  <string name="stay_tuned">敬请期待</string>
+  <string name="login_again">登录失效，请重新登录</string>
+  <string name="username_not_empty">用户名不能为空</string>
+  <string name="password_not_empty">密码不能为空</string>
+  <string name="email_not_empty">邮箱不能为空</string>
+  <string name="login_success">登录成功</string>
+  <string name="register_success">注册成功</string>
+  <string name="modify_success">修改成功</string>
+  <string name="send_code_success">发送验证码成功</string>
+  <string name="copy_dev_account">已复制开发者抖音/TikTok号到剪切板</string>
+  <string name="copy_to_clipboard">复制到剪切板</string>
+  <string name="input_not_empty">输入不能为空</string>
+  <string name="thinks_feedback">感谢反馈</string>
+  <string name="total_likes">总点赞</string>
+  <string name="the_rest_were_liked">剩余被点赞</string>
+  <string name="accumulated_likes">累计点赞</string>
+  <string name="total_liked">累计被点赞</string>
+  <string name="click_add_url">点击“%s”按钮,添加你的视频连接，之后别人可以为你点赞。</string>
+  <string name="switch_app">切換App:</string>
+  <string name="tip_1">1:切換App</string>
+  <string name="tip_2">2:綁定ID</string>
+  <string name="tip_3">3:授予權限</string>
+  <string name="tip_4">4:獲得更多粉絲</string>
+  <string name="setting_privacypolicy_title">隱私政策</string>
+  <string name="guide_top_text">本軟體提供以下兩種方式去完成所需的功能，請依照以下方式進行操作。</string>
+  <string name="method_one">方法一：點選此處，下載完整的App，可進行自動化操作，效果如下影片所展示。</string>
+  <string name="method_two">方法二：點選「複製」,開啟抖音/Tiktop,搜尋複製內容。</string>
+  <string name="copy">複製</string>
+  <string name="privacy_policy_content">歡迎使用TFollow！&lt;br&gt;
+        我們努力在產品的各方面為使用者帶來優秀的使用體驗。我們會不定期更新
+        &lt;a href=%s&gt;《隱私權政策》&lt;/a&gt;.&lt;br&gt;如你同意，請點擊「同意」並開始使用TFollow。</string>
+  <string name="agree">同意</string>
+  <string name="not_used">暫不使用</string>
+  <string name="ok">確定</string>
+  <string name="cancel">取消</string>
+  <string name="follow_app1">抖音</string>
+  <string name="follow_app2">Tiktop</string>
+</resources>

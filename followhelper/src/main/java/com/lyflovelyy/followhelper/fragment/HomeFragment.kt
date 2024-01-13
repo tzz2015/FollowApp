@@ -73,7 +73,7 @@ class HomeFragment : BaseFragment<HomeViewModel, FragmentHomeBinding>() {
                 appName,
                 account
             )
-            bind.btnBindAccount.text = getString(R.string.to_change_account)
+            bind.btnBindAccount.text = getString(R.string.to_change)
         }
     }
 
