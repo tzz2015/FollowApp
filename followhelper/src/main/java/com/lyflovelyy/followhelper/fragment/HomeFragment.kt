@@ -25,7 +25,7 @@ import java.util.*
  */
 class HomeFragment : BaseFragment<HomeViewModel, FragmentHomeBinding>() {
     override val viewModelConfig: ViewModelConfig
-        get() = ViewModelConfig(R.layout.fragment_home).bindViewModel(BR._all)
+        get() = ViewModelConfig(R.layout.fragment_home).bindViewModel(BR.homeModel)
 
     override fun init(savedInstanceState: Bundle?) {
         bind.homeModel = viewModel

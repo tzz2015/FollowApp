@@ -1,10 +1,16 @@
 package com.lyflovelyy.followhelper.viewmodel
 
+import android.app.Activity
 import android.content.Context
+import android.content.Intent
 import android.util.Log
 import com.linsh.utilseverywhere.LogUtils
 import com.linsh.utilseverywhere.StringUtils
 import com.lyflovelyy.followhelper.App
+import com.lyflovelyy.followhelper.R
+import com.lyflovelyy.followhelper.activity.LoginActivity
+import com.lyflovelyy.followhelper.activity.UpdateInfoActivity
+import com.lyflovelyy.followhelper.entity.Constants
 import com.lyflovelyy.followhelper.utils.formatLargeNumber
 import com.lyflovelyy.followhelper.utils.getFollowType
 import com.lyflovelyy.followhelper.utils.isLogined
@@ -131,20 +137,36 @@ class HomeViewModel @Inject constructor() : BaseViewModel() {
             toLogin()
             return
         }
-       /* if (StringUtils.isAllNotEmpty(CacheManager.instance.getDYAccount())) {
+        if (StringUtils.isAllNotEmpty(CacheManager.instance.getDYAccount())) {
             toUpdateActivity(mContext.getString(R.string.modify_bind_account))
         } else {
             toUpdateActivity(mContext.getString(R.string.add_bind_account))
-        }*/
+        }
+    }
+
+    private fun toUpdateActivity(name: String) {
+        val intent = Intent(mContext, UpdateInfoActivity::class.java)
+        if (mContext !is Activity) {
+            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+        }
+        intent.putExtra(Constants.UPDATE_FUNCTION, name)
+        mContext.startActivity(intent)
     }
 
     private fun toLogin() {
         LogUtils.e("点击登录")
-       /* val intent = Intent(mContext, LoginActivity::class.java)
+        val intent = Intent(mContext, LoginActivity::class.java)
         if (mContext !is Activity) {
             intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
         }
-        mContext.startActivity(intent)*/
+        mContext.startActivity(intent)
+    }
+
+    fun toFollow() {
+        if (!isLogined()) {
+            toLogin()
+            return
+        }
     }
 
 
