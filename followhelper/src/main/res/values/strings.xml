@@ -100,5 +100,8 @@
     <string name="setting_privacypolicy_title">隐私政策</string>
     <string name="ok">确定</string>
     <string name="cancel">取消</string>
+    <string name="guide_top_text">本软件提供以下两种方式去完成所需要的功能，请根据以下方式进行操作。</string>
+    <string name="method_one">方法一：点击此处，下载完全的App，可进行自动化操作，效果如下视频所展示。</string>
+    <string name="method_two">方法二：点击“复制”,打开抖音/Tiktop,搜索复制内容。</string>
 
 </resources>

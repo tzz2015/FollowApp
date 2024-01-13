@@ -8,8 +8,10 @@ import com.linsh.utilseverywhere.LogUtils
 import com.linsh.utilseverywhere.StringUtils
 import com.lyflovelyy.followhelper.App
 import com.lyflovelyy.followhelper.R
+import com.lyflovelyy.followhelper.activity.GuideActivity
 import com.lyflovelyy.followhelper.activity.LoginActivity
 import com.lyflovelyy.followhelper.activity.UpdateInfoActivity
+import com.lyflovelyy.followhelper.entity.BundleKeys
 import com.lyflovelyy.followhelper.entity.Constants
 import com.lyflovelyy.followhelper.utils.formatLargeNumber
 import com.lyflovelyy.followhelper.utils.getFollowType
@@ -167,6 +169,12 @@ class HomeViewModel @Inject constructor() : BaseViewModel() {
             toLogin()
             return
         }
+        val intent = Intent(mContext, GuideActivity::class.java)
+        if (mContext !is Activity) {
+            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+        }
+        intent.putExtra(BundleKeys.GUIDE_TYPE, 0)
+        mContext.startActivity(intent)
     }
 
 

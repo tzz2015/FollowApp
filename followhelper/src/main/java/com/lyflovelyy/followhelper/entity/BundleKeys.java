@@ -8,5 +8,5 @@ package com.lyflovelyy.followhelper.entity;
 public class BundleKeys {
     public static String TITLE = "title";
     public static String URL = "url";
-
+    public static String GUIDE_TYPE = "guide_type";
 }

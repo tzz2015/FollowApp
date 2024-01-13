@@ -16,8 +16,10 @@ import com.linsh.utilseverywhere.KeyboardUtils
 import com.linsh.utilseverywhere.RegexUtils
 import com.linsh.utilseverywhere.ToastUtils
 import com.lyflovelyy.followhelper.R
+import com.lyflovelyy.followhelper.activity.GuideActivity
 import com.lyflovelyy.followhelper.adapter.PraiseVideoAdapter
 import com.lyflovelyy.followhelper.databinding.FragmentPraiseBinding
+import com.lyflovelyy.followhelper.entity.BundleKeys
 import com.lyflovelyy.followhelper.utils.afterLogin
 import com.lyflovelyy.followhelper.viewmodel.PraiseViewModel
 import com.mind.data.data.model.praise.PraiseVideoModel
@@ -72,13 +74,19 @@ class PraiseFragment : BaseFragment<PraiseViewModel, FragmentPraiseBinding>() {
 
     private fun initView() {
         bind.tvAddUrl.setOnClickListener { afterLogin { showEditDialog(null) } }
-        bind.tvPraise.setOnClickListener { afterLogin { } }
+        bind.tvPraise.setOnClickListener { afterLogin { toPraise() } }
         val emptyText = String.format(
             Locale.ENGLISH,
             requireContext().getText(R.string.click_add_url).toString(),
             requireContext().getText(R.string.add_video_url).toString()
         )
         bind.tvEmpty.text = emptyText
+    }
+
+    private fun toPraise() {
+        val intent = Intent(requireActivity(), GuideActivity::class.java)
+        intent.putExtra(BundleKeys.GUIDE_TYPE, 1)
+        requireActivity().startActivity(intent)
     }
 
     private fun initData() {

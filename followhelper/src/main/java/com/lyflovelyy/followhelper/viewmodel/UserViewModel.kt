@@ -13,6 +13,8 @@ import com.lyflovelyy.followhelper.App
 import com.lyflovelyy.followhelper.R
 import com.lyflovelyy.followhelper.activity.LoginActivity
 import com.lyflovelyy.followhelper.activity.RegisterActivity
+import com.lyflovelyy.followhelper.activity.UpdateInfoActivity
+import com.lyflovelyy.followhelper.entity.Constants
 import com.lyflovelyy.followhelper.utils.copyToClipboard
 import com.lyflovelyy.followhelper.utils.formatLargeNumber
 import com.lyflovelyy.followhelper.utils.getFollowType
@@ -199,12 +201,12 @@ open class UserViewModel @Inject constructor() : BaseViewModel() {
     }
 
     fun toUpdateActivity(name: String) {
-        /* val intent = Intent(mContext, UpdateInfoActivity::class.java)
+         val intent = Intent(mContext, UpdateInfoActivity::class.java)
          if (mContext !is Activity) {
              intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
          }
-         intent.putExtra(SyncStateContract.Constants.UPDATE_FUNCTION, name)
-         mContext.startActivity(intent)*/
+         intent.putExtra(Constants.UPDATE_FUNCTION, name)
+         mContext.startActivity(intent)
     }
 
     fun toSuggestionActivity() {
