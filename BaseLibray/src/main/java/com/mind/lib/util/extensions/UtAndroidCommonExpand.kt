@@ -1,4 +1,4 @@
-package com.stardust.util.extensions
+package com.mind.lib.util.extensions
 
 import android.content.res.Resources
 

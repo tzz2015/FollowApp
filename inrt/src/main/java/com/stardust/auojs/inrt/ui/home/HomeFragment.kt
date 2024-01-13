@@ -22,6 +22,7 @@ import com.linsh.utilseverywhere.LogUtils
 import com.linsh.utilseverywhere.ToastUtils
 import com.mind.data.data.mmkv.KV
 import com.mind.data.event.MsgEvent
+import com.stardust.auojs.inrt.UserViewModel
 import com.mind.lib.base.BaseFragment
 import com.mind.lib.base.ViewModelConfig
 import com.mind.lib.util.CacheManager

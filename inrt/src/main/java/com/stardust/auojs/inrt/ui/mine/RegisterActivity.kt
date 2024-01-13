@@ -1,10 +1,9 @@
 package com.stardust.auojs.inrt.ui.mine
 
 import com.chad.library.BR
-import com.kc.openset.OSETBanner
 import com.mind.lib.base.BaseActivity
 import com.mind.lib.base.ViewModelConfig
-import com.stardust.auojs.inrt.ui.home.UserViewModel
+import com.stardust.auojs.inrt.UserViewModel
 import com.stardust.auojs.inrt.util.AdUtils
 import org.autojs.autoxjs.inrt.R
 import org.autojs.autoxjs.inrt.databinding.ActivityRegisterBinding

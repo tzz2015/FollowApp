@@ -16,7 +16,7 @@ import com.mind.lib.base.BaseFragment
 import com.mind.lib.base.ViewModelConfig
 import com.mind.lib.util.CacheManager
 import com.stardust.auojs.inrt.ui.adapter.AnnouncementAdapter
-import com.stardust.auojs.inrt.ui.home.UserViewModel
+import com.stardust.auojs.inrt.UserViewModel
 import com.stardust.auojs.inrt.util.AdUtils
 import com.stardust.auojs.inrt.util.copyToClipboard
 import com.stardust.auojs.inrt.util.formatLargeNumber

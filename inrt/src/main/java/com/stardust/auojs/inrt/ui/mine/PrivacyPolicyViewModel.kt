@@ -1,6 +1,6 @@
 package com.stardust.auojs.inrt.ui.mine
 
-import com.stardust.auojs.inrt.ui.home.UserViewModel
+import com.stardust.auojs.inrt.UserViewModel
 
 /**
  * @Author      : liuyufei

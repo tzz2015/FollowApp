@@ -13,6 +13,8 @@ import com.mind.data.event.MsgEvent
 import com.mind.lib.base.BaseFragment
 import com.mind.lib.base.ViewModelConfig
 import com.mind.lib.util.CacheManager
+import com.mind.lib.util.extensions.dp
+import com.mind.lib.util.extensions.setRadius
 import com.tencent.mmkv.MMKV
 import java.util.*
 
@@ -27,10 +29,17 @@ class HomeFragment : BaseFragment<HomeViewModel, FragmentHomeBinding>() {
 
     override fun init(savedInstanceState: Bundle?) {
         bind.homeModel = viewModel
+        initView()
         initData()
         initAppType()
         initClick()
         initObserve()
+    }
+
+    private fun initView() {
+        bind.tvDouyin.setRadius(6.dp)
+        bind.tvTiktop.setRadius(6.dp)
+        bind.tabBg.setRadius(6.dp)
     }
 
     private fun initObserve() {

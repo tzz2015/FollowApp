@@ -12,7 +12,7 @@ import com.mind.data.data.model.UserModel
 import com.mind.data.http.ApiClient
 import com.mind.lib.util.CacheManager
 import com.stardust.app.GlobalAppContext
-import com.stardust.auojs.inrt.ui.home.UserViewModel
+import com.stardust.auojs.inrt.UserViewModel
 import com.stardust.auojs.inrt.util.getFollowType
 import com.tencent.mmkv.MMKV
 import org.autojs.autoxjs.inrt.R

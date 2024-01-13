@@ -67,7 +67,7 @@
         <View
             android:id="@+id/tab_bg"
             android:layout_width="160dp"
-            android:layout_height="30dp"
+            android:layout_height="35dp"
             android:layout_marginTop="@dimen/dp10"
             android:background="@color/white"
             android:textSize="12sp"
@@ -194,6 +194,7 @@
             android:paddingStart="15dp"
             android:paddingEnd="15dp"
             android:text="@string/to_bind"
+            android:onClick="@{() -> homeModel.toBindAccount()}"
             android:textAlignment="center"
             android:textColor="@color/white"
             android:textSize="14sp"

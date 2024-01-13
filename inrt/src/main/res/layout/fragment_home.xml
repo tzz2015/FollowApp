@@ -13,7 +13,7 @@
 
         <variable
             name="userModel"
-            type="com.stardust.auojs.inrt.ui.home.UserViewModel" />
+            type="com.stardust.auojs.inrt.UserViewModel" />
 
         <variable
             name="followModel"

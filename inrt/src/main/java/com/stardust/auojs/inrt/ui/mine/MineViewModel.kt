@@ -14,7 +14,7 @@ import com.mind.lib.base.BaseViewModel
 import com.mind.lib.base.ViewModelEvent
 import com.stardust.app.GlobalAppContext
 import com.stardust.auojs.inrt.data.Constants.IMAGE_ARRAY
-import com.stardust.auojs.inrt.ui.home.UserViewModel
+import com.stardust.auojs.inrt.UserViewModel
 import dagger.hilt.android.lifecycle.HiltViewModel
 import org.autojs.autoxjs.inrt.R
 import javax.inject.Inject

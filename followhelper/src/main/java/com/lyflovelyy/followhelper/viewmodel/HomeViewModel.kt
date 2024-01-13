@@ -1,7 +1,10 @@
 package com.lyflovelyy.followhelper.viewmodel
 
+import android.content.Context
 import android.util.Log
+import com.linsh.utilseverywhere.LogUtils
 import com.linsh.utilseverywhere.StringUtils
+import com.lyflovelyy.followhelper.App
 import com.lyflovelyy.followhelper.utils.formatLargeNumber
 import com.lyflovelyy.followhelper.utils.getFollowType
 import com.lyflovelyy.followhelper.utils.isLogined
@@ -28,6 +31,7 @@ class HomeViewModel @Inject constructor() : BaseViewModel() {
     val followCount by lazy { ViewModelEvent<String>() }
     private var randomFollowCount: Int = 50
     private var randomUserCount: Int = 10
+    private val mContext: Context by lazy { App.getContext() }
 
 
     /**
@@ -118,5 +122,30 @@ class HomeViewModel @Inject constructor() : BaseViewModel() {
             isShowDialog = false
         )
     }
+
+    /**
+     * 绑定抖音号或者修改抖音号
+     */
+    fun toBindAccount() {
+        if (!isLogined()) {
+            toLogin()
+            return
+        }
+       /* if (StringUtils.isAllNotEmpty(CacheManager.instance.getDYAccount())) {
+            toUpdateActivity(mContext.getString(R.string.modify_bind_account))
+        } else {
+            toUpdateActivity(mContext.getString(R.string.add_bind_account))
+        }*/
+    }
+
+    private fun toLogin() {
+        LogUtils.e("点击登录")
+       /* val intent = Intent(mContext, LoginActivity::class.java)
+        if (mContext !is Activity) {
+            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+        }
+        mContext.startActivity(intent)*/
+    }
+
 
 }

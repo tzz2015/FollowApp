@@ -5,7 +5,7 @@
 
         <variable
             name="userViewModel"
-            type="com.stardust.auojs.inrt.ui.home.UserViewModel" />
+            type="com.stardust.auojs.inrt.UserViewModel" />
 
 
         <import type="android.graphics.drawable.Drawable" />

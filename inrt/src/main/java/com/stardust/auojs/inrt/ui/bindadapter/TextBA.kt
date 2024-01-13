@@ -7,7 +7,7 @@ import android.widget.EditText
 import androidx.databinding.BindingAdapter
 import androidx.lifecycle.Observer
 import androidx.lifecycle.findViewTreeLifecycleOwner
-import com.stardust.auojs.inrt.ui.home.UserViewModel
+import com.stardust.auojs.inrt.UserViewModel
 
 
 object TextBA {

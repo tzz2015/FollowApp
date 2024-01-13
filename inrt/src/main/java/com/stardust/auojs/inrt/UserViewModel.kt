@@ -1,4 +1,4 @@
-package com.stardust.auojs.inrt.ui.home
+package com.stardust.auojs.inrt
 
 import android.app.Activity
 import android.content.Context
@@ -136,11 +136,11 @@ open class UserViewModel @Inject constructor() : BaseViewModel() {
 
     fun login() {
         if (phone.value.isNullOrEmpty()) {
-            ToastUtils.show(mContext.getString(R.string.username_not_empty))
+            ToastUtils.show(mContext.getString(org.autojs.autoxjs.inrt.R.string.username_not_empty))
             return
         }
         if (password.value.isNullOrEmpty()) {
-            ToastUtils.show(mContext.getString(R.string.password_not_empty))
+            ToastUtils.show(mContext.getString(org.autojs.autoxjs.inrt.R.string.password_not_empty))
             return
         }
         val map = hashMapOf(
@@ -150,7 +150,7 @@ open class UserViewModel @Inject constructor() : BaseViewModel() {
         loadHttp(
             request = { ApiClient.userApi.login(map) },
             resp = {
-                ToastUtils.show(mContext.getString(R.string.login_success))
+                ToastUtils.show(mContext.getString(org.autojs.autoxjs.inrt.R.string.login_success))
                 LogUtils.e(it.toString())
                 loginResult.postValue(it)
             },

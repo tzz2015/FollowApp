@@ -3,13 +3,12 @@ package com.stardust.auojs.inrt.ui.mine
 import com.chad.library.BR
 import com.google.gson.Gson
 import com.jeremyliao.liveeventbus.LiveEventBus
-import com.kc.openset.OSETBanner
 import com.mind.data.data.mmkv.KV
 import com.mind.data.event.MsgEvent
 import com.mind.lib.base.BaseActivity
 import com.mind.lib.base.ViewModelConfig
 import com.mind.lib.util.CacheManager
-import com.stardust.auojs.inrt.ui.home.UserViewModel
+import com.stardust.auojs.inrt.UserViewModel
 import com.stardust.auojs.inrt.util.AdUtils
 import com.tencent.mmkv.MMKV
 import org.autojs.autoxjs.inrt.R
