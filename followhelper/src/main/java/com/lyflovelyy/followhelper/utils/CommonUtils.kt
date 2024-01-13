@@ -3,8 +3,10 @@ package com.lyflovelyy.followhelper.utils
 import android.content.ClipData
 import android.content.ClipboardManager
 import android.content.Context
+import android.content.Intent
 import android.os.SystemClock
 import com.lyflovelyy.followhelper.App
+import com.lyflovelyy.followhelper.activity.LoginActivity
 import com.mind.data.data.mmkv.KV
 import com.mind.data.data.model.AppType
 import com.mind.data.data.model.ScriptType
@@ -31,12 +33,10 @@ fun afterLogin(method: () -> Unit) {
     if (isLogined()) {
         method()
     } else {
-        /*val context =  App.getContext()
+        val context = App.getContext()
         val intent = Intent(context, LoginActivity::class.java)
-        if (context !is Activity) {
-            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
-        }
-        context.startActivity(intent)*/
+        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+        context.startActivity(intent)
     }
 }
 
