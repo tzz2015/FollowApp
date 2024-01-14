@@ -42,7 +42,7 @@ class GuideActivity : BaseActivity<GuideViewModel, ActivityGuideBinding>() {
         bind.tvTopTitle.setOnClickListener { toOutWebView(this, Constants.DOWN_APK_URL) }
         val showMethodOne = MMKV.defaultMMKV().getBoolean(KV.START_SWITCH, false)
         bind.methodOne.visibleOrGone(showMethodOne)
-        bind.webview.visibleOrGone(showMethodOne)
+//        bind.webview.visibleOrGone(showMethodOne)
     }
 
     private fun initObserve() {
@@ -75,7 +75,7 @@ class GuideActivity : BaseActivity<GuideViewModel, ActivityGuideBinding>() {
         webSettings.javaScriptEnabled = true // 启用 JavaScript
         webSettings.builtInZoomControls = true // 启用缩放
         val selectIndex = MMKV.defaultMMKV().getInt(KV.APP_TYPE, -1)
-        val loadUrl = if (selectIndex == 0) Constants.TUTORIAL_URL else Constants.HOST_URL
+        val loadUrl = if (selectIndex == 0) Constants.TUTORIAL_URL else Constants.TIK_TOP_URL
         bind.webview.loadUrl(loadUrl)
         bind.webview.webViewClient = object : WebViewClient() {
             override fun shouldOverrideUrlLoading(view: WebView, url: String?): Boolean {

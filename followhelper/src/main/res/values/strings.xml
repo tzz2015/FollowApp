@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">FollowHelper</string>
+    <string name="app_name">TFollow</string>
     <string name="title_home">HOME</string>
     <string name="title_praise">LIKE</string>
     <string name="total_user_num">TOTAL USERS</string>

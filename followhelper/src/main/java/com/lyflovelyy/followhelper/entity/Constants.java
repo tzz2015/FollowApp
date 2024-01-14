@@ -30,6 +30,8 @@ public final class Constants {
 
     public static String TUTORIAL_URL = "https://v.douyin.com/id4hbL5K/";
 
+    public static String TIK_TOP_URL = "https://www.tiktok.com/@followappdeveloper/video/7277295975595625736?is_from_webapp=1&sender_device=pc&web_id=7269322602866116098";
+
     public static String DOWN_APK_URL = "https://s1.link-nemo.com/bot/lyf/inrt-release.apk";
 
 
